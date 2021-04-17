@@ -12,7 +12,7 @@
   - [developers/configuration/apache-php](search/developers/configuration/apache-php)
   - [developers/search/index](search/developers/search/index)
   - [alpha_mvp](search/alpha_mvp)
-- resource_Hub
-  - [modules/resourcehub_demo/readme](resource_hub/modules/resourcehub_demo/readme)
-  - [contributing](resource_hub/contributing)
-  - [readme](resource_hub/readme)
+- resource-hub
+  - [modules/resourcehub_demo/readme](resource-hub/modules/resourcehub_demo/readme)
+  - [contributing](resource-hub/contributing)
+  - [readme](resource-hub/readme)
