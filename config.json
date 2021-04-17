@@ -1,0 +1,19 @@
+{
+  "repositories": [
+    {
+      "gitUrl": "https://github.com/bitzesty/notifications-api.git",
+      "sourceDocsDirectory": "docs",
+      "outputDirectory": "notifications-api"
+    },
+    {
+      "gitUrl": "https://github.com/reasondigital/Shared-Service-Layer-Search.git",
+      "sourceDocsDirectory": "docs",
+      "outputDirectory": "shared-service-layer-search"
+    },
+    {
+      "gitUrl": "https://gitlab.com/openresources/resourcehub_distribution.git",
+      "sourceDocsDirectory": "/",
+      "outputDirectory": "resourcehub-distribution"
+    }
+  ]
+}
