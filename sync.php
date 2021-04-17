@@ -37,11 +37,12 @@ $index = <<<INDEX
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
+  <title>Catalyst Shared Service Layer documentation</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="description" content="Description">
+  <meta name="description" content="Helping charities build digital skills and improve their services.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css" title="Simple">
+  <link href="https://assets-global.website-files.com/6048aaba41858594b67e1803/6048aaba4185854c837e184e_cat-fav.png" rel="shortcut icon" type="image/x-icon"/>
 </head>
 <body>
   <div id="app"></div>
@@ -50,10 +51,17 @@ $index = <<<INDEX
       name: 'Docs',
       repo: '',
       loadSidebar: true,
+      search: {
+        depth: 3,
+        noData: 'Not found',
+        placeholder: 'Search...'
+      },
     }
   </script>
   <!-- Docsify v4 -->
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code@2"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.js"></script>
 </body>
 </html>
 INDEX;
