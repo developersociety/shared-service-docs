@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies: {  }
+id: site_administrator
+label: 'Site administrator'
+weight: 4
+is_admin: null
+permissions:
+  - 'access administration pages'
+  - 'access content overview'
+  - 'access in-place editing'
+  - 'access taxonomy overview'
+  - 'access toolbar'
+  - 'access user profiles'
+  - 'administer menu'
+  - 'administer resourcehub configuration'
+  - 'administer taxonomy'
+  - 'administer url aliases'
+  - 'administer users'
+  - 'assign site_administrator role'
+  - 'assign content_editor role'
+  - 'cancel account'
+  - 'change own username'
+  - 'create url aliases'
+  - 'use text format resourcehub_filtered'
+  - 'use text format resourcehub_simple'
+  - 'use text format stripped'
+  - 'view style guides'
+  - 'view the administration theme'

@@ -1,0 +1,13 @@
+.breadcrumb li{
+  width: 100%;
+  @extend .small;
+  &:before {
+    content: "\2192";
+    font-size: 1.5rem;
+  }
+}
+
+.breadcrumb {
+  width: 100%;
+  margin-bottom: $spacing;
+}

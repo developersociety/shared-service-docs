@@ -1,0 +1,140 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: d32be57a-7836-4bae-8a21-76fcfd84d026
+  bundle: resource
+  default_langcode: en
+  depends:
+    69e98a86-1bd8-4814-853e-a7a9de98a111: taxonomy_term
+    2c6af65c-e9c1-44d7-bb05-9d0068bfa3c9: media
+    8549b8a4-4ebe-4221-8d3a-ae146ff8e5c6: taxonomy_term
+    9f21add4-16b8-4df8-b286-30f74ca5bbaa: taxonomy_term
+    23602efe-03ef-4c49-b826-346976586277: taxonomy_term
+default:
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: 'Accessibility evaluation tools'
+  created:
+    -
+      value: 1616770494
+  promote:
+    -
+      value: true
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: /resources/accessibility-evaluation-tools
+      langcode: en
+      pathauto: 1
+  resourcehub_audience:
+    -
+      entity: 69e98a86-1bd8-4814-853e-a7a9de98a111
+  resourcehub_audience_intro:
+    -
+      value: "<p>Web designers, developers and evalutors.</p>\r\n"
+      format: resourcehub_simple
+  resourcehub_content:
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 5f74b2d2-542b-4f0c-b746-e330998eec4f
+          bundle: resourcehub_image
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1616771042
+          behavior_settings:
+            -
+              value: {  }
+          resourcehub_caption:
+            -
+              value: 'It''s important to use the right tool for the job'
+          resourcehub_image:
+            -
+              entity: 2c6af65c-e9c1-44d7-bb05-9d0068bfa3c9
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 09412489-dc28-4a2d-9ece-30578d5e1b66
+          bundle: resourcehub_text
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1616771037
+          behavior_settings:
+            -
+              value: {  }
+          resourcehub_text:
+            -
+              value: "<h3>Evaluation only vs. evaluation and repair</h3>\r\n\r\n<p>Another important classification of accessibility evaluation tools deals with the repair functionality of these tools. Many tools can only perform an evaluation, but some tools are able to perform the evaluation and/or guide the repair process. This is a more common characteristic of commercially available tools. These often spend time educating their user and guiding both the evaluation and repair process.</p>\r\n\r\n<h3>Report styles</h3>\r\n\r\n<p>Accessibility tools generate a variety of reports based on the results of an analyzed web page. All quality accessibility tools should look at a web page for both obvious errors (such as missing alternative text for images) and warn users of the need for manual checks (i.e. the appropriateness of the alternative text for the image). However, beyond the general requirement for tools, accessibility report styles differ widely depending on the target audience familiarity with web design and web accessibility standards. Web designers, developers, and evaluators who know which style best meets their needs will be able to choose an appropriate tool.</p>\r\n\r\n<h4>Text-based</h4>\r\n\r\n<p>Text-based report styles are the most common type of accessibility report. These reports generally list the specific guideline being used to scan the page and the instances of each type of accessibility error. Some also show the source code of the page where the error occurs.</p>\r\n\r\n<h4>Graphic/Icon-based</h4>\r\n\r\n<p>This report style uses special icons to highlight accessibility errors and manual check issues on a web page. With this kind of report, the icons are integrated into the web page's graphical user interface next to the item on the page with an accessibility issue.</p>\r\n\r\n<h4>EARL&nbsp;report</h4>\r\n\r\n<p>An Evaluation and Reporting Language (EARL) report is a machine readable report of the accessibility standard the page validates to, as well as the accessibility issues highlighted in the report, the date of the evaluation, and any manual checks that need to be performed by developers. The EARL reports are an attempt by the W3C to standardize accessibility reports and help users compare the effectiveness of accessibility tools.</p>\r\n"
+              format: resourcehub_filtered
+  resourcehub_external_links:
+    -
+      uri: 'https://webaim.org/articles/tools/'
+      title: 'Source: WebAim'
+      options: {  }
+  resourcehub_primary_resource:
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 136592de-e614-41d1-8798-6f925ca4d394
+          bundle: resourcehub_text
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1617979689
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          resourcehub_text:
+            -
+              value: "<p>Many web designers, developers, and evaluators are introduced to web access through accessibility tools. All accessibility tools perform automated checks of web pages for accessibility issues and all generally have additional features, but each tool targets different audiences. In order to help web designers, developers, and evaluators choose an appropriate tool for their purposes, this article discusses the general types or classifications of accessibility tools.</p>\r\n\r\n<p>However, web accessibility requires more than just accessibility tools; it requires human judgment. It is important to remember that accessibility tools can only partially check accessibility through automation. The real key is to learn and understand the web accessibility standards rather than relying on a tool to determine if a page is accessible or not.</p>\r\n\r\n<p><strong>Important</strong>: No automated evaluation tool can tell you if your site is accessible, or even compliant. Human testing is always necessary because accessibility is about the human experience.</p>\r\n\r\n<h2>Classifications of Accessibility Evaluation Tools</h2>\r\n\r\n<h3>Standards and guidelines used</h3>\r\n\r\n<p>One key in understanding accessibility tools is to understand the standards to which the tool was developed. When deciding which accessibility tool will work best for you it is important to consider the standards and guidelines used by the different accessibility evaluation tools. The current standard is the&nbsp;<a href=\"https://codebeautify.org/standards/wcag/checklist\">Web Content Accessibility Guidelines version 2.1 (“WCAG 2”)</a>.</p>\r\n\r\n<h4>WCAG 2</h4>\r\n\r\n<p><a href=\"http://www.w3.org/TR/WCAG/\">WCAG 2</a>&nbsp;(currently in version 2.1) consists of three priority levels that act as an industry standard. The first level, Level A, covers items on web pages that must be made accessible in order for individuals with disabilities to access the content at all. The second level, Level AA, includes items on web pages that should be made accessible to allow a wider group of users to access the content. Level AAA describes items on web pages that can be made accessible to allow the widest amount of individuals with disabilities to use the site..</p>\r\n\r\n<h4>Section 508</h4>\r\n\r\n<p>Prior to January 2018,&nbsp;<a href=\"https://www.section508.gov/\">Section 508</a>&nbsp;of the United States Rehabilitation Act outlined a separate set of requirements for making federally-funded web sites accessible. Section 508 still requires accessibility, but now uses&nbsp;<a href=\"https://www.w3.org/TR/WCAG20/\">WCAG 2.0</a>&nbsp;(the predecessor to WCAG 2.1) Level A and AA as its benchmark.</p>\r\n\r\n<p>Testing tools that report only on&nbsp;<a href=\"https://webaim.org/standards/508/checklist\">Section 508 standards</a>&nbsp;are outdated.</p>\r\n\r\n<h3>Free vs. commercial</h3>\r\n\r\n<p>One very important classification of tools to the budget conscious web designer, developer, or evaluator is the cost. There are many excellent free evaluation tools out there, but perhaps after weighing the specific needs of your organization and the features you need you may decide that a commercially available tool is best for you. When this decision is made it will be important to keep in mind:</p>\r\n\r\n<ul>\r\n\t<li><strong>Who will be using the tool.</strong>&nbsp;The evaluation tool, and its associated cost, will depend a great deal on the accessibility knowledge of the one using it. Free tools often assume a greater understanding and spend less time educating their user.</li>\r\n\t<li><strong>The size of the site being examined.</strong>&nbsp;Those tasked with maintaining or creating a very large web site will need accessibility tools that spider through the site so they don't have to check the site one page at a time. Often times it is the commercially available tools that have this feature. Free tools often limit their scope to checking just one page at a time.</li>\r\n\t<li><strong>The information that must be collected.</strong>&nbsp;This varies depending on your situation. Some developers may be required to provide detailed reports on the accessibility of many different types of web documents. Commercially available tools often produce more detailed and specific reports.</li>\r\n</ul>\r\n\r\n<h3>Platform</h3>\r\n\r\n<p>Another important classification of accessibility evaluation tools involves where these tools are meant to function. Some tools are available at a web site where they are able to evaluate the content of a page quickly and easily without downloading or installing an application. Other options include tools that are created as extensions to a browser, tools that function as part of a web authoring tool. Finally, some tools require installation on your hard drive or server like other pieces of software.</p>\r\n\r\n<h4>Online service</h4>\r\n\r\n<p>There are many tools, and especially free ones, that are used online. They work by having the site visitor input the URL of their web page, selecting from any evaluation options, and then selecting a \"Go\" button or some other method of initializing the program.</p>\r\n\r\n<h4>Within a browser</h4>\r\n\r\n<p>Several accessibility tools have been created as extensions for the more popular Internet browsers. After being downloaded and installed they provide extra menu options within the browser itself. Some of these extensions create toolbars that remain visible within the browser. All accessibility extensions provide a variety of useful tasks to evaluate the page that is currently in the browser window.</p>\r\n\r\n<h4>Within an authoring tool</h4>\r\n\r\n<p>Some accessibility evaluation tools have been created to function as part of a web authoring tool, like Dreamweaver, in Word Proccessing Tools like&nbsp;<a href=\"https://codebeautify.org/resources/evaloffice/\">Microsoft Word</a>, or in content management systems. These plugins and extensions allow web developers to examine their content for accessibility in the same environment they are using to create this content. This would increase the likelihood that accessibility evaluation steps will take place.</p>\r\n\r\n<h4>Install on hard drive</h4>\r\n\r\n<p>Many of the more powerful accessibility evaluation tools require that they be installed on your hard drive or server like other pieces of software. These tools are useful when working on very large and complex sites. They are able to examine web pages local to your machine or behind your company's firewall.</p>\r\n\r\n<h3>Scope</h3>\r\n\r\n<p>Accessibility evaluation tools can also be classified in terms of what they examine or their scope. Some tools are simple and limited in scope so they evaluate just one page at a time and check for just a few things. Other tools are very specific in what they evaluate and focus on just one element of a web site. Then there are very detail oriented tools that are able to examine large sites and check for a variety of errors.</p>\r\n\r\n<h4>One page at a time</h4>\r\n\r\n<p>Tools that evaluate just one page at a time are often those accessibility evaluation tools found online and as part of a browser. Their functionality is limited to evaluating content found at just one URL, but they often can provide very rich details about the page's accessibility.</p>\r\n\r\n<h4>Specific items</h4>\r\n\r\n<p>Many accessibility tools focus on just one element of a web site. They may demonstrate what the site looks like to someone who is blind or has low vision. Some tools may show the site content from the perspective of someone who is colorblind. This limited scope is is commonly found in tools available online and as part of a browser.</p>\r\n\r\n<h4>Site wide</h4>\r\n\r\n<p>Accessibility evaluation tools that require installation of software are often able to examine large sites and check for a variety of errors. These tools are meant for enterprise level organizations with a large web development staff, and more specific requirements. This is a feature found in commercial software tools.</p>\r\n"
+              format: resourcehub_filtered
+  resourcehub_resource_format:
+    -
+      entity: 8549b8a4-4ebe-4221-8d3a-ae146ff8e5c6
+  resourcehub_resource_type:
+    -
+      entity: 9f21add4-16b8-4df8-b286-30f74ca5bbaa
+  resourcehub_summary:
+    -
+      value: "<p>In order to help web designers, developers, and evaluators choose an appropriate tool for their purposes, this article discusses the general types or classifications of accessibility tools.</p>\r\n"
+      format: resourcehub_simple
+  resourcehub_topics:
+    -
+      entity: 23602efe-03ef-4c49-b826-346976586277

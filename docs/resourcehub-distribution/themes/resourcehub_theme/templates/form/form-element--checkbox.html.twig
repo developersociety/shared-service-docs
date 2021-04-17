@@ -1,0 +1,11 @@
+<div{{ attributes.addClass('resourcehub-checkboxes__item') }}>
+  {{ children }}
+  {% set label = label|merge({'#attributes': {'class': 'resourcehub-checkboxes__label' }}) %}
+  {{ label }}
+  {% if description.content %}
+    <span class="form-hint resourcehub-checkboxes__hint">
+      {{ description.content }}
+    </span>
+  {% endif %}
+</div>
+

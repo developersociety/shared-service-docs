@@ -1,0 +1,96 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: 7d1e4e2c-0b9d-4d87-b992-8c98d451b482
+  bundle: resource
+  default_langcode: en
+  depends:
+    69e98a86-1bd8-4814-853e-a7a9de98a111: taxonomy_term
+    69d0c7f5-3e58-446e-8785-5affa1d7b703: node
+    8549b8a4-4ebe-4221-8d3a-ae146ff8e5c6: taxonomy_term
+    3ddcec27-56fa-4d88-b45a-449cf3329956: taxonomy_term
+    fe867ad1-5a08-43ce-8edb-dce51345d028: taxonomy_term
+default:
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: 'Writing well for the web'
+  created:
+    -
+      value: 1617010677
+  promote:
+    -
+      value: true
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: /resources/writing-well-web
+      langcode: en
+      pathauto: 1
+  resourcehub_audience:
+    -
+      entity: 69e98a86-1bd8-4814-853e-a7a9de98a111
+  resourcehub_audience_intro:
+    -
+      value: "<p>This page is aimed at content designers writing content for a charity website.</p>\r\n"
+      format: resourcehub_simple
+  resourcehub_external_links:
+    -
+      uri: 'https://www.gov.uk/guidance/content-design/writing-for-gov-uk'
+      title: 'Source: Gov.UK '
+      options: {  }
+  resourcehub_primary_resource:
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: af85a85d-2883-42b9-8d56-e23483be542e
+          bundle: resourcehub_text
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1617962732
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          resourcehub_text:
+            -
+              value: "<p><a href=\"http://www.nngroup.com/articles/how-users-read-on-the-web/\">People read differently on the web</a> than they do on paper. This means that the best approach when writing for the web is different from writing for print.</p>\r\n\r\n<p>Our guidance on writing for GOV.UK is based on research into how people read online and how people use GOV.UK. It explains what each rule is based on.</p>\r\n\r\n<p>When you write for GOV.UK you should:</p>\r\n\r\n<ul>\r\n\t<li>use writing for the web best practice</li>\r\n\t<li>follow the <a href=\"https://www.gov.uk/guidance/style-guide\">Government Digital Service (GDS) style guide</a> and writing guidance</li>\r\n</ul>\r\n\r\n<h3 id=\"meet-the-user-need\">Meet the user need</h3>\r\n\r\n<p>Do not publish everything you can online. Publish only what someone needs to know so they can complete their task. Nothing more.</p>\r\n\r\n<p>People do not usually read text unless they want information. When you write for the web, start with the same question every time: what does the user want to know?</p>\r\n\r\n<p>Meeting that need means being:</p>\r\n\r\n<ul>\r\n\t<li>specific</li>\r\n\t<li>informative</li>\r\n\t<li>clear and to the point</li>\r\n</ul>\r\n\r\n<h3 id=\"finding-information-on-the-web\">Finding information on the web</h3>\r\n\r\n<p>An individual’s process of finding and absorbing information on the web should follow these steps.</p>\r\n\r\n<ol>\r\n\t<li>I have a question</li>\r\n\t<li>I can find the page with the answer easily – I can see it’s the right page from the search results listing</li>\r\n\t<li>I have understood the information</li>\r\n\t<li>I have my answer</li>\r\n\t<li>I trust the information</li>\r\n\t<li>I know what to do next/my fears are allayed/I do not need anything else</li>\r\n</ol>\r\n\r\n<p>A website only works if people can find what they need quickly, complete their task and leave without having to think about it too much.</p>\r\n\r\n<h3 id=\"good-content-is-easy-to-read\">Good content is easy to read</h3>\r\n\r\n<p>Good online content is easy to read and understand.</p>\r\n\r\n<p>It uses:</p>\r\n\r\n<ul>\r\n\t<li>short sentences</li>\r\n\t<li>sub-headed sections</li>\r\n\t<li>simple vocabulary</li>\r\n</ul>\r\n\r\n<p>This helps people find what they need quickly and absorb it effortlessly.</p>\r\n\r\n<p>The main purpose of GOV.UK is to provide information - there’s no excuse for putting unnecessarily complicated writing in the way of people’s understanding.</p>\r\n"
+              format: resourcehub_filtered
+  resourcehub_related_resources:
+    -
+      entity: 69d0c7f5-3e58-446e-8785-5affa1d7b703
+  resourcehub_resource_format:
+    -
+      entity: 8549b8a4-4ebe-4221-8d3a-ae146ff8e5c6
+  resourcehub_resource_type:
+    -
+      entity: 3ddcec27-56fa-4d88-b45a-449cf3329956
+  resourcehub_summary:
+    -
+      value: "<p>From Gov.uk's series on writing web content:&nbsp;<a href=\"http://www.nngroup.com/articles/how-users-read-on-the-web/\">People read differently on the web</a> than they do on paper. This means that the best approach when writing for the web is different from writing for print.</p>\r\n"
+      format: resourcehub_simple
+  resourcehub_topics:
+    -
+      entity: fe867ad1-5a08-43ce-8edb-dce51345d028

@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.resourcehub_image
+    - media.type.image
+    - node.type.resourcehub_landing_page
+id: node.resourcehub_landing_page.resourcehub_image
+field_name: resourcehub_image
+entity_type: node
+bundle: resourcehub_landing_page
+label: 'Main image'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,255 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: d0529384-7d4a-401d-be80-feee1deb4307
+  bundle: resource
+  default_langcode: en
+  depends:
+    087c64e0-5d26-4728-8a5a-4398dfb610c2: taxonomy_term
+    db9fca05-44e8-4007-844c-047d05095326: taxonomy_term
+    e665eff3-09ae-4d8a-9200-dadcc44d3bdb: media
+    106343ae-d41b-491a-8042-23ace4ad4900: media
+    966bd87f-e9b9-4a80-94e7-42b9f53a506a: media
+    f5dae7a2-a90c-4226-8c1f-7a90cb957efc: taxonomy_term
+    3ddcec27-56fa-4d88-b45a-449cf3329956: taxonomy_term
+    23602efe-03ef-4c49-b826-346976586277: taxonomy_term
+default:
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: 'Captions, Transcripts, and Audio Descriptions'
+  created:
+    -
+      value: 1616763995
+  promote:
+    -
+      value: true
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: /resources/captions-transcripts-and-audio-descriptions
+      langcode: en
+      pathauto: 1
+  resourcehub_audience:
+    -
+      entity: 087c64e0-5d26-4728-8a5a-4398dfb610c2
+    -
+      entity: db9fca05-44e8-4007-844c-047d05095326
+  resourcehub_audience_intro:
+    -
+      value: "<p>This page is primarily for content creators and designers.&nbsp;</p>\r\n"
+      format: resourcehub_simple
+  resourcehub_content:
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: b5bba41e-f23b-4808-a42f-9b88cba7ce37
+          bundle: resourcehub_image
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1617963098
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          resourcehub_caption:
+            -
+              value: 'Captions as typically seen on television'
+          resourcehub_image:
+            -
+              entity: e665eff3-09ae-4d8a-9200-dadcc44d3bdb
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 6dba10fc-eea9-48e6-95b7-5bc4f962be0b
+          bundle: resourcehub_text
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1617963170
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          resourcehub_text:
+            -
+              value: "<p>The most common type of captions are \"Closed\" captions, which can be turned on or off. Most countries require most pre-recorded and live television programs to be closed-captioned.</p>\r\n\r\n<p>Closed captioning of most pre-recorded television programs is now a legal requirement in most countries. Most live broadcasts (such as news and sports events) and most pre-recorded programs now include closed captions that can be easily enabled and viewed on screen.</p>\r\n"
+              format: resourcehub_filtered
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: bc31a434-80e5-4dd0-a4fc-278e8c124693
+          bundle: resourcehub_image
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1617963189
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          resourcehub_caption:
+            -
+              value: 'Captions as seen on DVD or Blu-ray'
+          resourcehub_image:
+            -
+              entity: 106343ae-d41b-491a-8042-23ace4ad4900
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 034141a6-4424-4341-9cc2-99fe33c40cd1
+          bundle: resourcehub_text
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1617963271
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          resourcehub_text:
+            -
+              value: "<p>On broadcast television, the style and location of the captions depend on the caption decoder built into the viewer's television receiver or streaming device. In online or streaming video, the browser or video player determines how captions will be displayed. Many decoders and video players allow the user to customize caption size, color, font, and location on the screen.</p>\r\n"
+              format: resourcehub_filtered
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 4d11d160-496d-42f4-9970-dda3c4083654
+          bundle: resourcehub_image
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1617963231
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          resourcehub_caption:
+            -
+              value: 'Captions as seen in a web media player'
+          resourcehub_image:
+            -
+              entity: 966bd87f-e9b9-4a80-94e7-42b9f53a506a
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 2a8b4382-0324-46ab-bea7-312374228b57
+          bundle: resourcehub_text
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1617963301
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          resourcehub_text:
+            -
+              value: "<p><strong>Note</strong>: Also see our <a href=\"https://webaim.org/techniques/captions/realtime\">article on real-time captions</a> for information on captioning live web multimedia and broadcasts.</p>\r\n\r\n<h2>Transcripts</h2>\r\n\r\n<p>For multimedia, a transcript can also help users who can neither hear the audio nor see the video. Beyond the spoken words, a transcript should include descriptions of important audio information (like laughter) and visual information (such as someone entering the room). Transcripts help deaf/blind users interact with content using refreshable Braille devices.</p>\r\n\r\n<p>Transcripts allow anyone that cannot access content from either web audio or video (or both) to read a text transcript instead. Beyond the spoken words, a transcript should include descriptions of important audio information (like laughter) and visual information (such as someone entering the room). Transcripts help deaf/blind users interact with content using refreshable Braille devices. For most web video, both captions and a text transcript should be provided. For content that is audio only, a transcript will usually suffice—captions are not necessary for audio-only media like a podcast.</p>\r\n\r\n<p>Transcripts make multimedia content searchable by search engines and users. Screen reader users also may also prefer a transcript over real-time audio, since most proficient screen reader users set their assistive technology to read at a rate much faster than natural human speech.</p>\r\n\r\n<p><strong>Important</strong>: In order to be optimally accessible to users with auditory disabilities, web multimedia should include both synchronized captions and a transcript.</p>\r\n\r\n<h2>Audio Descriptions</h2>\r\n\r\n<p><strong>Important</strong>: Visual content within multimedia must be described via audio in order for the multimedia to be optimally accessible to users with visual disabilities.</p>\r\n\r\n<p>Audio descriptions help users with visual disabilities perceive content that is presented only visually, and are necessary for WCAG 2 Level AA conformance. On television, this is often called Descriptive Video Service (DVS). Typically, a narrator describes the visual-only content in the multimedia. Audio descriptions can be provided with the primary video, or in another audio track, or via an alternate version of the video that includes audio descriptions.</p>\r\n\r\n<p><a href=\"https://webaim.org/techniques/captions/media/audiodesc.mp3\">Here's a short example of an audio description that you might recognize.</a> Can you visualize what is being described?</p>\r\n\r\n<p>Producing audio descriptions can be expensive and time-consuming. However, they are unnecessary if the audio already presents the necessary visual content. If a video displays a list of five important items, the items should be read aloud instead of the audio presenting, \"As you can see, there are five important points\". Instead of, \"Click here and then here,\" the presenter should describe what is being clicked. This way, no separate audio description track is necessary.</p>\r\n\r\n<p>© WebAIM https://webaim.org/techniques/captions/</p>\r\n"
+              format: resourcehub_filtered
+  resourcehub_external_links:
+    -
+      uri: 'https://webaim.org/techniques/captions/'
+      title: 'Source: WebAim'
+      options: {  }
+  resourcehub_primary_resource:
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 73247f3b-359c-42c7-81fa-f151d6b43254
+          bundle: resourcehub_text
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1617962994
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          resourcehub_text:
+            -
+              value: "<h2>Captions</h2>\r\n\r\n<p>Accessible multimedia (visual and auditory content that is synchronized) must include captions—text versions of speech and other important audio content—allowing it to be accessible to people who can't hear all of the audio.</p>\r\n\r\n<p>According to US government figures, one person in eight has some functional hearing limitation, and this number will increase as the average age of the population increases. Beyond people with disabilities, captioning helps people who only partially understand the language presented. Captions are also useful in noisy environments like airports, in quiet environments like libraries, and for multimodal learning.</p>\r\n\r\n<p>All multimedia content with speech should have accessible captions that are:</p>\r\n\r\n<ul>\r\n\t<li><strong>Synchronized</strong> to appear at approximately the same time as the corresponding audio.</li>\r\n\t<li><strong>Equivalent</strong> to the spoken words and other audio information.</li>\r\n\t<li><strong>Accessible</strong>, or readily available, to those who need it.</li>\r\n</ul>\r\n"
+              format: resourcehub_filtered
+  resourcehub_resource_format:
+    -
+      entity: f5dae7a2-a90c-4226-8c1f-7a90cb957efc
+  resourcehub_resource_type:
+    -
+      entity: 3ddcec27-56fa-4d88-b45a-449cf3329956
+  resourcehub_summary:
+    -
+      value: "<p>Accessible multimedia (visual and auditory content that is synchronized) must include captions—text versions of speech and other important audio content—allowing it to be accessible to people who can't hear all of the audio. © WebAIM&nbsp;</p>\r\n"
+      format: resourcehub_simple
+  resourcehub_topics:
+    -
+      entity: 23602efe-03ef-4c49-b826-346976586277

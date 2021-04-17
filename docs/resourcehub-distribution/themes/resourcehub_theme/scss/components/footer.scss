@@ -1,0 +1,12 @@
+.region-footer {
+  @include screen('md') {
+    display: flex;
+    justify-content: space-between;
+  }
+  nav ul {
+    text-align: end;
+    li {
+      @extend .small;
+    }
+  }
+}

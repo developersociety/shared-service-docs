@@ -1,0 +1,53 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.resourcehub_links
+    - paragraphs.paragraphs_type.external_link
+    - paragraphs.paragraphs_type.internal_link
+    - paragraphs.paragraphs_type.resourcehub_link_block
+  module:
+    - entity_reference_revisions
+id: paragraph.resourcehub_link_block.resourcehub_links
+field_name: resourcehub_links
+entity_type: paragraph
+bundle: resourcehub_link_block
+label: Links
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      external_link: external_link
+      internal_link: internal_link
+    target_bundles_drag_drop:
+      external_link:
+        enabled: true
+        weight: 9
+      internal_link:
+        enabled: true
+        weight: 10
+      resourcehub_audio:
+        weight: 11
+        enabled: false
+      resourcehub_document:
+        weight: 12
+        enabled: false
+      resourcehub_image:
+        weight: 13
+        enabled: false
+      resourcehub_link_block:
+        weight: 14
+        enabled: false
+      resourcehub_text:
+        weight: 15
+        enabled: false
+      resourcehub_video:
+        weight: 16
+        enabled: false
+field_type: entity_reference_revisions

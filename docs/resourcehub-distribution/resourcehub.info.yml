@@ -1,0 +1,66 @@
+name: 'Resource Hub'
+type: profile
+description: 'Resource Hub installation profile'
+core_version_requirement: ^8.8 || ^9
+
+install:
+  # Core
+  - drupal:automated_cron
+  - drupal:breakpoint
+  - drupal:block
+  - drupal:block_content
+  - drupal:ckeditor
+  - drupal:config
+  - drupal:contextual
+  - drupal:datetime
+  - drupal:dblog
+  - drupal:dynamic_page_cache
+  - drupal:editor
+  - drupal:field_ui
+  - drupal:file
+  - drupal:help
+  - drupal:history
+  - drupal:image
+  - drupal:node
+  - drupal:media
+  - drupal:media_library
+  - drupal:menu_link_content
+  - drupal:menu_ui
+  - drupal:options
+  - drupal:page_cache
+  - drupal:path
+  - drupal:responsive_image
+  - drupal:quickedit
+  - drupal:taxonomy
+  - drupal:text
+  - drupal:toolbar
+  - drupal:views
+  - drupal:views_ui
+  - drupal:color
+  # Contrib
+  - allowed_formats:allowed_formats
+  - ckeditor_a11ychecker:ckeditor_a11ychecker
+  - ckeditor_balloonpanel:ckeditor_balloonpanel
+  - entity_reference_revisions:entity_reference_revisions
+  - field_group:field_group
+  - google_tag:google_tag
+  - linkit:linkit
+  - oembed_providers:oembed_providers
+  - masquerade:masquerade
+  - paragraphs:paragraphs
+  - pathauto:pathauto
+  - redirect:redirect
+  - role_delegation:role_delegation
+  - simple_sitemap:simple_sitemap
+  - styleguide:styleguide
+  - search_api:search_api
+  - search_api:search_api_db
+  - facets:facets
+  - facets_summary:facets_summary
+  - gin_toolbar:gin_toolbar
+  - entity_reference_facet_link:entity_reference_facet_link
+
+themes:
+  - gin
+  - bartik
+  - resourcehub_theme

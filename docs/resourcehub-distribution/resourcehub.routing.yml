@@ -1,0 +1,15 @@
+resourcehub.settings:
+  path: '/admin/resourcehub-settings'
+  defaults:
+    _title: 'Settings'
+    _form: 'Drupal\resourcehub\Form\SettingsForm'
+  requirements:
+    _permission: 'administer resourcehub configuration'
+resourcehub.settings.color:
+  path: '/admin/resourcehub-settings/color'
+  defaults:
+    _title: 'Theme'
+    _form: 'Drupal\system\Form\ThemeSettingsForm'
+    theme: 'resourcehub_theme'
+  requirements:
+    _permission: 'administer resourcehub configuration'

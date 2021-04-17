@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: LCNs30uqB_z3mmGAaq2nl9rUFdHcLJ0MEOEP3e7XGCQ
+id: remote_video
+label: 'Remote video'
+description: ''
+source: 'oembed:video'
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  thumbnails_directory: 'public://video_thumbnails'
+  providers:
+    - Vimeo
+    - YouTube
+  source_field: field_media_oembed_video
+field_map: {  }

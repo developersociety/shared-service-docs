@@ -1,0 +1,52 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.resource.resourcehub_audience
+    - field.field.node.resource.resourcehub_audience_intro
+    - field.field.node.resource.resourcehub_content
+    - field.field.node.resource.resourcehub_external_links
+    - field.field.node.resource.resourcehub_primary_resource
+    - field.field.node.resource.resourcehub_related_resources
+    - field.field.node.resource.resourcehub_resource_format
+    - field.field.node.resource.resourcehub_resource_type
+    - field.field.node.resource.resourcehub_summary
+    - field.field.node.resource.resourcehub_topics
+    - node.type.resource
+  module:
+    - text
+    - user
+id: node.resource.teaser
+targetEntityType: node
+bundle: resource
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  resourcehub_summary:
+    type: text_trimmed
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      trim_length: 300
+    third_party_settings: {  }
+hidden:
+  links: true
+  resourcehub_audience: true
+  resourcehub_audience_intro: true
+  resourcehub_content: true
+  resourcehub_external_links: true
+  resourcehub_primary_resource: true
+  resourcehub_related_resources: true
+  resourcehub_resource_format: true
+  resourcehub_resource_type: true
+  resourcehub_topics: true
+  search_api_excerpt: true

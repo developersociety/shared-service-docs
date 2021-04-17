@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.resourcehub_transcript
+    - paragraphs.paragraphs_type.resourcehub_video
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    resourcehub_simple: resourcehub_simple
+    plain_text: plain_text
+    resourcehub_filtered: '0'
+id: paragraph.resourcehub_video.resourcehub_transcript
+field_name: resourcehub_transcript
+entity_type: paragraph
+bundle: resourcehub_video
+label: 'Video transcript'
+description: 'Add a transcript of the video to make your content available for more people.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -1,0 +1,93 @@
+// .field--label-hidden {
+//   @extend .visually-hidden;
+// }
+
+.field--name-resourcehub-caption {
+  @extend .small;
+}
+
+img {
+  max-width: 100%;
+}
+
+// .field {
+//   margin-bottom: $spacing/2;
+// }
+.field + .field--label-inline {
+  margin-top: $sp-12;
+}
+.field__label {
+  font-weight: 500;
+}
+
+.node--dates {
+  margin-bottom: $spacing*1.5;
+  > .field {
+    margin-bottom: $spacing/2;
+  }
+}
+
+.page-node-type-resource {
+  .field--label-above .field__label {
+    margin-bottom: $spacing;
+    @extend h3;
+    margin-top: 0;
+  }
+  .field--name-resourcehub-audience-intro,
+  .field--name-resourcehub-summary {
+    padding: $spacing*1.5;
+    background-color: $c-mid-grey;
+    margin-bottom: $spacing*1.5;
+    p:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.page-node-type-resource {
+  .field--name-resourcehub-external-links,
+.field--name-resourcehub-related-resources {
+  border-top: 1px solid;
+  padding-block: $spacing*1.5;
+  margin-top: $spacing*1.5;
+  .field__item + .field__item {
+    margin-top: $spacing;
+  }
+}
+}
+
+.field.field--label-above {
+  margin-bottom: $sp-12;
+  .field__label {
+    clear: both;
+    width: 100%;
+  }
+}
+
+
+.node--view-mode-search-result {
+  .field--label-above .field__items{
+    .field__item {
+      display: inline;
+    }
+    .field__item + .field__item {
+      &:before{
+        content: ", ";
+      }
+    }
+  }
+}
+
+.block-entity-viewnode {
+  .field__items{
+    // background-color: violet;
+    .field__item, .field__label {
+      display: inline;
+    }
+    .field__item + .field__item {
+      &:before{
+        content: ", ";
+      }
+    }
+  }
+}

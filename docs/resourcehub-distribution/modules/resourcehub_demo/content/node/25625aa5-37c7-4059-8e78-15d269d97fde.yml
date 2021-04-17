@@ -1,0 +1,95 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: 25625aa5-37c7-4059-8e78-15d269d97fde
+  bundle: resource
+  default_langcode: en
+  depends:
+    69e98a86-1bd8-4814-853e-a7a9de98a111: taxonomy_term
+    087c64e0-5d26-4728-8a5a-4398dfb610c2: taxonomy_term
+    db9fca05-44e8-4007-844c-047d05095326: taxonomy_term
+    f5920b11-87c9-4bf6-a7be-f08026b268be: taxonomy_term
+    3ddcec27-56fa-4d88-b45a-449cf3329956: taxonomy_term
+    23602efe-03ef-4c49-b826-346976586277: taxonomy_term
+default:
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: 'Alternative Text'
+  created:
+    -
+      value: 1616763637
+  promote:
+    -
+      value: true
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: /resources/alternative-text
+      langcode: en
+      pathauto: 1
+  resourcehub_audience:
+    -
+      entity: 69e98a86-1bd8-4814-853e-a7a9de98a111
+    -
+      entity: 087c64e0-5d26-4728-8a5a-4398dfb610c2
+    -
+      entity: db9fca05-44e8-4007-844c-047d05095326
+  resourcehub_audience_intro:
+    -
+      value: "<p>This resource is intended for content editors who would like to understand the importance of alternative text, when and how to use it best.</p>\r\n\r\n<p>Source: https://webaim.org/techniques/alttext/</p>\r\n"
+      format: resourcehub_simple
+  resourcehub_content:
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: a45af556-4552-4725-93c7-fbc31642fb14
+          bundle: resourcehub_text
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1616763903
+          behavior_settings:
+            -
+              value: {  }
+          resourcehub_text:
+            -
+              value: "<h2>Alternative Text Basics</h2>\r\n\r\n<p>Alternative text provides a textual alternative to non-text content in web pages. We will be discussing alternative text for images only, though the principles can be applied to media, applets, or other non-text web content.</p>\r\n\r\n<p>Alternative text serves several functions:</p>\r\n\r\n<ul>\r\n\t<li>It is read by screen readers in place of images allowing the content and function of the image to be accessible to those with visual or certain cognitive disabilities.</li>\r\n\t<li>It is displayed in place of the image in browsers if the image file is not loaded or when the user has chosen not to view images.</li>\r\n\t<li>It provides a semantic meaning and description to images which can be read by search engines or be used to later determine the content of the image from page context alone.</li>\r\n</ul>\r\n\r\n<p>The key principle is that computers and screen readers cannot analyze an image and determine what the image presents. As developers, text must be provided to the user which presents the <strong>CONTENT</strong> and <strong>FUNCTION</strong> of the images within your web content.</p>\r\n\r\n<p>Alternative text can be presented in two ways:</p>\r\n\r\n<ul>\r\n\t<li>Within the <code>alt</code> attribute of the <code>img</code> element.</li>\r\n\t<li>Within the context or surroundings of the image itself.</li>\r\n</ul>\r\n\r\n<p>This means that the <code>alt</code> attribute (sometimes called the <code>alt</code> <em>tag</em>, though technically this is incorrect) is not the only mechanism for providing the content and function of the image. This information can also be provided in text adjacent to the image or within the page containing the image. In some cases where the equivalent cannot be presented succinctly, a link to a separate page that contains a longer description of the image content can be provided.</p>\r\n\r\n<p><em><strong>Every image must have an <code>alt</code> attribute.</strong></em> This is a requirement of HTML standard (with perhaps a few exceptions in HTML5). Images without an <code>alt</code> attribute are likely inaccessible. In some cases, images may be given an empty <code>alt</code> attribute value (e.g., <code>alt=\"\"</code>, sometimes call \"null\" alternative text).</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n"
+              format: resourcehub_filtered
+  resourcehub_external_links:
+    -
+      uri: 'https://webaim.org/techniques/alttext/'
+      title: 'https://webaim.org/techniques/alttext/'
+      options: {  }
+  resourcehub_resource_format:
+    -
+      entity: f5920b11-87c9-4bf6-a7be-f08026b268be
+  resourcehub_resource_type:
+    -
+      entity: 3ddcec27-56fa-4d88-b45a-449cf3329956
+  resourcehub_summary:
+    -
+      value: "<p>Adding alternative text for images is the first principle of web accessibility. It is also one of the most difficult to properly implement. The web is replete with images that have missing, incorrect, or poor alternative text. Like many things in web accessibility, determining appropriate, equivalent, alternative text is often a matter of personal interpretation. Through the use of examples, this article will present our experienced interpretation of appropriate use of alternative text.</p>\r\n"
+      format: resourcehub_simple
+  resourcehub_topics:
+    -
+      entity: 23602efe-03ef-4c49-b826-346976586277

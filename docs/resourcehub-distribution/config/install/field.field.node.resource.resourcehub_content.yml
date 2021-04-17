@@ -1,0 +1,53 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.resourcehub_content
+    - node.type.resource
+    - paragraphs.paragraphs_type.internal_link
+    - paragraphs.paragraphs_type.resourcehub_link_block
+  module:
+    - entity_reference_revisions
+id: node.resource.resourcehub_content
+field_name: resourcehub_content
+entity_type: node
+bundle: resource
+label: 'Additional resource content'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 1
+    target_bundles:
+      internal_link: internal_link
+      resourcehub_link_block: resourcehub_link_block
+    target_bundles_drag_drop:
+      external_link:
+        weight: 9
+        enabled: false
+      internal_link:
+        enabled: true
+        weight: 10
+      resourcehub_audio:
+        weight: 6
+        enabled: false
+      resourcehub_document:
+        weight: 7
+        enabled: false
+      resourcehub_image:
+        weight: 8
+        enabled: false
+      resourcehub_link_block:
+        enabled: true
+        weight: 14
+      resourcehub_text:
+        weight: 9
+        enabled: false
+      resourcehub_video:
+        weight: 10
+        enabled: false
+field_type: entity_reference_revisions

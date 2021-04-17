@@ -1,0 +1,20 @@
+uuid: 198abf3c-e4f1-46f4-a305-589ec8981157
+langcode: en
+status: true
+dependencies:
+  theme:
+    - resourcehub_theme
+id: tabs
+theme: resourcehub_theme
+region: primary_menu
+weight: 0
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Tabs
+  provider: core
+  label_display: '0'
+  primary: true
+  secondary: true
+visibility: {  }

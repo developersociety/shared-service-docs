@@ -1,0 +1,84 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: ee23ec28-d4f1-4646-a203-a16470630343
+  bundle: resource
+  default_langcode: en
+  depends:
+    8549b8a4-4ebe-4221-8d3a-ae146ff8e5c6: taxonomy_term
+    bdcd6ee8-67dd-4d52-ae57-955ee347aa24: taxonomy_term
+default:
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: 'Know your audience'
+  created:
+    -
+      value: 1617011252
+  promote:
+    -
+      value: true
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: /resources/know-your-audience
+      langcode: en
+      pathauto: 1
+  resourcehub_audience_intro:
+    -
+      value: "<p>This content is for content designers writing for charity websites.</p>\r\n"
+      format: resourcehub_simple
+  resourcehub_external_links:
+    -
+      uri: 'https://www.gov.uk/guidance/content-design/writing-for-gov-uk'
+      title: 'Source: Gov.UK '
+      options: {  }
+  resourcehub_primary_resource:
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 3aff0896-fbf4-4c00-aa56-08fb75d14e54
+          bundle: resourcehub_text
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1617980135
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          resourcehub_text:
+            -
+              value: "<p>Your writing will be most effective if you understand who you’re writing for.</p>\r\n\r\n<p>To understand your audience you should know:</p>\r\n\r\n<ul>\r\n\t<li>how they behave, what they’re interested in or worried about - so your writing will catch their attention and answer their questions</li>\r\n\t<li>their vocabulary - so that you can use the same terms and phrases they’ll use to search for content</li>\r\n</ul>\r\n\r\n<p>When you have more than one audience, make your writing as easy to read as possible so it’s accessible to everyone.</p>\r\n\r\n<h3 id=\"the-govuk-audience\">The GOV.UK audience</h3>\r\n\r\n<p>The GOV.UK audience is potentially anyone living in the UK who needs information about their government, or people abroad who want to do business in or travel to the UK. This means government must communicate in a way that most people understand.</p>\r\n\r\n<p>The best way to do this is by using common words and working with natural reading behaviour.</p>\r\n\r\n<p>If you’re writing for a specialist audience, you still need to make sure everyone can understand what the content is about.</p>\r\n"
+              format: resourcehub_filtered
+  resourcehub_resource_format:
+    -
+      entity: 8549b8a4-4ebe-4221-8d3a-ae146ff8e5c6
+  resourcehub_resource_type:
+    -
+      entity: bdcd6ee8-67dd-4d52-ae57-955ee347aa24
+  resourcehub_summary:
+    -
+      value: "<p>Your writing will be most effective if you understand who you’re writing for.</p>\r\n"
+      format: resourcehub_simple

@@ -1,0 +1,27 @@
+_meta:
+  version: '1.0'
+  entity_type: file
+  uuid: 031c295d-a058-4b3b-9c7c-e6988528f51a
+  default_langcode: en
+default:
+  uid:
+    -
+      target_id: 1
+  filename:
+    -
+      value: 'Screenshot-toilet.png'
+  uri:
+    -
+      value: 'public://2021-04/Screenshot-toilet.png'
+  filemime:
+    -
+      value: image/png
+  filesize:
+    -
+      value: 16707
+  status:
+    -
+      value: true
+  created:
+    -
+      value: 1618216597

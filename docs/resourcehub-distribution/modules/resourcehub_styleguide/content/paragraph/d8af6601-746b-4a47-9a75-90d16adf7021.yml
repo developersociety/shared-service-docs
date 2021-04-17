@@ -1,0 +1,27 @@
+_meta:
+  version: '1.0'
+  entity_type: paragraph
+  uuid: d8af6601-746b-4a47-9a75-90d16adf7021
+  bundle: resourcehub_image
+  default_langcode: en
+  depends:
+    cf822641-1b5d-494e-9513-6fe017405659: media
+default:
+  status:
+    -
+      value: true
+  created:
+    -
+      value: 1616769685
+  behavior_settings:
+    -
+      value: {  }
+  revision_translation_affected:
+    -
+      value: true
+  resourcehub_caption:
+    -
+      value: 'A nicely formatted HTML table'
+  resourcehub_image:
+    -
+      entity: cf822641-1b5d-494e-9513-6fe017405659

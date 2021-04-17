@@ -1,0 +1,8 @@
+# Ignore all vendors and packages
+node_modules/*
+
+# Do not commit error logs
+npm-debug.log
+
+# Laravel mix generated files
+mix-manifest.json

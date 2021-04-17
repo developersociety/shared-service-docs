@@ -1,0 +1,55 @@
+// Inspired by the govuk notifications
+.messages {
+  background: none;
+  box-shadow: 0 0 0 transparent;
+  color: inherit;
+  font-size: 1.2rem;
+  padding: $sp-2;
+  padding-top: $spacing*1.5;
+  margin-bottom: $sp-2;
+}
+
+.messages--error {
+  border: 5px solid #d4351c;
+}
+
+.error-summary__title {
+  @extend h2;
+  margin-top: 0;
+}
+
+// warning text
+
+.messages--warning {
+  padding: 0;
+  border:0;
+  font-weight: 500;
+}
+
+.warning-text__icon {
+  box-sizing: border-box;
+  display: inline-block;
+  min-width: 35px;
+  min-height: 35px;
+  margin-right: 10px;
+  border: 3px solid #0b0c0c;
+  border-radius: 50%;
+  color: #ffffff;
+  background: #0b0c0c;
+  font-size: 30px;
+  line-height: 29px;
+  text-align: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+
+.messages--status{
+  background-color: #00703c;
+  color: white;
+  text-align: center;
+  font-size: 2rem;
+}
+

@@ -1,0 +1,8 @@
+.block-resourcehub-legal {
+  @include screen(md){
+    max-width: 30%;
+  }
+  > * {
+ @extend .small;
+  }
+}

@@ -1,0 +1,44 @@
+uuid: 84e82d7d-c029-49cd-83af-404019bd515f
+langcode: en
+status: true
+dependencies:
+  config:
+    - search_api.index.resource_index
+    - views.view.search_resources
+  module:
+    - search_api
+id: resources_summary
+name: 'Resources summary'
+facets:
+  audience:
+    checked: true
+    label: Audience
+    separator: ', '
+    weight: 0
+    show_count: false
+  format:
+    checked: true
+    label: Format
+    separator: ', '
+    weight: 0
+    show_count: false
+  topics:
+    checked: true
+    label: Topics
+    separator: ', '
+    weight: 0
+    show_count: false
+  type_of_resource:
+    checked: true
+    label: 'Type of resource'
+    separator: ', '
+    weight: 0
+    show_count: false
+facet_source_id: 'search_api:views_page__search_resources__search_page'
+processor_configs:
+  reset_facets:
+    processor_id: reset_facets
+    weights:
+      build: '30'
+    settings:
+      link_text: 'Clear filters'

@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.resourcehub_caption
+    - paragraphs.paragraphs_type.resourcehub_image
+id: paragraph.resourcehub_image.resourcehub_caption
+field_name: resourcehub_caption
+entity_type: paragraph
+bundle: resourcehub_image
+label: 'Image caption'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

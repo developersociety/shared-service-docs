@@ -1,0 +1,65 @@
+//font sizes
+html {
+  font-size: 16px;
+}
+
+$breakpoints: (
+  'sm': '576px',
+  'md':  767px,
+  'lg': 992px,
+  'xl':  1200px
+) !default;
+
+$max-content-width: 984px;
+
+/// Mixin to manage responsive breakpoints
+/// @author Hugo Giraudel
+/// @param {String} $breakpoint - Breakpoint name
+/// @require $breakpoints
+@mixin screen($breakpoint) {
+  // If the key exists in the map
+  @if map-has-key($breakpoints, $breakpoint) {
+    // Prints a media query based on the value
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+
+  // If the key doesn't exist in the map
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}
+//
+// Colours
+$c-white: #ffffff;
+$grey: #0b132a;
+$c-grey: #0b132a;
+$c-mid-grey-text: #505a5f;
+$mid-grey: #EBEAE9;
+$c-mid-grey: #EBEAE9;
+$light-grey: #EFEFEF;
+$c-light-grey: #EFEFEF;
+$c-body: $grey;
+$c-gov-yellow: #ffdd00;
+$c-gov-blue: #1d70b8;
+$c-gov-green: #00703c;
+$c-gov-green-dark:#005a30;
+$c-gov-green-darker: #002d18;
+
+//spacing
+$spacing: 1rem; //16px
+$sp-12: 0.75rem;
+$sp-2: 2rem; //32px
+// $sp-16: 1rem;
+
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}

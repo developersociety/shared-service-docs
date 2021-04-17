@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies: {  }
+id: resourcehub_link_block
+label: 'Link block'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

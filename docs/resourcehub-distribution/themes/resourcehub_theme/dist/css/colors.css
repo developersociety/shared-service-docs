@@ -1,0 +1,21 @@
+/* ---------- Color Module Styles ----------- */
+header[role=banner] {
+  border-bottom: 4px solid #efefef;
+}
+
+footer[role=contentinfo] {
+  border-top: 4px solid #efefef;
+}
+
+article.node--view-mode-search-result {
+  border-left: 4px solid #efefef;
+}
+
+/* a {
+  border-bottom: 1px solid #efefef;
+  text-decoration: none;
+} */
+/* .node--view-mode-full .field--name-resourcehub-audience-intro,
+.node--view-mode-full .field--name-resourcehub-summary{
+  border-left: 4px solid  #efefef;
+} */

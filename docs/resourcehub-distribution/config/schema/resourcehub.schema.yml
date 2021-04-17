@@ -1,0 +1,16 @@
+resourcehub.settings:
+  type: config_object
+  label: 'Resource Hub settings'
+  mapping:
+    legal:
+      type: string
+      label: "Edit the 'legal' text that appears in the footer of every page."
+    main_site_link:
+      type: mapping
+      mapping:
+        url:
+          type: uri
+          label: "The URL to your organisation's website"
+        text:
+          type: string
+          label: "The text for the link to our organisation's website"

@@ -1,0 +1,18 @@
+- notifications-api
+  - [setup-python-dev-environment](notifications-api/setup-python-dev-environment)
+  - [setup-clients-to-work-with-catalyst-notify](notifications-api/setup-clients-to-work-with-catalyst-notify)
+  - [setup-notifications-api](notifications-api/setup-notifications-api)
+- shared-service-layer-search
+  - [contributing](shared-service-layer-search/contributing)
+  - [api](shared-service-layer-search/api)
+  - [specification](shared-service-layer-search/specification)
+  - [developers/configuration/docker](shared-service-layer-search/developers/configuration/docker)
+  - [developers/configuration/index](shared-service-layer-search/developers/configuration/index)
+  - [developers/configuration/search](shared-service-layer-search/developers/configuration/search)
+  - [developers/configuration/apache-php](shared-service-layer-search/developers/configuration/apache-php)
+  - [developers/search/index](shared-service-layer-search/developers/search/index)
+  - [alpha_mvp](shared-service-layer-search/alpha_mvp)
+- resourcehub-distribution
+  - [modules/resourcehub_demo/readme](resourcehub-distribution/modules/resourcehub_demo/readme)
+  - [contributing](resourcehub-distribution/contributing)
+  - [readme](resourcehub-distribution/readme)

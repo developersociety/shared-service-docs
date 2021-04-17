@@ -1,0 +1,10 @@
+<div{{ attributes.addClass('resourcehub-radios__item') }}>
+  {{ children }}
+  {% set label = label|merge({'#attributes': {'class': 'resourcehub-radios__label' }}) %}
+  {{ label }}
+  {% if description.content %}
+    <span class="form-hint resourcehub-radios__hint">
+      {{ description.content }}
+    </span>
+  {% endif %}
+</div>

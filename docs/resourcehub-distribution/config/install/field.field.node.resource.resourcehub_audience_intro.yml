@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.resourcehub_audience_intro
+    - node.type.resource
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    resourcehub_simple: resourcehub_simple
+    plain_text: plain_text
+    resourcehub_filtered: '0'
+id: node.resource.resourcehub_audience_intro
+field_name: resourcehub_audience_intro
+entity_type: node
+bundle: resource
+label: 'Who is this page for?'
+description: 'Please describe who the content is for. '
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

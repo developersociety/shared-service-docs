@@ -1,0 +1,14 @@
+.block-facets-summary {
+  ul {
+    list-style: none;
+    padding: 0;
+    li {
+      display: inline-block;
+      margin-right: $spacing;
+    }
+  }
+}
+
+.layout-sidebar-first {
+  margin-bottom: $spacing*2;
+}

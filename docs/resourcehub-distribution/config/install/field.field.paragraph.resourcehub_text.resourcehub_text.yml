@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.resourcehub_text
+    - paragraphs.paragraphs_type.resourcehub_text
+  module:
+    - text
+id: paragraph.resourcehub_text.resourcehub_text
+field_name: resourcehub_text
+entity_type: paragraph
+bundle: resourcehub_text
+label: Text
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

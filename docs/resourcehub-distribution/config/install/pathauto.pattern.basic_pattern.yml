@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: basic_pattern
+label: 'Basic pattern'
+type: 'canonical_entities:node'
+pattern: '[node:title]'
+selection_criteria:
+  6e4190d0-ff84-489c-8adf-f4081ad0735b:
+    id: node_type
+    bundles:
+      resourcehub_landing_page: resourcehub_landing_page
+      resourcehub_page: resourcehub_page
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 6e4190d0-ff84-489c-8adf-f4081ad0735b
+selection_logic: and
+weight: -5
+relationships: {  }

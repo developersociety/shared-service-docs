@@ -1,0 +1,28 @@
+uuid: 72edf14a-1f02-41ad-8a0e-450e5d5f19eb
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.topics
+  module:
+    - facets
+    - system
+  theme:
+    - resourcehub_theme
+id: facet_topics
+theme: resourcehub_theme
+region: sidebar_first
+weight: 2
+provider: null
+plugin: 'facet_block:topics'
+settings:
+  id: 'facet_block:topics'
+  label: Topics
+  provider: facets
+  label_display: visible
+  block_id: facet_topics
+visibility:
+  request_path:
+    id: request_path
+    pages: /resources
+    negate: false

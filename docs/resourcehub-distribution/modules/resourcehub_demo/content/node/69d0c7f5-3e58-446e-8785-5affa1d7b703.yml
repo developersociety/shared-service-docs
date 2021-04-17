@@ -1,0 +1,95 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: 69d0c7f5-3e58-446e-8785-5affa1d7b703
+  bundle: resource
+  default_langcode: en
+  depends:
+    69e98a86-1bd8-4814-853e-a7a9de98a111: taxonomy_term
+    8549b8a4-4ebe-4221-8d3a-ae146ff8e5c6: taxonomy_term
+    bdcd6ee8-67dd-4d52-ae57-955ee347aa24: taxonomy_term
+    3ddcec27-56fa-4d88-b45a-449cf3329956: taxonomy_term
+    fe867ad1-5a08-43ce-8edb-dce51345d028: taxonomy_term
+default:
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: 'Content Strategy Basics'
+  created:
+    -
+      value: 1617009922
+  promote:
+    -
+      value: true
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: /resources/content-strategy-basics
+      langcode: en
+      pathauto: 1
+  resourcehub_audience:
+    -
+      entity: 69e98a86-1bd8-4814-853e-a7a9de98a111
+  resourcehub_audience_intro:
+    -
+      value: "<p>This page is aimed at content designers who want to create better content.</p>\r\n"
+      format: resourcehub_simple
+  resourcehub_external_links:
+    -
+      uri: 'https://www.usability.gov/what-and-why/content-strategy.html'
+      title: 'Source: Usability.gov'
+      options: {  }
+  resourcehub_primary_resource:
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: c53530dd-22ce-454d-a5e7-32ded9f717f4
+          bundle: resourcehub_text
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1617979185
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          resourcehub_text:
+            -
+              value: "<h2>Creating a Comprehensive Strategy and Governance</h2>\r\n\r\n<p>The goal of content strategy is to create meaningful, cohesive, engaging, and sustainable content.&nbsp; Throughout her book,&nbsp;<em>Content Strategy for the Web</em>, Kristina Halvorson discusses in detail the benefits of and how to create your content strategy.&nbsp; It reiterates that your strategy helps you to identify what already exists, what should be created and, more importantly, why it should be created.&nbsp;</p>\r\n\r\n<p>Brain Traffic has created the <a href=\"http://blog.braintraffic.com/2012/07/from-the-archive-brain-traffic-lands-the-quad/\">Content Strategy Quad ©</a> &nbsp;to help describe the content-oriented and people-oriented components you need to know.&nbsp;We have adapted it a bit to discuss the components that come together to help you create a successful strategy and governance.</p>\r\n\r\n<h2>Content Lifecycle</h2>\r\n\r\n<p>Producing compelling and sustainable content means that you need to understand and follow the content lifecycle.&nbsp; Erin Scime identifies that there are five stages in the lifecycle.&nbsp; In general, content lifecycles include the following:</p>\r\n\r\n<ul>\r\n\t<li><strong>Audit and Analysis</strong>:&nbsp; Content stakeholder&nbsp;<a href=\"https://www.usability.gov/how-to-and-tools/methods/individual-interviews.html\">interviews</a>, competitive analysis, objective analysis and evaluation of the content environment (site, partner content, sister, parent sites)</li>\r\n\t<li><strong>Strategy</strong>: Determine topical ownership areas, taxonomy, process/ workflow for content production, sourcing plan, voice and brand definition</li>\r\n\t<li><strong>Plan</strong>:&nbsp;<a href=\"https://www.usability.gov/how-to-and-tools/methods/project-team.html\">Staffing recommendations</a>, content management system customization, metadata plan, communications plan, migration plan</li>\r\n\t<li><strong>Create</strong>:&nbsp;<a href=\"https://www.usability.gov/how-to-and-tools/methods/individual-interviews.html\">Writing content</a>, asset production, governance model, search engine optimization, quality assurance</li>\r\n\t<li><strong>Maintain</strong>: Plan for periodic auditing, advise the client, determine targets for success measures.</li>\r\n</ul>\r\n\r\n<p>Several of the deliverables related to each of those phases overlap with the deliverables of other fields, including&nbsp;<a href=\"https://www.usability.gov/what-and-why/information-architecture.html\">information architecture</a>,&nbsp;<a href=\"https://www.usability.gov/what-and-why/user-research.html\">user research</a>,&nbsp;<a href=\"https://www.usability.gov/what-and-why/project-management.html\">project management</a>,&nbsp;<a href=\"https://www.usability.gov/what-and-why/web-analytics.html\">web analytics</a>.&nbsp; Instead of thinking of who owns each deliverable, it’s important to think of who contributes to each and how those different contributions come together to define the final product.&nbsp; There’s value in including multiple perspectives on deliverables.</p>\r\n\r\n<h2>Best Practices for Creating Meaningful Content</h2>\r\n\r\n<p>We have identified these best practices to help you create meaningful and relevant content.&nbsp; Each piece of content should:</p>\r\n\r\n<ul>\r\n\t<li><strong>Reflect your organization’s goals and user’s needs</strong>.&nbsp; You can discover your user’s needs through conducting market research,&nbsp;<a href=\"https://www.usability.gov/what-and-why/user-research.html\">user research</a>, and&nbsp;<a href=\"https://www.usability.gov/what-and-why/web-analytics.html\">analyzing web metrics</a>.</li>\r\n\t<li><strong>Understand how user’s think and speak about a subject.&nbsp;</strong>Content should then be created and structured based on that.&nbsp; Doing this will also help you with search engine optimization (SEO).</li>\r\n\t<li><strong>Communicate to people in a way that they understand</strong>.&nbsp;&nbsp;<a href=\"https://www.usability.gov/how-to-and-tools/methods/writing-for-the-web.html\">Embracing plain writing principles</a>&nbsp;helps with this.</li>\r\n\t<li><strong>Be useful</strong>.&nbsp; By being purposeful in the content that you include, omit the needless.</li>\r\n\t<li><strong>Stay up-to-date and and remain factual.</strong>&nbsp; When new information becomes available, update your content or archive it.</li>\r\n\t<li><strong>Be&nbsp;<a href=\"https://www.usability.gov/what-and-why/accessibility.html\">accessible</a>&nbsp;to all people.&nbsp;&nbsp;</strong>You have a responsibility to make sure that all people can access and benefit from your information.</li>\r\n\t<li><strong>Be consistent.&nbsp;</strong>&nbsp;Following style guides, both for language and design, helps people understand and learn what you are trying to communicate.</li>\r\n\t<li><strong>Be able to be found.&nbsp;&nbsp;</strong>Make sure that users can find your content both through internally through&nbsp;<a href=\"https://www.usability.gov/what-and-why/information-architecture.html\">navigation</a>&nbsp;and also externally through search engines.</li>\r\n\t<li><strong>Help define the&nbsp;<a href=\"https://www.usability.gov/how-to-and-tools/methods/requirements.html\">requirements</a>&nbsp;for the overall site.&nbsp;</strong>&nbsp;Content should drive design, structure, etc</li>\r\n</ul>\r\n\r\n<h2>References</h2>\r\n\r\n<ul>\r\n\t<li><a href=\"http://alistapart.com/article/thedisciplineofcontentstrategy\">The Discipline of Content Strategy</a>&nbsp;&nbsp;by Kristina Halvorson</li>\r\n\t<li><a href=\"http://uxmag.com/articles/content-strategy-and-ux-a-modern-love-story\">Content Strategy and UX: A Modern Love Story</a>&nbsp;&nbsp;by Kristina Halverson</li>\r\n\t<li><em>Content Strategy for the Web</em>&nbsp;by Kristina Halvorson</li>\r\n\t<li><a href=\"http://blog.braintraffic.com/2012/07/from-the-archive-brain-traffic-lands-the-quad/\">Content Strategy Quad ©</a> by Brain Traffic</li>\r\n\t<li><a href=\"http://contentini.com/content-strategists-what-do-they-do/\">Content Strategists: What Do They Do</a>&nbsp;&nbsp;by Dan Zambonini</li>\r\n\t<li><a href=\"http://boxesandarrows.com/content-strategy-the-philosophy-of-data/\">Content Strategy: The Philosophy of Data</a>&nbsp;&nbsp;by Rachel Lovinger</li>\r\n\t<li><a href=\"http://alistapart.com/article/a-checklist-for-content-work\">The Elements of Content Strategy</a>&nbsp;&nbsp;(excerpt) by Erin Kissane.</li>\r\n</ul>\r\n"
+              format: resourcehub_filtered
+  resourcehub_resource_format:
+    -
+      entity: 8549b8a4-4ebe-4221-8d3a-ae146ff8e5c6
+  resourcehub_resource_type:
+    -
+      entity: bdcd6ee8-67dd-4d52-ae57-955ee347aa24
+    -
+      entity: 3ddcec27-56fa-4d88-b45a-449cf3329956
+  resourcehub_summary:
+    -
+      value: "<p>Content strategy focuses on the planning, creation, delivery, and governance of content.&nbsp; Content not only includes the words on the page but also the images and multimedia that are used. Ensuring that you have useful and usable content, that is well structured, and easily found is vital to improving the user experience of a website.&nbsp;</p>\r\n\r\n<p>Source: <a href=\"https://www.usability.gov/what-and-why/content-strategy.html\">https://www.usability.gov/what-and-why/content-strategy.html </a></p>\r\n\r\n<p>&nbsp;</p>\r\n"
+      format: resourcehub_simple
+  resourcehub_topics:
+    -
+      entity: fe867ad1-5a08-43ce-8edb-dce51345d028

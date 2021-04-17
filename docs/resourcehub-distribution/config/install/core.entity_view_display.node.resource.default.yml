@@ -1,0 +1,91 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.resource.resourcehub_audience
+    - field.field.node.resource.resourcehub_audience_intro
+    - field.field.node.resource.resourcehub_content
+    - field.field.node.resource.resourcehub_external_links
+    - field.field.node.resource.resourcehub_primary_resource
+    - field.field.node.resource.resourcehub_related_resources
+    - field.field.node.resource.resourcehub_resource_format
+    - field.field.node.resource.resourcehub_resource_type
+    - field.field.node.resource.resourcehub_summary
+    - field.field.node.resource.resourcehub_topics
+    - node.type.resource
+  module:
+    - entity_reference_revisions
+    - link
+    - text
+    - user
+id: node.resource.default
+targetEntityType: node
+bundle: resource
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 7
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  resourcehub_audience_intro:
+    type: text_default
+    weight: 0
+    region: content
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+  resourcehub_content:
+    type: entity_reference_revisions_entity_view
+    weight: 3
+    region: content
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+  resourcehub_external_links:
+    weight: 5
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  resourcehub_primary_resource:
+    type: entity_reference_revisions_entity_view
+    weight: 2
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  resourcehub_related_resources:
+    weight: 4
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  resourcehub_summary:
+    type: text_default
+    weight: 1
+    region: content
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  links: true
+  resourcehub_audience: true
+  resourcehub_resource_format: true
+  resourcehub_resource_type: true
+  resourcehub_topics: true
+  search_api_excerpt: true

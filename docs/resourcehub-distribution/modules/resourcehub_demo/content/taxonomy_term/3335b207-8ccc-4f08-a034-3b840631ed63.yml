@@ -1,0 +1,31 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: 3335b207-8ccc-4f08-a034-3b840631ed63
+  bundle: resourcehub_topics
+  default_langcode: en
+default:
+  status:
+    -
+      value: true
+  name:
+    -
+      value: Design
+  description:
+    -
+      value: "<p>Resources relating to design of web and digital content.</p>\r\n"
+      format: resourcehub_filtered
+  weight:
+    -
+      value: 0
+  parent:
+    -
+      target_id: 0
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 0

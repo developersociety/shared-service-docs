@@ -1,0 +1,12 @@
+# example.links.task.yml
+
+resourcehub.settings: # The first plugin ID
+  route_name: resourcehub.settings
+  title: 'Settings'
+  base_route: resourcehub.settings
+
+resourcehub.settings.color: # The second plugin ID
+  route_name: resourcehub.settings.color
+  title: 'Theme'
+  base_route: resourcehub.settings
+  weight: 100

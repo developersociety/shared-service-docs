@@ -1,0 +1,61 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.resourcehub_primary_resource
+    - node.type.resource
+    - paragraphs.paragraphs_type.external_link
+    - paragraphs.paragraphs_type.resourcehub_audio
+    - paragraphs.paragraphs_type.resourcehub_document
+    - paragraphs.paragraphs_type.resourcehub_image
+    - paragraphs.paragraphs_type.resourcehub_text
+    - paragraphs.paragraphs_type.resourcehub_video
+  module:
+    - entity_reference_revisions
+id: node.resource.resourcehub_primary_resource
+field_name: resourcehub_primary_resource
+entity_type: node
+bundle: resource
+label: 'Primary resource'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      resourcehub_audio: resourcehub_audio
+      resourcehub_document: resourcehub_document
+      resourcehub_image: resourcehub_image
+      external_link: external_link
+      resourcehub_text: resourcehub_text
+      resourcehub_video: resourcehub_video
+    target_bundles_drag_drop:
+      external_link:
+        enabled: true
+        weight: 9
+      internal_link:
+        weight: 10
+        enabled: false
+      resourcehub_audio:
+        enabled: true
+        weight: 6
+      resourcehub_document:
+        enabled: true
+        weight: 7
+      resourcehub_image:
+        enabled: true
+        weight: 8
+      resourcehub_link_block:
+        weight: 14
+        enabled: false
+      resourcehub_text:
+        enabled: true
+        weight: 9
+      resourcehub_video:
+        enabled: true
+        weight: 10
+field_type: entity_reference_revisions

@@ -1,0 +1,63 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: 3c9e8064-c12b-4d9c-8a4c-795706516339
+  bundle: resourcehub_page
+  default_langcode: en
+default:
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: 'About this site'
+  created:
+    -
+      value: 1617890182
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  path:
+    -
+      alias: /about-site
+      langcode: en
+      pathauto: 1
+  resourcehub_content:
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 59b7258a-d6b6-4182-a40b-f53f463b8ce7
+          bundle: resourcehub_text
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1617890243
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          resourcehub_text:
+            -
+              value: "<p>The project is funded by&nbsp;Catalyst (https://www.thecatalyst.org.uk/)&nbsp;and the alpha phase has been&nbsp;built by Agile Collective (https://agile.coop).</p>\r\n\r\n<p>More information about the project can be found at:&nbsp;</p>\r\n\r\n<p>https://ochre.wearecast.org.uk/initiatives/331879-shared-service-platform-guidance-repositories</p>\r\n\r\n<p>We hope that the Catalyst Resource Hub will grow as an open source project, so please join us at:</p>\r\n\r\n<ul>\r\n\t<li>https://gitlab.com/openresources/resourcehub_distribution</li>\r\n\t<li>https://gitlab.com/openresources/resourcehub_distribution/-/wikis/home</li>\r\n</ul>\r\n"
+              format: resourcehub_filtered
+  resourcehub_summary:
+    -
+      value: "<p>This site is an example of the Catalyst Resrouce Hub, an open source solution for charities to publish resources and other content to&nbsp;their primary audiences.</p>\r\n"
+      format: resourcehub_simple

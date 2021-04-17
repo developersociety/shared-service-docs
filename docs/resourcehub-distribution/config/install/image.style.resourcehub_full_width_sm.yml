@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: resourcehub_full_width_sm
+label: 'Full width sm'
+effects:
+  0abaa786-b2f7-496f-8ae5-cb4785bd210e:
+    uuid: 0abaa786-b2f7-496f-8ae5-cb4785bd210e
+    id: image_scale
+    weight: 1
+    data:
+      width: 767
+      height: null
+      upscale: false

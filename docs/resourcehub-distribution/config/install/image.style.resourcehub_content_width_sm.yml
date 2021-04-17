@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: resourcehub_content_width_sm
+label: 'Content width sm'
+effects:
+  14fa97d1-0a7c-4c00-ae21-32e8fbad0405:
+    uuid: 14fa97d1-0a7c-4c00-ae21-32e8fbad0405
+    id: image_scale
+    weight: 1
+    data:
+      width: 768
+      height: null
+      upscale: false

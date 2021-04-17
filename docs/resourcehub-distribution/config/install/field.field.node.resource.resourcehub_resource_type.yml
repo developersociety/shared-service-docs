@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.resourcehub_resource_type
+    - node.type.resource
+    - taxonomy.vocabulary.resourcehub_resource_type
+_core:
+  default_config_hash: gqfM8IJhH4amkU2Pqvb0tGgFfFmy34cS0IDPocLn10g
+id: node.resource.resourcehub_resource_type
+field_name: resourcehub_resource_type
+entity_type: node
+bundle: resource
+label: 'Type of resource'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      resourcehub_resource_type: resourcehub_resource_type
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

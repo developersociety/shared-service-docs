@@ -1,0 +1,8 @@
+uuid: 3bbb230a-712d-4f36-a6fc-e1f8d89f3e53
+langcode: en
+status: true
+dependencies: {  }
+name: Format
+vid: resourcehub_format
+description: ''
+weight: 0

@@ -1,0 +1,40 @@
+{%
+  set classes = [
+    'js-form-item',
+    'form-item',
+    'js-form-wrapper',
+    'form-wrapper',
+    'resourcehub-fieldset',
+  ]
+%}
+<div class="resourcehub-form-group{% if errors %} resourcehub-form-group--error{% endif %}">
+  <fieldset{{ attributes.addClass(classes) }}>
+    {%
+      set legend_span_classes = [
+        'fieldset-legend',
+        required ? 'js-form-required',
+        required ? 'form-required',
+        'resourcehub-fieldset__heading',
+      ]
+    %}
+    {#  Always wrap fieldset legends in a SPAN for CSS positioning. #}
+    <legend{{ legend.attributes.addClass('resourcehub-fieldset__legend', 'resourcehub-fieldset__legend--m') }}>
+      <span{{ legend_span.attributes.addClass(legend_span_classes).removeClass('visually-hidden') }}>{{ legend.title }}</span>
+    </legend>
+      {% if description.content %}
+        <div{{ description.attributes.addClass('form-hint') }}>{{ description.content }}</div>
+      {% endif %}
+      {% if errors %}
+        <span class="resourcehub-error-message">
+          {{ errors }}
+        </span>
+      {% endif %}
+      {% if prefix %}
+        <span class="field-prefix form-hint">{{ prefix }}</span>
+      {% endif %}
+      {{ children }}
+      {% if suffix %}
+        <span class="field-suffix">{{ suffix }}</span>
+      {% endif %}
+  </fieldset>
+</div>

@@ -1,0 +1,8 @@
+# Main theme library.
+global:
+  js:
+    js/resourcehub-theme.js: {}
+  css:
+    theme:
+      dist/css/styles.css: {}
+      dist/css/colors.css: { }

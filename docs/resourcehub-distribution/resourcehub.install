@@ -1,0 +1,50 @@
+<?php
+
+/**
+ * @file
+ * Install functions for the Resource Hub installation profile.
+ */
+
+use Drupal\block\Entity\Block;
+use Drupal\user\Entity\User;
+
+/**
+ * Implements hook_install().
+ *
+ * Perform actions to set up the site for this profile.
+ *
+ * @see system_install()
+ */
+function resourcehub_install() {
+
+  // Assign user 1 the "administrator" role.
+  $user = User::load(1);
+  $user->roles[] = 'administrator';
+  $user->save();
+
+  try {
+    // Block configuration sync that depend on facet summary fail to import
+    // , 'The "facets_summary_block:resources_summary" was not found', so we're
+    // creating the block here once the facet summary has been created via
+    // config import.
+    Block::create([
+      'id' => 'resourcessummary',
+      'plugin' => 'facets_summary_block:resources_summary',
+      'region' => 'sidebar_first',
+      'settings' => [
+        'label_display' => 0,
+      ],
+      'theme' => 'resourcehub_theme',
+      'visibility' => [],
+      'weight' => -100,
+    ])->save();
+  }
+  catch (\Exception $e) {
+    \Drupal::logger('resourcehub')
+      ->error('Failed to create resources facet summary block during profile install.');
+  }
+  // Set profile block configuration defaults.
+  \Drupal::configFactory()->getEditable('resourcehub.settings')
+    ->set('main_site_link.text', 'Visit our main site')
+    ->save();
+}

@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.resourcehub_summary
+    - node.type.resourcehub_landing_page
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    resourcehub_simple: resourcehub_simple
+    plain_text: plain_text
+    resourcehub_filtered: '0'
+id: node.resourcehub_landing_page.resourcehub_summary
+field_name: resourcehub_summary
+entity_type: node
+bundle: resourcehub_landing_page
+label: Introduction
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

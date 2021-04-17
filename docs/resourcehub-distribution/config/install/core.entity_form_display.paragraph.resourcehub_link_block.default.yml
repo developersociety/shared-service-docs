@@ -1,0 +1,44 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.resourcehub_link_block.resourcehub_links
+    - field.field.paragraph.resourcehub_link_block.resourcehub_title
+    - paragraphs.paragraphs_type.resourcehub_link_block
+  module:
+    - paragraphs
+id: paragraph.resourcehub_link_block.default
+targetEntityType: paragraph
+bundle: resourcehub_link_block
+mode: default
+content:
+  resourcehub_links:
+    type: paragraphs
+    weight: 1
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: _none
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+    region: content
+  resourcehub_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true

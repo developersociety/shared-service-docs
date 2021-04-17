@@ -1,0 +1,92 @@
+header .region-header,
+.region-primary-menu,
+.region-breadcrumb,
+footer .region,
+main {
+  width: 100%;
+  max-width: 90%;
+  padding-inline: $spacing*2;
+  margin-left: auto;
+  margin-right: auto;
+  @include screen('lg') {
+    max-width: $max-content-width;
+  }
+}
+
+
+header {
+  background: $light-grey;
+  padding-block: $spacing*1.5;
+  margin-bottom: $spacing*2;
+}
+
+.layout-container > footer {
+  background: $light-grey;
+  padding-block: $spacing*2;
+  margin-top: $spacing*2;
+}
+
+main {
+  @include screen('md') {
+    // fallback for browsers which don't support grid
+    @supports not (display: grid) {
+      display: flex;
+      justify-content: space-between;
+      .region-title {
+        width: calc(66% - 10px);
+      }
+      aside {
+        width: calc(33% - 10px);
+      }
+      &.has_sidebar {
+        .layout-content {
+          width: calc(66% - 10px);
+        }
+      }
+    }
+    @supports (display: grid) {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0 40px;
+      .region-title {
+        grid-column: 1 / span 2;
+      }
+      .layout-content {
+        grid-column: 1 / span 3;
+      }
+      &.has_sidebar {
+        .layout-content {
+          grid-column: 1 / span 2;
+        }
+        aside {
+          grid-column: 1 / span 1;
+        }
+        .layout-content + aside {
+          grid-column: 3;
+        }
+        aside + .layout-content {
+          grid-column: 2 / span 2;
+        }
+      }
+    }
+  }
+}
+
+.page-node-type-resourcehub-page .layout-content{
+  grid-column: 1 / span 2;
+}
+
+.layout-content {
+  clear: both;
+}
+// sticky footer
+.layout-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  main {
+    flex-grow: 1;
+    align-content: flex-start;
+  }
+}

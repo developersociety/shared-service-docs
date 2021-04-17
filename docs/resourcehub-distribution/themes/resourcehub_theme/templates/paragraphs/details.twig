@@ -1,0 +1,6 @@
+<details{{ attributes.addClass(classes) }}>
+    <summary{{ title_attributes.addClass(title_classes) }}>{{ label }}</summary>
+    {% for item in items %}
+      <div{{ item.attributes.addClass('field__item') }}>{{ item.content }}</div>
+    {% endfor %}
+</details>

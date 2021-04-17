@@ -1,0 +1,49 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.resourcehub_video.resourcehub_caption
+    - field.field.paragraph.resourcehub_video.resourcehub_title
+    - field.field.paragraph.resourcehub_video.resourcehub_transcript
+    - field.field.paragraph.resourcehub_video.resourcehub_video
+    - paragraphs.paragraphs_type.resourcehub_video
+  module:
+    - text
+id: paragraph.resourcehub_video.default
+targetEntityType: paragraph
+bundle: resourcehub_video
+mode: default
+content:
+  resourcehub_caption:
+    weight: 4
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  resourcehub_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  resourcehub_transcript:
+    weight: 6
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  resourcehub_video:
+    type: entity_reference_entity_view
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
+hidden: {  }

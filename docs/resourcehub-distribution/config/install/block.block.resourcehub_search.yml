@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - resourcehub
+  theme:
+    - resourcehub_theme
+id: resourcehub_search
+theme: resourcehub_theme
+region: header
+weight: 3
+provider: null
+plugin: resourcehub_search
+settings:
+  id: resourcehub_search
+  label: Search
+  provider: resourcehub
+  label_display: '0'
+visibility: {  }

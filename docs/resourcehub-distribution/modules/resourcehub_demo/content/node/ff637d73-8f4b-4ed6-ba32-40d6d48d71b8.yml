@@ -1,0 +1,122 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: ff637d73-8f4b-4ed6-ba32-40d6d48d71b8
+  bundle: resource
+  default_langcode: en
+  depends:
+    1ac4c1f9-d7bc-43f7-93f2-3cce04a9eb8e: media
+    a53c79de-150c-438d-b0a6-03ff6eb07ec0: node
+    f5dae7a2-a90c-4226-8c1f-7a90cb957efc: taxonomy_term
+    3ddcec27-56fa-4d88-b45a-449cf3329956: taxonomy_term
+    23602efe-03ef-4c49-b826-346976586277: taxonomy_term
+default:
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: 'Video Introduction to Web Accessibility and W3C Standards'
+  created:
+    -
+      value: 1617009985
+  promote:
+    -
+      value: true
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: /resources/video-introduction-web-accessibility-and-w3c-standards
+      langcode: en
+      pathauto: 1
+  resourcehub_audience_intro:
+    -
+      value: "<p>A beginners introduction to accessibility.&nbsp;</p>\r\n"
+      format: resourcehub_simple
+  resourcehub_content:
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 5a4a42df-984f-4fe7-866a-bbd21bcf1eb7
+          bundle: resourcehub_text
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1617964068
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          resourcehub_text:
+            -
+              value: "<p>This video information is available:</p>\r\n\r\n<ul>\r\n\t<li><strong>In different languages</strong>&nbsp;—&nbsp;<a href=\"https://www.w3.org/WAI/videos/standards-and-benefits/#translations\">Instructions to see subtitles and transcripts</a>&nbsp;are below</li>\r\n\t<li>As a&nbsp;<strong><a href=\"https://www.w3.org/WAI/videos/standards-and-benefits/#transcript\">Text Transcript with Description of Visuals</a></strong>&nbsp;below</li>\r\n\t<li><a href=\"https://www.youtube.com/watch?v=20SHvU2PKsM\">On YouTube</a></li>\r\n\t<li>On a W3C server —&nbsp;<a href=\"http://media.w3.org/wai/accessibility-intro/intro.mp4\">video (file format: MP4, file size: 28MB)</a>,&nbsp;<a href=\"http://media.w3.org/wai/accessibility-intro/W3C_INTRO_SFHI.en.vtt\">English captions file (VTT)</a>,&nbsp;<a href=\"http://media.w3.org/wai/accessibility-intro/\">list of other language files</a></li>\r\n</ul>\r\n\r\n<h2 id=\"moreinfo\">Learn More</h2>\r\n\r\n<p>For more information, see:</p>\r\n\r\n<ul>\r\n\t<li><a href=\"https://www.w3.org/WAI/fundamentals/accessibility-intro/\">Introduction to Web Accessibility</a></li>\r\n\t<li><a href=\"https://www.w3.org/WAI/perspective-videos/\">Web Accessibility Perspectives Videos: Explore the Impact and Benefits for Everyone</a>&nbsp;— videos and information on specific accessibility topics.</li>\r\n\t<li><a href=\"https://www.w3.org/WAI/\"><strong>WAI website</strong></a>&nbsp;— to find a wide range of resources on different aspects of web accessibility&nbsp;<a href=\"https://www.w3.org/WAI/standards-guidelines/\">standards</a>,&nbsp;<a href=\"https://www.w3.org/WAI/teach-advocate/\">education</a>,&nbsp;<a href=\"https://www.w3.org/WAI/test-evaluate/\">testing/evaluation</a>,&nbsp;<a href=\"https://www.w3.org/WAI/planning/\">project management, and policy</a>.</li>\r\n</ul>\r\n"
+              format: resourcehub_filtered
+  resourcehub_external_links:
+    -
+      uri: 'https://www.w3.org/WAI/videos/standards-and-benefits/'
+      title: 'Video source (W3C)'
+      options: {  }
+  resourcehub_primary_resource:
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 9a104c13-debe-4806-8212-d6ff9a2475f1
+          bundle: resourcehub_video
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1617963840
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          resourcehub_transcript:
+            -
+              value: "<p>Hi! My name is Shadi Abou-Zahra.&nbsp;I'm the Accessibility Strategy and Technology Specialist at W3C,&nbsp;the World Wide Web Consortium,&nbsp;and today I'd like to tell you about web accessibility.&nbsp;</p>\r\n\r\n<p>The Web is for many people an essential part of daily life.&nbsp;</p>\r\n\r\n<p>At work.&nbsp;</p>\r\n\r\n<p>At home.&nbsp;</p>\r\n\r\n<p>And on the road.&nbsp;</p>\r\n\r\n<p>Web accessibility means that people with disabilities can use the Web equally.&nbsp;</p>\r\n\r\n<p>For example, somebody who cannot use their arms, and uses a mouthstick to type.&nbsp;</p>\r\n\r\n<p>Or someone who cannot hear well, and uses captions to watch videos.&nbsp;</p>\r\n\r\n<p>Or someone who cannot see well, and uses a screen reader to read aloud what's on the screen.&nbsp;</p>\r\n\r\n<p>Accessibility has many benefits.</p>\r\n\r\n<p>For example, captions benefit anyone in a loud or in a quiet environment.&nbsp;</p>\r\n\r\n<p>And good color contrast works better when there is glare.&nbsp;</p>\r\n\r\n<p>Also people with age-related impairements, such as reduced dexterity, benefit.&nbsp;</p>\r\n\r\n<p>In fact, everyone has a better user experience with an improved layout and design.&nbsp;</p>\r\n\r\n<p>A lot of accessibility can be built into the underlying code of websites and applications.&nbsp;</p>\r\n\r\n<p>Web technologies from W3C, such as HTML, provide support for many accessibility features.&nbsp;</p>\r\n\r\n<p>For example, features to provide text alternatives for images,&nbsp;which are read aloud by screen readers and also used by search engines.&nbsp;</p>\r\n\r\n<p>Also headings, labels, and other code supports accessibility&nbsp;and improves the quality overall.&nbsp;</p>\r\n\r\n<p>Good authoring tools, such as wikis, content management systems, and code editors,&nbsp;help create accessible code, either automatically or with input from the author.&nbsp;Also web browsers, media players, and apps need to support accessibility features.&nbsp;</p>\r\n\r\n<p>W3C provides standards to help make the Web accessible,&nbsp;which are internationally recognized by governments and businesses.&nbsp;</p>\r\n\r\n<p>Most well-known is the Web Content Accessibility Guidelines - WCAG.&nbsp;WCAG is also the ISO standard 40500,&nbsp;and adopted in the European standard called EN 301 549.&nbsp;It is built around four core principles:&nbsp;</p>\r\n\r\n<p>First Perceivable - for example, so people can see the content, or hear it.&nbsp;</p>\r\n\r\n<p>Operable - for example, so people can use the computer by typing, or by voice.&nbsp;</p>\r\n\r\n<p>Understandable - for example, so people get clear and simple language.&nbsp;</p>\r\n\r\n<p>And Robust - so people can use different assistive technologies.&nbsp;</p>\r\n\r\n<p>Besides WCAG, W3C also provides the Authoring Tool Accessibility Guidelines - ATAG,&nbsp;which defines requirements for content management systems, code editors and other software.&nbsp;</p>\r\n\r\n<p>And the User Agent Accessibility Guidelines - UAAG,&nbsp;defines requirements for web browsers and media players.&nbsp;There are over one billion people with disabilities, or about 15-20% of the population.&nbsp;</p>\r\n\r\n<p>The UN Convention on the Rights of Persons with Disabilities&nbsp;defines that access to information, including the Web, as a human right.&nbsp;</p>\r\n\r\n<p>Most countries around the world have ratified this UN convention,&nbsp;and several have adopted binding policies too.&nbsp;</p>\r\n\r\n<p>Yet regardless of any laws and regulations,&nbsp;implementing the accessibility standards is essential for people with disabilities,&nbsp;and useful for all.&nbsp;</p>\r\n\r\n<p>For more information on web accessibility, visit w3.org/WAI</p>\r\n"
+              format: resourcehub_simple
+          resourcehub_video:
+            -
+              entity: 1ac4c1f9-d7bc-43f7-93f2-3cce04a9eb8e
+  resourcehub_related_resources:
+    -
+      entity: a53c79de-150c-438d-b0a6-03ff6eb07ec0
+  resourcehub_resource_format:
+    -
+      entity: f5dae7a2-a90c-4226-8c1f-7a90cb957efc
+  resourcehub_resource_type:
+    -
+      entity: 3ddcec27-56fa-4d88-b45a-449cf3329956
+  resourcehub_summary:
+    -
+      value: "<p>A brief introduction to web accessibility. Source: <a href=\"https://www.w3.org/WAI/videos/standards-and-benefits/\">W3C</a></p>\r\n\r\n<p>&nbsp;</p>\r\n"
+      format: resourcehub_simple
+  resourcehub_topics:
+    -
+      entity: 23602efe-03ef-4c49-b826-346976586277

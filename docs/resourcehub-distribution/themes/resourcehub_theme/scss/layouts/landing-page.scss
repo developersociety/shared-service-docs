@@ -1,0 +1,65 @@
+.page-node-type-resourcehub-landing-page,
+.node--type-resourcehub-landing-page.node--view-mode-full > .node__content {
+  .region-title {
+    grid-column: 1 / span 3;
+    gap: 0;
+  }
+  h1,
+  > .field--name-resourcehub-summary {
+    margin-inline: auto;
+    text-align: center;
+    margin-bottom: $spacing*3;
+    @include screen('md') {
+      max-width: 60%;
+    }
+  }
+  .field--name-resourcehub-image{
+    margin-inline: auto;
+    width: fit-content;
+    max-width: 100%;
+    margin-bottom: $spacing*3;
+  }
+
+}
+
+.field--name-resourcehub-link-block {
+  @include screen('md') {
+    // fallback for browsers which don't support grid.
+    @supports not (display: grid) {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      > .field__item {
+        width: calc(50% - 24px);
+        margin-bottom: $spacing*3;
+      }
+    }
+    @supports (display: grid) {
+      display: grid;
+      grid-template-columns: repeat(2, 50%);
+      grid-gap: 0 48px;
+      .field__item {
+        width: 100%;
+      }
+    }
+  }
+  > .field__item {
+    margin-bottom: $spacing*3;
+  }
+  h2 {
+    margin-top: 0
+  }
+  h3 {
+    @extend h4;
+    margin-bottom: $spacing/4;
+    + * {
+      line-height: 140%;
+    }
+  }
+  .field--name-resourcehub-links > .field__item {
+    margin-bottom: $spacing*1.5;
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+.views-row + .views-row {
+  margin-top: $spacing*1.5;
+}
+
+.view-header {
+  margin-bottom: $spacing*1.5;
+  font-weight: 500;
+  clear: both;
+  @include screen('md') {
+    margin-top: $spacing*5;
+  }
+}
+
+.view-empty {
+  margin-top: $spacing*4;
+}

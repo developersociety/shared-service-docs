@@ -1,0 +1,40 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.resourcehub_image.resourcehub_caption
+    - field.field.paragraph.resourcehub_image.resourcehub_image
+    - field.field.paragraph.resourcehub_image.resourcehub_image_description
+    - paragraphs.paragraphs_type.resourcehub_image
+  module:
+    - text
+id: paragraph.resourcehub_image.default
+targetEntityType: paragraph
+bundle: resourcehub_image
+mode: default
+content:
+  resourcehub_caption:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  resourcehub_image:
+    type: entity_reference_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
+  resourcehub_image_description:
+    weight: 2
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden: {  }

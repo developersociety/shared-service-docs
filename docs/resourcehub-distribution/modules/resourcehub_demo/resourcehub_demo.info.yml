@@ -1,0 +1,31 @@
+name: ResourceHub Demo Content
+description: Example content for demonstrating the ResourceHub Drupal distribution and to help with development.
+core_version_requirement: ^8.9 || ^9
+type: module
+package: OpenResources ResourceHub
+
+dependencies:
+ - default_content:default_content
+default_content:
+  node:
+   - 89c0ede6-4239-4c7c-8f30-f0a76b66e6e1
+   - 25625aa5-37c7-4059-8e78-15d269d97fde
+   - d0529384-7d4a-401d-be80-feee1deb4307
+   - 5fbe5687-2fd1-430c-8bcc-93307f348043
+   - d32be57a-7836-4bae-8a21-76fcfd84d026
+  taxonomy_term:
+   - 23602efe-03ef-4c49-b826-346976586277
+   - 3335b207-8ccc-4f08-a034-3b840631ed63
+   - fe867ad1-5a08-43ce-8edb-dce51345d028
+   - db9fca05-44e8-4007-844c-047d05095326
+   - f5920b11-87c9-4bf6-a7be-f08026b268be
+   - f5dae7a2-a90c-4226-8c1f-7a90cb957efc
+   - bdcd6ee8-67dd-4d52-ae57-955ee347aa24
+   - 087c64e0-5d26-4728-8a5a-4398dfb610c2
+   - 69e98a86-1bd8-4814-853e-a7a9de98a111
+   - 9f21add4-16b8-4df8-b286-30f74ca5bbaa
+   - 4f0ea2b8-6c0d-4a36-b2b0-60e5a34e0e5d
+   - 3ddcec27-56fa-4d88-b45a-449cf3329956
+  user:
+    - 7450a01c-b3f0-4e1d-b382-5f8390427500
+    - fdfed3fc-120c-45d8-a61d-c658f8e0dc80

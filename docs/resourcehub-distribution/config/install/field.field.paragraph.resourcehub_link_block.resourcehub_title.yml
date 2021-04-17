@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.resourcehub_title
+    - paragraphs.paragraphs_type.resourcehub_link_block
+id: paragraph.resourcehub_link_block.resourcehub_title
+field_name: resourcehub_title
+entity_type: paragraph
+bundle: resourcehub_link_block
+label: 'Link block title'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

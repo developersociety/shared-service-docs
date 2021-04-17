@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.resourcehub_image_description
+    - paragraphs.paragraphs_type.resourcehub_image
+  module:
+    - text
+id: paragraph.resourcehub_image.resourcehub_image_description
+field_name: resourcehub_image_description
+entity_type: paragraph
+bundle: resourcehub_image
+label: 'Extended description'
+description: 'If your image requires an extended description (eg for a graph) add it here. '
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

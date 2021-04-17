@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: resourcehub_resource_pattern
+label: 'Resource pattern'
+type: 'canonical_entities:node'
+pattern: 'resources/[node:title]'
+selection_criteria:
+  7ae50eea-843f-449b-a50b-fb574dd5c282:
+    id: node_type
+    bundles:
+      resource: resource
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 7ae50eea-843f-449b-a50b-fb574dd5c282
+selection_logic: and
+weight: -5
+relationships: {  }

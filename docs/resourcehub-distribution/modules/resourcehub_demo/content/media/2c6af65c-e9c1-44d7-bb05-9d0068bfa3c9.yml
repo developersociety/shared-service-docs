@@ -1,0 +1,36 @@
+_meta:
+  version: '1.0'
+  entity_type: media
+  uuid: 2c6af65c-e9c1-44d7-bb05-9d0068bfa3c9
+  bundle: image
+  default_langcode: en
+  depends:
+    92d475cc-cc0d-4bd7-afd9-41078491f0e6: file
+default:
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  name:
+    -
+      value: tools.jpg
+  created:
+    -
+      value: 1616771098
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 0
+  field_media_image:
+    -
+      entity: 92d475cc-cc0d-4bd7-afd9-41078491f0e6
+      alt: 'A collection of tools'
+      title: ''
+      width: 640
+      height: 640

@@ -1,0 +1,79 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_result
+    - field.field.node.resource.resourcehub_audience
+    - field.field.node.resource.resourcehub_audience_intro
+    - field.field.node.resource.resourcehub_content
+    - field.field.node.resource.resourcehub_external_links
+    - field.field.node.resource.resourcehub_primary_resource
+    - field.field.node.resource.resourcehub_related_resources
+    - field.field.node.resource.resourcehub_resource_format
+    - field.field.node.resource.resourcehub_resource_type
+    - field.field.node.resource.resourcehub_summary
+    - field.field.node.resource.resourcehub_topics
+    - node.type.resource
+  module:
+    - text
+    - user
+id: node.resource.search_result
+targetEntityType: node
+bundle: resource
+mode: search_result
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 7
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  resourcehub_audience:
+    type: entity_reference_label
+    weight: 1
+    region: content
+    label: inline
+    settings:
+      link: false
+    third_party_settings: {  }
+  resourcehub_resource_format:
+    type: entity_reference_label
+    weight: 4
+    region: content
+    label: inline
+    settings:
+      link: false
+    third_party_settings: {  }
+  resourcehub_resource_type:
+    type: entity_reference_label
+    weight: 3
+    region: content
+    label: inline
+    settings:
+      link: false
+    third_party_settings: {  }
+  resourcehub_summary:
+    type: text_trimmed
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      trim_length: 300
+    third_party_settings: {  }
+  resourcehub_topics:
+    type: entity_reference_label
+    weight: 2
+    region: content
+    label: inline
+    settings:
+      link: false
+    third_party_settings: {  }
+hidden:
+  links: true
+  resourcehub_audience_intro: true
+  resourcehub_content: true
+  resourcehub_external_links: true
+  resourcehub_primary_resource: true
+  resourcehub_related_resources: true
+  search_api_excerpt: true

@@ -1,0 +1,19 @@
+.field--name-resourcehub-video {
+  iframe.media-oembed-content {
+    max-width: 100%;
+    margin: 0 auto;
+    height: auto;
+    min-height: 350px;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+  }
+  @supports not (aspect-ratio: 16 / 9) {
+    width: 100%;
+    iframe {
+      width: 100%;
+      margin-inline: auto;
+      height: auto;
+      min-height: 350px;
+    }
+  }
+}

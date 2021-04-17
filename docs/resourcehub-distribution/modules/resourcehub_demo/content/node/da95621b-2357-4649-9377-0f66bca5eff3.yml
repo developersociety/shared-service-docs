@@ -1,0 +1,273 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: da95621b-2357-4649-9377-0f66bca5eff3
+  bundle: resourcehub_landing_page
+  default_langcode: en
+  depends:
+    5fbe5687-2fd1-430c-8bcc-93307f348043: node
+    89c0ede6-4239-4c7c-8f30-f0a76b66e6e1: node
+    25625aa5-37c7-4059-8e78-15d269d97fde: node
+    a53c79de-150c-438d-b0a6-03ff6eb07ec0: node
+    ff637d73-8f4b-4ed6-ba32-40d6d48d71b8: node
+default:
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: 'Resources about accessibility for content editors'
+  created:
+    -
+      value: 1617890488
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 0
+  resourcehub_link_block:
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: b5d2c80e-3af0-4dc2-a05c-209e7601680f
+          bundle: resourcehub_link_block
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1617890645
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          resourcehub_links:
+            -
+              entity:
+                _meta:
+                  version: '1.0'
+                  entity_type: paragraph
+                  uuid: 13ce68b4-51d0-411c-97ad-5e606523bc1c
+                  bundle: internal_link
+                  default_langcode: en
+                default:
+                  status:
+                    -
+                      value: true
+                  created:
+                    -
+                      value: 1617890650
+                  behavior_settings:
+                    -
+                      value: {  }
+                  resourcehub_internal_link:
+                    -
+                      entity: 5fbe5687-2fd1-430c-8bcc-93307f348043
+            -
+              entity:
+                _meta:
+                  version: '1.0'
+                  entity_type: paragraph
+                  uuid: 134fa1d1-f8dd-4d96-bad1-209d802f009c
+                  bundle: internal_link
+                  default_langcode: en
+                default:
+                  status:
+                    -
+                      value: true
+                  created:
+                    -
+                      value: 1617890657
+                  behavior_settings:
+                    -
+                      value: {  }
+                  resourcehub_internal_link:
+                    -
+                      entity: 89c0ede6-4239-4c7c-8f30-f0a76b66e6e1
+            -
+              entity:
+                _meta:
+                  version: '1.0'
+                  entity_type: paragraph
+                  uuid: e98c3467-f2df-497b-b515-fd911c98c97b
+                  bundle: internal_link
+                  default_langcode: en
+                default:
+                  status:
+                    -
+                      value: true
+                  created:
+                    -
+                      value: 1617894421
+                  behavior_settings:
+                    -
+                      value: {  }
+                  resourcehub_internal_link:
+                    -
+                      entity: 25625aa5-37c7-4059-8e78-15d269d97fde
+          resourcehub_title:
+            -
+              value: 'How to write accessible content'
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 6bc070d2-176c-487c-beac-590bbb2e5af6
+          bundle: resourcehub_link_block
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1617890672
+          behavior_settings:
+            -
+              value: {  }
+          resourcehub_links:
+            -
+              entity:
+                _meta:
+                  version: '1.0'
+                  entity_type: paragraph
+                  uuid: 68e91b19-61da-4988-9b36-b05691633403
+                  bundle: internal_link
+                  default_langcode: en
+                default:
+                  status:
+                    -
+                      value: true
+                  created:
+                    -
+                      value: 1617890681
+                  behavior_settings:
+                    -
+                      value: {  }
+                  resourcehub_internal_link:
+                    -
+                      entity: a53c79de-150c-438d-b0a6-03ff6eb07ec0
+            -
+              entity:
+                _meta:
+                  version: '1.0'
+                  entity_type: paragraph
+                  uuid: 6e38ceb8-4d95-468c-9562-609f17bb8cd0
+                  bundle: internal_link
+                  default_langcode: en
+                default:
+                  status:
+                    -
+                      value: true
+                  created:
+                    -
+                      value: 1617890690
+                  behavior_settings:
+                    -
+                      value: {  }
+                  resourcehub_internal_link:
+                    -
+                      entity: ff637d73-8f4b-4ed6-ba32-40d6d48d71b8
+          resourcehub_title:
+            -
+              value: 'Introduction to accessibility'
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 902a7726-a610-47c5-a76d-889293d21cd5
+          bundle: resourcehub_link_block
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1617890811
+          behavior_settings:
+            -
+              value: {  }
+          resourcehub_links:
+            -
+              entity:
+                _meta:
+                  version: '1.0'
+                  entity_type: paragraph
+                  uuid: bf68d6e0-a4b0-4030-b30c-1538ea565f5a
+                  bundle: external_link
+                  default_langcode: en
+                default:
+                  status:
+                    -
+                      value: true
+                  created:
+                    -
+                      value: 1617890821
+                  behavior_settings:
+                    -
+                      value: {  }
+                  resourcehub_external_link:
+                    -
+                      uri: 'https://usability.yale.edu/web-accessibility/articles/wcag2-checklist/content-editors'
+                      title: 'WCAG 2 A and AA Checklist (Yale University)'
+                      options: {  }
+                  resourcehub_link_summary:
+                    -
+                      value: 'A nice little checklist from Yale University'
+            -
+              entity:
+                _meta:
+                  version: '1.0'
+                  entity_type: paragraph
+                  uuid: 96c0723f-edef-41a9-815f-d2a6f8c76213
+                  bundle: external_link
+                  default_langcode: en
+                default:
+                  status:
+                    -
+                      value: true
+                  created:
+                    -
+                      value: 1617890858
+                  behavior_settings:
+                    -
+                      value: {  }
+                  resourcehub_external_link:
+                    -
+                      uri: 'https://www.w3.org/WAI/roles/writers/'
+                      title: 'Resources for Content Writers (W3C)'
+                      options: {  }
+                  resourcehub_link_summary:
+                    -
+                      value: 'This page provides a starting point for information that is particularly relevant to content writers.'
+          resourcehub_title:
+            -
+              value: 'Some external resources'
+  resourcehub_summary:
+    -
+      value: "<p>As content editors and designers, it is really important to know what we can do to improve the accessibility of our content. We've gathered some resources below to help us on our journey.&nbsp;</p>\r\n"
+      format: resourcehub_simple

@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.resourcehub_text.resourcehub_text
+    - paragraphs.paragraphs_type.resourcehub_text
+  module:
+    - text
+id: paragraph.resourcehub_text.default
+targetEntityType: paragraph
+bundle: resourcehub_text
+mode: default
+content:
+  resourcehub_text:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden: {  }

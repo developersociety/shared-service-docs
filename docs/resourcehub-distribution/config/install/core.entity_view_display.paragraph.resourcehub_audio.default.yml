@@ -1,0 +1,51 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.resourcehub_audio.resourcehub_audio
+    - field.field.paragraph.resourcehub_audio.resourcehub_caption
+    - field.field.paragraph.resourcehub_audio.resourcehub_title
+    - field.field.paragraph.resourcehub_audio.resourcehub_transcript
+    - paragraphs.paragraphs_type.resourcehub_audio
+  module:
+    - text
+_core:
+  default_config_hash: m13Pqwsn59g7vYYy6jzii6nQusk29MOtHK519vkKR7o
+id: paragraph.resourcehub_audio.default
+targetEntityType: paragraph
+bundle: resourcehub_audio
+mode: default
+content:
+  resourcehub_audio:
+    type: entity_reference_entity_view
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
+  resourcehub_caption:
+    weight: 2
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  resourcehub_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  resourcehub_transcript:
+    weight: 6
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden: {  }

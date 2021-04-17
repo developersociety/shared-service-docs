@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: resourcehub_content_width_xs
+label: 'Content width xs'
+effects:
+  813830ba-ae6b-4a3a-b690-599b31e7d8b2:
+    uuid: 813830ba-ae6b-4a3a-b690-599b31e7d8b2
+    id: image_scale
+    weight: 1
+    data:
+      width: 576
+      height: null
+      upscale: false

@@ -1,0 +1,36 @@
+_meta:
+  version: '1.0'
+  entity_type: media
+  uuid: 966bd87f-e9b9-4a80-94e7-42b9f53a506a
+  bundle: image
+  default_langcode: en
+  depends:
+    a8738186-5f0b-4cd5-b7ec-41cba4e777d9: file
+default:
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  name:
+    -
+      value: webcaptions.jpg
+  created:
+    -
+      value: 1617963246
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 0
+  field_media_image:
+    -
+      entity: a8738186-5f0b-4cd5-b7ec-41cba4e777d9
+      alt: 'Screenshot of captions in a web media player'
+      title: ''
+      width: 480
+      height: 270

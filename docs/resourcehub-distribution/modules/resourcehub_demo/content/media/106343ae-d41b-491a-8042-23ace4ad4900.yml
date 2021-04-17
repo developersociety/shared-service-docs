@@ -1,0 +1,36 @@
+_meta:
+  version: '1.0'
+  entity_type: media
+  uuid: 106343ae-d41b-491a-8042-23ace4ad4900
+  bundle: image
+  default_langcode: en
+  depends:
+    86b801bd-cb8b-4273-8b3d-29f564fde3a4: file
+default:
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  name:
+    -
+      value: captions.jpg
+  created:
+    -
+      value: 1617963194
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 0
+  field_media_image:
+    -
+      entity: 86b801bd-cb8b-4273-8b3d-29f564fde3a4
+      alt: 'Screenshot from movie Avatar. Captions appear on screen - You crossed the line.'
+      title: ''
+      width: 500
+      height: 313

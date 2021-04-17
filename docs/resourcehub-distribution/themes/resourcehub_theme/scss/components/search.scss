@@ -1,0 +1,44 @@
+%search-block  {
+    display: flex;
+    label{
+      @extend .visually-hidden;
+    }
+    input[type="submit"]{
+      margin-bottom: 0;
+      box-shadow: 0 0 0 transparent;
+      border-radius: 0 50px 50px 0;
+      border: 2px solid black;
+      border-left: 0;
+      background-color: $grey;
+      font-weight: 500;
+      &:hover {
+        background-color: $c-gov-blue;
+      }
+    }
+    input {
+      border-radius: 50px 0 0 50px;
+    }
+
+}
+
+.block-resourcehub-search form{
+  @extend %search-block;
+}
+
+#views-exposed-form-search-resources-search-page .form--inline {
+  @extend %search-block;
+  .form-group,
+  .form-actions {
+    margin: 0;
+  }
+  .form-actions {
+    // margin-left: -30px;
+  }
+}
+
+.view-filters {
+  margin-bottom: $spacing*2;
+}
+.views-exposed-form {
+  margin-bottom: $spacing*2;
+}

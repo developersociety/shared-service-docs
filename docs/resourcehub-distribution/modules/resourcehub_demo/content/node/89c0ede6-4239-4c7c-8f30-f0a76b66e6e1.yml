@@ -1,0 +1,169 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: 89c0ede6-4239-4c7c-8f30-f0a76b66e6e1
+  bundle: resource
+  default_langcode: en
+  depends:
+    69e98a86-1bd8-4814-853e-a7a9de98a111: taxonomy_term
+    087c64e0-5d26-4728-8a5a-4398dfb610c2: taxonomy_term
+    db9fca05-44e8-4007-844c-047d05095326: taxonomy_term
+    72cd12fd-21dc-4fb4-ab6d-52e177e04755: media
+    8549b8a4-4ebe-4221-8d3a-ae146ff8e5c6: taxonomy_term
+    bdcd6ee8-67dd-4d52-ae57-955ee347aa24: taxonomy_term
+    23602efe-03ef-4c49-b826-346976586277: taxonomy_term
+default:
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: 'Creating Accessible Tables'
+  created:
+    -
+      value: 1616764183
+  promote:
+    -
+      value: true
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: /resources/creating-accessible-tables
+      langcode: en
+      pathauto: 1
+  resourcehub_audience:
+    -
+      entity: 69e98a86-1bd8-4814-853e-a7a9de98a111
+    -
+      entity: 087c64e0-5d26-4728-8a5a-4398dfb610c2
+    -
+      entity: db9fca05-44e8-4007-844c-047d05095326
+  resourcehub_audience_intro:
+    -
+      value: "<p>This page it aimed at content editors who want to create tables of information that are accessible to screen readers.</p>\r\n"
+      format: resourcehub_simple
+  resourcehub_content:
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: e8af6601-746b-4a47-9a75-90d16adf7021
+          bundle: resourcehub_image
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1616769685
+          behavior_settings:
+            -
+              value: {  }
+          resourcehub_caption:
+            -
+              value: 'An image of a table used for layout purposes'
+          resourcehub_image:
+            -
+              entity: 72cd12fd-21dc-4fb4-ab6d-52e177e04755
+          resourcehub_image_description:
+            -
+              value: "<p>The image shows a screenshot captured from the source article. In the original a table is used for layout purposes and shows a toilet in the centre, and the words \"Basement \" and \"Toilets\" in the top left, and the words \"Must\" \"Flush\" and \"Up\" on the right side, moving from the bottom middle to the top right.&nbsp;&nbsp;</p>\r\n\r\n<p>see the table below for the tabular version</p>\r\n\r\n<p>source:&nbsp;https://webaim.org/techniques/tables/</p>\r\n"
+              format: resourcehub_filtered
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: f4c35fcc-e00a-438f-af4d-51b83182292a
+          bundle: resourcehub_text
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1617984504
+          behavior_settings:
+            -
+              value: {  }
+          resourcehub_text:
+            -
+              value: "<p>The visual user will read: \"Basement Toilets Must Flush UP!\"</p>\r\n\r\n<p>The screen reader will hear (or feel via Braille): \"Basement UP! Toilets Flush Must\"</p>\r\n\r\n<p>Why does this difference exist between the visual order and the screen reader order? To answer this question, we have to look at the table structure. Here is the same table with borders visible and numbers added to each cell to indicate the order in which the screen reader will read them:</p>\r\n"
+              format: resourcehub_filtered
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 59749a9c-0f6e-4731-b2cc-8aebfa7da138
+          bundle: resourcehub_text
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1617984423
+          behavior_settings:
+            -
+              value: {  }
+          resourcehub_text:
+            -
+              value: "<table>\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td>1 - Basement</td>\r\n\t\t\t<td>2</td>\r\n\t\t\t<td>3</td>\r\n\t\t\t<td>4 - UP!</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>5 - Toilets</td>\r\n\t\t\t<td>6 -&nbsp; (image of toilet)</td>\r\n\t\t\t<td>7 - Flush</td>\r\n\t\t\t<td>8</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>9</td>\r\n\t\t\t<td>10 - Must</td>\r\n\t\t\t<td>11</td>\r\n\t\t\t<td>12</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>If you view the source code for this table, you'll notice that the source code order matches the order specified above. Tools, such as&nbsp;<a href=\"http://wave.webaim.org/\">WAVE</a>, the Web Developer Toolbar, etc. can help you visually see the linearized reading order of tables.</p>\r\n\r\n<h2>Layout Table Sizing</h2>\r\n\r\n<p>When author's use tables for layout, they are typically doing so to get more precise and (supposedly) flexible control over the positioning of elements within the page. When doing so, layout tables typically define pixel values to attempt to control exact positions. Because there is an immense range of end user browsers and devices, ranging from text-only mobile browsers to large-screen, high definition displays, defining pixel-based sizing is very limiting.</p>\r\n\r\n<p>A primary concern of layout tables is their lack of flexibility for accommodating end-user content adjustments, primarily text sizing by users with low vision. If text within a pixel-sized table cell is enlarged by the end user, this can cause readability issues, especially if the text can no longer fit within the pixel dimensions defined. This may result in horizontal scrollbars, text bleeding out of the cell and overlapping other page components, etc. If using layout tables, ensure that the structure of the table allows end user customization and text scaling.</p>\r\n\r\n<h2>Use the Simplest Table Configuration Possible</h2>\r\n\r\n<p>Some designers go crazy with layout tables. They create all kinds of nested tables and unnecessary rows and columns, using spanned rows and columns in every which way, until the table hardly looks like a table at all anymore. All of this may be invisible to sighted users if the table borders are set to zero, but blind users will \"see\" it all. Their screen readers may inform them of the number of rows and columns in the table. When they try to navigate from one area to the other within the table, they may become disoriented. The rule of thumb here is, the simpler the better.</p>\r\n"
+              format: resourcehub_filtered
+  resourcehub_external_links:
+    -
+      uri: 'https://webaim.org/techniques/tables/'
+      title: 'Source: WebAim'
+      options: {  }
+  resourcehub_primary_resource:
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 275483bc-395b-4c0f-ad9c-093499b472a9
+          bundle: resourcehub_text
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1617984580
+          behavior_settings:
+            -
+              value: {  }
+          resourcehub_text:
+            -
+              value: "<h2>Introduction</h2>\r\n\r\n<p>If you're not a screen reader user, let's pretend that you are for just a moment. You're going to a web site to find out where the biology 205 class is going to be held. You go to a web page that has this information, and this is what you hear:</p>\r\n\r\n<blockquote>\r\n<p>Table with 10 columns and 7 rows. Department Code, Class Number, Section, Max Enrollment, Current Enrollment, Room Number, Days, Start Time, End Time, Instructor, BIO, 100, 1, 15, 13, 5, Mon,Wed,Fri, 10:00, 11:00, Magde, 100, 2, 15, 7, 5, Tue,Thu, 11:00, 12:30, Indge, 205, 1, 15, 9, 6, Tue,Thu, 09:00, 10:30, Magde, 315, 1, 12, 3, 6, Mon,Wed,Fri, 13:00, 14:00, Indge, BUS, 150, 1, 15, 15, 13, Mon,Wed,Fri, 09:00, 10:00, Roberts, 210, 1, 10, 9, 13, Mon,Wed,Fri, 08:00, 09:00, Rasid.</p>\r\n</blockquote>\r\n\r\n<p>After listening to this information, do you have any idea where biology 205 is supposed to be held? Probably not. When you listen to tables straight through, without going into <em>table reading mode</em> in a screen reader, this type of information can be quite confusing. Even when you do go into table reading mode, it can still be confusing if the table is not marked up properly.</p>\r\n\r\n<h2>Layout Tables vs. Data Tables</h2>\r\n\r\n<p>There are two basic uses for tables on the web: data tables and layout tables. The original intended use of HTML tables was for <em>tabular data</em>. A table is a data table when row headers, column headers, or both are present. For example, here is a simple data table:</p>\r\n\r\n<table>\r\n\t<caption>Shelly's Daughters</caption>\r\n\t<thead>\r\n\t\t<tr>\r\n\t\t\t<th>Name</th>\r\n\t\t\t<th>Age</th>\r\n\t\t\t<th>Birthday</th>\r\n\t\t</tr>\r\n\t</thead>\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<th>Jackie</th>\r\n\t\t\t<td>5</td>\r\n\t\t\t<td>April 5</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<th>Beth</th>\r\n\t\t\t<td>8</td>\r\n\t\t\t<td>January 14</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p>Tables are also commonly used for page layout. Layout tables do not have logical headers that can be mapped to information within the table cells. Layout tables were traditionally used to overcome limitations in visual presentation and layout using HTML. With CSS, however, there is much more flexibility in controlling page layout, so it is best to not use tables to do this. Using CSS results in cleaner and more simple HTML code, better end user adaptability, and few potential accessibility issues. Layout tables are also not supposed to be used in HTML5.</p>\r\n\r\n<p>It is sometimes suggested, even by some accessibility advocates, that layout tables are bad for accessibility. In reality, layout tables do not pose inherent accessibility issues. There are certainly many worse things that you could do in terms of accessibility. People with all kinds of disabilities can easily access layout tables, as long as the tables are designed with accessibility in mind - ensuring proper linearized reading order, content scaling, etc.</p>\r\n\r\n<h2>Layout Table Linearization</h2>\r\n\r\n<p>Content linearization refers to the order of the content when all formatting is removed. For both data and layout tables, the order in which content is presented can affect its meaning. Many web sites use tables for layout, and most of them use spanned rows and columns to achieve formatting effects. The end result is that the linearized reading order may not be the same as the visual reading order. This can lead to confusion on the part of people who access the linearized reading and navigation order, such as individuals who use screen readers or who navigate with keyboards.</p>\r\n\r\n<p>Screen readers essentially ignore the fact that the content is inside of a table. The screen reader just reads the content in the literal order that it appears in the code. If the literal order of the content in the code is logical, then your linearized reading order is logical.</p>\r\n\r\n<p><strong>Important:</strong>&nbsp;Screen readers treat layout tables and data tables very differently. For layout tables, they simple read the content of table based on the source code order. For data tables, however, they will identify the presence of the table including number of columns and row, provide table navigation functionality, read row and column headers, etc.</p>\r\n\r\n<p><strong>So how does a screen reader know if a table is a data table or a layout table?</strong> They perform some analysis of the table markup and structure to 'guess'. Because of this, it's vital that data table markup, such as <code>&lt;caption&gt;</code>, <code>&lt;th&gt;</code>, etc. are <em>NEVER</em> used within layout tables, otherwise the screen reader may incorrectly present the table as a data table causing increased overhead and confusion.</p>\r\n\r\n<p>Let's take a look at an example in which reading order becomes an issue. Here is a layout table which was created for visual effect:</p>\r\n"
+              format: resourcehub_filtered
+  resourcehub_resource_format:
+    -
+      entity: 8549b8a4-4ebe-4221-8d3a-ae146ff8e5c6
+  resourcehub_resource_type:
+    -
+      entity: bdcd6ee8-67dd-4d52-ae57-955ee347aa24
+  resourcehub_summary:
+    -
+      value: "<p>About Creating Accessible Tables</p>\r\n\r\n<p>Source: https://webaim.org/techniques/tables/</p>\r\n"
+      format: resourcehub_simple
+  resourcehub_topics:
+    -
+      entity: 23602efe-03ef-4c49-b826-346976586277

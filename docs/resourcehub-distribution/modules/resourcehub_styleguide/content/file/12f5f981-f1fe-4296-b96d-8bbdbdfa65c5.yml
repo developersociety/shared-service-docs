@@ -1,0 +1,27 @@
+_meta:
+  version: '1.0'
+  entity_type: file
+  uuid: 12f5f981-f1fe-4296-b96d-8bbdbdfa65c5
+  default_langcode: en
+default:
+  uid:
+    -
+      target_id: 1
+  filename:
+    -
+      value: html-table.jpg
+  uri:
+    -
+      value: 'public://2021-03/html-table_2_12.jpg'
+  filemime:
+    -
+      value: image/jpeg
+  filesize:
+    -
+      value: 67511
+  status:
+    -
+      value: true
+  created:
+    -
+      value: 1616770116

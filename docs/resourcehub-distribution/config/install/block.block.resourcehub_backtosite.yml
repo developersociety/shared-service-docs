@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - resourcehub
+  theme:
+    - resourcehub_theme
+id: resourcehub_backtosite
+theme: resourcehub_theme
+region: header
+weight: 1
+provider: null
+plugin: resourcehub_back_to_site
+settings:
+  id: resourcehub_back_to_site
+  label: 'Back to site'
+  provider: resourcehub
+  label_display: '0'
+visibility: {  }

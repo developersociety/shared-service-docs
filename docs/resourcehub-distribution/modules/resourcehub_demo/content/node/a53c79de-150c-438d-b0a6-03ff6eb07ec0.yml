@@ -1,0 +1,175 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: a53c79de-150c-438d-b0a6-03ff6eb07ec0
+  bundle: resource
+  default_langcode: en
+  depends:
+    69e98a86-1bd8-4814-853e-a7a9de98a111: taxonomy_term
+    087c64e0-5d26-4728-8a5a-4398dfb610c2: taxonomy_term
+    db9fca05-44e8-4007-844c-047d05095326: taxonomy_term
+    2e061490-24bf-41fb-b6a9-b6bffd5c6f45: media
+    f5dae7a2-a90c-4226-8c1f-7a90cb957efc: taxonomy_term
+    3ddcec27-56fa-4d88-b45a-449cf3329956: taxonomy_term
+    23602efe-03ef-4c49-b826-346976586277: taxonomy_term
+default:
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: 'Introduction to Web Accessibility'
+  created:
+    -
+      value: 1617010881
+  promote:
+    -
+      value: true
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: /resources/introduction-web-accessibility
+      langcode: en
+      pathauto: 1
+  resourcehub_audience:
+    -
+      entity: 69e98a86-1bd8-4814-853e-a7a9de98a111
+    -
+      entity: 087c64e0-5d26-4728-8a5a-4398dfb610c2
+    -
+      entity: db9fca05-44e8-4007-844c-047d05095326
+  resourcehub_audience_intro:
+    -
+      value: "<p>Visual and UX designers looking for guidance on producing accessible interfaces</p>\r\n"
+      format: resourcehub_simple
+  resourcehub_content:
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 62beed54-8646-466b-b2ce-724e9b3c83d0
+          bundle: resourcehub_video
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1617011091
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          resourcehub_title:
+            -
+              value: 'Web Accessibility Perspectives - Compilation of 10 Topics/Videos '
+          resourcehub_transcript:
+            -
+              value: "<p>Video isn't just about pictures,</p>\r\n\r\n<p>it's also about sound.</p>\r\n\r\n<p>Without the audio you would have to guess what this film is about.</p>\r\n\r\n<p>Frustrating, isn't it?</p>\r\n\r\n<p>Not knowing what's going on.</p>\r\n\r\n<p>That's the situation for everyone who can't hear.</p>\r\n\r\n<p>Captions make videos accessible.</p>\r\n\r\n<p>Which is also handy for people who want to watch video in loud environments.</p>\r\n\r\n<p>Or where you need to be very, very quiet.</p>\r\n\r\n<p>There's something about great design</p>\r\n\r\n<p>that allows it to go practically unnoticed.</p>\r\n\r\n<p>But it doesn't take much to make things confusing and frustrating.</p>\r\n\r\n<p>Choosing colors with poor contrast makes navigating, reading, and interacting a real pain.</p>\r\n\r\n<p>Good design means sufficient contrast between foreground and background colors.</p>\r\n\r\n<p>That's not just text and images but links, icons, and buttons.</p>\r\n\r\n<p>If it's important enough to be seen, then it needs to be clear.</p>\r\n\r\n<p>And this is essential for people with low contrast sensitivity.</p>\r\n\r\n<p>Which becomes more common as we age.</p>\r\n\r\n<p>With good colors, websites and applications</p>\r\n\r\n<p>can be easier to use in more situations.</p>\r\n\r\n<p>Like in different lighting conditions.</p>\r\n\r\n<p>Imagine if you could only communicate with your family by writing.</p>\r\n\r\n<p>Sometimes it's just easier to speak.</p>\r\n\r\n<p>One of the advances of technology is voice recognition.</p>\r\n\r\n<p>Whether it's searching the Web:</p>\r\n\r\n<p>\"Nineteenth Century Architecture.\"</p>\r\n\r\n<p>Dictating emails:</p>\r\n\r\n<p>\"Send email to Jack Harding.\"</p>\r\n\r\n<p>Or controlling your navigation app.</p>\r\n\r\n<p>Many people with physical disabilities</p>\r\n\r\n<p>rely on voice recognition to use the computer.</p>\r\n\r\n<p>\"Place order.\"</p>\r\n\r\n<p>But for that to happen websites and apps need to be properly coded.</p>\r\n\r\n<p>\"Go? Cancel?\"</p>\r\n\r\n<p>Voice recognition could help lots of other people</p>\r\n\r\n<p>with temporary limitations too, like an injured arm.</p>\r\n\r\n<p>\"Place order.\"</p>\r\n\r\n<p>It can also prevent injuries becoming worse,</p>\r\n\r\n<p>like RSI: Repetitive Stress Injury.</p>\r\n\r\n<p>Or for people simply preferring voice.</p>\r\n\r\n<p>\"Some people can't see the text on this screen.\"</p>\r\n\r\n<p>\"Fortunately, computers can convert text to speech.\"</p>\r\n\r\n<p>It's technology that many people who are blind have been relying on for years.</p>\r\n\r\n<p>But it's also important for many people with dyslexia.</p>\r\n\r\n<p>And very useful for people who have difficulty reading text.</p>\r\n\r\n<p>As well as some people who just like to multi-task.</p>\r\n\r\n<p>But for this to work,</p>\r\n\r\n<p>websites and apps have to be properly coded.</p>\r\n\r\n<p>Which has the added benefit of helping search engines index websites' contents better.</p>\r\n\r\n<p>Poor layout can be very frustrating.</p>\r\n\r\n<p>And the same applies to the Web.</p>\r\n\r\n<p>Good design involves good layout</p>\r\n\r\n<p>and that means a better user experience.</p>\r\n\r\n<p>This includes clear headings, navigation bars, and consistent styling.</p>\r\n\r\n<p>Any web user will get frustrated with bad layout and design.</p>\r\n\r\n<p>Complex layouts also make finding information difficult</p>\r\n\r\n<p>or impossible for people with visual disabilities.</p>\r\n\r\n<p>And they are confusing for people with cognitive and learning disabilities</p>\r\n\r\n<p>who need clarity and consistency of the presentation.</p>\r\n\r\n<p>Bad design also impacts anyone who isn't particularly confident around computers.</p>\r\n\r\n<p>All the right gears can be put in motion.</p>\r\n\r\n<p>The hands can be at the exact place they need to be.</p>\r\n\r\n<p>But if you don't get the response that you're expecting,</p>\r\n\r\n<p>you'll end up wondering if there's some sort of problem.</p>\r\n\r\n<p>It's the same on the Web.</p>\r\n\r\n<p>Without clear notifications and feedback,</p>\r\n\r\n<p>people are quickly disorientated and confused.</p>\r\n\r\n<p>Especially error messages which are often complex and confusing.</p>\r\n\r\n<p>Yet making the understandable is usually quite simple.</p>\r\n\r\n<p>Making websites and apps predictable and understandable</p>\r\n\r\n<p>makes them accessible to people with cognitive and learning disabilities,</p>\r\n\r\n<p>and more usable for everyone.</p>\r\n\r\n<p>Especially for people with lower computer skills.</p>\r\n\r\n<p>Trying to hit a small target requires lots of effort.</p>\r\n\r\n<p>Many websites and applications try to thread the needle.</p>\r\n\r\n<p>But on the Web, we can make areas for clicking and tapping larger and easier to use.</p>\r\n\r\n<p>Which is handy on mobile devices</p>\r\n\r\n<p>especially when we might be moving around at the time.</p>\r\n\r\n<p>Which is critical for people with reduced dexterity.</p>\r\n\r\n<p>What's right for you</p>\r\n\r\n<p>doesn't necessarily work for the next person.</p>\r\n\r\n<p>Customization isn't always just a question of preference though.</p>\r\n\r\n<p>Sometimes, it's a necessity.</p>\r\n\r\n<p>Being able to adjust the text is crucial with low vision and dyslexia.</p>\r\n\r\n<p>Properly coded websites and applications allow the text to be customized.</p>\r\n\r\n<p>For example, to change its size, spacing, font, and colors</p>\r\n\r\n<p>without loss of functions or clarity.</p>\r\n\r\n<p>Instead of saying:</p>\r\n\r\n<p>\"To postulate a conceit more irksome</p>\r\n\r\n<p>than being addressed in sesquipedalian syntax is adamantine\",</p>\r\n\r\n<p>it is better to say:</p>\r\n\r\n<p>\"Being spoken to in unnecessarily long</p>\r\n\r\n<p>and complicated language is a pain\".</p>\r\n\r\n<p>Yet many websites lack structuring</p>\r\n\r\n<p>using headings, lists, and separations.</p>\r\n\r\n<p>Or they use overly complex language, jargon,</p>\r\n\r\n<p>and unexplained acronyms.</p>\r\n\r\n<p>It makes them difficult and unappealing for many people,</p>\r\n\r\n<p>including non-native speakers,</p>\r\n\r\n<p>and makes them unusable for people with cognitive and learning disabilities.</p>\r\n\r\n<p>Not being able to use your computer</p>\r\n\r\n<p>because you mouse doesn't work, is frustrating.</p>\r\n\r\n<p>Many people use only the keyboard to navigate websites.</p>\r\n\r\n<p>Either through preference or circumstance.</p>\r\n\r\n<p>Whether it's temporarily limited mobility,</p>\r\n\r\n<p>a permanent physical disability,</p>\r\n\r\n<p>or simply a broken mouse,</p>\r\n\r\n<p>the result is the same:</p>\r\n\r\n<p>Websites and apps need to be operable by keyboard.</p>\r\n\r\n<p>Web accessibility: Essential for some, useful for all.</p>\r\n"
+              format: resourcehub_simple
+          resourcehub_video:
+            -
+              entity: 2e061490-24bf-41fb-b6a9-b6bffd5c6f45
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 2473fa68-adbf-47db-9190-a7a7548d05d5
+          bundle: resourcehub_text
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1617011144
+          behavior_settings:
+            -
+              value: {  }
+          resourcehub_text:
+            -
+              value: "<h3>More Info on What is Accessibility</h3>\r\n\r\n<ul>\r\n\t<li>When you want to learn more about how different disabilities affect Web use, and read about scenarios of people with disabilities using the Web, see <a href=\"https://www.w3.org/WAI/people-use-web/\">How People with Disabilities Use the Web</a>.</li>\r\n\t<li>If you want more examples of benefits for others, with WCAG to back it up, see <a href=\"https://www.w3.org/WAI/standards-guidelines/shared-experiences/\">Shared Web Experiences: Barriers Common to Mobile Device Users and People with Disabilities</a> and the archived <a href=\"https://www.w3.org/WAI/business-case/archive/soc#groups\">Web Accessibility Benefits People With and Without Disabilities</a>.</li>\r\n</ul>\r\n"
+              format: resourcehub_filtered
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 57c8dfea-0be8-463e-80ff-04b8a785ad15
+          bundle: resourcehub_text
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1617011287
+          behavior_settings:
+            -
+              value: {  }
+          resourcehub_text:
+            -
+              value: "<h3>More Info on What is Accessibility</h3>\r\n\r\n<ul>\r\n\t<li>When you want to learn more about how different disabilities affect Web use, and read about scenarios of people with disabilities using the Web, see <a href=\"https://www.w3.org/WAI/people-use-web/\">How People with Disabilities Use the Web</a>.</li>\r\n\t<li>If you want more examples of benefits for others, with WCAG to back it up, see <a href=\"https://www.w3.org/WAI/standards-guidelines/shared-experiences/\">Shared Web Experiences: Barriers Common to Mobile Device Users and People with Disabilities</a> and the archived <a href=\"https://www.w3.org/WAI/business-case/archive/soc#groups\">Web Accessibility Benefits People With and Without Disabilities</a>.</li>\r\n</ul>\r\n\r\n<h2 id=\"important\">Accessibility is Important for Individuals, Businesses, Society</h2>\r\n\r\n<p>The Web is an increasingly important resource in many aspects of life: education, employment, government, commerce, health care, recreation, and more. It is essential that the Web be accessible in order to provide equal access and equal opportunity to people with diverse abilities. Access to information and communications technologies, including the Web, is defined as a basic human right in the United Nations Convention on the Rights of Persons with Disabilities (UN <a href=\"https://www.un.org/development/desa/disabilities/convention-on-the-rights-of-persons-with-disabilities.html\">CRPD</a>).</p>\r\n\r\n<p>The Web offers the possibility of unprecedented access to information and interaction for many people with disabilities. That is, the accessibility barriers to print, audio, and visual media can be much more easily overcome through web technologies.</p>\r\n\r\n<p>Accessibility supports social inclusion for people with disabilities as well as others, such as:</p>\r\n\r\n<ul>\r\n\t<li>older people</li>\r\n\t<li>people in rural areas</li>\r\n\t<li>people in developing countries</li>\r\n</ul>\r\n\r\n<p><strong>There is also a strong business case for accessibility.</strong> As shown in the previous section, accessible design improves overall user experience and satisfaction, especially in a variety of situations, across different devices, and for older users. Accessibility can enhance your brand, drive innovation, and extend your market reach.</p>\r\n\r\n<p>Web accessibility is <strong>required by law</strong> in many situations.</p>\r\n\r\n<h3>More Info on Accessibility is Important</h3>\r\n\r\n<ul>\r\n\t<li>General information on business benefits is in <a href=\"https://www.w3.org/WAI/business-case/\">The Business Case for Digital Accessibility</a>.</li>\r\n\t<li>Guidance on figuring out legal requirements is in the archived <a href=\"https://www.w3.org/WAI/business-case/archive/pol\">Legal and Policy Factors</a>.</li>\r\n</ul>\r\n\r\n<h2 id=\"making\">Making the Web Accessible</h2>\r\n\r\n<p>Web accessibility depends on several components working together, including web technologies, web browsers and other \"user agents\", authoring tools, and websites.</p>\r\n\r\n<p>The W3C Web Accessibility Initiative (<a href=\"https://www.w3.org/WAI/get-involved/\">WAI</a>) develops technical specifications, guidelines, techniques, and supporting resources that describe accessibility solutions. These are considered international standards for web accessibility; for example, WCAG 2.0 is also an ISO standard: ISO/IEC 40500.</p>\r\n\r\n<h3>More Info on Making the Web Accessible</h3>\r\n\r\n<ul>\r\n\t<li>More about these aspects of accessibility working together is in <a href=\"https://www.w3.org/WAI/fundamentals/components/\">Essential Components of Web Accessibility</a>.</li>\r\n\t<li>Web Content Accessibility Guidelines (WCAG), Authoring Tool Accessibility Guidelines (ATAG), ARIA for Accessible Rich Internet Applications, and other important resources are introduced in <a href=\"https://www.w3.org/WAI/standards-guidelines/\">W3C Accessibility Standards Overview</a>.</li>\r\n\t<li>To learn more about how W3C WAI develops material through multi-stakeholder, international participation and how you can contribute, see <a href=\"https://www.w3.org/WAI/about/\">About W3C WAI</a> and <a href=\"https://www.w3.org/WAI/get-involved/\">Participating in WAI</a>.</li>\r\n</ul>\r\n\r\n<h3 id=\"website\">Making Your Website Accessible</h3>\r\n\r\n<p>Many aspects of accessibility are fairly easy to understand and implement. Some accessibility solutions are more complex and take more knowledge to implement.</p>\r\n\r\n<p>It is most efficient and effective to incorporate accessibility from the very beginning of projects, so you don’t need go back and to re-do work.</p>\r\n\r\n<h3>More Info on Making Your Website Accessible</h3>\r\n\r\n<ul>\r\n\t<li>For an introduction to accessibility requirements and international standards, see <a href=\"https://www.w3.org/WAI/fundamentals/accessibility-principles/\">Accessibility Principles</a>.</li>\r\n\t<li>To understand some common accessibility barriers from the perspective of testing, see <a href=\"https://www.w3.org/WAI/test-evaluate/preliminary/\">Easy Checks – A First Review of Web Accessibility</a>.</li>\r\n\t<li>For some basic considerations on designing, writing, and developing for accessibility, see <a href=\"https://www.w3.org/WAI/tips/\">Tips for Getting Started</a>.</li>\r\n\t<li>When you’re ready to know more about developing and designing, you’ll probably use resources such as:\r\n\t<ul>\r\n\t\t<li><a href=\"http://www.w3.org/WAI/WCAG21/quickref/\">How to Meet WCAG (Quick Reference)</a></li>\r\n\t\t<li><a href=\"https://www.w3.org/WAI/tutorials/\">Web Accessibility Tutorials</a></li>\r\n\t</ul>\r\n\t</li>\r\n\t<li>For project management and organizational considerations, see <a href=\"https://www.w3.org/WAI/planning-and-managing/\">Planning and Managing Web Accessibility</a>.<br />\r\n\tIf you need to make quick fixes now, see <a href=\"https://www.w3.org/WAI/planning/interim-repairs/\">Web Accessibility First Aid: Approaches for Interim Repairs</a>.</li>\r\n</ul>\r\n\r\n<h2 id=\"evaluate\">Evaluating Accessibility</h2>\r\n\r\n<p>When developing or redesigning a website, evaluate accessibility early and throughout the development process to identify accessibility problems early, when it is easier to address them. Simple steps, such as changing settings in a browser, can help you evaluate some aspects of accessibility. Comprehensive evaluation to determine if a website meets all accessibility guidelines takes more effort.</p>\r\n\r\n<p>There are evaluation tools that help with evaluation. However, no tool alone can determine if a site meets accessibility guidelines. Knowledgeable human evaluation is required to determine if a site is accessible.</p>\r\n\r\n<h3>More Info on Evaluating Accessibility</h3>\r\n\r\n<ul>\r\n\t<li>Resources to help with accessibility evaluation are described in <a href=\"https://www.w3.org/WAI/test-evaluate/\">Evaluating Web Accessibility Overview</a>.</li>\r\n</ul>\r\n"
+              format: resourcehub_filtered
+  resourcehub_external_links:
+    -
+      uri: 'https://www.w3.org/WAI/fundamentals/accessibility-intro/'
+      title: 'Source: W3C.org'
+      options: {  }
+  resourcehub_primary_resource:
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 36e58fa7-4700-4001-8764-59965228ccc1
+          bundle: resourcehub_text
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1617979501
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          resourcehub_text:
+            -
+              value: "<h2 id=\"context\">Accessibility in Context</h2>\r\n\r\n<blockquote>\r\n<p>The power of the Web is in its universality.<br />\r\nAccess by everyone regardless of disability is an essential aspect.</p>\r\n\r\n<p><cite>Tim Berners-Lee, W3C Director and inventor of the World Wide Web</cite></p>\r\n</blockquote>\r\n\r\n<p>The Web is fundamentally designed to work for all people, whatever their hardware, software, language, location, or ability. When the Web meets this goal, it is accessible to people with a diverse range of hearing, movement, sight, and cognitive ability.</p>\r\n\r\n<p>Thus the impact of disability is radically changed on the Web because the Web removes barriers to communication and interaction that many people face in the physical world. However, when websites, applications, technologies, or tools are badly designed, they can create barriers that exclude people from using the Web.</p>\r\n\r\n<p><strong>Accessibility is essential for developers and organizations that want to create high-quality websites and web tools, and not exclude people from using their products and services.</strong></p>\r\n\r\n<h2 id=\"what\">What is Web Accessibility</h2>\r\n\r\n<p>Web accessibility means that websites, tools, and technologies are designed and developed so that people with disabilities can use them. More specifically, people can:</p>\r\n\r\n<ul>\r\n\t<li>perceive, understand, navigate, and interact with the Web</li>\r\n\t<li>contribute to the Web</li>\r\n</ul>\r\n\r\n<p>Web accessibility encompasses all disabilities that affect access to the Web, including:</p>\r\n\r\n<ul>\r\n\t<li>auditory</li>\r\n\t<li>cognitive</li>\r\n\t<li>neurological</li>\r\n\t<li>physical</li>\r\n\t<li>speech</li>\r\n\t<li>visual</li>\r\n</ul>\r\n\r\n<p>Web accessibility also benefits people <em>without</em> disabilities, for example:</p>\r\n\r\n<ul>\r\n\t<li>people using mobile phones, smart watches, smart TVs, and other devices with small screens, different input modes, etc.</li>\r\n\t<li>older people with changing abilities due to ageing</li>\r\n\t<li>people with “temporary disabilities” such as a broken arm or lost glasses</li>\r\n\t<li>people with “situational limitations” such as in bright sunlight or in an environment where they cannot listen to audio</li>\r\n\t<li>people using a slow Internet connection, or who have limited or expensive bandwidth</li>\r\n</ul>\r\n\r\n<p>For a 7-minute video with examples of how accessibility is essential for people with disabilities and useful for everyone in a variety of situations, see:</p>\r\n"
+              format: resourcehub_filtered
+  resourcehub_resource_format:
+    -
+      entity: f5dae7a2-a90c-4226-8c1f-7a90cb957efc
+  resourcehub_resource_type:
+    -
+      entity: 3ddcec27-56fa-4d88-b45a-449cf3329956
+  resourcehub_summary:
+    -
+      value: "<p>When websites and web tools are properly designed and coded, people with disabilities can use them. However, currently many sites and tools are developed with accessibility barriers that make them difficult or impossible for some people to use.</p>\r\n\r\n<p>Making the web accessible benefits individuals, businesses, and society. International web standards define what is needed for accessibility.</p>\r\n"
+      format: resourcehub_simple
+  resourcehub_topics:
+    -
+      entity: 23602efe-03ef-4c49-b826-346976586277

@@ -1,0 +1,70 @@
+.block-resourcehub-back-to-site {
+  a {
+    text-decoration: none;
+    @extend .small;
+    &:before {
+      content: "\2192";
+      font-size: 1.5rem;
+      line-height: 100%;
+    }
+  }
+}
+
+.block-system-branding-block {
+  display: flex;
+  align-items: center;
+  @include screen('sm') {
+    max-width: 50%;
+  }
+  @include screen('md') {
+    max-width: 40%;
+    display: flex;
+    display: grid;
+  }
+  > a {
+    padding-right: $spacing;
+  }
+  .site-logo {
+    grid-row: 1 ;
+  }
+  .site-name {
+    grid-column: 2;
+  }
+  .site-slogan {
+    display: none;
+  }
+}
+
+.region-header {
+  .block + .block {
+    margin-top: $spacing;
+  }
+  @include screen('md') {
+    .block + .block {
+      margin-top: 0;
+    }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.site-name a{
+  font-weight: 500;
+  font-size: 1.25rem;
+  margin-bottom: 0;
+  text-decoration: none;
+}
+
+.site-logo {
+  max-width: 200px;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  align-items: center;
+}
+
+#block-resourcehub-search {
+  @include screen('md') {
+    max-width: 40%;
+  }
+}

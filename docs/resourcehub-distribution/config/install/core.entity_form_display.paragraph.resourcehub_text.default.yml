@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.resourcehub_text.resourcehub_text
+    - paragraphs.paragraphs_type.resourcehub_text
+  module:
+    - text
+_core:
+  default_config_hash: dM9qt83irq_Mszbc4W6OtaDFaW1S6VarkzJ_GQvsttk
+id: paragraph.resourcehub_text.default
+targetEntityType: paragraph
+bundle: resourcehub_text
+mode: default
+content:
+  resourcehub_text:
+    weight: 0
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+hidden:
+  created: true
+  status: true

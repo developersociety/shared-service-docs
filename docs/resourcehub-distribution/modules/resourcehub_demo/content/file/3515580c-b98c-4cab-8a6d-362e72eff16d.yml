@@ -1,0 +1,27 @@
+_meta:
+  version: '1.0'
+  entity_type: file
+  uuid: 3515580c-b98c-4cab-8a6d-362e72eff16d
+  default_langcode: en
+default:
+  uid:
+    -
+      target_id: 1
+  filename:
+    -
+      value: rhod9pmivQCmqoBXD-gOd3zMEmgL1eQ-d2bDRmAxcSY.
+  uri:
+    -
+      value: 'public://oembed_thumbnails/rhod9pmivQCmqoBXD-gOd3zMEmgL1eQ-d2bDRmAxcSY.'
+  filemime:
+    -
+      value: application/octet-stream
+  filesize:
+    -
+      value: 21173
+  status:
+    -
+      value: true
+  created:
+    -
+      value: 1618221008

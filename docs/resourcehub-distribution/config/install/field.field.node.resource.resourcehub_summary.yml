@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.resourcehub_summary
+    - node.type.resource
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    resourcehub_simple: resourcehub_simple
+    plain_text: plain_text
+    resourcehub_filtered: '0'
+id: node.resource.resourcehub_summary
+field_name: resourcehub_summary
+entity_type: node
+bundle: resource
+label: Summary
+description: 'A summary of the content of the resource.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

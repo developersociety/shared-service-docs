@@ -1,0 +1,28 @@
+uuid: aea75947-3dae-40f0-b820-5c0d825acc17
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.format
+  module:
+    - facets
+    - system
+  theme:
+    - resourcehub_theme
+id: facet_format
+theme: resourcehub_theme
+region: sidebar_first
+weight: 3
+provider: null
+plugin: 'facet_block:format'
+settings:
+  id: 'facet_block:format'
+  label: Format
+  provider: facets
+  label_display: visible
+  block_id: facet_format
+visibility:
+  request_path:
+    id: request_path
+    pages: /resources
+    negate: false

@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.resourcehub_content_width_md
+    - image.style.resourcehub_content_width_sm
+    - image.style.resourcehub_content_width_xs
+  theme:
+    - resourcehub_theme
+id: full_content_width
+label: 'Content width'
+image_style_mappings:
+  -
+    breakpoint_id: resourcehub_theme.medium
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: resourcehub_content_width_md
+  -
+    breakpoint_id: resourcehub_theme.small
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: resourcehub_content_width_sm
+  -
+    breakpoint_id: resourcehub_theme.extra_small
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: resourcehub_content_width_xs
+breakpoint_group: resourcehub_theme
+fallback_image_style: resourcehub_content_width_md

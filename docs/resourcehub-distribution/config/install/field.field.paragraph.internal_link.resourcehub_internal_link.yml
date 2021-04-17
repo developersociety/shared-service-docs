@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.resourcehub_internal_link
+    - node.type.resource
+    - node.type.resourcehub_landing_page
+    - paragraphs.paragraphs_type.internal_link
+id: paragraph.internal_link.resourcehub_internal_link
+field_name: resourcehub_internal_link
+entity_type: paragraph
+bundle: internal_link
+label: 'Internal link'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      resourcehub_landing_page: resourcehub_landing_page
+      resource: resource
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: resourcehub_landing_page
+field_type: entity_reference

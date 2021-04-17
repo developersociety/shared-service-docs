@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap');
+
+
+* {
+  font-family: 'Rubik', sans-serif;
+  // color: $c-body;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 500;
+  line-height: 140%;
+  margin-block: $spacing;
+}
+
+h1 {
+  font-size: 1.625rem;
+  margin-top: 0;
+  @include screen('md') {
+    font-size: 2.1875rem;
+  }
+}
+
+h2 {
+  font-size: 1.25rem;
+  margin-bottom: $spacing;
+  @include screen('md') {
+    font-size: 1.625rem;
+  }
+}
+
+* + h2 {
+  margin-top: $spacing*2;
+}
+
+h3 {
+  font-size: 1rem;
+  @include screen('md') {
+    font-size: 1.4rem;
+  }
+}
+
+* + h3 {
+  margin-top: $spacing*1.5;
+}
+
+h4 {
+  font-size: 1rem;
+  @include screen('md') {
+    font-size: 1.2rem;
+  }
+}
+
+h5 {
+  font-size: 1rem;
+
+  @include screen('md') {
+    font-size: 1.125rem;
+  }
+}
+h6 {
+  font-size: 1rem;
+  color: $c-mid-grey-text;
+  margin-block: $spacing;
+  @include screen('md') {
+    font-size: 1.125rem;
+  }
+}
+
+li,
+p {
+  font-size: 0.9375rem;
+  line-height: 180%;
+  @include screen('md') {
+    font-size: 1rem;
+  }
+}
+
+// ul li {
+//   margin-bottom: 0.5rem;
+// }
+
+.p-alt {
+  font-size: 0.9375rem;
+  line-height: 140%;
+  @include screen('md') {
+    font-size: 1rem;
+  }
+}
+
+.small {
+  font-size: 0.8125rem; //13px
+  line-height: 140%;
+  @include screen('md') {
+    font-size: 0.9375rem;
+  }
+}
+
+.tiny {
+  font-size: 0.75rem; //12 px breadcrumb
+}
+
+a {
+  color: inherit;
+  text-decoration: underline;
+  &:hover {
+    color: red;
+  }
+  &:focus {
+    outline: 3px solid transparent;
+    color: $c-body;
+    background-color: $c-gov-yellow;
+    box-shadow: 0 -2px $c-gov-yellow, 0 4px $c-body;
+    text-decoration: none;
+
+  }
+}
+
+
+.compose-tips,
+.compose-tips li {
+  font-size: 0.8125; //13px
+  line-height: 140%;
+  @include screen('md') {
+    font-size: 0.8125; //13px
+  }
+}
+
+
+blockquote {
+  margin-block: $spacing*1.5;
+  position: relative;
+  // margin-left: $spacing*4;
+  padding-left: $spacing;
+  // > *:first-of-type {
+    &:before {
+      content: '\201c';
+      display: inline;
+      font-size: 5rem;
+      padding-right: 0.25rem;
+      font-family: "Verdana, arial";
+      line-height: 16px;
+      position: absolute;
+      left: -24px;
+      top: 16px;
+      color: $c-mid-grey-text;
+    }
+  // }
+  > * {
+    font-size: 1.1rem;
+  }
+}
+
+strong {
+  font-weight: 700;
+}
+
+.progress__track,
+.progress__bar {
+  height: 30px;
+}
+
+.progress__bar {
+  border: 1px #07629a solid;
+  border-radius: 10em;
+  background: #057ec9;
+  background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15)), -webkit-linear-gradient(left top, #0094f0 0%, #0094f0 25%, #007ecc 25%, #007ecc 50%, #0094f0 50%, #0094f0 75%, #0094f0 100%);
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15)), linear-gradient(to right bottom, #0094f0 0%, #0094f0 25%, #007ecc 25%, #007ecc 50%, #0094f0 50%, #0094f0 75%, #0094f0 100%);
+  background-size: 55px 55px;
+}

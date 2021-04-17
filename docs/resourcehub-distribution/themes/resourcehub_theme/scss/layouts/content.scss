@@ -1,0 +1,36 @@
+article {
+  footer.node__meta {
+    display: flex;
+    align-content: space-between;
+    @include screen('md') {
+      > span {
+        width: calc(33% - 16px); // 1/3 - gap*2/3
+      }
+      > span + span {
+        margin-left: $spacing*1.5;
+      }
+    }
+  }
+}
+
+.node--view-mode-search-result {
+  background: $c-light-grey;
+  padding: $spacing*1.5;
+  @extend .small;
+  p {
+    @extend .p-alt;
+  }
+  h2 {
+    margin-top: 0;
+
+  }
+}
+
+.region-sidebar-second {
+  margin-top: $spacing*4;
+  .block-entity-viewnode{
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    padding-block: $spacing*1.5;
+  }
+}

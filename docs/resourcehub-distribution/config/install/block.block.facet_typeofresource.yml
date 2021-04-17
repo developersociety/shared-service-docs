@@ -1,0 +1,28 @@
+uuid: c353a0e5-4eae-4313-9149-c667a3e17b6f
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.type_of_resource
+  module:
+    - facets
+    - system
+  theme:
+    - resourcehub_theme
+id: facet_typeofresource
+theme: resourcehub_theme
+region: sidebar_first
+weight: 1
+provider: null
+plugin: 'facet_block:type_of_resource'
+settings:
+  id: 'facet_block:type_of_resource'
+  label: 'Type of resource'
+  provider: facets
+  label_display: visible
+  block_id: facet_typeofresource
+visibility:
+  request_path:
+    id: request_path
+    pages: /resources
+    negate: false

@@ -1,0 +1,45 @@
+_meta:
+  version: '1.0'
+  entity_type: user
+  uuid: fdfed3fc-120c-45d8-a61d-c658f8e0dc80
+  default_langcode: en
+default:
+  preferred_langcode:
+    -
+      value: en
+  preferred_admin_langcode:
+    -
+      value: en
+  name:
+    -
+      value: siteadmin
+  pass:
+    -
+      value: $S$EW4ux64yK0UqHuA/aWNJDc0sb21OLEaj/5Bs2eRGRfbY.f5o.WOn
+      existing: ''
+      pre_hashed: false
+  timezone:
+    -
+      value: UTC
+  status:
+    -
+      value: true
+  created:
+    -
+      value: 1617102986
+  access:
+    -
+      value: 0
+  login:
+    -
+      value: 0
+  roles:
+    -
+      target_id: content_editor
+    -
+      target_id: site_administrator
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 0

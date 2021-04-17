@@ -1,0 +1,27 @@
+_meta:
+  version: '1.0'
+  entity_type: paragraph
+  uuid: a0d35e81-7e66-4aef-a38b-2944685c5b99
+  bundle: resourcehub_document
+  default_langcode: en
+  depends:
+    c38da175-3c84-4bb4-95fe-d8b3e80c6d7e: media
+default:
+  status:
+    -
+      value: true
+  created:
+    -
+      value: 1616771970
+  behavior_settings:
+    -
+      value: {  }
+  revision_translation_affected:
+    -
+      value: true
+  resourcehub_document:
+    -
+      entity: c38da175-3c84-4bb4-95fe-d8b3e80c6d7e
+  resourcehub_title:
+    -
+      value: 'An accessible PDF'

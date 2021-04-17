@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - resourcehub
+  theme:
+    - resourcehub_theme
+id: resourcehub_legalcopy
+theme: resourcehub_theme
+region: footer
+weight: 0
+provider: null
+plugin: resourcehub_legal
+settings:
+  id: resourcehub_legal
+  label: 'Legal copy'
+  provider: resourcehub
+  label_display: '0'
+visibility: {  }

@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.resourcehub_title
+    - paragraphs.paragraphs_type.resourcehub_document
+id: paragraph.resourcehub_document.resourcehub_title
+field_name: resourcehub_title
+entity_type: paragraph
+bundle: resourcehub_document
+label: 'Document title'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

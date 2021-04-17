@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.resourcehub_transcript
+    - paragraphs.paragraphs_type.resourcehub_audio
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    resourcehub_simple: resourcehub_simple
+    plain_text: plain_text
+    resourcehub_filtered: '0'
+id: paragraph.resourcehub_audio.resourcehub_transcript
+field_name: resourcehub_transcript
+entity_type: paragraph
+bundle: resourcehub_audio
+label: 'Audio transcript'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -1,0 +1,44 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.resourcehub_image.resourcehub_caption
+    - field.field.paragraph.resourcehub_image.resourcehub_image
+    - field.field.paragraph.resourcehub_image.resourcehub_image_description
+    - paragraphs.paragraphs_type.resourcehub_image
+  module:
+    - media_library
+    - text
+_core:
+  default_config_hash: kdtC-0uYCts8ih3_UauynqaKU7-4pTquagFqdBUZjmo
+id: paragraph.resourcehub_image.default
+targetEntityType: paragraph
+bundle: resourcehub_image
+mode: default
+content:
+  resourcehub_caption:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  resourcehub_image:
+    type: media_library_widget
+    weight: 0
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+    region: content
+  resourcehub_image_description:
+    weight: 2
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+hidden:
+  created: true
+  status: true

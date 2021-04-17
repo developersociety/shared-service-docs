@@ -1,0 +1,27 @@
+_meta:
+  version: '1.0'
+  entity_type: file
+  uuid: a8738186-5f0b-4cd5-b7ec-41cba4e777d9
+  default_langcode: en
+default:
+  uid:
+    -
+      target_id: 1
+  filename:
+    -
+      value: webcaptions.jpg
+  uri:
+    -
+      value: 'public://2021-04/webcaptions.jpg'
+  filemime:
+    -
+      value: image/jpeg
+  filesize:
+    -
+      value: 37375
+  status:
+    -
+      value: true
+  created:
+    -
+      value: 1618216536

@@ -1,0 +1,37 @@
+
+_meta:
+  version: '1.0'
+  entity_type: media
+  uuid: 72cd12fd-21dc-4fb4-ab6d-52e177e04755
+  bundle: image
+  default_langcode: en
+  depends:
+    031c295d-a058-4b3b-9c7c-e6988528f51a: file
+default:
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  name:
+    -
+      value: 'Screenshot-toilet.png'
+  created:
+    -
+      value: 1617980576
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 0
+  field_media_image:
+    -
+      entity: 031c295d-a058-4b3b-9c7c-e6988528f51a
+      alt: 'Screenshot from source article. Extended description below'
+      title: ''
+      width: 347
+      height: 199

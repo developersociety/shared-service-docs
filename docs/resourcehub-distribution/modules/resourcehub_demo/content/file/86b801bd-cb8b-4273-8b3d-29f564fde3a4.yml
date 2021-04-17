@@ -1,0 +1,27 @@
+_meta:
+  version: '1.0'
+  entity_type: file
+  uuid: 86b801bd-cb8b-4273-8b3d-29f564fde3a4
+  default_langcode: en
+default:
+  uid:
+    -
+      target_id: 1
+  filename:
+    -
+      value: captions.jpg
+  uri:
+    -
+      value: 'public://2021-04/captions.jpg'
+  filemime:
+    -
+      value: image/jpeg
+  filesize:
+    -
+      value: 156821
+  status:
+    -
+      value: true
+  created:
+    -
+      value: 1618216503

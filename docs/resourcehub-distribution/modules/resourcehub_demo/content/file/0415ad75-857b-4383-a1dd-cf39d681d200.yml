@@ -1,0 +1,27 @@
+_meta:
+  version: '1.0'
+  entity_type: file
+  uuid: 0415ad75-857b-4383-a1dd-cf39d681d200
+  default_langcode: en
+default:
+  uid:
+    -
+      target_id: 1
+  filename:
+    -
+      value: XVtj9Po0GQQFOpoV1hqj1uLAx9xe_vD5Hex67iK7RoY.jpg
+  uri:
+    -
+      value: 'public://video_thumbnails/XVtj9Po0GQQFOpoV1hqj1uLAx9xe_vD5Hex67iK7RoY.jpg'
+  filemime:
+    -
+      value: image/jpeg
+  filesize:
+    -
+      value: 43000
+  status:
+    -
+      value: true
+  created:
+    -
+      value: 1617011114

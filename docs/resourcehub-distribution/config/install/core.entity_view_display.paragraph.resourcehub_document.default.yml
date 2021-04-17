@@ -1,0 +1,32 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.resourcehub_document.resourcehub_document
+    - field.field.paragraph.resourcehub_document.resourcehub_title
+    - paragraphs.paragraphs_type.resourcehub_document
+_core:
+  default_config_hash: iag1k2m7ZokyO521wqkga_4La1buAyqX1q3-MQwfOhg
+id: paragraph.resourcehub_document.default
+targetEntityType: paragraph
+bundle: resourcehub_document
+mode: default
+content:
+  resourcehub_document:
+    weight: 1
+    label: hidden
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  resourcehub_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

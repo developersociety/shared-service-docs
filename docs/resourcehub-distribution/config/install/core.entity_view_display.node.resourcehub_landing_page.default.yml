@@ -1,0 +1,49 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.resourcehub_landing_page.resourcehub_image
+    - field.field.node.resourcehub_landing_page.resourcehub_link_block
+    - field.field.node.resourcehub_landing_page.resourcehub_summary
+    - node.type.resourcehub_landing_page
+  module:
+    - entity_reference_revisions
+    - text
+    - user
+id: node.resourcehub_landing_page.default
+targetEntityType: node
+bundle: resourcehub_landing_page
+mode: default
+content:
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  resourcehub_image:
+    type: entity_reference_entity_view
+    weight: 2
+    label: hidden
+    settings:
+      view_mode: full
+      link: false
+    third_party_settings: {  }
+    region: content
+  resourcehub_link_block:
+    type: entity_reference_revisions_entity_view
+    weight: 3
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  resourcehub_summary:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden:
+  search_api_excerpt: true

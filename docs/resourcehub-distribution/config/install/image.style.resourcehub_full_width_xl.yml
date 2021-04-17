@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: resourcehub_full_width_xl
+label: 'full width xl'
+effects:
+  a5c8691d-7a94-42cb-9276-8d4da12501a6:
+    uuid: a5c8691d-7a94-42cb-9276-8d4da12501a6
+    id: image_scale
+    weight: 1
+    data:
+      width: 950
+      height: null
+      upscale: false

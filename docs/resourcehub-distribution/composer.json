@@ -1,0 +1,63 @@
+{
+  "name": "openresources/resourcehub-distribution",
+  "description": "Resource Hub distribution",
+  "type": "drupal-profile",
+  "license": "GPL-2.0-or-later",
+  "homepage": "https://gitlab.com/openresources/resourcehub_distribution",
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://packages.drupal.org/8"
+    }
+  ],
+  "require": {
+    "drupal/admin_toolbar": "^3.0",
+    "drupal/allowed_formats": "^1.3",
+    "drupal/core": "^9.1",
+    "drupal/ckeditor_a11ychecker": "1.x-dev@dev",
+    "drupal/ckeditor_balloonpanel": "^1.1",
+    "drupal/default_content": "^2.0@alpha",
+    "drupal/facets": "^1.7",
+    "drupal/field_group": "^3.1",
+    "drupal/gin": "^3.0@alpha",
+    "drupal/google_tag": "^1.3",
+    "drupal/linkit": "^6.0@beta",
+    "drupal/oembed_providers": "^1.1",
+    "drupal/masquerade": "^2.0@beta",
+    "drupal/metatag": "^1.16",
+    "drupal/paragraphs": "^1.12",
+    "drupal/pathauto": "^1.6",
+    "drupal/redirect": "^1.5",
+    "drupal/role_delegation": "^1.1",
+    "drupal/search_api": "^1.19",
+    "drupal/simple_sitemap": "^3.9",
+    "drupal/styleguide": "^2.0@beta",
+    "drupal/view_unpublished": "1.0",
+    "drupal/entity_reference_facet_link": "^1.0@beta",
+    "ckeditor/balloonpanel": "^4.0",
+    "ckeditor/a11ychecker": "^1.0"
+  },
+  "require-dev": {
+    "drupal/core-dev": "^9.1"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "config": {
+    "sort-packages": true
+  },
+  "extra": {
+    "enable-patching": true,
+    "composer-exit-on-patch-failure": true,
+    "patchLevel": {
+      "drupal/core": "-p2"
+    },
+    "patches": {
+        "drupal/facets": {
+            "#3199156-19: avoid fatal error when installing from existing config": "https://www.drupal.org/files/issues/2021-03-16/3199156-19.patch"
+        },
+        "drupal/gin": {
+            "#3204862-3: Paragraphs drag handles": "https://www.drupal.org/files/issues/2021-03-22/3204862-3-alpha33.patch"
+        }
+    }
+  }
+}

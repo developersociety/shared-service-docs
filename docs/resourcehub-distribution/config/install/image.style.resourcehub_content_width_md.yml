@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: resourcehub_content_width_md
+label: 'Content width md'
+effects:
+  fefb7cdf-c6ab-4ad0-b248-edd32082605b:
+    uuid: fefb7cdf-c6ab-4ad0-b248-edd32082605b
+    id: image_scale
+    weight: 1
+    data:
+      width: 992
+      height: null
+      upscale: false

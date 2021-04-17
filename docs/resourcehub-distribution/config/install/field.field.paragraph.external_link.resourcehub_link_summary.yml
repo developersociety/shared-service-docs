@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.resourcehub_link_summary
+    - paragraphs.paragraphs_type.external_link
+id: paragraph.external_link.resourcehub_link_summary
+field_name: resourcehub_link_summary
+entity_type: paragraph
+bundle: external_link
+label: 'Link summary'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

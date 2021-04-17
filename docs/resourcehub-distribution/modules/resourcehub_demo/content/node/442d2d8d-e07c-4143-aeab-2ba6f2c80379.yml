@@ -1,0 +1,172 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: 442d2d8d-e07c-4143-aeab-2ba6f2c80379
+  bundle: resource
+  default_langcode: en
+  depends:
+    087c64e0-5d26-4728-8a5a-4398dfb610c2: taxonomy_term
+    8549b8a4-4ebe-4221-8d3a-ae146ff8e5c6: taxonomy_term
+    3ddcec27-56fa-4d88-b45a-449cf3329956: taxonomy_term
+default:
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: 'UX resources'
+  created:
+    -
+      value: 1618221820
+  promote:
+    -
+      value: true
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: /resources/ux-resources
+      langcode: en
+      pathauto: 1
+  resourcehub_audience:
+    -
+      entity: 087c64e0-5d26-4728-8a5a-4398dfb610c2
+  resourcehub_audience_intro:
+    -
+      value: "<p>Anyone interested in user experience best practice.</p>\r\n"
+      format: resourcehub_simple
+  resourcehub_content:
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 13d51cf3-f2f3-4a14-9c84-b1850b840120
+          bundle: external_link
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1618221960
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          resourcehub_external_link:
+            -
+              uri: 'https://www.nform.com/'
+              title: nForm
+              options: {  }
+          resourcehub_link_summary:
+            -
+              value: 'Research, strategy and design for complex digital products and services.'
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: a031d68a-f052-4eaf-87e3-469bfa17269c
+          bundle: external_link
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1618222068
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          resourcehub_external_link:
+            -
+              uri: 'https://www.darkpatterns.org/'
+              title: 'Dark Patterns'
+              options: {  }
+          resourcehub_link_summary:
+            -
+              value: 'Dark patterns are anti-UX - this site shows some of the tricks used in websites and apps that make you do things that you didn''t mean to.'
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 13d58a2e-2ff4-4eb5-bbce-ddba3ebf7535
+          bundle: external_link
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1618222076
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          resourcehub_external_link:
+            -
+              uri: 'https://www.smashingmagazine.com/search/?q=UX'
+              title: 'Smashing Magazine '
+              options: {  }
+  resourcehub_primary_resource:
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: f64e9f40-772d-458f-8f85-59421d951134
+          bundle: external_link
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1618221919
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          resourcehub_external_link:
+            -
+              uri: 'https://www.nngroup.com/'
+              title: 'Nielsen Norman Group (NN/g)'
+              options: {  }
+          resourcehub_link_summary:
+            -
+              value: 'World Leaders in Research-Based User Experience'
+  resourcehub_resource_format:
+    -
+      entity: 8549b8a4-4ebe-4221-8d3a-ae146ff8e5c6
+  resourcehub_resource_type:
+    -
+      entity: 3ddcec27-56fa-4d88-b45a-449cf3329956
+  resourcehub_summary:
+    -
+      value: "<p>A list of some of our favourite UX resource publications.</p>\r\n"
+      format: resourcehub_simple

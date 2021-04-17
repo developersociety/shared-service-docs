@@ -1,0 +1,27 @@
+_meta:
+  version: '1.0'
+  entity_type: file
+  uuid: 1b2ac4e3-14dc-4c35-8b74-9ca47190d3e2
+  default_langcode: en
+default:
+  uid:
+    -
+      target_id: 1
+  filename:
+    -
+      value: SJnQmMURXPfZx2lQjpCMq9MTVsieKA4Fqome5CELEYY.jpg
+  uri:
+    -
+      value: 'public://video_thumbnails/SJnQmMURXPfZx2lQjpCMq9MTVsieKA4Fqome5CELEYY.jpg'
+  filemime:
+    -
+      value: image/jpeg
+  filesize:
+    -
+      value: 15053
+  status:
+    -
+      value: true
+  created:
+    -
+      value: 1617010024

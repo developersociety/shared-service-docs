@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.resourcehub_landing_page.resourcehub_image
+    - field.field.node.resourcehub_landing_page.resourcehub_link_block
+    - field.field.node.resourcehub_landing_page.resourcehub_summary
+    - node.type.resourcehub_landing_page
+  module:
+    - text
+    - user
+id: node.resourcehub_landing_page.teaser
+targetEntityType: node
+bundle: resourcehub_landing_page
+mode: teaser
+content:
+  resourcehub_summary:
+    type: text_trimmed
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      trim_length: 300
+    third_party_settings: {  }
+hidden:
+  links: true
+  resourcehub_image: true
+  resourcehub_link_block: true
+  search_api_excerpt: true
