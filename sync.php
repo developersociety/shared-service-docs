@@ -50,6 +50,7 @@ $index = <<<INDEX
     window.\$docsify = {
       name: 'Docs',
       repo: '',
+      logo: '/catalyst.svg',
       loadSidebar: true,
       search: {
         depth: 3,
