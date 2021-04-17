@@ -1,8 +1,8 @@
-- Notifications
+- notifications
   - [setup-python-dev-environment](notifications/setup-python-dev-environment)
   - [setup-clients-to-work-with-catalyst-notify](notifications/setup-clients-to-work-with-catalyst-notify)
   - [setup-notifications-api](notifications/setup-notifications-api)
-- Search
+- search
   - [contributing](search/contributing)
   - [api](search/api)
   - [specification](search/specification)
@@ -12,7 +12,7 @@
   - [developers/configuration/apache-php](search/developers/configuration/apache-php)
   - [developers/search/index](search/developers/search/index)
   - [alpha_mvp](search/alpha_mvp)
-- Resource_Hub
+- resource_Hub
   - [modules/resourcehub_demo/readme](resource_hub/modules/resourcehub_demo/readme)
   - [contributing](resource_hub/contributing)
   - [readme](resource_hub/readme)
