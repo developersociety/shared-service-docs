@@ -51,6 +51,7 @@ $index = <<<INDEX
       :root {
         --base-font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
         --base-color: #58536e;
+        --heading-color: #0a0038;
       }
     </style>
 </head>
@@ -73,6 +74,7 @@ $index = <<<INDEX
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify-copy-code@2"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.js"></script>
+  <script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
 </body>
 </html>
 INDEX;
