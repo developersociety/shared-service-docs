@@ -1,0 +1,44 @@
+name: Sync Docs
+
+on:
+  push:
+    branches: [ main ]
+
+  schedule:
+    - cron: '0 1 * * *'
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Setup PHP Action
+        uses: shivammathur/setup-php@2.10.0
+
+      - name: Run Sync
+        run: |
+          php ./sync.php
+
+      - name: Check for modified files
+        id: git-check
+        run: |
+          git add .
+          echo ::set-output name=modified::$(if git diff-index --quiet HEAD --; then echo "false"; else echo "true"; fi)
+
+      - name: Commit files
+        if: steps.git-check.outputs.modified == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit -m "Sync" -a
+
+      - name: Push changes
+        if: steps.git-check.outputs.modified == 'true'
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
