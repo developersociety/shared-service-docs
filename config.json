@@ -13,7 +13,7 @@
     {
       "gitUrl": "https://gitlab.com/openresources/resourcehub_distribution.git",
       "sourceDocsDirectory": "/",
-      "outputDirectory": "Resource Hub"
+      "outputDirectory": "Resource_Hub"
     }
   ]
 }
