@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.resourcehub_audience
+  module:
+    - path
+    - text
+id: taxonomy_term.resourcehub_audience.default
+targetEntityType: taxonomy_term
+bundle: resourcehub_audience
+mode: default
+content:
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  path: true
+  status: true
+  description: true

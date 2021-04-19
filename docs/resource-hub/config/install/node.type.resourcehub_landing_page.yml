@@ -9,7 +9,7 @@ third_party_settings:
     parent: ''
 name: 'Landing page'
 type: resourcehub_landing_page
-description: ''
+description: 'A page to curate content around a particular theme or subject matter.'
 help: ''
 new_revision: true
 preview_mode: 1

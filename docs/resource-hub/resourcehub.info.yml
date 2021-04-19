@@ -52,9 +52,11 @@ install:
   - redirect:redirect
   - role_delegation:role_delegation
   - simple_sitemap:simple_sitemap
+  - shariff:shariff
   - styleguide:styleguide
   - search_api:search_api
   - search_api:search_api_db
+  - simplify:simplify
   - facets:facets
   - facets_summary:facets_summary
   - gin_toolbar:gin_toolbar

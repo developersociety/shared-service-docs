@@ -10,14 +10,14 @@ dependencies:
 third_party_settings:
   allowed_formats:
     resourcehub_simple: resourcehub_simple
-    plain_text: plain_text
     resourcehub_filtered: '0'
+    plain_text: '0'
 id: node.resource.resourcehub_audience_intro
 field_name: resourcehub_audience_intro
 entity_type: node
 bundle: resource
 label: 'Who is this page for?'
-description: 'Please describe who the content is for. '
+description: 'Describe who this resource content is intended for. '
 required: false
 translatable: false
 default_value: {  }

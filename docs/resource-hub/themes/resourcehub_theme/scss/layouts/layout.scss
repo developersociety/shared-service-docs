@@ -72,8 +72,10 @@ main {
   }
 }
 
-.page-node-type-resourcehub-page .layout-content{
+.page-node-type-resourcehub-page .layout-content,
+.path-user .layout-content{
   grid-column: 1 / span 2;
+
 }
 
 .layout-content {

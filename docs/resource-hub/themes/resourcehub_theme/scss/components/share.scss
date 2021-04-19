@@ -1,0 +1,32 @@
+.shariff {
+  margin-top: $spacing*2;
+  padding-top: $spacing*2;
+  border-top: 1px solid;
+  .orientation-horizontal {
+    .shariff-button {
+      width: 44px;
+      height: 44px;
+      overflow: inherit;
+      a {
+        height: 44px;
+        width: 44px;
+        .fab,
+        .fas {
+          width: 100%;
+          line-height: 44px;
+
+        }
+        &:focus {
+          background-color: $c-gov-yellow;
+          color: $c-body;
+        }
+      }
+      &.mail a {
+        &:hover {
+          background-color: maroon;
+        }
+      }
+    }
+  }
+}
+

@@ -1,2 +1,5 @@
 # Default settings of Resource Hub Default theme.
 font_size: 16
+features:
+  branding_logo: true
+  branding_name: true

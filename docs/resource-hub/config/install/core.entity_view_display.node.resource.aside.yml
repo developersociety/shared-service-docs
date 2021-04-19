@@ -62,6 +62,11 @@ content:
     third_party_settings: {  }
     type: entity_reference_facet_link
     region: content
+  shariff_field:
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   links: true
   resourcehub_audience_intro: true

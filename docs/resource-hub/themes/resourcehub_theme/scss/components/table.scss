@@ -11,16 +11,13 @@ thead th{
 }
 
 thead th,
+tbody th,
 tbody td{
-  padding: 10px 20px 10px 0;
+  padding: $spacing;
+  padding-left: 0;
   border-bottom: 1px solid #b1b4b6;
   text-align: left;
   vertical-align: top;
-}
-
-thead th,
-tbody td {
-  padding-right: 0;
 }
 
 table caption {

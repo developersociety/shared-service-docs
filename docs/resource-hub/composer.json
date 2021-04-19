@@ -29,13 +29,16 @@
     "drupal/pathauto": "^1.6",
     "drupal/redirect": "^1.5",
     "drupal/role_delegation": "^1.1",
+    "drupal/shariff": "^1.7",
     "drupal/search_api": "^1.19",
     "drupal/simple_sitemap": "^3.9",
+    "drupal/simplify": "^1.2",
     "drupal/styleguide": "^2.0@beta",
     "drupal/view_unpublished": "1.0",
     "drupal/entity_reference_facet_link": "^1.0@beta",
     "ckeditor/balloonpanel": "^4.0",
-    "ckeditor/a11ychecker": "^1.0"
+    "ckeditor/a11ychecker": "^1.0",
+    "heiseonline/shariff": "^3.0"
   },
   "require-dev": {
     "drupal/core-dev": "^9.1"

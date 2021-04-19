@@ -5,7 +5,13 @@ dependencies:
     - field.storage.paragraph.resourcehub_image_description
     - paragraphs.paragraphs_type.resourcehub_image
   module:
+    - allowed_formats
     - text
+third_party_settings:
+  allowed_formats:
+    resourcehub_simple: resourcehub_simple
+    resourcehub_filtered: '0'
+    plain_text: '0'
 id: paragraph.resourcehub_image.resourcehub_image_description
 field_name: resourcehub_image_description
 entity_type: paragraph

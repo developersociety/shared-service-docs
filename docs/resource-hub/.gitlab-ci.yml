@@ -22,7 +22,7 @@ drupal_tests:
             cd /var/www
             composer create-project --stability dev --no-install --remove-vcs openresources/resourcehub-project:^1.0 html
             composer --working-dir=html config cache-dir $CI_PROJECT_DIR/.composer-cache-dir
-            composer --working-dir=html config repositories.3 path $CI_PROJECT_DIR
+            composer --working-dir=html config repositories.4 path $CI_PROJECT_DIR
             composer --working-dir=html require --no-update "openresources/resourcehub-distribution:*"
             composer --working-dir=html install
             mkdir -p html/web/sites/simpletest/browser_output && chmod 777 html/web/sites/simpletest

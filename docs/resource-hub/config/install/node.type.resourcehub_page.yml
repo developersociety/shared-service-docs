@@ -10,7 +10,7 @@ third_party_settings:
     parent: 'footer:'
 name: Page
 type: resourcehub_page
-description: ''
+description: "A simple text-based page which can be added to the Footer menu.\t"
 help: ''
 new_revision: true
 preview_mode: 1

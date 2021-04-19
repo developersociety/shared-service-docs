@@ -248,7 +248,7 @@ class ResourceHubProfileTest extends BrowserTestBase {
     $this->assertSession()->statusCodeEquals(Response::HTTP_OK);
     $this->assertSession()->pageTextContains('Search resources');
     $page = $this->getSession()->getPage();
-    $page->fillField('resources-search', 'unreasonablesearchterm');
+    $page->fillField('s', 'unreasonablesearchterm');
     $this->click('[value="Search"]');
     $this->assertSession()->pageTextContains('no results');
   }

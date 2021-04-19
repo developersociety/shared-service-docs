@@ -16,3 +16,11 @@
   - [modules/resourcehub_demo/readme](resource-hub/modules/resourcehub_demo/readme)
   - [contributing](resource-hub/contributing)
   - [readme](resource-hub/readme)
+- resource-hub-wiki
+  - [frontend-theme](resource-hub-wiki/frontend-theme)
+  - [high-level-technical-overview](resource-hub-wiki/high-level-technical-overview)
+  - [where-to-begin-building-your-site-(for-site-admins)](resource-hub-wiki/where-to-begin-building-your-site-(for-site-admins))
+  - [home](resource-hub-wiki/home)
+  - [guide-for-content-editors-&-site-admins](resource-hub-wiki/guide-for-content-editors-&-site-admins)
+  - [development-workflow](resource-hub-wiki/development-workflow)
+  - [alpha-phase-discovery-outputs](resource-hub-wiki/alpha-phase-discovery-outputs)

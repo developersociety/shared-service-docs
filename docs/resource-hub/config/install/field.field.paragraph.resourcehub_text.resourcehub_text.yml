@@ -5,7 +5,13 @@ dependencies:
     - field.storage.paragraph.resourcehub_text
     - paragraphs.paragraphs_type.resourcehub_text
   module:
+    - allowed_formats
     - text
+third_party_settings:
+  allowed_formats:
+    resourcehub_filtered: resourcehub_filtered
+    resourcehub_simple: '0'
+    plain_text: '0'
 id: paragraph.resourcehub_text.resourcehub_text
 field_name: resourcehub_text
 entity_type: paragraph

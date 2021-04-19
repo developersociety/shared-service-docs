@@ -9,7 +9,7 @@ id: paragraph.resourcehub_video.resourcehub_video
 field_name: resourcehub_video
 entity_type: paragraph
 bundle: resourcehub_video
-label: 'Video URL'
+label: 'Video item'
 description: ''
 required: true
 translatable: false

@@ -4375,6 +4375,10 @@ strong {
   background-size: 55px 55px;
 }
 
+a {
+  word-break: normal;
+}
+
 * {
   font-family: "Rubik", sans-serif;
 }
@@ -4550,6 +4554,10 @@ strong {
   background: #057ec9;
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15)), linear-gradient(to right bottom, #0094f0 0%, #0094f0 25%, #007ecc 25%, #007ecc 50%, #0094f0 50%, #0094f0 75%, #0094f0 100%);
   background-size: 55px 55px;
+}
+
+a {
+  word-break: normal;
 }
 
 /* Style the buttons that are used to open and close the accordion panel */
@@ -5448,6 +5456,33 @@ select {
   margin-bottom: 2rem;
 }
 
+.shariff {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid;
+}
+.shariff .orientation-horizontal .shariff-button {
+  width: 44px;
+  height: 44px;
+  overflow: inherit;
+}
+.shariff .orientation-horizontal .shariff-button a {
+  height: 44px;
+  width: 44px;
+}
+.shariff .orientation-horizontal .shariff-button a .fab,
+.shariff .orientation-horizontal .shariff-button a .fas {
+  width: 100%;
+  line-height: 44px;
+}
+.shariff .orientation-horizontal .shariff-button a:focus {
+  background-color: #ffdd00;
+  color: #0b132a;
+}
+.shariff .orientation-horizontal .shariff-button.mail a:hover {
+  background-color: maroon;
+}
+
 table {
   color: #0b0c0c;
   width: 100%;
@@ -5461,16 +5496,13 @@ thead th {
 }
 
 thead th,
+tbody th,
 tbody td {
-  padding: 10px 20px 10px 0;
+  padding: 1rem;
+  padding-left: 0;
   border-bottom: 1px solid #b1b4b6;
   text-align: left;
   vertical-align: top;
-}
-
-thead th,
-tbody td {
-  padding-right: 0;
 }
 
 table caption {
@@ -5765,7 +5797,8 @@ header {
   }
 }
 
-.page-node-type-resourcehub-page .layout-content {
+.page-node-type-resourcehub-page .layout-content,
+.path-user .layout-content {
   grid-column: 1/span 2;
 }
 

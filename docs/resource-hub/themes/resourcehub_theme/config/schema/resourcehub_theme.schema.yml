@@ -6,3 +6,12 @@ resourcehub_theme.settings:
     font_size:
       type: integer
       label: Font size
+    features:
+      type: mapping
+      mapping:
+        branding_logo:
+          type: boolean
+          label: Display branding logo
+        branding_name:
+          type: boolean
+          label: Display branding name

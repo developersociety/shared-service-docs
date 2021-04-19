@@ -12,7 +12,7 @@ field_name: resourcehub_link_block
 entity_type: node
 bundle: resourcehub_landing_page
 label: 'Link block'
-description: ''
+description: 'A link block allows you to add one or multiple blocks of links grouped by a title. '
 required: false
 translatable: false
 default_value: {  }
@@ -24,6 +24,12 @@ settings:
     target_bundles:
       resourcehub_link_block: resourcehub_link_block
     target_bundles_drag_drop:
+      external_link:
+        weight: 9
+        enabled: false
+      internal_link:
+        weight: 10
+        enabled: false
       resourcehub_audio:
         weight: 7
         enabled: false

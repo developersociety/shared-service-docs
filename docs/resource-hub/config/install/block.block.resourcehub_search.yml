@@ -3,6 +3,7 @@ status: true
 dependencies:
   module:
     - resourcehub
+    - system
   theme:
     - resourcehub_theme
 id: resourcehub_search
@@ -16,4 +17,8 @@ settings:
   label: Search
   provider: resourcehub
   label_display: '0'
-visibility: {  }
+visibility:
+  request_path:
+    id: request_path
+    pages: "/resources\r\n<front>"
+    negate: true
