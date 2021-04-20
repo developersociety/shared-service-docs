@@ -4,5 +4,5 @@ status: true
 dependencies: {  }
 name: Format
 vid: resourcehub_format
-description: ''
+description: 'The format of the resource (eg. pdf, video, audio, webpage, blended content).'
 weight: 0

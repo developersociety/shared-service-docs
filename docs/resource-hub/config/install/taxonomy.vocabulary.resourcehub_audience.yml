@@ -3,5 +3,5 @@ status: true
 dependencies: {  }
 name: Audience
 vid: resourcehub_audience
-description: ''
+description: 'The audiences for the resources.'
 weight: 0

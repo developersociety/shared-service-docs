@@ -3,5 +3,5 @@ status: true
 dependencies: {  }
 name: Topics
 vid: resourcehub_topics
-description: ''
+description: 'The broad topics or themes of the resources.'
 weight: 0

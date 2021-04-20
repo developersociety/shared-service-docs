@@ -3,5 +3,5 @@ status: true
 dependencies: {  }
 name: 'Resource type'
 vid: resourcehub_resource_type
-description: ''
+description: 'The type of resource (eg. legal advice, guidance, templates).'
 weight: 0

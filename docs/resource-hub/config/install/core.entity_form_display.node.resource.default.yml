@@ -15,10 +15,60 @@ dependencies:
     - node.type.resource
   module:
     - allowed_formats
+    - field_group
     - link
     - paragraphs
     - path
     - text
+third_party_settings:
+  field_group:
+    group_tags:
+      children:
+        - group_asdasdas
+        - group_releted_content_links
+      parent_name: ''
+      weight: 13
+      format_type: tabs
+      region: content
+      format_settings:
+        direction: vertical
+        id: ''
+        classes: ''
+      label: Tabs
+    group_asdasdas:
+      children:
+        - resourcehub_resource_type
+        - resourcehub_audience
+        - resourcehub_resource_format
+        - resourcehub_topics
+      parent_name: group_tags
+      weight: 20
+      format_type: tab
+      region: content
+      format_settings:
+        description: "Tag your content with terms below to create relationships with other content. Users will also be able to find the content via the facets on the Resources page.\r\n<a href =\"/admin/structure/taxonomy\" target=\"_blank\">Manage your terms (opens in a new window).</a>"
+        formatter: open
+        required_fields: true
+        id: ''
+        classes: ''
+      label: 'Tags / Taxonomy'
+    group_releted_content_links:
+      children:
+        - resourcehub_related_resources
+        - resourcehub_external_links
+      parent_name: group_tags
+      weight: 21
+      format_type: tab
+      region: content
+      format_settings:
+        description: ''
+        formatter: closed
+        required_fields: true
+        id: ''
+        classes: ''
+      label: 'Related content / links'
+_core:
+  default_config_hash: 7RxLbxU1vGIaB9dt83K-fOsUVEokHtIrZ6tiGf-Qldg
 id: node.resource.default
 targetEntityType: node
 bundle: resource
@@ -54,7 +104,7 @@ content:
     region: content
     third_party_settings: {  }
   resourcehub_audience:
-    weight: 14
+    weight: 22
     settings: {  }
     third_party_settings: {  }
     type: options_buttons
@@ -127,13 +177,13 @@ content:
     type: entity_reference_autocomplete
     region: content
   resourcehub_resource_format:
-    weight: 15
+    weight: 23
     settings: {  }
     third_party_settings: {  }
     type: options_buttons
     region: content
   resourcehub_resource_type:
-    weight: 13
+    weight: 21
     settings: {  }
     third_party_settings: {  }
     type: options_buttons
@@ -150,14 +200,10 @@ content:
         hide_help: '1'
         hide_guidelines: '1'
   resourcehub_topics:
-    weight: 16
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
+    weight: 24
+    settings: {  }
     third_party_settings: {  }
-    type: entity_reference_autocomplete
+    type: options_buttons
     region: content
   status:
     type: boolean_checkbox
@@ -192,7 +238,7 @@ content:
     region: content
     third_party_settings: {  }
   url_redirects:
-    weight: 17
+    weight: 15
     region: content
     settings: {  }
     third_party_settings: {  }
