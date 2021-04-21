@@ -33,12 +33,12 @@
   ]
 %}
 <div{{ attributes.addClass(classes) }}>
-  <toggle-section open="false">
+  <div class="toggle-section" aria-hidden="false">
     {{ title_prefix }}
       <h3{{ title_attributes }}>{{ label }}</h3>
     {{ title_suffix }}
     {% block content %}
       {{ content }}
     {% endblock %}
-    </toggle-section>
+    </div>
 </div>

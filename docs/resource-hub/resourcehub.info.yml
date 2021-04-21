@@ -61,6 +61,9 @@ install:
   - facets_summary:facets_summary
   - gin_toolbar:gin_toolbar
   - entity_reference_facet_link:entity_reference_facet_link
+  - metatag:metatag
+  - metatag_open_graph:metatag_open_graph
+  - metatag_twitter_cards:metatag_twitter_cards
 
 themes:
   - gin

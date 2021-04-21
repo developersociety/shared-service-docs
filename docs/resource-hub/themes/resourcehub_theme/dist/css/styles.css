@@ -4296,12 +4296,12 @@ p {
   }
 }
 
-.small, .node--view-mode-search-result, .block-resourcehub-back-to-site a, .region-footer nav ul li, .field--name-resourcehub-caption, .resourcehub-link--primary, .breadcrumb li, .block-resourcehub-legal > * {
+.small, .node--view-mode-search-result, .block-resourcehub-back-to-site a, .region-footer nav ul li, .field--name-resourcehub-caption, .facet-control, .resourcehub-link--primary, .breadcrumb li, .block-resourcehub-legal > * {
   font-size: 0.8125rem;
   line-height: 140%;
 }
 @media (min-width: 767px) {
-  .small, .node--view-mode-search-result, .block-resourcehub-back-to-site a, .region-footer nav ul li, .field--name-resourcehub-caption, .resourcehub-link--primary, .breadcrumb li, .block-resourcehub-legal > * {
+  .small, .node--view-mode-search-result, .block-resourcehub-back-to-site a, .region-footer nav ul li, .field--name-resourcehub-caption, .facet-control, .resourcehub-link--primary, .breadcrumb li, .block-resourcehub-legal > * {
     font-size: 0.9375rem;
   }
 }
@@ -4376,7 +4376,7 @@ strong {
 }
 
 a {
-  word-break: normal;
+  word-break: break-all;
 }
 
 * {
@@ -4477,12 +4477,12 @@ p {
   }
 }
 
-.small, .node--view-mode-search-result, .block-resourcehub-back-to-site a, .region-footer nav ul li, .field--name-resourcehub-caption, .resourcehub-link--primary, .breadcrumb li, .block-resourcehub-legal > * {
+.small, .node--view-mode-search-result, .block-resourcehub-back-to-site a, .region-footer nav ul li, .field--name-resourcehub-caption, .facet-control, .resourcehub-link--primary, .breadcrumb li, .block-resourcehub-legal > * {
   font-size: 0.8125rem;
   line-height: 140%;
 }
 @media (min-width: 767px) {
-  .small, .node--view-mode-search-result, .block-resourcehub-back-to-site a, .region-footer nav ul li, .field--name-resourcehub-caption, .resourcehub-link--primary, .breadcrumb li, .block-resourcehub-legal > * {
+  .small, .node--view-mode-search-result, .block-resourcehub-back-to-site a, .region-footer nav ul li, .field--name-resourcehub-caption, .facet-control, .resourcehub-link--primary, .breadcrumb li, .block-resourcehub-legal > * {
     font-size: 0.9375rem;
   }
 }
@@ -4557,48 +4557,7 @@ strong {
 }
 
 a {
-  word-break: normal;
-}
-
-/* Style the buttons that are used to open and close the accordion panel */
-toggle-section button {
-  background: #000;
-  color: #fff;
-  border: 0;
-  font-size: 0.85rem;
-  border-radius: 0.25rem;
-}
-toggle-section h2 button, toggle-section .error-summary__title button {
-  font-weight: 500;
-}
-
-/*
-Custom elements are inline by default
-*/
-toggle-section {
-  display: block;
-}
-
-/*
-Only applies if script runs and
-`role="region"` is added
-*/
-toggle-section[role=region] {
-  border-width: 2px 0;
-  border-style: solid;
-  border-bottom: 0;
-}
-
-toggle-section[role=region] + toggle-section {
-  border-top: 0;
-}
-
-.accordion .controls {
-  list-style: none;
-  padding: 0;
-}
-.accordion .controls li {
-  display: inline;
+  word-break: break-all;
 }
 
 @media (min-width: 767px) {
@@ -4826,6 +4785,44 @@ details .field__item > :last-child {
 
 .layout-sidebar-first {
   margin-bottom: 2rem;
+}
+
+.block-facets-summary button {
+  display: none;
+}
+.block-facets-summary button:first-of-type {
+  display: block;
+}
+
+.region-sidebar-first > .facet-wrapper {
+  position: absolute;
+  background-color: white;
+  padding: 1rem;
+  right: 5%;
+  top: initial;
+  margin-top: 2.5rem;
+  border: 1px solid black;
+}
+@media (min-width: 767px) {
+  .region-sidebar-first > .facet-wrapper {
+    position: initial;
+    background-color: initial;
+    padding: 0;
+    border: 0px;
+  }
+  .region-sidebar-first > .facet-wrapper .block-facets {
+    width: 100%;
+  }
+}
+
+.facet-control {
+  float: right;
+  padding: 0.5rem;
+}
+@media (min-width: 767px) {
+  .facet-control {
+    float: unset;
+  }
 }
 
 img {
@@ -5618,9 +5615,17 @@ nav.tabs ul.tabs {
   margin-top: 4rem;
 }
 
-article footer.node__meta {
-  display: flex;
-  align-content: space-between;
+@media (min-width: 576px) {
+  article footer.node__meta {
+    display: flex;
+    align-content: space-between;
+  }
+  article footer.node__meta > span {
+    width: calc(33% - 16px);
+  }
+  article footer.node__meta > span + span {
+    margin-left: 1.5rem;
+  }
 }
 @media (min-width: 767px) {
   article footer.node__meta > span {

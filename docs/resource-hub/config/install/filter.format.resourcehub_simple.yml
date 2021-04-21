@@ -37,6 +37,12 @@ filters:
     weight: 0
     settings:
       title: true
+  filter_autop:
+    id: filter_autop
+    provider: filter
+    status: true
+    weight: 0
+    settings: {  }
   media_embed:
     id: media_embed
     provider: media

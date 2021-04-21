@@ -11,8 +11,8 @@ id: node.resourcehub_landing_page.resourcehub_link_block
 field_name: resourcehub_link_block
 entity_type: node
 bundle: resourcehub_landing_page
-label: 'Link block'
-description: 'A link block allows you to add one or multiple blocks of links grouped by a title. '
+label: 'Link blocks'
+description: 'Link blocks allows you to add one or more blocks of links grouped by a title. '
 required: false
 translatable: false
 default_value: {  }

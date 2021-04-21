@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: node__resourcehub_landing_page
+label: 'Content: Landing page'
+tags:
+  og_image: '[node:resourcehub_image:entity:field_media_image]'
+  twitter_cards_image: '[node:resourcehub_image:entity:field_media_image]'

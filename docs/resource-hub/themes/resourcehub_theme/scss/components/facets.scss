@@ -12,3 +12,42 @@
 .layout-sidebar-first {
   margin-bottom: $spacing*2;
 }
+
+
+.block-facets-summary {
+  button {
+    &:first-of-type {
+      display: block;
+    }
+    display: none;
+  }
+}
+
+.region-sidebar-first > .facet-wrapper{
+  position: absolute;
+  background-color: white;
+  padding: $spacing;
+  right: 5%;
+  top: initial;
+  margin-top: $spacing*2.5;
+  border: 1px solid black;
+  @include screen('md') {
+    position: initial;
+    background-color: initial;
+    padding: 0;
+    border: 0px;
+    // margin-top: 0;
+    .block-facets {
+      width: 100%;
+    }
+  }
+}
+
+.facet-control {
+  float: right;
+  padding: $spacing/2;
+  @extend .small;
+  @include screen('md') {
+    float: unset;
+  }
+}

@@ -1,6 +1,6 @@
 resourcehub.settings:
-  title: Resource Hub
+  title: Customisation
   route_name: resourcehub.settings
   parent: system.admin
-  description: Configure your Resource Hub installation
+  description: Customise your Resource Hub installation
   weight: -10
