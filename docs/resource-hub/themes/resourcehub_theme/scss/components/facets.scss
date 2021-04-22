@@ -31,6 +31,7 @@
   top: initial;
   margin-top: $spacing*2.5;
   border: 1px solid black;
+  z-index: 4;
   @include screen('md') {
     position: initial;
     background-color: initial;

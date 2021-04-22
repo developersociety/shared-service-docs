@@ -3,96 +3,75 @@
  * Resource Hub Default behaviors.
  */
 
-(function ($, Drupal) {
+(function ( Drupal) {
 
   'use strict';
 
   /**
-   * Behavior description.
+   * Behaviour to provide a toggle to show\hide Facet blocks.
    */
-  Drupal.behaviors.resourcehubTheme = {
-    attach: function (context, settings) {
-
-      console.log('It works!');
-
-    }
-  };
-  Drupal.behaviors.accordiontoggle = {
+  Drupal.behaviors.facetBlockToggle = {
     attach: function attach(context, settings) {
       if (context !== document) {
         return;
       }
-      // Create the button
+
+      // Create the toggle all button
       var button = document.createElement("button");
       button.innerHTML = "Show all filters";
       button.setAttribute("aria-expanded", "false");
       button.classList.add('facet-control');
       button.setAttribute('aria-control', "#facet-wrapper");
-      // Append after the summary block
+
       var summary = document.getElementsByClassName("block-facets-summary-blockresources-summary")[0];
+      summary.append(button);
 
+      var sideBar = document.getElementsByClassName("region-sidebar-first")[0];
 
-      // Create a wrapper around the facets
-      var sidebar = document.querySelector('.region-sidebar-first');
-      // now let's grab the children of that node and strip the first two:
-      var nodes = [...sidebar.children].splice(2);
-      // now let's create the wrapper div
-      var wrapper = document.createElement('div');
-      wrapper.classList.add('facet-wrapper');
-      wrapper.id ="#facet-wrapper";
-      // and append all children:
-      nodes.map(node => wrapper.appendChild(node));
-      // and add the wrapper to the container:
-      sidebar.appendChild(wrapper);
+      // Wrap the facet blocks in a div so we can easily toggle
+      // the visibility of all facets.
+      var facetBlocks = sideBar.getElementsByClassName("block-facets");
+      var facetsWrapper = document.createElement("div");
+      facetsWrapper.classList.add("facet-wrapper");
+      facetsWrapper.id = "#facet-wrapper";
+      while (facetBlocks.length > 0) {
+        facetsWrapper.appendChild(facetBlocks[0]);
+      }
+      sideBar.appendChild(facetsWrapper);
 
-      // Set the attributes on the section, depending on the media query
-      var facets = document.getElementsByClassName("facet-wrapper");
-      var i;
+      function toggleFilterDisplay(open) {
+        facetsWrapper.style.display = open ? "block" : "none";
+        facetsWrapper.setAttribute("aria-hidden", open ? "false" : "true");
+      }
+
+      function toggleButtonState(open) {
+        button.innerHTML = open ? "Hide all filters" : "Show all filters";
+        button.setAttribute("aria-expanded", open ? "true" : "false");
+      }
+
+      function toggleButtonDisplay(visible) {
+        button.style.display = visible ? "block" : "none";
+      }
+
       function setDefaultsbyScreensize(x) {
-        if (x.matches) { // If media query matches
-          for (i = 0; i < facets.length; i++) {
-            facets[i].style.display = "none";
-            facets[i].setAttribute("aria-hidden", "true");
-          }
-          // Add the button only for smaller screens.
-          summary.append(button);
-          button.innerHTML = "Show all filters";
-          button.setAttribute("aria-expanded", "false");
-
-        } else {
-          for (i = 0; i < facets.length; i++) {
-            facets[i].style.display = "block";
-            facets[i].setAttribute("aria-hidden", "false");
-          }
-          button.innerHTML = "Hide all filters";
-          button.setAttribute("aria-expanded", "true");
-        }
+        var isMobile = x.matches;
+        toggleFilterDisplay(!isMobile);
+        toggleButtonState(!isMobile);
+        toggleButtonDisplay(isMobile)
       }
 
       var x = window.matchMedia("(max-width: 767px)")
       setDefaultsbyScreensize(x) // Call listener function at run time
       x.addListener(setDefaultsbyScreensize) // Attach listener function on state changes
 
-
       // Add event handler
       button.addEventListener ("click", function() {
         // Toggle the attributes depending on the state of the button
-        if (button.attributes['aria-expanded'].value == "false") {
-          button.innerHTML = "Hide all filters";
-          button.setAttribute("aria-expanded", "true");
-          for (i = 0; i < facets.length; i++) {
-            facets[i].style.display = "block";
-            facets[i].setAttribute("aria-hidden", "false");
-          }
-        } else {
-          button.setAttribute("aria-expanded", "false");
-          button.innerHTML = "Show all filters";
-          for (i = 0; i < facets.length; i++) {
-            facets[i].style.display = "none";
-            facets[i].setAttribute("aria-hidden", "true");
-          }
-        }
+        var isOpen = button.attributes['aria-expanded'].value === "true";
+        toggleFilterDisplay(!isOpen);
+        toggleButtonState(!isOpen);
       });
+
     }
   };
-}(jQuery, Drupal));
+}(Drupal));

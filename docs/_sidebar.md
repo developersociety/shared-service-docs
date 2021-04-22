@@ -24,3 +24,4 @@
   - [guide-for-content-editors-&-site-admins](resource-hub-wiki/guide-for-content-editors-&-site-admins)
   - [development-workflow](resource-hub-wiki/development-workflow)
   - [alpha-phase-discovery-outputs](resource-hub-wiki/alpha-phase-discovery-outputs)
+  - [hosting-and-technical-requirements](resource-hub-wiki/hosting-and-technical-requirements)

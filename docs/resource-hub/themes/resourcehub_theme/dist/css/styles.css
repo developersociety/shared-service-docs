@@ -4802,6 +4802,7 @@ details .field__item > :last-child {
   top: initial;
   margin-top: 2.5rem;
   border: 1px solid black;
+  z-index: 4;
 }
 @media (min-width: 767px) {
   .region-sidebar-first > .facet-wrapper {
