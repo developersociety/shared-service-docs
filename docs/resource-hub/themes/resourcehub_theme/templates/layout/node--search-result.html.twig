@@ -83,34 +83,32 @@
 %}
 {{ attach_library('classy/node') }}
 <article{{ attributes.addClass(classes) }}>
-
-  {{ title_prefix }}
-    <h2{{ title_attributes }}>
-      <a href="{{ url }}" rel="bookmark">{{ label }}</a>
-    </h2>
-  {{ title_suffix }}
-
-  <div{{ content_attributes.addClass('node__content') }}>
-    {{ content | without ('resourcehub_audience', 'resourcehub_resource_format', 'resourcehub_resource_type' , 'resourcehub_topics')  }}
+  {{ content.resourcehub_image }}
+  <div class="summary {% if content.resourcehub_image.0 %}with-image {% endif %}">
+    {{ title_prefix }}
+      <h2{{ title_attributes }}>
+        <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+      </h2>
+    {{ title_suffix }}
+    {{ content | without ('resourcehub_image', 'resourcehub_audience', 'resourcehub_resource_format', 'resourcehub_resource_type' , 'resourcehub_topics')  }}
     <a class="resourcehub-link--primary" href="{{ url }}" rel="bookmark" aria-label="View now: {{ label.0 }}">{{ 'View now' | t }}</a>
-    <footer class="node__meta">
-      <span>
-      {% if node.bundle == 'resource' %}
-        <div class="field field--label-above"><div class="field__label">{{ "Created date " | t }}</div>{{ node.created.value|date("jS F Y") }}</div>
-          {% if node.created.value != node.changed.value %}
-          <div class="field field--label-above"><div class="field__label">{{ "Updated date " | t }}</div>{{ node.changed.value|date("jS F Y") }}</div>
-          {% endif %}
-      {% endif %}
-      </span>
-      <span>
-        {{ content.resourcehub_audience }}
-        {{ content.resourcehub_topics }}
-      </span>
-      <span>
-      {{ content.resourcehub_resource_format }}
-      {{ content.resourcehub_resource_type }}
-      </span>
-    <footer>
   </div>
-
+  <footer class="node__meta">
+    <span>
+    {% if node.bundle == 'resource' %}
+      <div class="field field--label-above"><div class="field__label">{{ "Created date " | t }}</div>{{ node.created.value|date("jS F Y") }}</div>
+        {% if node.created.value != node.changed.value %}
+        <div class="field field--label-above"><div class="field__label">{{ "Updated date " | t }}</div>{{ node.changed.value|date("jS F Y") }}</div>
+        {% endif %}
+    {% endif %}
+    </span>
+    <span>
+      {{ content.resourcehub_audience }}
+      {{ content.resourcehub_topics }}
+    </span>
+    <span>
+    {{ content.resourcehub_resource_format }}
+    {{ content.resourcehub_resource_type }}
+    </span>
+  <footer>
 </article>

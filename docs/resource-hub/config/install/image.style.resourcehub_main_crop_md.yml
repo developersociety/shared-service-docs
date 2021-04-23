@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - crop.type.resourcehub_mainimage_arbitrary
+  module:
+    - crop
+name: resourcehub_main_crop_md
+label: 'Main crop md'
+effects:
+  20dc13bb-73fa-4b35-b4a6-552ebf3266d5:
+    uuid: 20dc13bb-73fa-4b35-b4a6-552ebf3266d5
+    id: crop_crop
+    weight: 1
+    data:
+      crop_type: resourcehub_mainimage_arbitrary
+  a0e265c9-c158-45f3-8e4a-2489263d1255:
+    uuid: a0e265c9-c158-45f3-8e4a-2489263d1255
+    id: image_scale
+    weight: 2
+    data:
+      width: 645
+      height: null
+      upscale: false

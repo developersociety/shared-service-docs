@@ -1,0 +1,27 @@
+_meta:
+  version: '1.0'
+  entity_type: paragraph
+  uuid: b031d68a-f052-4eaf-87e3-469bfa17269c
+  bundle: external_link
+  default_langcode: en
+default:
+  status:
+    -
+      value: true
+  created:
+    -
+      value: 1618222068
+  behavior_settings:
+    -
+      value: {  }
+  revision_translation_affected:
+    -
+      value: true
+  resourcehub_external_link:
+    -
+      uri: 'https://www.darkpatterns.org/'
+      title: 'Dark Patterns'
+      options: {  }
+  resourcehub_link_summary:
+    -
+      value: 'Dark patterns are anti-UX - this site shows some of the tricks used in websites and apps that make you do things that you didn''t mean to.'

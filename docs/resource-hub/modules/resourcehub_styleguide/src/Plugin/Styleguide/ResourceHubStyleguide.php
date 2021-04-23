@@ -73,16 +73,19 @@ class ResourceHubStyleguide extends StyleguidePluginBase {
   public function items() {
     $paragraphs = [
       'Video' => '62beed54-8646-466b-b2ce-724e9b3c83d0',
-      'Text' => '60398934-0cd4-4cac-bdce-abfe42ea06ce',
+      'Text' => '40398934-0cd4-4cac-bdce-abfe42ea06ce',
       'Image' => 'e8af6601-746b-4a47-9a75-90d16adf7021',
       'Document' => 'f0d35e81-7e66-4aef-a38b-2944685c5b99',
+      'Audio' => '6da67205-5472-44d4-8bae-52fe7ba4917e',
+      'External link' => 'b031d68a-f052-4eaf-87e3-469bfa17269c',
+      'Link block' => 's5d2c80e-3af0-4dc2-a05c-209e7601680f',
     ];
     $viewBuilder = $this->entityTypeManager->getViewBuilder('paragraph');
     $storage = $this->entityTypeManager->getStorage('paragraph');
     foreach ($paragraphs as $paragraphType => $paragraphUuid) {
       $paragraph = $storage->loadByProperties(['uuid' => $paragraphUuid]);
-      if (!empty($paragraphType)) {
-        $items[strtolower("resourcehub_$paragraphType}")] = [
+      if (!empty($paragraph)) {
+        $items[strtolower("resourcehub_$paragraphType")] = [
           'title' => $this->t('Resource Hub @label', ['@label' => $paragraphType]),
           'content' => $viewBuilder->view(reset($paragraph)),
           'group' => $this->t('Resource Hub'),

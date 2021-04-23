@@ -1,21 +1,50 @@
 /* ---------- Color Module Styles ----------- */
+header[role=banner],
+footer[role=contentinfo] {
+  background-color: #ebeae9;
+  color: #0b132c;
+}
+
 header[role=banner] {
-  border-bottom: 4px solid #efefef;
+  border-bottom: 6px solid #0b132a;
 }
 
 footer[role=contentinfo] {
-  border-top: 4px solid #efefef;
+  border-top: 6px solid #0b132a;
+}
+
+.views-row {
+  background-color: #0b132a;
+}
+.views-row:nth-of-type(2n) {
+  background-color: #0b132b;
+}
+.views-row:nth-of-type(2n) article.node--view-mode-search-result {
+  border-left: 2px solid #0b132b;
 }
 
 article.node--view-mode-search-result {
-  border-left: 4px solid #efefef;
+  border-left: 2px solid #0b132a;
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.9);
 }
 
-/* a {
-  border-bottom: 1px solid #efefef;
-  text-decoration: none;
-} */
-/* .node--view-mode-full .field--name-resourcehub-audience-intro,
-.node--view-mode-full .field--name-resourcehub-summary{
-  border-left: 4px solid  #efefef;
-} */
+.page-node-type-resource .field--name-resourcehub-audience-intro,
+.page-node-type-resource .field--name-resourcehub-summary {
+  background-color: transparent;
+  background: rgba(255, 255, 255, 0.9);
+  position: relative;
+  transform-style: preserve-3d;
+}
+.page-node-type-resource .field--name-resourcehub-audience-intro:before,
+.page-node-type-resource .field--name-resourcehub-summary:before {
+  background: #0b132a;
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  transform: translateZ(-1px);
+}

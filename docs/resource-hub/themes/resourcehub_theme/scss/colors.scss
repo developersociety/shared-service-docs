@@ -1,23 +1,56 @@
 /* ---------- Color Module Styles ----------- */
+$header-text: #0b132c;
+$header-background: #ebeae9;
+$accent: #0b132a;
+$accent2: #0b132b;
 
-header[role="banner"] {
-  border-bottom: 4px solid #efefef;
+header[role="banner"],
+footer[role="contentinfo"] {
+  // border-color: $accent;
+  background-color: $header-background;
+  color: $header-text;
+}
+header[role="banner"]{
+  border-bottom: 6px solid $accent;
+}
+footer[role="contentinfo"] {
+  border-top: 6px solid $accent;
 }
 
-footer[role="contentinfo"] {
-  border-top: 4px solid #efefef;
+.views-row {
+  background-color: $accent;
+  &:nth-of-type(2n){
+    background-color: $accent2;
+    article.node--view-mode-search-result {
+      border-left: 2px solid $accent2;
+    }
+  }
 }
 
 article.node--view-mode-search-result {
-  border-left: 4px solid  #efefef;
+  border-left: 2px solid $accent;
+  position: relative;
+  z-index: 1;
+  background: rgb(255,255,255,0.9);
 }
 
-/* a {
-  border-bottom: 1px solid #efefef;
-  text-decoration: none;
-} */
+.page-node-type-resource {
+  .field--name-resourcehub-audience-intro,
+  .field--name-resourcehub-summary {
+    background-color: transparent;
+    background: rgb(255,255,255,0.9);
+    position: relative;
+    transform-style: preserve-3d;
+    &:before {
+      background: $accent;
+      content: "";
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      transform: translateZ(-1px)
+    }
+  }
+}
 
-/* .node--view-mode-full .field--name-resourcehub-audience-intro,
-.node--view-mode-full .field--name-resourcehub-summary{
-  border-left: 4px solid  #efefef;
-} */

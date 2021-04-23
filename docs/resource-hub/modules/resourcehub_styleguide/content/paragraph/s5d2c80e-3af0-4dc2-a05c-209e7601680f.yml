@@ -1,0 +1,75 @@
+_meta:
+  version: '1.0'
+  entity_type: paragraph
+  uuid: s5d2c80e-3af0-4dc2-a05c-209e7601680f
+  bundle: resourcehub_link_block
+  default_langcode: en
+default:
+  status:
+    -
+      value: true
+  created:
+    -
+      value: 1617890645
+  behavior_settings:
+    -
+      value: {  }
+  revision_translation_affected:
+    -
+      value: true
+  resourcehub_links:
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: cf68d6e0-a4b0-4030-b30c-1538ea565f5a
+          bundle: external_link
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1617890821
+          behavior_settings:
+            -
+              value: {  }
+          resourcehub_external_link:
+            -
+              uri: 'https://usability.yale.edu/web-accessibility/articles/wcag2-checklist/content-editors'
+              title: 'WCAG 2 A and AA Checklist (Yale University)'
+              options: {  }
+          resourcehub_link_summary:
+            -
+              value: 'A nice little checklist from Yale University'
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 16c0723f-edef-41a9-815f-d2a6f8c76213
+          bundle: external_link
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1617890858
+          behavior_settings:
+            -
+              value: {  }
+          resourcehub_external_link:
+            -
+              uri: 'https://www.w3.org/WAI/roles/writers/'
+              title: 'Resources for Content Writers (W3C)'
+              options: {  }
+          resourcehub_link_summary:
+            -
+              value: 'This page provides a starting point for information that is particularly relevant to content writers.'
+  resourcehub_title:
+    -
+      value: 'How to write accessible content'

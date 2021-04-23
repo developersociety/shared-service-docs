@@ -41,9 +41,11 @@ install:
   - allowed_formats:allowed_formats
   - ckeditor_a11ychecker:ckeditor_a11ychecker
   - ckeditor_balloonpanel:ckeditor_balloonpanel
+  - crop:crop
   - entity_reference_revisions:entity_reference_revisions
   - field_group:field_group
   - google_tag:google_tag
+  - image_widget_crop:image_widget_crop
   - linkit:linkit
   - oembed_providers:oembed_providers
   - masquerade:masquerade
@@ -61,6 +63,7 @@ install:
   - facets_summary:facets_summary
   - gin_toolbar:gin_toolbar
   - entity_reference_facet_link:entity_reference_facet_link
+  - menu_admin_per_menu:menu_admin_per_menu
   - metatag:metatag
   - metatag_open_graph:metatag_open_graph
   - metatag_twitter_cards:metatag_twitter_cards

@@ -4,3 +4,8 @@ resourcehub.settings:
   parent: system.admin
   description: Customise your Resource Hub installation
   weight: -10
+resourcehub.login:
+  title: 'Login'
+  description: 'Log in to manage the site'
+  menu_name: footer
+  url: internal:/user

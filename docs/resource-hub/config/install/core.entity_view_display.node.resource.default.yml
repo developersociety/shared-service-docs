@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.resource.resourcehub_audience_intro
     - field.field.node.resource.resourcehub_content
     - field.field.node.resource.resourcehub_external_links
+    - field.field.node.resource.resourcehub_image
     - field.field.node.resource.resourcehub_primary_resource
     - field.field.node.resource.resourcehub_related_resources
     - field.field.node.resource.resourcehub_resource_format
@@ -32,14 +33,14 @@ content:
     region: content
   resourcehub_audience_intro:
     type: text_default
-    weight: 0
+    weight: 1
     region: content
     label: above
     settings: {  }
     third_party_settings: {  }
   resourcehub_content:
     type: entity_reference_revisions_entity_view
-    weight: 3
+    weight: 4
     region: content
     label: hidden
     settings:
@@ -47,7 +48,7 @@ content:
       link: ''
     third_party_settings: {  }
   resourcehub_external_links:
-    weight: 5
+    weight: 6
     label: above
     settings:
       trim_length: 80
@@ -58,9 +59,18 @@ content:
     third_party_settings: {  }
     type: link
     region: content
+  resourcehub_image:
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
   resourcehub_primary_resource:
     type: entity_reference_revisions_entity_view
-    weight: 2
+    weight: 3
     label: hidden
     settings:
       view_mode: default
@@ -68,7 +78,7 @@ content:
     third_party_settings: {  }
     region: content
   resourcehub_related_resources:
-    weight: 4
+    weight: 5
     label: above
     settings:
       link: true
@@ -77,7 +87,7 @@ content:
     region: content
   resourcehub_summary:
     type: text_default
-    weight: 1
+    weight: 2
     region: content
     label: above
     settings: {  }
@@ -89,3 +99,4 @@ hidden:
   resourcehub_resource_type: true
   resourcehub_topics: true
   search_api_excerpt: true
+  shariff_field: true

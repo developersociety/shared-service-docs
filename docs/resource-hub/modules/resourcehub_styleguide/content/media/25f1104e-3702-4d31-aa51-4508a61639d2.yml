@@ -1,0 +1,30 @@
+_meta:
+  version: '1.0'
+  entity_type: media
+  uuid: 25f1104e-3702-4d31-aa51-4508a61639d2
+  bundle: remote_audio
+  default_langcode: en
+default:
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  name:
+    -
+      value: 'E084 – Interview with Jessica Ivins – Part 1'
+  created:
+    -
+      value: 1618221004
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 0
+  field_media_oembed_audio:
+    -
+      value: 'https://open.spotify.com/episode/6DzjImnPWYc7lM5Cy1szbI?si=sNx8Dyv1ScWH_2qLn1eoTw'
