@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: resourcehub_og_facebook
+label: 'Open graph facebook'
+effects:
+  11f35589-d0b4-46c9-b189-50206ef1e010:
+    uuid: 11f35589-d0b4-46c9-b189-50206ef1e010
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 1200
+      height: 630
+      anchor: center-center

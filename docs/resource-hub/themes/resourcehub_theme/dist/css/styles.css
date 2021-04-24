@@ -4685,7 +4685,7 @@ input[type=submit] {
   padding: 0.25rem 1rem;
   border-radius: 1rem;
   display: inline-block;
-  margin-bottom: 1rem;
+  margin-bottom: 0.25rem;
   font-weight: 500;
 }
 .resourcehub-link--primary:hover {
@@ -4777,10 +4777,12 @@ details .field__item > :last-child {
   margin-bottom: 0;
 }
 
-.page-node-type-resource .paragraph--type--external-link {
-  padding-block: 0.5rem;
-  padding-left: 1rem;
-  border-left: 4px solid #EBEAE9;
+.ext svg.ext {
+  width: 1rem;
+  height: 1rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.125rem;
+  padding-right: 0;
 }
 
 .block-facets-summary ul {
@@ -5667,6 +5669,40 @@ nav.tabs ul.tabs {
          column-gap: 1rem;
   }
 }
+.front.node .field--name-resourcehub-link-block > .field__item {
+  background-color: #EFEFEF;
+  padding-left: 8px;
+  overflow: hidden;
+}
+.front.node .paragraph--type--resourcehub-link-block {
+  background-color: #ffffff;
+  padding: 2rem;
+  height: 100%;
+}
+.front.node .paragraph--type--resourcehub-link-block .field--name-resourcehub-links > .field__item {
+  display: flex;
+}
+.front.node .paragraph--type--resourcehub-link-block .field--name-resourcehub-links > .field__item:before {
+  font-size: 50px;
+  line-height: 38px;
+  content: "•";
+  padding: 0.5rem;
+}
+.front.node .views-exposed-form form {
+  margin-inline: auto;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.front.node .field--name-resourcehub-summary p {
+  font-size: 1.3rem;
+  line-height: 1.6;
+}
+
+.path-frontpage {
+  background-color: #EFEFEF;
+}
+
 .page-node-type-resourcehub-landing-page .region-title,
 .node--type-resourcehub-landing-page.node--view-mode-full > .node__content .region-title {
   grid-column: 1/span 3;
@@ -5713,16 +5749,13 @@ nav.tabs ul.tabs {
   @supports (display: grid) {
     .field--name-resourcehub-link-block {
       display: grid;
-      grid-template-columns: repeat(2, 50%);
-      grid-gap: 0 48px;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 48px;
     }
     .field--name-resourcehub-link-block .field__item {
       width: 100%;
     }
   }
-}
-.field--name-resourcehub-link-block > .field__item {
-  margin-bottom: 3rem;
 }
 .field--name-resourcehub-link-block h2, .field--name-resourcehub-link-block .error-summary__title {
   margin-top: 0;

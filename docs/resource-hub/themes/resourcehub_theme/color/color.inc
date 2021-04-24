@@ -11,16 +11,16 @@ $info = [
   'fields' => [
     'accent' => t('Accent'),
     'accent2' => t('Accent 2'),
-    'header' => t('Header background'),
-    'headertext' => t('Header text'),
+    'header' => t('Header/Footer background'),
+    'headertext' => t('Header/footer text'),
   ],
   // Pre-defined color schemes.
   'schemes' => [
     'default' => [
       'title' => t('Resource Hub default'),
       'colors' => [
-        'accent' => '#0b132a',
-        'accent2' => '#0b132b',
+        'accent' => '#333332',
+        'accent2' => '#f35c49',
         'header' => '#ebeae9',
         'headertext' => '#0b132c',
       ],
@@ -34,10 +34,10 @@ $info = [
         'headertext' => '#ffffff'
       ],
     ],
-    'agile' => [
-      'title' => t('AgileCollective'),
+    'ac' => [
+      'title' => t('Agile Collective'),
       'colors' => [
-        'accent1' => '#f35c49',
+        'accent' => '#f44336',
         'accent2' => '#23334b',
         'header' => '#ffffff',
         'headertext' => '#23334b'

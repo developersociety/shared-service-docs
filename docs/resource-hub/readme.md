@@ -2,7 +2,7 @@
 
 # ![Resource Hub logo](resourcehub.png) Resource Hub
 
-TODO: insert product description.
+The Catalyst Resource Hub is a Drupal based distribution aiming to help small to medium sized charities publish resources and guidance materials to their key audiences. This document is primarily for developers who want to test the product on their local machine or install, deploy and host the product. 
 
 ## Getting started
 
@@ -13,22 +13,45 @@ Resource Hub has been designed to be installed via [Composer](https://getcompose
 * [Composer 2](https://getcomposer.org/doc/00-intro.md)
 * [Lando 3](https://docs.lando.dev/basics/installation.html)
 
-### Local project set up
+### Quick start: Local project set up (to test)
 
-1. `composer create-project --stability dev --ignore-platform-reqs --no-install --remove-vcs openresources/resourcehub-project:^1.0 resourcehub`
-2. `cd resourcehub`
-3. `lando start`
-4. `lando drush si resourcehub -y`
+With Composer and Lando installed, you should be able to open your command line and run the following commands to get a local version of the product up and running for testing or development. You should be able to copy and paste all the folowing lines into your command line. 
 
-### Local project set up (developers)
+```
+composer create-project --stability dev --ignore-platform-reqs --no-install --remove-vcs openresources/resourcehub-project:^1.0 resourcehub;
+cd resourcehub;
+lando start; lando drush si resourcehub install_configure_form.install_demo=1 -y;
+```
+
+This should perform the following tasks: 
+
+1. Install all the code and dependencies with composer.
+2. Start Lando containers to run the code
+3. Run the Drupal site installation enabling the demo content module.
+4. Provide you with the admin user and password. 
+
+If you then navigate in your web browser to either of the following URLs, you should see the site:
+
+http://resourcehub.lndo.site:8000/               
+
+https://resourcehub.lndo.site/  
+
+
+### Quick start: Local project set up (developers)
 
 If you are developing locally, you probably want to keep the .git version
 control folders for ease.
+```
+composer create-project --stability dev --ignore-platform-reqs --no-install openresources/resourcehub-project:^1.0 resourcehub
+cd resourcehub
+lando start; lando drush si resourcehub install_configure_form.install_demo=1 -y; lando drush uli;
+```
+This should perform the following tasks: 
 
-1. `composer create-project --stability dev --ignore-platform-reqs --no-install openresources/resourcehub-project:^1.0 resourcehub`
-2. `cd resourcehub`
-3. `lando start`
-4. `lando drush si resourcehub -y`
+1. Install all the code and dependencies with composer.
+2. Start Lando containers to run the code
+3. Run the Drupal site installation enabling the demo content module.
+4. Generate a one time login link to click on and log is as the overall administrator account (user 1).
 
 ### Install Drupal locally
 

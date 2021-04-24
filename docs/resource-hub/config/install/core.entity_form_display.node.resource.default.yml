@@ -24,51 +24,24 @@ dependencies:
     - text
 third_party_settings:
   field_group:
-    group_tags:
-      children:
-        - group_asdasdas
-        - group_releted_content_links
-      parent_name: ''
-      weight: 12
-      format_type: tabs
-      region: content
-      format_settings:
-        direction: vertical
-        id: ''
-        classes: ''
-      label: Tabs
-    group_asdasdas:
+    group_categories:
       children:
         - resourcehub_resource_type
         - resourcehub_audience
         - resourcehub_resource_format
         - resourcehub_topics
-      parent_name: group_tags
-      weight: 20
-      format_type: tab
+      parent_name: ''
+      weight: 13
+      format_type: details_sidebar
       region: content
       format_settings:
+        id: ''
+        classes: ''
         description: "Tag your content with terms below to create relationships with other content. Users will also be able to find the content via the facets on the Resources page.\r\n<a href =\"/admin/structure/taxonomy\" target=\"_blank\">Manage your terms (opens in a new window).</a>"
-        formatter: open
+        open: false
         required_fields: true
-        id: ''
-        classes: ''
-      label: 'Tags / Taxonomy'
-    group_releted_content_links:
-      children:
-        - resourcehub_related_resources
-        - resourcehub_external_links
-      parent_name: group_tags
-      weight: 21
-      format_type: tab
-      region: content
-      format_settings:
-        description: ''
-        formatter: closed
-        required_fields: true
-        id: ''
-        classes: ''
-      label: 'Related content / links'
+        weight: 0
+      label: Categories
 id: node.resource.default
 targetEntityType: node
 bundle: resource

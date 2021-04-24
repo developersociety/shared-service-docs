@@ -43,6 +43,7 @@ install:
   - ckeditor_balloonpanel:ckeditor_balloonpanel
   - crop:crop
   - entity_reference_revisions:entity_reference_revisions
+  - extlink:extlink
   - field_group:field_group
   - google_tag:google_tag
   - image_widget_crop:image_widget_crop

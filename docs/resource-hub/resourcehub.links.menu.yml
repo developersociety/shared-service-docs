@@ -8,4 +8,4 @@ resourcehub.login:
   title: 'Login'
   description: 'Log in to manage the site'
   menu_name: footer
-  url: internal:/user
+  url: internal:/user/login

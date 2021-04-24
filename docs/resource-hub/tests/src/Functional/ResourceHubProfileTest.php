@@ -109,7 +109,7 @@ class ResourceHubProfileTest extends BrowserTestBase {
     $this->drupalLogout();
     $this->drupalLogin($this->siteAdminUser);
     $this->assertSession()->linkByHrefExists('/admin/resourcehub-settings');
-    $this->click('#toolbar-link-resourcehub-settings');
+    $this->drupalGet('/admin/resourcehub-settings/blocks');
     $this->assertSession()->statusCodeEquals(Response::HTTP_OK);
     $this->assertSession()->fieldExists('Legal copy');
     $page = $this->getSession()->getPage();
@@ -123,7 +123,7 @@ class ResourceHubProfileTest extends BrowserTestBase {
     $this->assertSession()->elementContains('css', '#edit-legal', 'Testing legal copy');
     $this->assertSession()->elementAttributeContains('css', '[name="main_site_link[url]"]', 'value', 'http://www.backtosite.com');
     $this->assertSession()->elementAttributeContains('css', '[name="main_site_link[text]"]', 'value', 'Back to site text');
-    $this->drupalGet('admin/resourcehub-settings/color');
+    $this->drupalGet('admin/resourcehub-settings/theme');
     $this->assertSession()->statusCodeEquals(Response::HTTP_OK);
     $this->assertSession()->fieldExists('Color set');
     $this->assertSession()->fieldExists('Accent');

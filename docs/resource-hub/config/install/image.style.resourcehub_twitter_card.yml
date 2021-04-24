@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: resourcehub_twitter_card
+label: 'Twitter card'
+effects:
+  76c2a6bf-5600-42a4-ab04-9f06b1dbfe3d:
+    uuid: 76c2a6bf-5600-42a4-ab04-9f06b1dbfe3d
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 880
+      height: 440
+      anchor: center-center

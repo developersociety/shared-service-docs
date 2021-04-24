@@ -1,0 +1,38 @@
+.front {
+  &.node {
+    .field--name-resourcehub-link-block > .field__item {
+      // background: $accent2;
+      background-color: $c-light-grey;
+      padding-left: 8px;
+      overflow: hidden;
+    }
+    .paragraph--type--resourcehub-link-block {
+      background-color: $c-white;
+      padding: $spacing*2;
+      height: 100%;
+      .field--name-resourcehub-links >{
+        .field__item{
+          display: flex;
+          &:before {
+            font-size: 50px;
+            line-height: 38px;
+            content: "\2022";
+            padding: $spacing/2;
+          }
+        }
+      }
+    }
+    .views-exposed-form form {
+      margin-inline: auto;
+      width: fit-content;
+    }
+    .field--name-resourcehub-summary p{
+      font-size: 1.3rem;
+      line-height: 1.6;
+    }
+  }
+}
+
+.path-frontpage {
+  background-color: $c-light-grey;
+}

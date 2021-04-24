@@ -1,12 +1,11 @@
 /* ---------- Color Module Styles ----------- */
 $header-text: #0b132c;
 $header-background: #ebeae9;
-$accent: #0b132a;
-$accent2: #0b132b;
+$accent: #333332;
+$accent2: #f35c49;
 
 header[role="banner"],
 footer[role="contentinfo"] {
-  // border-color: $accent;
   background-color: $header-background;
   color: $header-text;
 }
@@ -22,13 +21,15 @@ footer[role="contentinfo"] {
   &:nth-of-type(2n){
     background-color: $accent2;
     article.node--view-mode-search-result {
-      border-left: 2px solid $accent2;
+      border-left: 6px solid $accent2;
+      border-right: 2px solid $accent2;
     }
   }
 }
 
 article.node--view-mode-search-result {
-  border-left: 2px solid $accent;
+  border-left: 6px solid $accent;
+  border-right: 2px solid $accent;
   position: relative;
   z-index: 1;
   background: rgb(255,255,255,0.9);
@@ -54,3 +55,26 @@ article.node--view-mode-search-result {
   }
 }
 
+.path-frontpage {
+  background-color: white;
+  color: black;
+}
+
+.front {
+  &.node {
+    .field--name-resourcehub-link-block > .field__item {
+      background: $accent2;
+    }
+    .paragraph--type--resourcehub-link-block {
+      background: rgb(255,255,255,0.9);
+      color: black;
+      .field--name-resourcehub-links >{
+        .field__item{
+          &:before {
+            color: $accent;
+          }
+        }
+      }
+    }
+  }
+}

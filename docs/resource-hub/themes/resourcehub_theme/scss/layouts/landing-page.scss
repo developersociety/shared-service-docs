@@ -36,15 +36,16 @@
     }
     @supports (display: grid) {
       display: grid;
-      grid-template-columns: repeat(2, 50%);
-      grid-gap: 0 48px;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 48px;
       .field__item {
         width: 100%;
+
       }
     }
   }
   > .field__item {
-    margin-bottom: $spacing*3;
+    // margin-bottom: $spacing*3;
   }
   h2 {
     margin-top: 0
@@ -63,3 +64,4 @@
     }
   }
 }
+

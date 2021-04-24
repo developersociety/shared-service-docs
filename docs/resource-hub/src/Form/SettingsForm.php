@@ -21,20 +21,13 @@ class SettingsForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   protected function getEditableConfigNames() {
-    return ['resourcehub.settings', 'system.site'];
+    return ['resourcehub.settings'];
   }
 
   /**
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    $form['site_name'] = [
-      '#type' => 'textfield',
-      '#title' => $this->t('Site name'),
-      '#required' => TRUE,
-      '#description' => $this->t("Edit the 'site name' displayed in the header of every page."),
-      '#default_value' => $this->config('system.site')->get('name'),
-    ];
     $form['legal'] = [
       '#type' => 'textarea',
       '#title' => $this->t('Legal copy'),
@@ -72,9 +65,6 @@ class SettingsForm extends ConfigFormBase {
     $this->config('resourcehub.settings')
       ->set('legal', $form_state->getValue('legal'))
       ->set('main_site_link', $form_state->getValue('main_site_link'))
-      ->save();
-    $this->config('system.site')
-      ->set('name', $form_state->getValue('site_name'))
       ->save();
     parent::submitForm($form, $form_state);
   }

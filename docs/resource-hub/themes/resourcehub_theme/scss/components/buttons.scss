@@ -136,7 +136,7 @@ input[type="submit"]{
   padding: $spacing/4 $spacing;
   border-radius: $spacing;
   display: inline-block;
-  margin-bottom: $spacing;
+  margin-bottom: $spacing/4;
   @extend .small;
   font-weight: 500;
   &:hover {

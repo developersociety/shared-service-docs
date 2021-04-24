@@ -1,17 +1,17 @@
-uuid: 0de64973-9502-4626-a54f-abfb456377d8
 langcode: en
 status: true
 dependencies:
   config:
     - views.view.search_resources
   module:
+    - node
     - system
     - views
   theme:
     - resourcehub_theme
-id: exposedformsearch_resourcessearch_page
+id: exposedformsearch_resourcessearch_page_2
 theme: resourcehub_theme
-region: sidebar_first
+region: content
 weight: 0
 provider: null
 plugin: 'views_exposed_filter_block:search_resources-search_page'
@@ -22,7 +22,14 @@ settings:
   label_display: '0'
   views_label: ''
 visibility:
+  node_type:
+    id: node_type
+    bundles:
+      resourcehub_landing_page: resourcehub_landing_page
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
   request_path:
     id: request_path
-    pages: "/resources"
+    pages: '<front>'
     negate: false

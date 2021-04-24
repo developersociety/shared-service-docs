@@ -42,7 +42,7 @@
  * @see html.html.twig
  */
 #}
-<div class="layout-container">
+<div class="layout-container {% if is_front %}front{% if node %} node {% endif %}{% endif %}">
 
   <header role="banner">
     {{ page.header }}
