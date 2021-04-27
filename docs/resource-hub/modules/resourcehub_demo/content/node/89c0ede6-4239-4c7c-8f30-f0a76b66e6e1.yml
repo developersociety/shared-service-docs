@@ -51,7 +51,7 @@ default:
       entity: db9fca05-44e8-4007-844c-047d05095326
   resourcehub_audience_intro:
     -
-      value: "<p>This page it aimed at content editors who want to create tables of information that are accessible to screen readers.</p>\r\n"
+      value: "<p>Content editors who want to create tables of information.</p>\r\n"
       format: resourcehub_simple
   resourcehub_content:
     -
@@ -162,7 +162,7 @@ default:
       entity: bdcd6ee8-67dd-4d52-ae57-955ee347aa24
   resourcehub_summary:
     -
-      value: "<p>About Creating Accessible Tables</p>\r\n\r\n<p>Source: https://webaim.org/techniques/tables/</p>\r\n"
+      value: "<p>Advice and guidance on the layout and structure of tables to ensure they are accessible to users with screen readers. </p>\r\n"
       format: resourcehub_simple
   resourcehub_topics:
     -

@@ -5,12 +5,16 @@ Test
 1. [An overview](#an-overview)
 1. [The basics (logging in)](#the-basics)
 1. [Managing your content](#managing-your-content)
+    1. [Creating a resource](#creating-a-resource)
+    1. [Creating a landing page](#creating-a-landing-page)
+    1. [Creating a page](#creating-a-page)
 1. [Managing your files and media](#managing-your-files-media)
 1. [Managing taxonomy](#managing-taxonomy)
 1. [Managing menus](#managing-menus)
 1. [Managing users](#managing-users-on-your-site)
-1. [Configuring the site](#configuring-site)
-1. [Customising the theme](#theme-customisation-settings)
+1. [Configuring and customising the site](#customisation)
+    1. [Creating a custom homepage](#front-page)
+    1. [Customising the appearance](#color-scheme)
 
 # Drupal Glossary
 | Term | Definition |
@@ -25,6 +29,7 @@ Test
 | Theme | The theme is the look of your website: colours, fonts, page layouts etc. In other words, it is the implementation of a design on a web site. |
 
 # An overview
+The Guide for Content Editors and Site Admins provides all the information you will need to create, edit and manage everything from the site content, to users, to taxonomy. 
 
 # The basics
 ## How do I log in? 
@@ -56,7 +61,7 @@ Once you have logged in to the site you will be able to see the Admin Menu at th
 | Menu item | Description |
 | ------ | ------ |
 | Content | Managing content of your site. |
-| Resource Hub | Configuring your site information and customisation. |
+| Customisation | Configuring your site information and customisation. |
 | Structure | Manage menus and taxonomies. |
 | People | Managing existing users on your site and to create new users. |
 | Configuration | Configuration of various site settings, usually only for web developers. |
@@ -82,7 +87,7 @@ There are two options
 
 ### Find the page by searching 
 
-![screenshot of the Content admin page, showing the top of the page with the tabs Content, Files and Media showing, with Content active. Below search and filters for Title, Content type, Published and Language. Below this a table showing the results - each row shows the item Title, Content type, Author, Status, Updated date, and Edit ](img/create-page.png)
+![screenshot of the Content admin page, showing the top of the page with the tabs Content, Files and Media showing, with Content active. Below search and filters for Title, Content type, Published and Language. Below this a table showing the results - each row shows the item Title, Content type, Author, Status, Updated date, and Edit ](img/content-overview.png)
 
 1. Go to the “Content” overview via the Admin Menu.
 1. Use the search or filter options to find the page - click the edit button beside this item.
@@ -108,14 +113,14 @@ There are various types of field that we have set up for you, outlined below are
 | Rich-text Fields | Contains a text editor (CKEditor) with a number of formatting options (see below). |
 | Paragraphs / Content sections | The paragraph module allows you create predefined “bundles” of fields which enables a content editor to create a more flexible page layout with consistent reusable components. Some examples are a video embed, image, audio embed with transcript. |
 
-
 ### Formatting options
 ![Screenshot of the CKeditor toolbar showing a field labelled Text* and the button icons and text. Format, B, I, link, remove link, unordered list, ordered list, indent left, indent right, blockquote, table, remove format, expand, view source, accessibility checker  ](img/wysiwyg.png)
 
 The CKEditor toolbar buttons are illustrated with meaningful icons. If you are not sure what functions they perform, hover the mouse cursor over the buttons to see a tooltip with the name of the function.
 
 ### Adding media
-To add media to a node, click add media and select either
+To add media to a node, when creating or editing content, click add media and select either:
+
 1. Add file
 2. Search existing files
 3. Select an item from the list and click 'insert selected'
@@ -135,6 +140,7 @@ To add media to a node, click add media and select either
 
 #### Cropping images
 If an image is too large or you want it to focus on a particular area, you can crop the image when uploading.
+
 1. Select the ‘Crop image’ dropdown.
 1. Select ‘main image’ (how it appears on a page or when downloaded) or ‘thumbnail crop’ (how it appears in  search results and lists)
 1. The image will appear with a blue box around the visible area
@@ -185,8 +191,87 @@ When you are editing content, on the right of the page you will see a variety of
 | Metatags | todo |
 
 ## Creating a resource
+To create or edit a resource:
+1. Go to 'Content >> Add Content'
+1. Select 'resource' 
+1. Add the required content (see the fields in the table below)
+1. Preview your changes
+1. Save the content
+
+| Field name | Description | 
+| ------ | ------ |
+| Title | This is the page heading that appears above the content.This is also used for your Meta-title and in the URL. This is a required field. |
+| Featured Image | This image will appear below the page title and above the Summary | 
+| Summary | A text field intended for short description of the content. This appears on the page as well as in lists and search results. |
+| Who is this for? | A  brief description of the intended audience for this content and how it will help them. |
+| Primary resource | This is the main resource for this page (can include audio, documents, images, links, text or video). This is a required field. | 
+| Additional resource content | Additional resources can be added where necessary. |
+| Tags / Taxonomy | Tag your content with terms below to create relationships with other content. Users will also be able to find the content via the facets on the Resources page. |
+| Related content | Create direct links to resources on the site or add external links to relevant content. |
+
+![A screenshot displaying the primary resource menu on a resource page with Add audio, Add Document, Add Image, Add External Link, Add Text and Add Video buttons.](uploads/2501a2969d2f5bcd6069c792ba9fc432/image.png)
+
+Tag the content with the relevant terms from within the Categories section in the sidebar.
+![image](uploads/d9e8694e46324a422a043c5a21959d18/image.png)
+
+---
+
 ## Creating a landing page
+To create or edit a landing page:
+1. Go to 'Content >> Add Content'
+1. Select 'landing page' 
+1. Add the required content (see the fields in the table below)
+1. Preview your changes
+1. Save the content
+
+Within a landing page, you will be able to add the following:
+
+| Field name | Description | 
+| ------ | ------ |
+| Title | This is the page heading that appears above the content.This is also used for your Meta-title and in the URL. This is a required field. |
+| Introduction | A brief description for the page and intended audience or purpose. |
+| Main image | This image will appear below the page title and introduction. | 
+| Link blocks| Link blocks allows you to add one or more blocks of links grouped by a title. You may have multiple link blocks on a page |
+| link group title | This will appear above the links. You may have one title per block |
+| links | You have the choice between internal links ans external links. see below for more details. |
+
+![A screenshot of a link block section with a text field for title and Add External Link and Add Internal Link buttons](uploads/85ac0953cfe0dc5a81209b995357e077/image.png)
+
+### Creating a link block
+You can curate sets of links, grouped by a title using Link blocks. 
+
+Each link appears with some descriptive text. In the case of internal links, this text is pulled from the summary field. 
+In the case of external links you can manually enter this in the *Link summary* field.
+
+Example:
+
+![A screenshot displaying External link field with text input in to each field.](uploads/9f53e03b3ed8bd00b2fa4ae7545c4029/image.png)
+
+The above field displays like this: 
+
+![A screenshot of the frontend of the site displaying the fields above.](uploads/603581dbb9471ec3d089606c79259a00/image.png)
+
+
+### Tip
+You can link directly to a prefiltered search by using the External link field. Just get the URL of the filtered view (eg /resources/?f[0]=audience:5 ) and add that in the URL field. 
+
+![External link field with the example text in the URL field, and the link text "Everything for content designers"](uploads/575cd443ef003e89cb0ad519e415fb17/image.png)
+
+
 ## Creating a page
+To create or edit a page:
+1. Go to 'Content >> Add Content'
+1. Select 'page' 
+1. Add the required content (see the fields in the table below)
+1. Preview your changes
+1. Save the content
+
+| Field name | Description | 
+| ------ | ------ |
+| Title | This is the page heading that appears above the content.This is also used for your Meta-title and in the URL. This is a required field. |
+| Summary | A brief description for the page and intended audience or purpose. This is also used for lists and search results. |
+| Text | This will appear below the page title and summary. | 
+
 
 # Managing your files & media
 This lives in Content >> Files or Content >> Media.
@@ -276,21 +361,58 @@ The resource hub comes with two custom roles predefined. These are broadly:
 | Site admin | Can manage users | Can manage site configuration	|
 | Give to trusted users only | Content editor | Can create, edit & delete content, taxonomy terms, and menu items |
 
-# Site configuration
+---
 
-A site administrator has access to the Resource Hub settings page, from the Admin menu. 
-## Site name
-The site name is required
-## Legal copy
+# Customisation
+
+## Settings
+
+A site administrator has access to the Customisation settings page, from the Admin menu. 
+### Site details
+
+| Field | Description |
+| ------ | ------ |
+| Site name | This is the name of the site and is important for a number of reasons, such as SEO, you can manage how it is displayed on the Theme tab |
+| Slogan | This field is not configured to appear at present |
+| Email address | The From address in automated emails sent during registration and new password requests, and other notifications. (Use an address ending in your site's domain to help prevent this email being flagged as spam.) |
+
+
+### Front page
+
+If you would like to show a custom page as the homepage, you can define that here. Add the URL of the page you would like to show. 
+
+If the page is a Landing page, some custom styling will be applied, and the search bar will also appear on the page. 
+
+![image](uploads/b269e330c4b43616209b4be918ab3363/image.png)
+
+### Error pages
+
+If you want to create bespoke 403 and 404 pages you can do so here. 
+
+## Blocks
+
+### Legal copy
 The legal copy is an optional block of text which will appear in the footer of the site, on each page. We imagined you might want to put your organisations legal details, or similar. 
-## Back to site link
+### Back to site link
 The Back to site link was designed to point to another web property, such as the organisation’s main website. If filled in, it will appear in the header of the site. 
 
-# Theme customisation settings
-## Color scheme
+## 
+### Color scheme
 The default colour set is the Resource Hub default. To add an accent colour to the site you can either pick a colour from the colour wheel, or enter a custom colour in HEX format. 
-## Logo
+
+You can pick 2 accent colours to match the site to your brand.
+
+| Colour | Where it appears |
+| ------ | ------ |
+| Accent | Accent appears as a border on the header and footer and as a background colour on certain elements |
+| Accent 2 | Accent 2 appears as an alternate background colour in the list of resources |
+| Header/Footer background | The background colour of the header and the footer |
+| Header/footer text | The text in the header and footer. Beware of colour contrast with the background colour. |
+
+![image](uploads/bdb05d09d4f1ec7f1983116497a8ce46/image.png)
+
+### Logo
 To change the logo on the site, toggle the “Use the logo supplied by the theme” and Upload an image file or enter the path to the image on the server. 
-## Favicon
+### Favicon
 A favicon appears in your browser tab, and lets people more easily spot your website if they have many tabs open. 
 Upload a custom favicon here.

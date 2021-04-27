@@ -10,7 +10,7 @@ default:
       value: true
   name:
     -
-      value: 'Content designers/authors'
+      value: 'Content designers'
   weight:
     -
       value: 0

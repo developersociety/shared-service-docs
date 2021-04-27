@@ -50,9 +50,9 @@ default:
       entity: db9fca05-44e8-4007-844c-047d05095326
   resourcehub_audience_intro:
     -
-      value: "<p>This resource is intended for content editors who would like to understand the importance of alternative text, when and how to use it best.</p>\r\n\r\n<p>Source: https://webaim.org/techniques/alttext/</p>\r\n"
+      value: "<p>Content editors who would like to understand the importance of alternative text, when and how to use it best.</p>\r\n"
       format: resourcehub_simple
-  resourcehub_content:
+  resourcehub_primary_resource:
     -
       entity:
         _meta:
@@ -88,7 +88,7 @@ default:
       entity: 3ddcec27-56fa-4d88-b45a-449cf3329956
   resourcehub_summary:
     -
-      value: "<p>Adding alternative text for images is the first principle of web accessibility. It is also one of the most difficult to properly implement. The web is replete with images that have missing, incorrect, or poor alternative text. Like many things in web accessibility, determining appropriate, equivalent, alternative text is often a matter of personal interpretation. Through the use of examples, this article will present our experienced interpretation of appropriate use of alternative text.</p>\r\n"
+      value: "<p>Adding alternative text for images is the first principle of web accessibility, but it is also one of the most difficult to implement. This article   provides examples and guidance on appropriate use of alternative text.</p>\r\n"
       format: resourcehub_simple
   resourcehub_topics:
     -

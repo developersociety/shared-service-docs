@@ -67,8 +67,8 @@ function resourcehub_install_content() {
     // Create some default taxonomy terms.
     $defaultVocabs = [
       'resourcehub_audience' => [
-        'Content designers/authors',
-        'User experience (UX) designers',
+        'Content designers',
+        'UX designers',
         'Visual designers',
       ],
       'resourcehub_resource_type' => ['Guidance', 'Advice', 'Templates'],

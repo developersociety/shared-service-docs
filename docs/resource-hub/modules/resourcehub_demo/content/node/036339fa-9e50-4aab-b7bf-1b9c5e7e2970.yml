@@ -19,7 +19,7 @@ default:
       target_id: 1
   title:
     -
-      value: 'Welcome to this resourcehub'
+      value: 'Welcome to our ResourceHub demosite'
   created:
     -
       value: 1617894474
@@ -36,7 +36,7 @@ default:
     -
       alias: ''
       langcode: en
-      pathauto: 0
+      pathauto: 1
   resourcehub_link_block:
     -
       entity:
@@ -146,7 +146,7 @@ default:
                       options: {  }
                   resourcehub_link_summary:
                     -
-                      value: 'Cast commissioned and oversaw this project'
+                      value: 'Cast commissioned and oversaw the development of the ResourceHub. Cast is a charity on a mission to create a more responsive, resilient and digitally-enabled social sector.'
             -
               entity:
                 _meta:
@@ -172,10 +172,10 @@ default:
                       options: {  }
                   resourcehub_link_summary:
                     -
-                      value: 'Agile Collective researched and build this thing'
+                      value: 'Agile Collective designed and developed the ResourceHub. Agile Collective is a worker-owned agency that designs, builds and supports websites for purpose-driven organisations.'
           resourcehub_title:
             -
-              value: 'Some of our other websites'
+              value: 'Built in partnership with:'
     -
       entity:
         _meta:
@@ -221,9 +221,6 @@ default:
                       uri: 'internal:/resources/?f[0]=format:11'
                       title: 'All our videos'
                       options: {  }
-                  resourcehub_link_summary:
-                    -
-                      value: 'Browse all our videos'
             -
               entity:
                 _meta:
@@ -247,13 +244,42 @@ default:
                       value: true
                   resourcehub_external_link:
                     -
-                      uri: 'internal:/resources/?f[0]=audience:20'
-                      title: 'All our content for social workers'
+                      uri: 'internal:/resources/?f[0]=audience:5'
+                      title: 'Everything for content designers'
                       options: {  }
+            -
+              entity:
+                _meta:
+                  version: '1.0'
+                  entity_type: paragraph
+                  uuid: f603da15-0ae0-4126-a293-e52dfe98b289
+                  bundle: external_link
+                  default_langcode: en
+                default:
+                  status:
+                    -
+                      value: true
+                  created:
+                    -
+                      value: 1617895884
+                  behavior_settings:
+                    -
+                      value: {  }
+                  revision_translation_affected:
+                    -
+                      value: true
+                  resourcehub_external_link:
+                    -
+                      uri: 'internal:/node/11'
+                      title: 'Our favourite accessibility resources'
+                      options: {  }
+                  resourcehub_link_summary:
+                  -
+                    value: 'An example of a curated collection of content.'
           resourcehub_title:
             -
-              value: 'Resources by type'
+              value: 'Resource collections'
   resourcehub_summary:
     -
-      value: "<p>This is our ResourceHub. We've added content about accessibility, content design and user experience (UX). This is really just to demo the concept but we also think it's really interesting.&nbsp;</p>\r\n"
+      value: "<p>Welcome to our ResourceHub demosite. To demonstrate how the hub works, we've added advice, guidance and resources on accessibility, content design and user experience (UX). While intended to showcase the content, we hope you’ll find the content interesting and useful. </p>\r\n"
       format: resourcehub_simple
