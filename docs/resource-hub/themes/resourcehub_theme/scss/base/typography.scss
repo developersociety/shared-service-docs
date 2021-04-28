@@ -9,6 +9,8 @@
 h1, h2, h3, h4, h5, h6 {
   font-weight: 500;
   line-height: 140%;
+  margin-top: $spacing;
+  margin-bottom: $spacing;
   margin-block: $spacing;
 }
 
@@ -66,13 +68,23 @@ h6 {
   }
 }
 
+// p {
+//   margin-bottom: 1em;
+// }
+
 li,
 p {
   font-size: 0.9375rem;
   line-height: 180%;
+  margin-top: initial;
   @include screen('md') {
     font-size: 1rem;
+    // line-height: 180%;
   }
+}
+
+b, strong {
+  font-weight: 600;
 }
 
 // ul li {
@@ -104,6 +116,7 @@ a {
   text-decoration: underline;
   &:hover {
     background-color: $c-gov-yellow;
+    color: $c-body;
   }
   &:focus {
     outline: 3px solid transparent;
@@ -127,11 +140,10 @@ a {
 
 
 blockquote {
-  margin-block: $spacing*1.5;
+  margin-top: $spacing*1.5 ;
+  margin-bottom: $spacing*1.5;
   position: relative;
-  // margin-left: $spacing*4;
   padding-left: $spacing;
-  // > *:first-of-type {
     &:before {
       content: '\201c';
       display: inline;
@@ -144,14 +156,9 @@ blockquote {
       top: 16px;
       color: $c-mid-grey-text;
     }
-  // }
   > * {
     font-size: 1.1rem;
   }
-}
-
-strong {
-  font-weight: 700;
 }
 
 .progress__track,

@@ -4187,7 +4187,7 @@ html {
   font-size: 16px;
 }
 
-.visually-hidden, #views-exposed-form-search-resources-search-page .form--inline label, .block-resourcehub-search form label {
+.visually-hidden, .skip-content a:not(:focus):not(:active), #views-exposed-form-search-resources-search-page .form--inline label, .block-resourcehub-search form label {
   clip: rect(0 0 0 0);
   -webkit-clip-path: inset(50%);
           clip-path: inset(50%);
@@ -4207,9 +4207,11 @@ img {
   font-family: "Rubik", sans-serif;
 }
 
-h1, h2, .error-summary__title, h3, .page-node-type-resource .field--label-above .field__label, h4, .field--name-resourcehub-link-block h3, h5, h6 {
+h1, h2, .error-summary__title, h3, .page-node-type-resource .field--label-above .field__label, h4, .paragraph--type--external-link a, .field--name-resourcehub-link-block h3, h5, h6 {
   font-weight: 500;
   line-height: 140%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   margin-block: 1rem;
 }
 
@@ -4250,11 +4252,11 @@ h3, .page-node-type-resource .field--label-above .field__label {
   margin-top: 1.5rem;
 }
 
-h4, .field--name-resourcehub-link-block h3, .field--name-resourcehub-link-block .page-node-type-resource .field--label-above .field__label, .page-node-type-resource .field--label-above .field--name-resourcehub-link-block .field__label {
+h4, .paragraph--type--external-link a, .field--name-resourcehub-link-block h3, .field--name-resourcehub-link-block .page-node-type-resource .field--label-above .field__label, .page-node-type-resource .field--label-above .field--name-resourcehub-link-block .field__label {
   font-size: 1rem;
 }
 @media (min-width: 767px) {
-  h4, .field--name-resourcehub-link-block h3, .field--name-resourcehub-link-block .page-node-type-resource .field--label-above .field__label, .page-node-type-resource .field--label-above .field--name-resourcehub-link-block .field__label {
+  h4, .paragraph--type--external-link a, .field--name-resourcehub-link-block h3, .field--name-resourcehub-link-block .page-node-type-resource .field--label-above .field__label, .page-node-type-resource .field--label-above .field--name-resourcehub-link-block .field__label {
     font-size: 1.2rem;
   }
 }
@@ -4283,12 +4285,17 @@ li,
 p {
   font-size: 0.9375rem;
   line-height: 180%;
+  margin-top: initial;
 }
 @media (min-width: 767px) {
   li,
 p {
     font-size: 1rem;
   }
+}
+
+b, strong {
+  font-weight: 600;
 }
 
 .p-alt, .node--view-mode-search-result p {
@@ -4321,6 +4328,7 @@ a {
 }
 a:hover {
   background-color: #ffdd00;
+  color: #0b132a;
 }
 a:focus {
   outline: 3px solid transparent;
@@ -4343,7 +4351,8 @@ a:focus {
 }
 
 blockquote {
-  margin-block: 1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
   position: relative;
   padding-left: 1rem;
 }
@@ -4361,10 +4370,6 @@ blockquote:before {
 }
 blockquote > * {
   font-size: 1.1rem;
-}
-
-strong {
-  font-weight: 700;
 }
 
 .progress__track,
@@ -4388,9 +4393,11 @@ a {
   font-family: "Rubik", sans-serif;
 }
 
-h1, h2, .error-summary__title, h3, .page-node-type-resource .field--label-above .field__label, h4, .field--name-resourcehub-link-block h3, h5, h6 {
+h1, h2, .error-summary__title, h3, .page-node-type-resource .field--label-above .field__label, h4, .paragraph--type--external-link a, .field--name-resourcehub-link-block h3, h5, h6 {
   font-weight: 500;
   line-height: 140%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   margin-block: 1rem;
 }
 
@@ -4431,11 +4438,11 @@ h3, .page-node-type-resource .field--label-above .field__label {
   margin-top: 1.5rem;
 }
 
-h4, .field--name-resourcehub-link-block h3, .field--name-resourcehub-link-block .page-node-type-resource .field--label-above .field__label, .page-node-type-resource .field--label-above .field--name-resourcehub-link-block .field__label {
+h4, .paragraph--type--external-link a, .field--name-resourcehub-link-block h3, .field--name-resourcehub-link-block .page-node-type-resource .field--label-above .field__label, .page-node-type-resource .field--label-above .field--name-resourcehub-link-block .field__label {
   font-size: 1rem;
 }
 @media (min-width: 767px) {
-  h4, .field--name-resourcehub-link-block h3, .field--name-resourcehub-link-block .page-node-type-resource .field--label-above .field__label, .page-node-type-resource .field--label-above .field--name-resourcehub-link-block .field__label {
+  h4, .paragraph--type--external-link a, .field--name-resourcehub-link-block h3, .field--name-resourcehub-link-block .page-node-type-resource .field--label-above .field__label, .page-node-type-resource .field--label-above .field--name-resourcehub-link-block .field__label {
     font-size: 1.2rem;
   }
 }
@@ -4464,12 +4471,17 @@ li,
 p {
   font-size: 0.9375rem;
   line-height: 180%;
+  margin-top: initial;
 }
 @media (min-width: 767px) {
   li,
 p {
     font-size: 1rem;
   }
+}
+
+b, strong {
+  font-weight: 600;
 }
 
 .p-alt, .node--view-mode-search-result p {
@@ -4502,6 +4514,7 @@ a {
 }
 a:hover {
   background-color: #ffdd00;
+  color: #0b132a;
 }
 a:focus {
   outline: 3px solid transparent;
@@ -4524,7 +4537,8 @@ a:focus {
 }
 
 blockquote {
-  margin-block: 1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
   position: relative;
   padding-left: 1rem;
 }
@@ -4542,10 +4556,6 @@ blockquote:before {
 }
 blockquote > * {
   font-size: 1.1rem;
-}
-
-strong {
-  font-weight: 700;
 }
 
 .progress__track,
@@ -4574,8 +4584,8 @@ a {
   width: 100%;
 }
 .breadcrumb li:before {
-  content: "→";
-  font-size: 1.5rem;
+  content: url(/profiles/contrib/resourcehub-distribution/themes/resourcehub_theme/dist/images/arrow.svg?c147e5ac5b500f181eda4b9b958204c3);
+  padding: 0 0.25rem;
 }
 
 .breadcrumb {
@@ -4595,7 +4605,7 @@ input[type=submit] {
   padding: 0.5rem 1rem;
   border: 2px solid transparent;
   border-radius: 0;
-  color: #ffffff;
+  color: #fefeff;
   background-color: #00703c;
   box-shadow: 0 2px 0 #002d18;
   text-align: center;
@@ -4608,7 +4618,7 @@ input[type=submit] {
 .resourcehub-button:visited,
 .resourcehub-button:active,
 .resourcehub-button:hover {
-  color: #ffffff;
+  color: #fefeff;
   text-decoration: none;
 }
 
@@ -4690,7 +4700,7 @@ input[type=submit] {
 }
 .resourcehub-link--primary:hover {
   background-color: transparent;
-  background: #ffffff;
+  background: #fefeff;
   box-shadow: 5px 5px 15px 5px rgba(255, 255, 255, 0);
 }
 .resourcehub-link--primary:focus {
@@ -4768,9 +4778,9 @@ details[open] > summary:before {
 }
 
 details {
-  padding: 15px;
-  padding-left: 20px;
-  border-left: 5px solid #b1b4b6;
+  padding: 0.5rem;
+  padding-left: 1rem;
+  border-left: 4px solid #EBEAE9;
 }
 
 details .field__item > :last-child {
@@ -4780,7 +4790,6 @@ details .field__item > :last-child {
 .ext svg.ext {
   width: 1rem;
   height: 1rem;
-  padding-bottom: 0.5rem;
   padding-left: 0.125rem;
   padding-right: 0;
 }
@@ -4853,14 +4862,19 @@ details .field__item > :last-child {
 }
 
 .page-node-type-resource .field--label-above .field__label {
-  margin-bottom: 1rem;
   margin-top: 0;
+  margin-bottom: 0.5rem;
 }
 .page-node-type-resource .field--name-resourcehub-audience-intro,
 .page-node-type-resource .field--name-resourcehub-summary {
-  padding: 1.5rem;
+  padding: 1rem;
   background-color: #EBEAE9;
-  margin-bottom: 1.5rem;
+}
+@media (min-width: 767px) {
+  .page-node-type-resource .field--name-resourcehub-audience-intro,
+.page-node-type-resource .field--name-resourcehub-summary {
+    padding: 1.5rem;
+  }
 }
 .page-node-type-resource .field--name-resourcehub-audience-intro p:last-of-type,
 .page-node-type-resource .field--name-resourcehub-summary p:last-of-type {
@@ -4870,7 +4884,8 @@ details .field__item > :last-child {
 .page-node-type-resource .field--name-resourcehub-external-links,
 .page-node-type-resource .field--name-resourcehub-related-resources {
   border-top: 1px solid;
-  padding-block: 1.5rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
   margin-top: 1.5rem;
 }
 .page-node-type-resource .field--name-resourcehub-external-links .field__item + .field__item,
@@ -4879,7 +4894,7 @@ details .field__item > :last-child {
 }
 
 .field.field--label-above {
-  margin-bottom: 0.75rem;
+  margin-bottom: 1.5rem;
 }
 .field.field--label-above .field__label {
   clear: both;
@@ -4912,8 +4927,9 @@ details .field__item > :last-child {
 input,
 textarea,
 select {
-  border: 2px solid #0b0c0c;
+  border: 2px solid #0b132a;
   padding: 0.5rem;
+  max-width: 100%;
 }
 input:focus,
 textarea:focus,
@@ -5198,7 +5214,7 @@ input[type=number] {
   display: inline-block;
   min-width: 40px;
   min-width: 2.5rem;
-  border: 2px solid #0b0c0c;
+  border: 2px solid #0b132a;
   background-color: #f3f2f1;
   text-align: center;
   white-space: nowrap;
@@ -5285,16 +5301,15 @@ select {
 }
 
 .resourcehub-select--error:focus {
-  border-color: #0b0c0c;
+  border-color: #0b132a;
 }
 
 .block-resourcehub-back-to-site a {
   text-decoration: none;
 }
-.block-resourcehub-back-to-site a:before {
-  content: "→";
-  font-size: 1.5rem;
-  line-height: 100%;
+.block-resourcehub-back-to-site a:after {
+  content: url(/profiles/contrib/resourcehub-distribution/themes/resourcehub_theme/dist/images/arrow.svg?c147e5ac5b500f181eda4b9b958204c3);
+  padding: 0 0.5rem;
 }
 
 .block-system-branding-block {
@@ -5329,7 +5344,7 @@ select {
 .region-header .block + .block {
   margin-top: 1rem;
 }
-@media (min-width: 767px) {
+@media (min-width: 576px) {
   .region-header {
     display: flex;
     justify-content: space-between;
@@ -5342,16 +5357,29 @@ select {
 
 .site-name a {
   font-weight: 500;
-  font-size: 1.25rem;
   margin-bottom: 0;
   text-decoration: none;
 }
+@media (min-width: 767px) {
+  .site-name a {
+    font-size: 1.25rem;
+  }
+}
 
-.site-logo {
-  max-width: 200px;
+a.site-logo {
+  max-width: 50%;
   margin-bottom: 0;
   padding-bottom: 0;
   align-items: center;
+  line-height: 0;
+}
+@media (min-width: 767px) {
+  a.site-logo {
+    max-width: 200px;
+  }
+}
+a.site-logo:hover, a.site-logo:focus {
+  background-color: transparent;
 }
 
 @media (min-width: 767px) {
@@ -5445,6 +5473,10 @@ select {
 #views-exposed-form-search-resources-search-page .form--inline input[type=submit]:hover, .block-resourcehub-search form input[type=submit]:hover {
   background-color: #1d70b8;
 }
+#views-exposed-form-search-resources-search-page .form--inline input[type=submit]:focus, .block-resourcehub-search form input[type=submit]:focus {
+  background-color: #ffdd00;
+  color: #0b132a;
+}
 #views-exposed-form-search-resources-search-page .form--inline input, .block-resourcehub-search form input {
   border-radius: 50px 0 0 50px;
 }
@@ -5453,6 +5485,7 @@ select {
 #views-exposed-form-search-resources-search-page .form--inline .form-actions {
   margin: 0;
 }
+
 .view-filters {
   margin-bottom: 2rem;
 }
@@ -5488,9 +5521,23 @@ select {
   background-color: maroon;
 }
 
+.skip-content {
+  text-align: center;
+}
+.skip-content a {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  justify-items: center;
+  color: black;
+  padding: 0.25rem;
+}
+
 table {
   color: #0b0c0c;
   width: 100%;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
   margin-block: 2rem;
   border-spacing: 0;
   border-collapse: collapse;
@@ -5631,90 +5678,163 @@ nav.tabs ul.tabs {
   margin-top: 0;
 }
 
-.region-sidebar-second {
-  margin-top: 4rem;
+@media (min-width: 767px) {
+  .region-sidebar-second {
+    margin-top: 4rem;
+  }
 }
 .region-sidebar-second .block-entity-viewnode {
   border-top: 1px solid;
   border-bottom: 1px solid;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
   padding-block: 1.5rem;
 }
 
+.node--view-mode-search-result footer {
+  margin-top: 1rem;
+}
 @media (min-width: 576px) {
   .node--view-mode-search-result {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
-}
-.node--view-mode-search-result .field--name-resourcehub-image {
-  grid-column: 3;
-}
-.node--view-mode-search-result .summary {
-  grid-column: 1/span 3;
-  grid-row: 1;
-}
-.node--view-mode-search-result .summary.with-image {
-  grid-column: 1/span 2;
-  grid-row: 1;
-}
-.node--view-mode-search-result footer {
-  grid-column: 1/span 3;
-}
-@media (min-width: 576px) {
+  .node--view-mode-search-result .field--name-resourcehub-image {
+    order: 2;
+    width: calc(33% - 16px);
+  }
+  .node--view-mode-search-result .summary {
+    order: 1;
+  }
+  .node--view-mode-search-result .summary.with-image {
+    width: calc(64% - 16px);
+  }
   .node--view-mode-search-result footer {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    -moz-column-gap: 1rem;
-         column-gap: 1rem;
+    order: 3;
+    display: flex;
+    align-content: space-between;
+    width: 100%;
+  }
+  .node--view-mode-search-result footer > span {
+    width: calc(33% - 16px);
+  }
+  .node--view-mode-search-result footer > span + span {
+    margin-left: 1.5rem;
   }
 }
+@supports (display: grid) {
+  @media (min-width: 576px) {
+    .node--view-mode-search-result {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+  }
+  .node--view-mode-search-result .field--name-resourcehub-image {
+    grid-column: 3;
+    width: 100%;
+  }
+  .node--view-mode-search-result .summary {
+    grid-column: 1/span 3;
+    grid-row: 1;
+  }
+  .node--view-mode-search-result .summary.with-image {
+    grid-column: 1/span 2;
+    grid-row: 1;
+    width: 100%;
+  }
+  .node--view-mode-search-result footer {
+    grid-column: 1/span 3;
+  }
+  @media (min-width: 576px) {
+    .node--view-mode-search-result footer {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      -moz-column-gap: 1rem;
+           column-gap: 1rem;
+      margin-top: 0;
+    }
+    .node--view-mode-search-result footer > span {
+      width: 100%;
+    }
+    .node--view-mode-search-result footer > span + span {
+      margin-left: 0;
+    }
+  }
+}
+
 .front.node .field--name-resourcehub-link-block > .field__item {
   background-color: #EFEFEF;
   padding-left: 8px;
   overflow: hidden;
+  margin-bottom: 1rem;
+}
+@media (min-width: 767px) {
+  .front.node .field--name-resourcehub-link-block > .field__item {
+    margin-bottom: initial;
+  }
 }
 .front.node .paragraph--type--resourcehub-link-block {
-  background-color: #ffffff;
-  padding: 2rem;
+  background-color: #fefeff;
+  padding: 1.5rem;
   height: 100%;
 }
-.front.node .paragraph--type--resourcehub-link-block .field--name-resourcehub-links > .field__item {
-  display: flex;
+@media (min-width: 767px) {
+  .front.node .paragraph--type--resourcehub-link-block {
+    padding: 2rem;
+  }
 }
-.front.node .paragraph--type--resourcehub-link-block .field--name-resourcehub-links > .field__item:before {
+.front.node .paragraph--type--resourcehub-link-block .field--name-resourcehub-links > .field__item > .paragraph {
+  width: calc(100% - 30px);
+  position: relative;
+  padding-left: 1.5rem;
+}
+.front.node .paragraph--type--resourcehub-link-block .field--name-resourcehub-links > .field__item > .paragraph:before {
   font-size: 50px;
-  line-height: 38px;
   content: "•";
-  padding: 0.5rem;
+  position: absolute;
+  left: -3px;
+  line-height: 22px;
 }
 .front.node .views-exposed-form form {
+  margin-left: auto;
+  margin-right: auto;
   margin-inline: auto;
+  width: 400px;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
 }
 .front.node .field--name-resourcehub-summary p {
-  font-size: 1.3rem;
-  line-height: 1.6;
+  font-size: 1.1rem;
+  line-height: 1.3;
 }
-
-.path-frontpage {
-  background-color: #EFEFEF;
+@media (min-width: 767px) {
+  .front.node .field--name-resourcehub-summary p {
+    font-size: 1.3rem;
+    line-height: 1.6;
+  }
 }
 
 .page-node-type-resourcehub-landing-page .region-title,
 .node--type-resourcehub-landing-page.node--view-mode-full > .node__content .region-title {
   grid-column: 1/span 3;
   gap: 0;
+  padding-right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-inline: auto;
 }
 .page-node-type-resourcehub-landing-page h1,
 .page-node-type-resourcehub-landing-page > .field--name-resourcehub-summary,
 .node--type-resourcehub-landing-page.node--view-mode-full > .node__content h1,
 .node--type-resourcehub-landing-page.node--view-mode-full > .node__content > .field--name-resourcehub-summary {
+  margin-left: auto;
+  margin-right: auto;
   margin-inline: auto;
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
 }
 @media (min-width: 767px) {
   .page-node-type-resourcehub-landing-page h1,
@@ -5722,6 +5842,8 @@ nav.tabs ul.tabs {
 .node--type-resourcehub-landing-page.node--view-mode-full > .node__content h1,
 .node--type-resourcehub-landing-page.node--view-mode-full > .node__content > .field--name-resourcehub-summary {
     max-width: 60%;
+    width: 80%;
+    margin-bottom: 3rem;
   }
 }
 .page-node-type-resourcehub-landing-page .field--name-resourcehub-image,
@@ -5735,16 +5857,14 @@ nav.tabs ul.tabs {
 }
 
 @media (min-width: 767px) {
-  @supports not (display: grid) {
-    .field--name-resourcehub-link-block {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-    }
-    .field--name-resourcehub-link-block > .field__item {
-      width: calc(50% - 24px);
-      margin-bottom: 3rem;
-    }
+  .field--name-resourcehub-link-block {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .field--name-resourcehub-link-block > .field__item {
+    width: calc(50% - 24px);
+    margin-bottom: 3rem;
   }
   @supports (display: grid) {
     .field--name-resourcehub-link-block {
@@ -5754,6 +5874,7 @@ nav.tabs ul.tabs {
     }
     .field--name-resourcehub-link-block .field__item {
       width: 100%;
+      margin-bottom: 0;
     }
   }
 }
@@ -5773,16 +5894,33 @@ nav.tabs ul.tabs {
   margin-bottom: 0;
 }
 
+.paragraph--type--external-link {
+  margin-bottom: 1rem;
+}
+.paragraph--type--external-link a + * {
+  line-height: 140%;
+}
+
 header .region-header,
 .region-primary-menu,
 .region-breadcrumb,
 footer .region,
 main {
-  width: 100%;
-  max-width: 90%;
-  padding-inline: 2rem;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 95%;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+@media (min-width: 767px) {
+  header .region-header,
+.region-primary-menu,
+.region-breadcrumb,
+footer .region,
+main {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 @media (min-width: 992px) {
   header .region-header,
@@ -5796,31 +5934,39 @@ main {
 
 header {
   background: #EFEFEF;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
   padding-block: 1.5rem;
   margin-bottom: 2rem;
 }
 
 .layout-container > footer {
   background: #EFEFEF;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
   padding-block: 2rem;
   margin-top: 2rem;
 }
 
 @media (min-width: 767px) {
-  @supports not (display: grid) {
-    main {
-      display: flex;
-      justify-content: space-between;
-    }
-    main .region-title {
-      width: calc(66% - 10px);
-    }
-    main aside {
-      width: calc(33% - 10px);
-    }
-    main.has_sidebar .layout-content {
-      width: calc(66% - 10px);
-    }
+  main {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  main .region-title {
+    width: calc(66% - 10px);
+    align-self: flex-start;
+    padding-right: calc(34% + 10px);
+  }
+  main aside {
+    width: calc(33% - 10px);
+  }
+  main .layout-content {
+    width: 100%;
+  }
+  main.has_sidebar .layout-content {
+    width: calc(66% - 10px);
   }
   @supports (display: grid) {
     main {
@@ -5830,28 +5976,43 @@ header {
     }
     main .region-title {
       grid-column: 1/span 2;
+      width: 100%;
     }
     main .layout-content {
       grid-column: 1/span 3;
+      width: 100%;
     }
     main.has_sidebar .layout-content {
       grid-column: 1/span 2;
+      width: 100%;
     }
     main.has_sidebar aside {
       grid-column: 1/span 1;
+      width: 100%;
     }
     main.has_sidebar .layout-content + aside {
       grid-column: 3;
+      width: 100%;
     }
     main.has_sidebar aside + .layout-content {
       grid-column: 2/span 2;
+      width: 100%;
     }
   }
 }
 
 .page-node-type-resourcehub-page .layout-content,
 .path-user .layout-content {
-  grid-column: 1/span 2;
+  width: calc(66% - 10px);
+}
+@media (min-width: 767px) {
+  @supports (display: grid) {
+    .page-node-type-resourcehub-page .layout-content,
+.path-user .layout-content {
+      grid-column: 1/span 2;
+      width: 100%;
+    }
+  }
 }
 
 .layout-content {
@@ -5870,5 +6031,10 @@ header {
 }
 
 .field--name-field-media-image {
+  margin-top: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.field--name-resourcehub-caption {
   margin-bottom: 1rem;
 }

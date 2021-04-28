@@ -1,0 +1,39 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.variant
+    - field.field.paragraph.external_link.resourcehub_external_link
+    - field.field.paragraph.external_link.resourcehub_link_summary
+    - paragraphs.paragraphs_type.external_link
+  module:
+    - link
+_core:
+  default_config_hash: 8n58flExMQdLczBJQ_Zpeth0oP5oQ-DBUWIIypQ0MvY
+id: paragraph.external_link.variant
+targetEntityType: paragraph
+bundle: external_link
+mode: variant
+content:
+  resourcehub_external_link:
+    weight: 1
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  resourcehub_link_summary:
+    weight: 2
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  search_api_excerpt: true

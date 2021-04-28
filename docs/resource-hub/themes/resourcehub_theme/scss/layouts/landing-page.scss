@@ -3,14 +3,23 @@
   .region-title {
     grid-column: 1 / span 3;
     gap: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-inline: auto;
   }
   h1,
   > .field--name-resourcehub-summary {
+    // For IE11 which doesn't support margin-inline :( !
+    margin-left: auto;
+    margin-right: auto;
     margin-inline: auto;
     text-align: center;
-    margin-bottom: $spacing*3;
+    margin-bottom: $spacing;
     @include screen('md') {
       max-width: 60%;
+      width: 80%;
+      margin-bottom: $spacing*3;
     }
   }
   .field--name-resourcehub-image{
@@ -25,7 +34,6 @@
 .field--name-resourcehub-link-block {
   @include screen('md') {
     // fallback for browsers which don't support grid.
-    @supports not (display: grid) {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
@@ -33,14 +41,13 @@
         width: calc(50% - 24px);
         margin-bottom: $spacing*3;
       }
-    }
     @supports (display: grid) {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       grid-gap: 48px;
       .field__item {
         width: 100%;
-
+        margin-bottom: 0;
       }
     }
   }
@@ -65,3 +72,12 @@
   }
 }
 
+.paragraph--type--external-link {
+  margin-bottom: $spacing;
+  a {
+    @extend h4;
+    + * {
+      line-height: 140%;
+    }
+  }
+}

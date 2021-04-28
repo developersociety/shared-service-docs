@@ -2,10 +2,9 @@
   a {
     text-decoration: none;
     @extend .small;
-    &:before {
-      content: "\2192";
-      font-size: 1.5rem;
-      line-height: 100%;
+    &:after {
+      content: url('../../dist/images/arrow.svg');
+      padding: 0 $spacing/2;
     }
   }
 }
@@ -39,7 +38,7 @@
   .block + .block {
     margin-top: $spacing;
   }
-  @include screen('md') {
+  @include screen('sm') {
     .block + .block {
       margin-top: 0;
     }
@@ -51,16 +50,26 @@
 
 .site-name a{
   font-weight: 500;
-  font-size: 1.25rem;
+  // font-size: 1.25rem;
   margin-bottom: 0;
   text-decoration: none;
+  @include screen('md') {
+    font-size: 1.25rem;
+  }
 }
 
-.site-logo {
-  max-width: 200px;
+a.site-logo {
+  max-width: 50%;
   margin-bottom: 0;
   padding-bottom: 0;
   align-items: center;
+  line-height: 0;
+  @include screen('md') {
+    max-width: 200px;
+  }
+  &:hover, &:focus {
+    background-color: transparent;
+  }
 }
 
 #block-resourcehub-search {

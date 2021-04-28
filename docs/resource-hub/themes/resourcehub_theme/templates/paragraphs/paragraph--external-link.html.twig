@@ -9,7 +9,11 @@
 {% block paragraph %}
   <div{{ attributes.addClass(classes) }}>
     {% block content %}
-      <h3>{{ content.resourcehub_external_link }}</h3>
+    {% if view_mode == 'variant'%}<h3>
+    {% endif %}
+    {{ content.resourcehub_external_link }}
+    {% if view_mode == 'variant'%}</h3>
+    {% endif %}
       {{ content.resourcehub_link_summary }}
     {% endblock %}
   </div>

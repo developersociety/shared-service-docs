@@ -13,13 +13,13 @@ footer[role=contentinfo] {
   border-top: 6px solid #333332;
 }
 
-.views-row {
+.view-search-resources .views-row {
   background-color: #333332;
 }
-.views-row:nth-of-type(2n) {
+.view-search-resources .views-row:nth-of-type(2n) {
   background-color: #f35c49;
 }
-.views-row:nth-of-type(2n) article.node--view-mode-search-result {
+.view-search-resources .views-row:nth-of-type(2n) article.node--view-mode-search-result {
   border-left: 6px solid #f35c49;
   border-right: 2px solid #f35c49;
 }
@@ -32,28 +32,25 @@ article.node--view-mode-search-result {
   background: rgba(255, 255, 255, 0.9);
 }
 
-.page-node-type-resource .field--name-resourcehub-audience-intro,
+@supports (transform-style: preserve-3d) {
+  .page-node-type-resource .field--name-resourcehub-audience-intro,
 .page-node-type-resource .field--name-resourcehub-summary {
-  background-color: transparent;
-  background: rgba(255, 255, 255, 0.9);
-  position: relative;
-  transform-style: preserve-3d;
-}
-.page-node-type-resource .field--name-resourcehub-audience-intro:before,
+    background-color: transparent;
+    background: rgba(255, 255, 255, 0.9);
+    position: relative;
+    transform-style: preserve-3d;
+  }
+  .page-node-type-resource .field--name-resourcehub-audience-intro:before,
 .page-node-type-resource .field--name-resourcehub-summary:before {
-  background: #333332;
-  content: "";
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  transform: translateZ(-1px);
-}
-
-.path-frontpage {
-  background-color: white;
-  color: black;
+    background: #333332;
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    transform: translateZ(-1px);
+  }
 }
 
 .front.node .field--name-resourcehub-link-block > .field__item {

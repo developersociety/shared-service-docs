@@ -1,0 +1,14 @@
+.skip-content{
+  text-align: center;
+  a:not(:focus):not(:active){
+    @extend .visually-hidden;
+  }
+  a {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-items: center;
+    color: black;
+    padding: $spacing/4;
+  }
+}

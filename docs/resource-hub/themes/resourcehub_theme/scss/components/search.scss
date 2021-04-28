@@ -1,24 +1,27 @@
 %search-block  {
-    display: flex;
-    label{
-      @extend .visually-hidden;
+  display: flex;
+  label{
+    @extend .visually-hidden;
+  }
+  input[type="submit"]{
+    margin-bottom: 0;
+    box-shadow: 0 0 0 transparent;
+    border-radius: 0 50px 50px 0;
+    border: 2px solid black;
+    border-left: 0;
+    background-color: $c-grey;
+    font-weight: 500;
+    &:hover {
+      background-color: $c-gov-blue;
     }
-    input[type="submit"]{
-      margin-bottom: 0;
-      box-shadow: 0 0 0 transparent;
-      border-radius: 0 50px 50px 0;
-      border: 2px solid black;
-      border-left: 0;
-      background-color: $grey;
-      font-weight: 500;
-      &:hover {
-        background-color: $c-gov-blue;
-      }
+    &:focus {
+      background-color: $c-gov-yellow;
+      color: $c-body;
     }
-    input {
-      border-radius: 50px 0 0 50px;
-    }
-
+  }
+  input {
+    border-radius: 50px 0 0 50px;
+  }
 }
 
 .block-resourcehub-search form{
@@ -30,9 +33,6 @@
   .form-group,
   .form-actions {
     margin: 0;
-  }
-  .form-actions {
-    // margin-left: -30px;
   }
 }
 

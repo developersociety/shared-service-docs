@@ -33,27 +33,27 @@ $max-content-width: 984px;
 }
 //
 // Colours
-$c-white: #ffffff;
-$grey: #0b132a;
+$c-white: #fefeff;
 $c-grey: #0b132a;
 $c-mid-grey-text: #505a5f;
-$mid-grey: #EBEAE9;
-$c-mid-grey: #EBEAE9;
-$light-grey: #EFEFEF;
 $c-light-grey: #EFEFEF;
-$c-body: $grey;
+$c-mid-grey: #EBEAE9;
+$c-black: #000000;
+
+$c-body: $c-grey;
+
+// Colours from govuk styles
 $c-gov-yellow: #ffdd00;
 $c-gov-blue: #1d70b8;
 $c-gov-green: #00703c;
 $c-gov-green-dark:#005a30;
 $c-gov-green-darker: #002d18;
+$c-gov-red: #d4351c;
 
 
 //spacing
 $spacing: 1rem; //16px
 $sp-12: 0.75rem;
-$sp-2: 2rem; //32px
-// $sp-16: 1rem;
 
 .visually-hidden {
   clip: rect(0 0 0 0);

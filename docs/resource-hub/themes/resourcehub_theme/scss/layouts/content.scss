@@ -12,53 +12,84 @@
 }
 
 .region-sidebar-second {
-  margin-top: $spacing*4;
+  // margin-top: $spacing*4;
+  @include screen('md') {
+    margin-top: $spacing*4;
+  }
   .block-entity-viewnode{
     border-top: 1px solid;
     border-bottom: 1px solid;
+    padding-top: $spacing*1.5;
+    padding-bottom: $spacing*1.5;
     padding-block: $spacing*1.5;
   }
 }
 
 .node--view-mode-search-result {
+  footer {
+    margin-top: $spacing;
+  }
   @include screen('sm') {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: $spacing;
-  }
-  .field--name-resourcehub-image {
-    grid-column: 3;
-
-  }
-  .summary {
-    grid-column: 1 / span 3;
-    grid-row: 1;
-    &.with-image {
-      grid-column: 1 / span 2;
-      grid-row: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .field--name-resourcehub-image {
+      order: 2;
+      width: calc(33% - 16px);
+    }
+    .summary {
+      order: 1;
+      // width: calc(64% - 16px);
+      &.with-image {
+        width: calc(64% - 16px);
+      }
+    }
+    footer {
+      order: 3;
+      display: flex;
+      align-content: space-between;
+      width: 100%;
+      > span {
+        width: calc(33% - 16px); // 1/3 - gap*2/3
+      }
+      > span + span {
+        margin-left: $spacing*1.5;
+      }
     }
   }
-  footer {
-    grid-column: 1 / span 3;
+  @supports (display: grid) {
     @include screen('sm') {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      column-gap: $spacing;
-      // align-content: space-between;
-      // > span {
-      //   width: calc(33% - 16px); // 1/3 - gap*2/3
-      // }
-      // > span + span {
-      //   margin-left: $spacing*1.5;
-      // }
+      gap: $spacing;
     }
-    @include screen('md') {
-      // > span {
-      //   width: calc(33% - 16px); // 1/3 - gap*2/3
-      // }
-      // > span + span {
-      //   margin-left: $spacing*1.5;
-      // }
+    .field--name-resourcehub-image {
+      grid-column: 3;
+      width: 100%;
+    }
+    .summary {
+      grid-column: 1 / span 3;
+      grid-row: 1;
+      &.with-image {
+        grid-column: 1 / span 2;
+        grid-row: 1;
+        width: 100%;
+      }
+    }
+    footer {
+      grid-column: 1 / span 3;
+      @include screen('sm') {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: $spacing;
+        margin-top: 0;
+        > span {
+          width: 100%;
+        }
+        > span + span {
+          margin-left: 0;
+        }
+      }
     }
   }
 }

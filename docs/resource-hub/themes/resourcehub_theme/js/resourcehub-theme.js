@@ -16,6 +16,11 @@
         return;
       }
 
+      var title = document.createElement("h2");
+      title.innerHTML = "Refine your search";
+      var summary = document.getElementsByClassName("block-facets-summary-blockresources-summary")[0];
+      summary.prepend(title);
+
       // Create the toggle all button
       var button = document.createElement("button");
       button.innerHTML = "Show all filters";
@@ -25,6 +30,7 @@
 
       var summary = document.getElementsByClassName("block-facets-summary-blockresources-summary")[0];
       summary.append(button);
+
 
       var sideBar = document.getElementsByClassName("region-sidebar-first")[0];
 

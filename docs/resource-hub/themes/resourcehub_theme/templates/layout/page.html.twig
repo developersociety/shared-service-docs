@@ -47,13 +47,12 @@
   <header role="banner">
     {{ page.header }}
   </header>
-
-  {{ page.primary_menu }}
-  {{ page.secondary_menu }}
-
-  {{ page.breadcrumb }}
-
-  {{ page.help }}
+  <div>
+    {{ page.primary_menu }}
+    {{ page.secondary_menu }}
+    {{ page.breadcrumb }}
+    {{ page.help }}
+  </div>
 
   <main role="main" class="{% if page.sidebar_second or page.sidebar_first %}has_sidebar{% endif %}">
     <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}

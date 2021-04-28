@@ -3,9 +3,6 @@ resourcehub_theme.settings:
   type: theme_settings
   label: 'Resource Hub Default settings'
   mapping:
-    font_size:
-      type: integer
-      label: Font size
     features:
       type: mapping
       mapping:

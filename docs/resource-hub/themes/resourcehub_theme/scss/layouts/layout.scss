@@ -3,11 +3,15 @@ header .region-header,
 .region-breadcrumb,
 footer .region,
 main {
-  width: 100%;
-  max-width: 90%;
-  padding-inline: $spacing*2;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 95%;
+  padding-left: $spacing*1.5;
+  padding-right: $spacing*1.5;
+  @include screen('md') {
+    padding-left: $spacing*2;
+    padding-right: $spacing*2;
+    margin-left: auto;
+    margin-right: auto;
+  }
   @include screen('lg') {
     max-width: $max-content-width;
   }
@@ -15,13 +19,17 @@ main {
 
 
 header {
-  background: $light-grey;
+  background: $c-light-grey;
+  padding-top: $spacing*1.5;
+  padding-bottom: $spacing*1.5;
   padding-block: $spacing*1.5;
   margin-bottom: $spacing*2;
 }
 
 .layout-container > footer {
-  background: $light-grey;
+  background: $c-light-grey;
+  padding-top: $spacing*2;
+  padding-bottom: $spacing*2;
   padding-block: $spacing*2;
   margin-top: $spacing*2;
 }
@@ -29,43 +37,55 @@ header {
 main {
   @include screen('md') {
     // fallback for browsers which don't support grid
-    @supports not (display: grid) {
+    // @supports not (display: grid) {
       display: flex;
       justify-content: space-between;
+      flex-wrap: wrap;
       .region-title {
         width: calc(66% - 10px);
+        align-self: flex-start;
+        padding-right: calc(34% + 10px);
       }
       aside {
         width: calc(33% - 10px);
+      }
+      .layout-content {
+        width: 100%;
       }
       &.has_sidebar {
         .layout-content {
           width: calc(66% - 10px);
         }
       }
-    }
+    // }
     @supports (display: grid) {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 0 40px;
       .region-title {
         grid-column: 1 / span 2;
+        width: 100%;
       }
       .layout-content {
         grid-column: 1 / span 3;
+        width: 100%;
       }
       &.has_sidebar {
         .layout-content {
           grid-column: 1 / span 2;
+          width: 100%;
         }
         aside {
           grid-column: 1 / span 1;
+          width: 100%;
         }
         .layout-content + aside {
           grid-column: 3;
+          width: 100%;
         }
         aside + .layout-content {
           grid-column: 2 / span 2;
+          width: 100%;
         }
       }
     }
@@ -74,8 +94,13 @@ main {
 
 .page-node-type-resourcehub-page .layout-content,
 .path-user .layout-content{
-  grid-column: 1 / span 2;
-
+  width: calc(66% - 10px);
+  @include screen('md') {
+    @supports (display: grid) {
+      grid-column: 1 / span 2;
+      width: 100%;
+    }
+  }
 }
 
 .layout-content {

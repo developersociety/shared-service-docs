@@ -10,20 +10,6 @@
  */
 function resourcehub_theme_form_system_theme_settings_alter(&$form, &$form_state) {
 
-  $form['resourcehub_theme'] = [
-    '#type' => 'details',
-    '#title' => t('Resource Hub Default'),
-    '#open' => TRUE,
-  ];
-
-  $form['resourcehub_theme']['font_size'] = [
-    '#type' => 'number',
-    '#title' => t('Font size'),
-    '#min' => 12,
-    '#max' => 18,
-    '#default_value' => theme_get_setting('font_size'),
-  ];
-
   unset($form['theme_settings']['toggle_node_user_picture']);
   unset($form['theme_settings']['toggle_comment_user_picture']);
   unset($form['theme_settings']['toggle_comment_user_verification']);
@@ -45,5 +31,11 @@ function resourcehub_theme_form_system_theme_settings_alter(&$form, &$form_state
       'input[name="toggle_branding_logo"]' => ['checked' => FALSE],
     ],
   ];
-
+  $form['#attached']['html_head'][] = [
+    [
+      '#tag' => 'style',
+      '#value' => '.color-preview, .color-form h2 { display:none!important; }',
+    ],
+    'resourcehub_theme_css',
+  ];
 }

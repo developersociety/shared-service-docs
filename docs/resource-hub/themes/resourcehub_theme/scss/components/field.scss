@@ -1,14 +1,7 @@
-// .field--label-hidden {
-//   @extend .visually-hidden;
-// }
-
 .field--name-resourcehub-caption {
   @extend .small;
 }
 
-// .field {
-//   margin-bottom: $spacing/2;
-// }
 .field + .field--label-inline {
   margin-top: $sp-12;
 }
@@ -25,15 +18,17 @@
 
 .page-node-type-resource {
   .field--label-above .field__label {
-    margin-bottom: $spacing;
     @extend h3;
     margin-top: 0;
+    margin-bottom: $spacing/2;
   }
   .field--name-resourcehub-audience-intro,
   .field--name-resourcehub-summary {
-    padding: $spacing*1.5;
+    padding: $spacing*1;
     background-color: $c-mid-grey;
-    margin-bottom: $spacing*1.5;
+    @include screen('md') {
+      padding: $spacing*1.5;
+    }
     p:last-of-type {
       margin-bottom: 0;
     }
@@ -44,8 +39,11 @@
   .field--name-resourcehub-external-links,
 .field--name-resourcehub-related-resources {
   border-top: 1px solid;
-  padding-block: $spacing*1.5;
+  padding-top: $spacing*1.5;
+  padding-bottom: $spacing*1.5;
   margin-top: $spacing*1.5;
+  @include screen('md') {
+  }
   .field__item + .field__item {
     margin-top: $spacing;
   }
@@ -53,7 +51,7 @@
 }
 
 .field.field--label-above {
-  margin-bottom: $sp-12;
+  margin-bottom: $spacing*1.5;
   .field__label {
     clear: both;
     width: 100%;
@@ -76,7 +74,6 @@
 
 .block-entity-viewnode {
   .field__items{
-    // background-color: violet;
     .field__item, .field__label {
       display: inline;
     }
