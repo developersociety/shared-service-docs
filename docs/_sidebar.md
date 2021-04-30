@@ -19,6 +19,8 @@
 - resource-hub-wiki
   - [hosting-and-technical-requirements](resource-hub-wiki/hosting-and-technical-requirements)
   - [guide-for-content-editors-&-site-admins](resource-hub-wiki/guide-for-content-editors-&-site-admins)
+  - [deployment-workflow-(monorepo)](resource-hub-wiki/deployment-workflow-(monorepo))
+  - [deployment-workflow-(recommended)](resource-hub-wiki/deployment-workflow-(recommended))
   - [where-to-begin-building-your-site-(for-site-admins)](resource-hub-wiki/where-to-begin-building-your-site-(for-site-admins))
   - [home](resource-hub-wiki/home)
   - [high-level-technical-overview](resource-hub-wiki/high-level-technical-overview)
