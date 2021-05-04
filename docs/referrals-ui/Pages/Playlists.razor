@@ -1,0 +1,261 @@
+﻿@page "/playlists"
+@using OpenReferralPOV.Data.Enums
+@using OpenReferralPOV.Data
+@using OpenReferralPOV.Services
+
+@inject IOpenReferralPlaylistService PlaylistService
+@inject IOpenReferralServiceFilterService ServiceFilterService
+@inject IOpenReferralService ServiceService  // This needs replaced with the service collection once its ine
+
+
+<div class="content-container">
+    <div class="gridder">
+        <div class="two-cols-30-70">
+            <div class="col">
+                <h2>Refine your search</h2>
+                <p class="space-sml">Search by location</p>
+                <EditForm Model="@SearchService" OnValidSubmit="@HandleSearchService">
+                    <label for="Postcode">Enter Postcode</label><InputText id="Postcode" @bind-Value="@SearchService.Postcode" />
+                    <label for="Distance">Distance (miles)</label><InputNumber id="Distance" @bind-Value="@SearchService.Proximity" />
+                    <DataAnnotationsValidator />
+                    <ValidationSummary />
+                    <button type="submit">Search</button>
+                </EditForm>
+                <hr />
+                <p class="space-sml"><span>OR</span> Search by Keyword/Category</p>
+                <EditForm Model="@SearchService" OnValidSubmit="@HandleFilter">
+                    <label for="Keyword">Keyword</label><InputText id="Keyword" @bind-Value="@SearchService.SearchText" />
+                    <label for="Category">Category</label>
+                    <InputSelect @bind-Value="@SearchService.SelectedCategory" class="form-control">
+                        @foreach (var cat in Categories)
+                        {
+                            if (cat == SearchService.SelectedCategory)
+                            {
+                                <option value="@cat" selected>@((CategoryEnum)cat)</option>
+                            }
+                            else
+                            {
+                                <option value="@cat">@((CategoryEnum)cat)</option>
+                            }
+                        }
+                    </InputSelect>
+                    <DataAnnotationsValidator />
+                    <ValidationSummary />
+                    <button type="submit">Search</button>
+                </EditForm>
+
+                @if (@httpError != null)
+                {
+                    <warn>There was an error.</warn>
+                    <br />
+                    <warn>@httpError.StatusCode</warn>
+                }
+                @if (validationError != null)
+                {
+                    <ErrorValidationMessage Error=@validationError />
+                }
+            </div>
+            <div class="col">
+
+                <h2>Search Results</h2>
+                @if (services == null)
+                {
+                    <p><em>Loading...</em></p>
+                }
+                else if (searchServices.Count() == 0)
+                {
+                    <p>Use either of the search forms to find an organisation</p>
+                }
+                else
+                {
+
+                    @foreach (var service in searchServices)
+                    {
+                        <div class="playist-item">
+                            <div class="link">
+                                <NavLink href=@($"view-service/{service.Id}")>@service.Name</NavLink>
+                            </div>
+                            <div class="remove">
+                                <span>Add to playlist</span>
+                                <button name="Add to playlist" class="btnRemove"  @onclick="@(e => AddToPlaylist(service.Id))"><i class="fas fa-plus"></i></button>
+                            </div>
+                        </div>
+        
+                    }
+
+                }
+
+                <br />
+                <h2>Your Playlist</h2>
+
+                @if (Playlist == null)
+                {
+                    <p><em>Loading...</em></p>
+                }
+                else if (Playlist.Services.Count == 0)
+                {
+                    <p>You have no services in you playlist.</p>
+                }
+                else
+                {
+
+                    @foreach (var s in Playlist.Services)
+                    {
+                        <div class="playist-item">
+                            <div class="link">
+                                <NavLink href=@($"view-service/{@services.First(x => x.Id == s).Id}")>@services.First(x => x.Id == s).Name</NavLink>
+                            </div>
+                            <div class="remove">
+                                <span>Remove from playlist</span>
+                                <button name="Remove From Playlist" class="btnRemove" @onclick="@(e => RemoveFromPlaylist(s))"><i class="fas fa-times"></i></button>
+                            </div>
+                        </div>
+
+                    }
+
+
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+
+    [CascadingParameter]
+    Error Error { get; set; }
+    HttpRequestException httpError { get; set; }
+    ValidationError validationError { get; set; }
+    public Playlist Playlist { get; set; }
+    public ServiceFilter SearchService { get; set; } = new ServiceFilter();
+    public int[] Categories = (int[])Enum.GetValues(typeof(CategoryEnum));
+
+    public IEnumerable<Service> services { get; set; }
+    public IEnumerable<Service> searchServices { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            Playlist = new Playlist();
+            Playlist = await PlaylistService.Get();
+            services = await ServiceService.GetServicesAsync();
+            searchServices = new List<Service>();
+            SearchService = await ServiceFilterService.GetSearchFIlter();
+        }
+        catch (HttpRequestException e)
+        {
+            httpError = e;
+        }
+        catch (Exception e)
+        {
+            Error.ProcessError(e);
+        }
+    }
+    private async Task AddToPlaylist(string id)
+    {
+        try
+        {
+            Playlist.Services.Add(id);
+            Playlist = await PlaylistService.Update(Playlist);
+        }
+        catch (HttpRequestException e)
+        {
+            httpError = e;
+        }
+        catch (Exception e)
+        {
+            Error.ProcessError(e);
+        }
+    }
+
+    private async Task RemoveFromPlaylist(string id)
+    {
+        try
+        {
+
+            Playlist.Services.Remove(id);
+            Playlist = await PlaylistService.Update(Playlist);
+        }
+        catch (HttpRequestException e)
+        {
+            httpError = e;
+        }
+        catch (Exception e)
+        {
+            Error.ProcessError(e);
+        }
+    }
+
+    private async Task HandleSearchService()
+    {
+        try
+        {
+            validationError = null;
+            var postcodeResults = await ServiceService.GetServicesAsync(SearchService.Postcode, SearchService.Proximity);
+            searchServices = RemovePlaylistServices(postcodeResults);
+        }
+        catch (ValidationError e)
+        {
+            validationError = e;
+        }
+        catch (HttpRequestException e)
+        {
+            httpError = e;
+        }
+        catch (Exception e)
+        {
+            Error.ProcessError(e);
+        }
+    }
+
+    private async Task HandleFilter()
+    {
+        try
+        {
+            validationError = null;
+            services = await ServiceService.GetServicesAsync();
+
+            if (SearchService.SearchText != "" && SearchService.SearchText != null)
+            {
+
+                var tags = Enum.GetNames(typeof(TagEnum)).Select(tag => tag.ToLower()).ToList();
+
+                //Do this to get the tag indexes which match the search text.
+                var tagIndexes = Enumerable.Range(0, tags.Count).Where(i => tags[i].Contains(SearchService.SearchText.ToLower()));
+                //Do this to make the indexes the actual enum value i.e tags enum start at 1 indexes start at 0
+                var tagInts = tagIndexes.Select(index => index + 1);
+
+                var filtered = services.Where(service => service.Name.ToLower().Contains(SearchService.SearchText.ToLower())
+                || service.Tags.Any(tag => tagInts.Contains(tag))).ToList();
+                searchServices = RemovePlaylistServices(filtered);
+            }
+            else if (SearchService.SelectedCategory > 0)
+            {
+                var categoryServices = services.Where(service => service.Category == SearchService.SelectedCategory).ToList();
+                searchServices = RemovePlaylistServices(categoryServices);
+            }
+            else
+            {
+                searchServices = services;
+            }
+        }
+        catch (ValidationError e)
+        {
+            validationError = e;
+        }
+        catch (HttpRequestException e)
+        {
+            httpError = e;
+        }
+        catch (Exception e)
+        {
+            Error.ProcessError(e);
+        }
+    }
+    private IEnumerable<Service> RemovePlaylistServices(IEnumerable<Service> services)
+    {
+        return services.Where(x => !Playlist.Services.Contains(x.Id));
+    }
+
+}

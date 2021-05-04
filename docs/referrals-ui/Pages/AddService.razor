@@ -1,0 +1,199 @@
+﻿@page "/add-service/{OrgId}"
+
+@using OpenReferralPOV.Data
+@using OpenReferralPOV.Services
+@using OpenReferralPOV.Data.Enums;
+@using System.Collections.Generic;
+@using System;
+
+@inject IOpenReferralService ReferralService
+@inject IOpenReferralOrganisationService OrgService
+@inject NavigationManager NavManager
+
+<div class="content-container">
+    <div class="gridder">
+        @if (serviceCreated)
+        {
+            <h2>Service Created</h2>
+            NavManager.NavigateTo($"manage-organisation/{service.OrganizationId}", true);
+        }
+        else if (creatingService)
+        {
+            <h3>Creating Service...</h3>
+        }
+        else
+        {
+            <h3>Add Service</h3>
+            <EditForm Model="@service" OnValidSubmit="@HandleValidSubmit">
+                <DataAnnotationsValidator />
+                <div class="two-cols">
+                    <div class="col col-sizer col-left">
+
+                        <label for="Name">Name</label>
+                        <ValidationMessage For="@(() => service.Name)" />
+                        <InputText id="Name" @bind-Value="@service.Name" type="text" />
+
+                        <label for="Description">Description</label>
+                        <ValidationMessage For="@(() => service.Description)" />
+                        <InputText id="Description" @bind-Value="@service.Description" type="text" />
+
+                        <label for="Email">Email</label>
+                        <ValidationMessage For="@(() => service.Email)" />
+                        <InputText id="Email" @bind-Value="@service.Email" type="text" />
+
+                        <label for="Url">URL</label>
+                        <ValidationMessage For="@(() => service.Url)" />
+                        <InputText id="Url" @bind-Value="@service.Url" type="text" />
+
+                        <label for="Address">Address</label>
+                        <ValidationMessage For="@(() => service.Address)" />
+                        <InputText id="Address" @bind-Value="@service.Address" type="text" />
+
+                        <label for="City">City</label>
+                        <ValidationMessage For="@(() => address.City)" />
+                        <InputText id="City" @bind-Value="@address.City" type="text" />
+
+                        <label for="County">County</label>
+                        <ValidationMessage For="@(() => address.State_Province)" />
+                        <InputText id="County" @bind-Value="@address.State_Province" type="text" />
+
+                        <label for="PostCode">Post Code</label>
+                        <ValidationMessage For="@(() => service._Postcode)" />
+                        <InputText id="PostCode" @bind-Value="@service._Postcode" type="text" />
+
+                        <label for="Org">Organisation</label>
+                        <InputSelect @bind-Value="@service.OrganizationId" class="form-control">
+                            @foreach (var org in organisations)
+                                {
+                                    if (org.Id == OrgId)
+                                    {
+                                        service.OrganizationId = org.Id;
+                                    <option value="@org.Id" selected>@org.Name</option>
+                                    }
+                                    else
+                                    {
+                                    <option value="@org.Id">@org.Name</option>
+                                    }
+                                }
+                            }
+                        </InputSelect>
+
+                        <label for="Cat">Category</label>
+                        <InputSelect @bind-Value="@service.Category" class="form-control">
+                            @foreach (var cat in CategoryList)
+                                {
+                                    if ((int)cat == service.Category)
+                                    {
+                                        service.Category = (int)cat;
+                                    <option value="@((int)cat)" selected>@cat</option>
+                                    }
+                                    else
+                                    {
+                                    <option value="@((int)cat)">@cat</option>
+                                    }
+                                }
+                            }
+                        </InputSelect>
+                    </div>
+                    <div class="col col-sizer col-right">
+                        <ServiceAvailability regularSchedules="@service.Regular_Schedules.ToList()" updateServiceAvailibility="UpdateServiceAvailibility" />
+
+                        <div class="service-tags">
+                            <ServiceTagManager ServiceTagList="@service.Tags.ToList()" updateServiceTagList="UpdateServiceTagList" />
+                        </div>
+                    </div>
+                </div>
+
+
+                @if (@httpError != null)
+                {
+                    <warn>There was an error submiting the form</warn>
+                    <br />
+                    <warn>@httpError.StatusCode</warn>
+                }
+                @if (validationError != null)
+                {
+                    <ErrorValidationMessage Error=@validationError />
+                }
+                <button type="submit">Submit</button>
+            </EditForm>
+        }
+    </div>
+</div>
+
+@code {
+    [CascadingParameter]
+    Error Error { get; set; }
+    HttpRequestException httpError { get; set; }
+    ValidationError validationError { get; set; }
+    [Parameter]
+    public string OrgId { get; set; }
+    public IEnumerable<Organization> organisations { get; set; } = new List<Organization>();
+    public Service service { get; set; } = new Service();
+    public PhysicalAddress address { get; set; } = new PhysicalAddress();
+    public bool serviceCreated { get; set; } = false;
+    public bool creatingService { get; set; } = false;
+    public int[] Category = (int[])Enum.GetValues(typeof(CategoryEnum));
+    public List<CategoryEnum> CategoryList { get; set; } = new List<CategoryEnum>();
+
+    private async Task HandleValidSubmit()
+    {
+
+        try
+        {
+            creatingService = true;
+
+            var location = ServiceHelperFunctions.BuildLocation(service, address);
+            location = await ReferralService.AddLocation(location);
+
+            var serviceAtLocation = ServiceHelperFunctions.BuildServiceAtLocation(location, service);
+            service.Service_At_Locations = new List<ServiceAtLocation> { serviceAtLocation };
+
+            service = await ReferralService.AddService(service);
+            serviceCreated = true;
+
+        }
+        catch (ValidationError e)
+        {
+            validationError = e;
+            creatingService = false;
+        }
+        catch (HttpRequestException e)
+        {
+            httpError = e;
+            creatingService = false;
+
+        }
+        catch (Exception e)
+        {
+            Error.ProcessError(e);
+            creatingService = false;
+        }
+    }
+
+    private void UpdateServiceAvailibility(List<RegularSchedule> regularSchedules)
+    {
+        service.Regular_Schedules = regularSchedules;
+    }
+
+    private void UpdateServiceTagList(List<int> ServiceTagList)
+    {
+        service.Tags = ServiceTagList;
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            organisations = await OrgService.GetAllOrganisations();
+            foreach (var c in Category)
+            {
+                CategoryList.Add((CategoryEnum)c);
+            }
+        }
+        catch (Exception e)
+        {
+            Error.ProcessError(e);
+        }
+    }
+}

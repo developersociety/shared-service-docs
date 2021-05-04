@@ -1,0 +1,135 @@
+﻿@using OpenReferralPOV.Data
+
+
+@if (regularSchedules.Count() == 0 && readOnly) { return; }
+<div id="service-availability">
+    <div class="service top">
+        <label>Service availability</label>
+        @if (!readOnly)
+        {<span><i class="far fa-calendar-alt fa-3x"></i></span>}
+    </div>
+
+    @if (readOnly)
+    {
+        @foreach (RegularSchedule day in regularSchedules)
+        {
+            <div class="dayofweek readonly">
+                <div>@day.ByDay </div>
+                <div class="hours">
+                    @day.Opens_At.ToString("HH"):00 TO @day.Closes_At.ToString("HH"):00
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="dayofweek">
+            @foreach (string day in days)
+            {
+
+                <div class="day">@day</div>
+                <div class="open">
+                    <div class="onoffswitch">
+                        <input type="checkbox" name="onoffswitch_@day" checked="@WeekdayIsOpen(day)"
+                               @onchange="@((ChangeEventArgs __e) => HandleCheckboxChange(day, __e.Value))" class="onoffswitch-checkbox" id="myonoffswitch_@day" tabindex="0">
+                        <label class="onoffswitch-label" for="myonoffswitch_@day">
+                            <span class="onoffswitch-inner"></span>
+                            <span class="onoffswitch-switch"></span>
+                        </label>
+                    </div>
+                </div>
+               
+                <div class="hours" id="hours_@day">
+                    @if (WeekdayIsOpen(day))
+                    {
+                    <span>
+                        <input type="number" size="2" min="0" max="23" maxlength="2" value="@GetOpeningTime(day)"
+                               @onchange="@((ChangeEventArgs __e) => SetOpeningTime(day, __e.Value))" />
+                        : <input type="text" size="2" maxlength="2" value="00" disabled />
+                    </span>
+                    <span class="txt-sml">TO</span>
+                    <span>
+                        <input type="number" size="2" min="0" max="23" maxlength="2" value="@GetClosingTime(day)"
+                               @onchange="@((ChangeEventArgs __e) => SetClosingTime(day, __e.Value))" />
+                        : <input type="text" size="2" maxlength="2" value="00" disabled />
+                    </span>
+                    }
+                </div>
+               
+            }
+
+        </div>
+    }
+
+</div>
+
+@code {
+    [Parameter]
+    public List<RegularSchedule> regularSchedules { get; set; }
+
+    [Parameter]
+    public bool readOnly { get; set; } = false;
+
+    [Parameter]
+    public EventCallback<List<RegularSchedule>> updateServiceAvailibility { get; set; }
+
+    private List<string> days = new List<string>() { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
+
+    private void HandleCheckboxChange(string day, object value)
+    {
+        var schedule = regularSchedules.Find(schedule => schedule.ByDay == day);
+
+        if (schedule is null)
+        {
+            regularSchedules.Add(new RegularSchedule() { ByDay = day, Opens_At = new DateTime(1, 1, 1, 9, 0, 0), Closes_At = new DateTime(1, 1, 1, 17, 0, 0) });
+            updateServiceAvailibility.InvokeAsync(regularSchedules);
+        }
+        else
+        {
+            regularSchedules.Remove(schedule);
+            updateServiceAvailibility.InvokeAsync(regularSchedules);
+        }
+    }
+
+    private bool WeekdayIsOpen(string weekDay)
+    {
+        var schedule = regularSchedules.Find(schedule => schedule.ByDay == weekDay);
+
+        return schedule != null;
+    }
+
+    private int GetOpeningTime(string weekDay)
+    {
+        var schedule = regularSchedules.Find(schedule => schedule.ByDay == weekDay);
+
+        if (schedule is null) { return 9; };
+
+        return int.Parse(schedule.Opens_At.ToString("HH"));
+    }
+
+    private void SetOpeningTime(string weekDay, object time)
+    {
+        var schedule = regularSchedules.Find(schedule => schedule.ByDay == weekDay);
+
+        schedule.Opens_At = new DateTime(1, 1, 1, int.Parse((string)time), 0, 0);
+        updateServiceAvailibility.InvokeAsync(regularSchedules);
+
+    }
+
+    private int GetClosingTime(string weekDay)
+    {
+        var schedule = regularSchedules.Find(schedule => schedule.ByDay == weekDay);
+
+        if (schedule is null) { return 9; };
+
+        return int.Parse(schedule.Closes_At.ToString("HH"));
+    }
+
+    private void SetClosingTime(string weekDay, object time)
+    {
+        var schedule = regularSchedules.Find(schedule => schedule.ByDay == weekDay);
+
+        schedule.Closes_At = new DateTime(1, 1, 1, int.Parse((string)time), 0, 0);
+        updateServiceAvailibility.InvokeAsync(regularSchedules);
+    }
+}

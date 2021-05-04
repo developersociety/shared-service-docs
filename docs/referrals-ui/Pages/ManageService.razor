@@ -1,0 +1,197 @@
+﻿@page "/manage-service/{Id}"
+@using OpenReferralPOV.Data
+@using OpenReferralPOV.Services
+@using OpenReferralPOV.Data.Enums
+
+@inject IOpenReferralService ServiceService
+
+<div class="content-container">
+    <div class="gridder">
+        @if (loading)
+        {
+            <p><em>Loading...</em></p>
+        }
+        else if (updatingService)
+        {
+            <p><em>Updating...</em></p>
+        }
+        else
+        {
+
+            <h2>Manage Service</h2>
+
+            @if (serviceUpdated)
+            {
+                <h3>Service Updated</h3>
+            }
+            <EditForm Model="@service" OnValidSubmit="@HandleValidSubmit">
+                <DataAnnotationsValidator />
+                <div class="two-cols">
+                    <div class="col col-sizer col-left">
+                        <label for="Name">Name</label>
+                        <ValidationMessage For="@(() => service.Name)" />
+                        <InputText id="Name" @bind-Value="@service.Name" type="text" />
+
+                        <label for="Description">Description</label>
+                        <ValidationMessage For="@(() => service.Description)" />
+                        <InputText id="Description" @bind-Value="@service.Description" type="text" />
+
+                        <label for="Email">Email</label>
+                        <ValidationMessage For="@(() => service.Email)" />
+                        <InputText id="Email" @bind-Value="@service.Email" type="text" />
+
+                        <label for="Url">URL</label>
+                        <ValidationMessage For="@(() => service.Url)" />
+                        <InputText id="Url" @bind-Value="@service.Url" type="text" />
+
+                        <label for="Address">Address</label>
+                        <ValidationMessage For="@(() => service.Address)" />
+                        <InputText id="Address" @bind-Value="@service.Address" type="text" />
+
+                        <label for="City">City</label>
+                        <ValidationMessage For="@(() => address.City)" />
+                        <InputText id="City" @bind-Value="@address.City" type="text" />
+
+                        <label for="County">County</label>
+                        <ValidationMessage For="@(() => address.State_Province)" />
+                        <InputText id="County" @bind-Value="@address.State_Province" type="text" />
+
+                        <label for="PostCode">Post Code</label>
+                        <ValidationMessage For="@(() => service._Postcode)" />
+                        <InputText id="PostCode" @bind-Value="@service._Postcode" type="text" />
+
+                        <label for="Cat">Category</label>
+                        <InputSelect @bind-Value="@service.Category" class="form-control">
+                            @foreach (var cat in CategoryList)
+                                {
+                                    if ((int)cat == service.Category)
+                                    {
+                                        service.Category = (int)cat;
+                                    <option value="@((int)cat)" selected>@cat</option>
+                                    }
+                                    else
+                                    {
+                                    <option value="@((int)cat)">@cat</option>
+                                    }
+                                }
+                            }
+                        </InputSelect>
+
+
+
+                    </div>
+
+                    <div class="col col-sizer col-right">
+                        <ServiceAvailability regularSchedules="@service.Regular_Schedules.ToList()" updateServiceAvailibility="UpdateServiceAvailibility" />
+                        <div class="service-tags">
+                            <ServiceTagManager ServiceTagList="@service.Tags.ToList()" updateServiceTagList="UpdateServiceTagList"/>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                @if (@httpError != null)
+                {
+                    <warn>There was an error submiting the form</warn>
+                    <br />
+                    <warn>@httpError.StatusCode</warn>
+                }
+                @if (validationError != null)
+                {
+                    <ErrorValidationMessage Error=@validationError />
+                }
+                <button type="submit">Submit</button>
+
+            </EditForm>
+        }
+    </div>
+</div>
+@code {
+
+    [CascadingParameter]
+    Error Error { get; set; }
+    HttpRequestException httpError { get; set; }
+    ValidationError validationError { get; set; }
+    [Parameter]
+    public string Id { get; set; }
+
+    public bool serviceUpdated { get; set; } = false;
+    public bool updatingService { get; set; } = false;
+    public bool loading { get; set; } = true;
+
+    public Service service { get; set; }
+    public PhysicalAddress address;
+    public PhysicalAddress originalAddress;
+
+    public int[] Category = (int[])Enum.GetValues(typeof(CategoryEnum));
+    public List<CategoryEnum> CategoryList { get; set; } = new List<CategoryEnum>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        service = await ServiceService.GetServiceById(Id);
+        var location = await ServiceService.GetLocationById(service.Service_At_Locations.First().Location_Id);
+        address = location.Physical_Addresses.First();
+        service._Postcode = address.Postal_Code;
+        service.Address = address.Address_1;
+
+        //Doing this to check if the postcode has changed.
+        originalAddress = new PhysicalAddress { Postal_Code = address.Postal_Code };
+        loading = false;
+
+
+
+        foreach (var c in Category)
+        {
+            CategoryList.Add((CategoryEnum)c);
+        }
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        try
+        {
+            updatingService = true;
+            var location = ServiceHelperFunctions.BuildLocation(service, address);
+            if (originalAddress.Postal_Code != service._Postcode)
+            {
+                var serviceAtLocation = ServiceHelperFunctions.BuildServiceAtLocation(location, service);
+                location = await ServiceService.AddLocation(location);
+                service.Service_At_Locations = new List<ServiceAtLocation> { serviceAtLocation };
+            }
+            service = await ServiceService.UpdateService(service);
+
+            //Add address details back onto the service model
+            service._Postcode = location.Physical_Addresses.First().Postal_Code;
+            service.Address = location.Physical_Addresses.First().Address_1;
+            updatingService = false;
+            serviceUpdated = true;
+        }
+        catch (ValidationError e)
+        {
+            updatingService = false;
+            validationError = e;
+        }
+        catch (HttpRequestException e)
+        {
+            updatingService = false;
+            httpError = e;
+        }
+        catch (Exception e)
+        {
+            updatingService = false;
+            Error.ProcessError(e);
+        }
+    }
+
+    private void UpdateServiceAvailibility(List<RegularSchedule> regularSchedules)
+    {
+        service.Regular_Schedules = regularSchedules;
+    }
+
+    private void UpdateServiceTagList(List<int> ServiceTagList)
+    {
+        service.Tags = ServiceTagList;
+    }
+
+}

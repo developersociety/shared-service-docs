@@ -1,0 +1,47 @@
+﻿<div class="head-content">
+    <a href="/"><img src="assets/catalyst_logo.svg" alt="Catalyst" height="50" /></a>
+   
+    <AuthorizeView>
+        <NotAuthorized>
+            <NavLink href="MicrosoftIdentity/Account/SignIn" class="nav-login">Log in</NavLink>
+        </NotAuthorized>
+        <Authorized>
+            <span class="mobile-menu"><label for="navswitch" id="menulink">Menu</label></span>
+        </Authorized>
+    </AuthorizeView>
+</div>
+
+<input type="checkbox" id="navswitch"/>
+<nav class="main-nav">
+    <ul>
+        <AuthorizeView>
+
+            <li>
+                <NavLink href="playlists">
+                    Playlist
+                </NavLink>
+            </li>
+            <li>
+                <NavLink href="myrequests">
+                    Requests
+                </NavLink>
+            </li>
+        </AuthorizeView>
+        <LoginDisplay />
+
+
+
+
+    </ul>
+</nav>
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}

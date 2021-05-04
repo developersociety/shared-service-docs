@@ -27,3 +27,7 @@
   - [frontend-theme](resource-hub-wiki/frontend-theme)
   - [development-workflow](resource-hub-wiki/development-workflow)
   - [alpha-phase-discovery-outputs](resource-hub-wiki/alpha-phase-discovery-outputs)
+- referrals-api
+  - [readme](referrals-api/readme)
+- referrals-ui
+  - [readme](referrals-ui/readme)

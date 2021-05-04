@@ -1,0 +1,227 @@
+﻿@page "/manage-organisation/{OrgId}"
+@using OpenReferralPOV.Data
+@using OpenReferralPOV.Services
+@using System.Linq
+
+@inject IOpenReferralOrganisationService OrgService
+@inject IOpenReferralService ServiceService
+@inject IOpenReferralMembershipRequestsService MemberService
+@inject IOpenReferralKeyContactService KeyContactService
+@inject NavigationManager NavManager
+<div class="content-container">
+    <div class="gridder">
+
+
+        <h2>Manage Organisation</h2>
+        
+        
+        @if (orgUpdated)
+        {
+            <h3>Organization Updated</h3>
+        }
+
+    <EditForm Model="@organization" OnValidSubmit="@HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <label for="Name">Name</label>
+        <ValidationMessage For="@(() => organization.Name)" />
+        <InputText id="Name" @bind-Value="@organization.Name" />
+
+        <label for="Description">Description</label>
+        <ValidationMessage For="@(() => organization.Description)" />
+        <InputText id="Description" @bind-Value="@organization.Description" />
+
+        <label for="Charity Number">Charity Number</label>
+        <ValidationMessage For="@(() => organization.CharityNumber)" />
+        <InputNumber id="CharityNumber" @bind-Value="@organization.CharityNumber" />
+
+        <label for="Url">URL</label>
+        <ValidationMessage For="@(() => organization.Url)" />
+        <InputText id="Url" @bind-Value="@organization.Url" />
+
+
+        @if (@httpError != null)
+        {
+            <warn>There was an error.</warn>
+            <br />
+            <warn>@httpError.StatusCode</warn>
+        }
+        @if (validationError != null)
+        {
+            <ErrorValidationMessage Error=@validationError />
+        }
+        <button type="submit">Submit</button>
+    </EditForm>
+
+        <h3>Services</h3>
+        @if (Services.Count() > 0)
+            @foreach (var service in Services)
+            {
+
+                <div class="playist-item item-padding">
+                    <div>
+                        <strong>@service.Name</strong>
+                        <br />
+                        <a class="" href=" @service.Url" target="_blank"> @service.Url</a>
+                    </div>
+                    <div>
+                        <a class="" href="manage-service/@service.Id">Manage Service</a>
+                    </div>
+                </div>
+
+
+            } else
+            {
+                <p>You currently have no services added.  To add one click on the Add Service button below.</p>
+            }
+
+        <input type="button" name="AddService" class="button1" value="Add Service" @onclick="@(e => NavigateToAddService(organization.Id))" />
+
+        <h3>Admins/Key Contacts of the Organisation</h3>
+        @if (keyContacts.Count() > 0)
+            @foreach (var contact in keyContacts)
+            {
+                <div class="playist-item whitebg">
+                    <div>
+                        @contact.UserEmail
+                    </div>
+                    <div>
+                        @if (keyContacts.Count() > 1)
+                        {
+                            <input type="button" name="Reject" class="button1" value="Remove" @onclick="@(e => RemoveKeyContact(contact))" disabled="@contact.DisabledButton" />
+                        }
+                    </div>
+
+                </div>
+            } else
+            {
+                <p>There are no Admins/Key contacts assigned to this organisation</p>
+            }
+        <h3>Members of the  Organisation</h3>
+        @if (Memberships.Count() > 0)
+            @foreach (var member in Memberships)
+            {
+                <div class="playist-item whitebg">
+                    <div>
+                        @member.Email
+                    </div>
+                    <div>@member.Status</div>
+                    <div>
+                        <input type="button" name="Reject" class="button1" value="Remove" @onclick="@(e => HandleDenyRequest(member))" disabled="@member.DisableButton" />
+                    </div>
+
+                </div>
+
+            } else
+            {
+                <p>There are no members assigned to this organisation</p>
+            }
+
+    </div>
+</div>
+
+@code {
+
+    [CascadingParameter]
+    Error Error { get; set; }
+    HttpRequestException httpError { get; set; }
+    ValidationError validationError { get; set; }
+    [Parameter]
+    public string OrgId { get; set; }
+
+    public bool orgUpdated { get; set; } = false;
+
+    public KeyContact keyContact { get; set; } = new KeyContact() { IsAdmin = true, IsPending = false };
+
+    public Organization organization { get; set; } = new Organization();
+
+    public IEnumerable<KeyContact> keyContacts = new List<KeyContact>();
+
+    public IEnumerable<MembershipRequests> Memberships = new List<MembershipRequests>();
+
+    public IEnumerable<Service> Services = new List<Service>();
+
+
+    protected override async Task OnParametersSetAsync()
+    {
+        organization = await OrgService.GetOrganisation(OrgId);
+        keyContacts = await KeyContactService.GetKeyContactsForOrg(OrgId);
+        Memberships = await MemberService.GetAllMembersOfOrg(OrgId);
+        Services = (await ServiceService.GetServicesAsync()).Where(x => x.OrganizationId == OrgId);
+
+    }
+    protected override async Task OnInitializedAsync()
+    {
+        organization = await OrgService.GetOrganisation(OrgId);
+        keyContacts = await KeyContactService.GetKeyContactsForOrg(OrgId);
+        Memberships = await MemberService.GetAllMembersOfOrg(OrgId);
+        Services = (await ServiceService.GetServicesAsync()).Where(x => x.OrganizationId == OrgId);
+    }
+
+    protected async Task HandleDenyRequest(MembershipRequests request)
+    {
+        try
+        {
+            httpError = null;
+            request.DisableButton = true;
+            await MemberService.HandleDenyRequestForJoiningOrg(request);
+            Memberships = await MemberService.GetAllMembersOfOrg(OrgId);
+        }
+        catch (HttpRequestException e)
+        {
+            httpError = e;
+        }
+        catch (Exception e)
+        {
+            Error.ProcessError(e);
+        }
+    }
+
+    private async Task RemoveKeyContact(KeyContact contact)
+    {
+        try
+        {
+            httpError = null;
+            contact.DisabledButton = true;
+            await KeyContactService.RemoveKeyContact(contact);
+            keyContacts = await KeyContactService.GetKeyContactsForOrg(OrgId);
+        }
+
+        catch (HttpRequestException e)
+        {
+            httpError = e;
+        }
+        catch (Exception e)
+        {
+            Error.ProcessError(e);
+        }
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        try
+        {
+            validationError = null;
+            httpError = null;
+            organization = await OrgService.UpdateOrganisation(organization);
+            orgUpdated = true;
+        }
+        catch (ValidationError e)
+        {
+            validationError = e;
+        }
+        catch (HttpRequestException e)
+        {
+            httpError = e;
+        }
+        catch (Exception e)
+        {
+            Error.ProcessError(e);
+        }
+    }
+
+    private async Task NavigateToAddService(string orgId)
+    {
+        NavManager.NavigateTo($"add-service/{orgId}");
+
+    }
+}

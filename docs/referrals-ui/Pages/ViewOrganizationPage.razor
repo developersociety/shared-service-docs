@@ -1,0 +1,142 @@
+﻿@page "/view-organisation/{Id}"
+@using OpenReferralPOV.Data
+@using OpenReferralPOV.Services
+
+@inject IOpenReferralService ServiceService
+@inject IOpenReferralOrganisationService OrgService
+@inject IOpenReferralKeyContactService KeyContactsService
+
+
+<div class="content-container">
+    <div class="gridder">
+
+        @if (loading)
+        {
+            <p><em>Loading...</em></p>
+        }
+
+        else
+        {
+            <h2 for="Name">@organisation.Name</h2>
+            <div class="two-cols">
+                <div class="col col-left">
+
+
+                    <h4 for="Description">@organisation.Description</h4>
+
+                    <h4 for="Charity Number">Charity Number: @organisation.CharityNumber</h4>
+
+                    <h4 for="Url">Website:<a href="@organisation.Url"> @organisation.Url</a></h4>
+                    @if (@httpError != null)
+                    {
+                        <warn>There was an error.</warn>
+                        <br />
+                        <warn>@httpError.StatusCode</warn>
+                    }
+                </div>
+                <div class="col col-right">
+                    @if (AssociationRequestSent)
+                    {
+                        <h4>Association Request Sent</h4>
+                    }
+                    else if (showRequestToBeAdmin)
+                    {
+                        <EditForm Model="@isAdmin" OnValidSubmit="@HandleValidSubmit">
+                            <h3>Make me an admin</h3>
+                            <p>An admin has the ability to add/remove services and update all oragnisation information</p>
+                            <div>
+                                <label for="admin">Request admin rights</label>
+                                <InputCheckbox @bind-Value="@isAdmin" id="admin" />
+                            </div>
+                            <button type="submit">Request Association</button>
+                        </EditForm>
+                    }
+
+                    <h3>Services</h3>
+
+                    @foreach (var service in services)
+                    {
+
+
+                        <div class="playist-item item-padding">
+                            <div>
+                                <NavLink href=@($"view-service/{service.Id}")>@service.Name</NavLink>
+                            </div>
+                            <div>
+                                @service.Url
+                            </div>
+                        </div>
+
+                    }
+
+                </div>
+            </div>
+        }
+    </div>
+</div>
+@code {
+
+    [CascadingParameter]
+    Error Error { get; set; }
+    HttpRequestException httpError { get; set; }
+    [Parameter]
+    public string Id { get; set; }
+
+    public bool loading { get; set; } = true;
+
+    public Organization organisation { get; set; }
+    public IEnumerable<Service> services { get; set; } = new List<Service>();
+    public PhysicalAddress address;
+    public PhysicalAddress originalAddress;
+    public Organization serviceOrg;
+    public bool isAdmin { get; set; } = false;
+    public bool AssociationRequestSent { get; set; } = false;
+
+    public bool showRequestToBeAdmin { get; set; } = true;
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        organisation = await OrgService.GetOrganisation(Id);
+        services = (await ServiceService.GetServicesAsync()).Where(x => x.OrganizationId == Id);
+        //Doing this to check if the postcode has changed.
+        loading = false;
+
+
+        var orgs = await KeyContactsService.GetOrgsICanManage();
+        if (orgs.Count() > 0)
+        {
+            if (orgs.FirstOrDefault(x => x.OrgId == Id) != null)
+            {
+                showRequestToBeAdmin = false;
+            }
+        }
+    }
+
+
+    private async Task HandleValidSubmit()
+    {
+        try
+        {
+            if (isAdmin)
+            {
+                await OrgService.RequestToJoinOrganisationAsAdmin(Id);
+                AssociationRequestSent = true;
+            }
+            else
+            {
+                await OrgService.RequestToJoinOrganisationAsMember(Id);
+                AssociationRequestSent = true;
+            }
+
+        }
+        catch (HttpRequestException e)
+        {
+            httpError = e;
+        }
+        catch (Exception e)
+        {
+            Error.ProcessError(e);
+        }
+    }
+}

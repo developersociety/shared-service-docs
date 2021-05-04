@@ -1,0 +1,59 @@
+﻿@using OpenReferralPOV.Data
+@using OpenReferralPOV.Data.Enums;
+@using System.Linq; 
+
+<h3>ServiceTagManager</h3>
+
+
+
+    @if (ServiceTagList.ToList().Count != 0)
+    {
+        <h4>Remove Tags</h4>
+        @foreach (var tag in ServiceTagList.ToList())
+        {
+
+            <span>
+                <input type="button" name="Remove from ServiceTags" class="tag minus" value="@((TagEnum)tag)"
+                       @onclick="@(e => RemoveFromServiceTags(tag))" />
+            </span>
+
+        }
+
+    }
+    <h4>Add Tag</h4>
+    @foreach (var tag in TotalTags.ToList().Where(t => !ServiceTagList.Contains(t)))
+    {
+        <span>
+            <input type="button" name="Add To ServiceTags" class="tag plus" value="@((TagEnum)tag)"
+                   @onclick="@(e => AddToServiceTags(tag))" />
+        </span>
+    }
+
+                   
+
+@code {
+
+    [Parameter]
+    public List<int> ServiceTagList { get; set; }
+
+    [Parameter]
+    public EventCallback<List<int>> updateServiceTagList { get; set; }
+
+    public int[] TotalTags = (int[])Enum.GetValues(typeof(TagEnum));
+
+    private void AddToServiceTags(int tag)
+    {
+        if (!ServiceTagList.Contains(tag))
+        {
+            ServiceTagList.Add(tag);
+        }
+
+        updateServiceTagList.InvokeAsync(ServiceTagList);
+    }
+
+    private void RemoveFromServiceTags(int tag)
+    {
+        ServiceTagList.Remove(tag);
+        updateServiceTagList.InvokeAsync(ServiceTagList);
+    }
+}

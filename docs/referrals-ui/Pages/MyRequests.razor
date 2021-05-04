@@ -1,0 +1,238 @@
+﻿@page "/myrequests"
+
+@using OpenReferralPOV.Data
+@using OpenReferralPOV.Services
+
+@inject IOpenReferralOrganisationService OrgService
+@inject IOpenReferralMembershipRequestsService MembershipRequests
+@inject IOpenReferralKeyContactService KeyContactRequests
+@inject NavigationManager NavManager
+
+<div class="content-container">
+    <div class="gridder">
+
+        <h2>Membership Requests</h2>
+
+        @if (myrequeststojoin == null)
+        {
+            <p><em>Loading...</em></p>
+        }
+        else if (ActionTaken)
+        {
+            <h3><em>Action submitted</em></h3>
+            <a href="myrequests">Reload</a>
+        }
+        else if (NoRequestData())
+        {
+            <h3>You currently have no requests pending and no requests to action.</h3>
+            <p>Please <NavLink href="playlists">search</NavLink> for services and find organisations you wish to join.</p>
+        }
+        else
+        {
+            if (myrequeststojoin.Any())
+            {
+                <h3>Your Organisation Requests</h3>
+
+
+                @foreach (var membership in myrequeststojoin)
+                {
+                    <div class="playist-item item-padding">
+                        <div>
+                            @organizations.First(x => x.Id == membership.OrgId).Name
+                        </div>
+                        <div>
+                            @membership.Status
+                        </div>
+                    </div>
+                }
+
+            }
+
+            if (myrequeststojoinAsAdmin.Any())
+            {
+                <h3>Your Organisation Admin Requests</h3>
+
+                @foreach (var ar in myrequeststojoinAsAdmin)
+                {
+                    <div class="playist-item item-padding">
+                        <div>
+                            @organizations.First(x => x.Id == ar.OrgId).Name
+                        </div>
+                        <div>
+                            PENDING
+                        </div>
+                    </div>
+                }
+            }
+
+            if (joinRequestsICanAuthorise.Any())
+            {
+                <h3>Organisation Requests</h3>
+                @foreach (var membership in joinRequestsICanAuthorise)
+                {
+                    <div class="playist-item whitebg">
+                        <div>@organizations.First(x => x.Id == membership.OrgId).Name</div>
+                        <div>@membership.Email</div>
+                        <div class="buttons">
+                            <input type="button" name="Accept" class="button1" value="Accept" disabled="@membership.DisableButton" @onclick="@(e => HandleGrantRequest(membership))" />
+                            <input type="button" name="Reject" class="button1" value="Reject" disabled="@membership.DisableButton" @onclick="@(e => HandleDenyRequest(membership))" />
+                        </div>
+                    </div>
+
+                }
+            }
+
+            if (adminRequestsICanAuthorise.Any())
+            {
+                <h3>Organisation Admin Requests</h3>
+
+                @foreach (var ar in adminRequestsICanAuthorise)
+                {
+
+                    <div class="playist-item whitebg">
+                        <div>@organizations.First(x => x.Id == ar.OrgId).Name</div>
+                        <div>@ar.UserEmail</div>
+                        <div class="buttons">
+                            <input type="button" name="Accept" class="button1" disabled="@ar.DisabledButton" value="Accept" @onclick="@(e => HandleAdminGrantRequest(ar))" />
+                            <input type="button" name="Reject" class="button1" disabled="@ar.DisabledButton" value="Reject" @onclick="@(e => HandleAdminDenyGrantRequest(ar))" />
+                        </div>
+                    </div>
+
+                }
+            }
+
+
+            @if (@httpError != null)
+            {
+                <warn>There was an error submiting the form</warn>
+                <br />
+                <warn>@httpError.StatusCode</warn>
+            }
+        }
+
+    </div>
+</div>
+
+@code {
+    [CascadingParameter]
+    Error Error { get; set; }
+    HttpRequestException httpError { get; set; }
+
+    private IEnumerable<Organization> organizations;
+    private IEnumerable<MembershipRequests> myrequeststojoin;
+    private IEnumerable<MembershipRequests> joinRequestsICanAuthorise;
+
+    private IEnumerable<KeyContact> adminRequestsICanAuthorise;
+    private IEnumerable<KeyContact> myrequeststojoinAsAdmin;
+    private bool ActionTaken;
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            organizations = await OrgService.GetAllOrganisations();
+            myrequeststojoin = await MembershipRequests.GetAllMemebershipRequestsThatCanBeActioned();
+            myrequeststojoinAsAdmin = await KeyContactRequests.GetOrgsIHaveRequestedToJoin();
+            joinRequestsICanAuthorise = (await MembershipRequests.GetOrgJoinRequests());
+            adminRequestsICanAuthorise = await KeyContactRequests.GetPendingAdminRequests();
+
+            ActionTaken = false;
+        }
+        catch (HttpRequestException e)
+        {
+            httpError = e;
+        }
+        catch (Exception e)
+        {
+            Error.ProcessError(e);
+        }
+    }
+
+    protected async Task HandleGrantRequest(MembershipRequests request)
+    {
+        try
+        {
+            request.DisableButton = true;
+            await MembershipRequests.HandleGrantRequestForJoiningOrg(request);
+            ActionTaken = true;
+            NavManager.NavigateTo($"myrequests", true);
+
+        }
+        catch (HttpRequestException e)
+        {
+            httpError = e;
+        }
+        catch (Exception e)
+        {
+            Error.ProcessError(e);
+        }
+    }
+
+    protected async Task HandleDenyRequest(MembershipRequests request)
+    {
+        try
+        {
+            request.DisableButton = true;
+            await MembershipRequests.HandleDenyRequestForJoiningOrg(request);
+            ActionTaken = true;
+            NavManager.NavigateTo($"myrequests", true);
+
+
+        }
+        catch (HttpRequestException e)
+        {
+            httpError = e;
+        }
+        catch (Exception e)
+        {
+            Error.ProcessError(e);
+        }
+    }
+
+    protected async Task HandleAdminGrantRequest(KeyContact kc)
+    {
+        try
+        {
+            kc.DisabledButton = true;
+            await KeyContactRequests.HandleAdminGrantRequest(kc.OrgId, kc.UserId);
+            ActionTaken = true;
+            NavManager.NavigateTo($"myrequests", true);
+
+        }
+        catch (HttpRequestException e)
+        {
+            httpError = e;
+        }
+        catch (Exception e)
+        {
+            Error.ProcessError(e);
+        }
+
+    }
+
+    protected async Task HandleAdminDenyGrantRequest(KeyContact kc)
+    {
+        try
+        {
+            kc.DisabledButton = true;
+            await KeyContactRequests.HandleAdminDenyRequest(kc.OrgId, kc.UserId);
+            ActionTaken = true;
+            NavManager.NavigateTo($"myrequests", true);
+
+        }
+        catch (HttpRequestException e)
+        {
+            httpError = e;
+        }
+        catch (Exception e)
+        {
+            Error.ProcessError(e);
+        }
+    }
+
+    private bool NoRequestData()
+    {
+        return !(myrequeststojoin.Any() || myrequeststojoinAsAdmin.Any() || joinRequestsICanAuthorise.Any() || adminRequestsICanAuthorise.Any());
+    }
+}

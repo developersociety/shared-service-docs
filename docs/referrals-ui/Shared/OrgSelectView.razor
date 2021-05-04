@@ -1,0 +1,52 @@
+﻿
+@using OpenReferralPOV.Data
+@using OpenReferralPOV.Services
+
+@inject IOpenReferralOrganisationService OrgService
+@inject IOpenReferralKeyContactService KeyContactService
+@inject NavigationManager NavManager
+
+<AuthorizeView>
+    <Authorized>
+        @if (KeyContacts != null && KeyContacts.Count() > 0)
+        {
+           <ul class="orglist">
+            @foreach (var kc in KeyContacts)
+            {
+                <li>
+                    @{var managelink = $"manage-organisation/{kc.OrgId.ToString()}";
+                    <NavLink href=@managelink>@organizations.FirstOrDefault(x => x.Id == kc.OrgId).Name</NavLink>}
+                </li>
+             }
+
+            </ul>
+        }
+
+    </Authorized>
+</AuthorizeView>
+
+@code {
+
+    public Organization organization { get; set; } = new Organization();
+    public KeyContact keyContact { get; set; } = new KeyContact();
+
+
+    private IEnumerable<KeyContact> KeyContacts { get; set; } = new List<KeyContact>();
+    private IEnumerable<Organization> organizations = new List<Organization>();
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            organizations = await OrgService.GetAllOrganisations();
+            KeyContacts = await KeyContactService.GetOrgsICanManage();
+        }
+        catch(Exception e)
+        {
+            organizations = new List<Organization>();
+            KeyContacts = new List<KeyContact>();
+        }
+    }
+}
+

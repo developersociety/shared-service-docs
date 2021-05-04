@@ -1,0 +1,93 @@
+﻿@import '_colours.scss';
+@import '_sizes.scss';
+@import "_responsive.scss";
+
+
+html {
+    height: 100%;
+}
+
+body {
+    /* Remember to use the other versions for IE 10 and older browsers! */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100%;
+}
+
+/* Azure styling */
+.api-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+
+    #emailVerificationControl_label {
+        display: none;
+    }
+
+    #attributeList ul li .helpLink {
+        display: none;
+    }
+
+    .VerificationControl {
+        padding-bottom: 1rem;
+        border-bottom: 1px solid;
+    }
+
+    .sendCode {
+        margin-bottom: 1rem;
+    }
+
+    .Password {
+        margin-top: 1rem;
+    }
+
+    ul {
+        padding: 0;
+    }
+
+    img {
+        margin-bottom: 2rem;
+    }
+
+    .error {
+        color: $error-red;
+
+        p {
+            margin-bottom: 0.5rem;
+        }
+    }
+
+    a {
+        color: $darkblue;
+        display: block;
+        margin-bottom: 1rem;
+    }
+
+    .divider, .create {
+        text-align: center;
+    }
+
+    .intro {
+        text-align: left;
+    }
+
+    @media screen and (max-width: $width-mid) {
+        width: 80%;
+        line-height: 2rem;
+
+        img {
+            height: 70px;
+        }
+    }
+
+    @media screen and (min-width: $width-lge) {
+
+        form {
+            width: 30rem
+        }
+    }
+}
+.error{
+    color:$red;
+}
