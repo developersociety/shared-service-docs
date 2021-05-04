@@ -21,12 +21,12 @@
       "outputDirectory": "resource-hub-wiki"
     },
     {
-      "gitUrl": "https://github.com:siccar/referrals-api.git",
+      "gitUrl": "https://github.com/siccar/referrals-api.git",
       "sourceDocsDirectory": "/",
       "outputDirectory": "referrals-api"
     },
     {
-      "gitUrl": "https://github.com:siccar/referrals-ui.git",
+      "gitUrl": "https://github.com/siccar/referrals-ui.git",
       "sourceDocsDirectory": "/",
       "outputDirectory": "referrals-ui"
     }
