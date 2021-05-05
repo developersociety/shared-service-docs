@@ -1,4 +1,6 @@
 ﻿@page "/view-organisation/{Id}"
+@attribute [Authorize]
+
 @using OpenReferralPOV.Data
 @using OpenReferralPOV.Services
 
@@ -23,15 +25,15 @@
 
 
                     <h4 for="Description">@organisation.Description</h4>
-
-                    <h4 for="Charity Number">Charity Number: @organisation.CharityNumber</h4>
+                    @if (organisation.CharityNumber != 0)
+                    {
+                        <h4 for="Charity Number">Charity Number: @organisation.CharityNumber</h4>
+                    }
 
                     <h4 for="Url">Website:<a href="@organisation.Url"> @organisation.Url</a></h4>
                     @if (@httpError != null)
                     {
-                        <warn>There was an error.</warn>
-                        <br />
-                        <warn>@httpError.StatusCode</warn>
+                        <HTTPErrorMessage message=@httpError.StatusCode.ToString() />
                     }
                 </div>
                 <div class="col col-right">
@@ -118,6 +120,7 @@
     {
         try
         {
+            httpError = null;
             if (isAdmin)
             {
                 await OrgService.RequestToJoinOrganisationAsAdmin(Id);

@@ -1,4 +1,5 @@
 ﻿@page "/myrequests"
+@attribute [Authorize]
 
 @using OpenReferralPOV.Data
 @using OpenReferralPOV.Services
@@ -11,7 +12,7 @@
 <div class="content-container">
     <div class="gridder">
 
-        <h2>Membership Requests</h2>
+        <h2>Association Requests</h2>
 
         @if (myrequeststojoin == null)
         {
@@ -104,9 +105,7 @@
 
             @if (@httpError != null)
             {
-                <warn>There was an error submiting the form</warn>
-                <br />
-                <warn>@httpError.StatusCode</warn>
+                <HTTPErrorMessage message=@httpError.StatusCode.ToString() />
             }
         }
 
@@ -153,6 +152,7 @@
     {
         try
         {
+            httpError = null;
             request.DisableButton = true;
             await MembershipRequests.HandleGrantRequestForJoiningOrg(request);
             ActionTaken = true;
@@ -173,6 +173,7 @@
     {
         try
         {
+            httpError = null;
             request.DisableButton = true;
             await MembershipRequests.HandleDenyRequestForJoiningOrg(request);
             ActionTaken = true;
@@ -194,6 +195,7 @@
     {
         try
         {
+            httpError = null;
             kc.DisabledButton = true;
             await KeyContactRequests.HandleAdminGrantRequest(kc.OrgId, kc.UserId);
             ActionTaken = true;
@@ -215,6 +217,7 @@
     {
         try
         {
+            httpError = null;
             kc.DisabledButton = true;
             await KeyContactRequests.HandleAdminDenyRequest(kc.OrgId, kc.UserId);
             ActionTaken = true;

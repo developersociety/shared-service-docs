@@ -4795,7 +4795,8 @@ header {
         display: inline-block; }
       header .dropdown {
         position: relative;
-        align-items: baseline; }
+        align-items: baseline;
+        z-index: 1000; }
       header .dropdown-content {
         display: none;
         opacity: 1;
@@ -4878,67 +4879,6 @@ h3 {
 h4 {
   margin-top: 1rem;
   margin-bottom: 1rem; }
-
-#alpha {
-  margin-top: 1.3rem;
-  margin-bottom: 1.3rem; }
-  #alpha a {
-    color: #0a0039; }
-  #alpha span {
-    border-radius: 100px;
-    background: #fbd0e9;
-    color: #990059;
-    padding: 0.2rem 1rem;
-    margin-right: 0.5rem; }
-  @media only screen and (max-width: 640px) {
-    #alpha {
-      line-height: 2.0rem;
-      margin-top: 0.8rem;
-      margin-bottom: 0.8rem; } }
-
-/* Form Controls */
-label {
-  color: #0a0039;
-  font-weight: 500;
-  line-height: 2rem; }
-
-label::after {
-  content: " : "; }
-
-input, button[type=submit], select {
-  margin-bottom: 1.3rem; }
-
-input, select, input[type=text], input[type=number], button[type=submit], input[type=button], button {
-  border: 1px #0a0039 solid;
-  font-size: 1.3rem;
-  padding: 0.3rem;
-  width: 100%; }
-
-button[type=submit], input[type=button], button {
-  background: #0a0039;
-  border: none;
-  color: #fff;
-  padding: 0.3rem 2.5rem;
-  width: 100%;
-  border-bottom: 2px solid #0a0039;
-  margin-top: 1.3rem; }
-  button[type=submit]:hover, input[type=button]:hover, button:hover {
-    background: #09CA77;
-    color: #0a0039;
-    cursor: pointer; }
-
-[type="checkbox"]:not(:checked),
-[type="checkbox"]:checked {
-  width: 0px; }
-
-input[type=checkbox]::before {
-  content: "\f0c8"; }
-
-input[type=checkbox]:checked::before {
-  content: "\f14a"; }
-
-.btn-sml {
-  font-size: 0.8rem !important; }
 
 /* Grid Layout */
 @media only screen and (min-width: 1024px) {
@@ -5023,6 +4963,69 @@ h1, h2, h4, p {
       .signed-out .flexer .buttondiv {
         width: 100%;
         margin-bottom: 1rem; } }
+
+#alpha {
+  margin-top: 1.3rem;
+  margin-bottom: 1.3rem; }
+  #alpha a {
+    color: #0a0039; }
+  #alpha span {
+    border-radius: 100px;
+    background: #fbd0e9;
+    color: #990059;
+    padding: 0.2rem 1rem;
+    margin-right: 0.5rem; }
+  @media only screen and (max-width: 640px) {
+    #alpha {
+      line-height: 2.0rem;
+      margin-top: 0.8rem;
+      margin-bottom: 0.8rem; } }
+
+/* Form Controls */
+label {
+  color: #0a0039;
+  font-weight: 500;
+  line-height: 2rem; }
+
+label::after {
+  content: " : "; }
+
+input, button[type=submit], select {
+  margin-bottom: 1.3rem; }
+
+input, select, input[type=text], input[type=number], button[type=submit], input[type=button], button {
+  border: 1px #0a0039 solid;
+  font-size: 1.3rem;
+  padding: 0.3rem;
+  width: 100%; }
+
+button[type=submit], input[type=button], button {
+  background: #0a0039;
+  border: none;
+  color: #fff;
+  padding: 0.3rem 2.5rem;
+  width: 100%;
+  border-bottom: 2px solid #0a0039;
+  margin-top: 1.3rem; }
+  button[type=submit][disabled], input[type=button][disabled], button[disabled] {
+    opacity: 0.6; }
+  button[type=submit]:hover:not([disabled]), input[type=button]:hover:not([disabled]), button:hover:not([disabled]) {
+    background: #09CA77;
+    color: #0a0039;
+    cursor: pointer; }
+
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+  width: 0px; }
+
+input[type=checkbox]::before {
+  content: "\f0c8"; }
+
+input[type=checkbox]:checked::before {
+  content: "\f14a"; }
+
+.btn-sml {
+  font-size: 0.8rem !important; }
 
 /* Service Availablity*/
 #service-availability {
@@ -5201,10 +5204,25 @@ h1, h2, h4, p {
     @media only screen and (max-width: 1024px) {
       .playist-item.whitebg {
         display: block; } }
+  .playist-item .servicename {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 20rem;
+    margin: 0;
+    font-weight: 700; }
   .playist-item .link {
-    padding: 0 1rem; }
+    padding: 0 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 20rem; }
+    .playist-item .link:hover {
+      opacity: 0.3; }
   .playist-item a {
     color: #0a0039; }
+    .playist-item a:hover {
+      opacity: 0.3; }
   .playist-item .buttons {
     display: flex;
     grid-gap: 2rem; }
@@ -5226,10 +5244,6 @@ h1, h2, h4, p {
         opacity: 0.3;
         color: #fff; }
 
-/* Map Styling */
-.gmap_canvas iframe {
-  width: 100%; }
-
 /* Service tags*/
 .service-tags span {
   padding: 0;
@@ -5249,3 +5263,94 @@ h1, h2, h4, p {
 
 .validation-message {
   color: #ff0000; }
+
+/* Map Styling */
+.gmap_canvas {
+  position: relative; }
+  .gmap_canvas iframe {
+    width: 100%; }
+
+.overlay {
+  position: absolute;
+  z-index: 100;
+  margin: auto;
+  background: white;
+  padding: 1rem;
+  opacity: 0.8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  font-weight: 700; }
+
+.blurMap {
+  filter: blur(5px); }
+
+.feedback {
+  display: flex;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  animation: fadeIn 0.5s 1;
+  -webkit-animation: fadeIn 0.5s 1;
+  animation-fill-mode: backwards;
+  animation-delay: 0.5s;
+  -webkit-animation-delay: 0.5s;
+  /* Safari and Chrome */
+  align-items: center; }
+  .feedback span {
+    margin-left: 0.5rem; }
+  .feedback.success {
+    background: #09CA77;
+    color: #fff; }
+  .feedback.error {
+    background: #ff0000;
+    color: #fff; }
+  .feedback.info {
+    background: #e6e5eb;
+    color: #0a0039; }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+@-webkit-keyframes fadeOut {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0;
+    display: none; } }
+
+/* Distance Selector */
+#distanceselector {
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  grid-gap: .3rem; }
+  #distanceselector button {
+    background: #e6e5eb;
+    color: #0a0039;
+    width: 20%;
+    text-align: center;
+    cursor: pointer;
+    display: block;
+    border-radius: 0.3rem;
+    border: none;
+    padding: 0;
+    font-size: inherit;
+    height: 2rem; }
+  #distanceselector .IsDisabled {
+    opacity: 0.6;
+    cursor: default; }
+  #distanceselector .IsActive {
+    opacity: 1; }
+    #distanceselector .IsActive:hover {
+      background: #0a0039;
+      color: #fff; }
+  #distanceselector .isSelected {
+    background: #0a0039;
+    color: #fff; }

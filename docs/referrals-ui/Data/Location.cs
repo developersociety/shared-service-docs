@@ -12,12 +12,14 @@ namespace OpenReferralPOV.Data
         {
             Id = Guid.NewGuid().ToString();
             Physical_Addresses = new List<PhysicalAddress>();
+            IsVulnerable = false;
         }
         public string Id { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "Name must be populated")]
         [StringLength(200, ErrorMessage = "Description can only be 200 chars long.")]
         public string Description { get; set; }
+        public bool IsVulnerable { get; set; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
 

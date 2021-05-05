@@ -1,0 +1,11 @@
+﻿@{
+    string strMessage = "There was a server error. [" + message + "]";
+}
+
+<StatusMessage messageType="error" message="@strMessage" />
+
+@code {
+    [Parameter]
+    public string message { get; set; }
+
+}

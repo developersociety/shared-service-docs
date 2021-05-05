@@ -1,8 +1,9 @@
 ﻿@page "/add-organization"
-
+@attribute [Authorize]
 @using OpenReferralPOV.Data
 @using OpenReferralPOV.Services
 @using System.Net.Http
+@using OpenReferralPOV.Shared
 
 @inject IOpenReferralOrganisationService ReferralService
 @inject NavigationManager NavManager
@@ -12,45 +13,56 @@
     <div class="gridder">
         @if (orgCreated)
         {
-            <h3>Organization Created</h3>
+            <StatusMessage messageType="success" message="Organisation created" />
             NavManager.NavigateTo($"manage-organisation/{organization.Id}", true);
 
         }
         else
         {
 
-    <EditForm Model="@organization" OnValidSubmit="@HandleValidSubmit">
+            <EditForm Model="@organization" OnValidSubmit="@HandleValidSubmit">
 
-        <h2>Add Organization</h2>
-        <DataAnnotationsValidator />
+                <h2>Add Organisation</h2>
 
-        <label for="Name">Name</label>
-        <ValidationMessage For="@(() => organization.Name)" />
-        <InputText id="Name" @bind-Value="@organization.Name" type="text" />
+                <DataAnnotationsValidator />
 
-        <label for="Description">Description</label>
-        <ValidationMessage For="@(() => organization.Description)" />
-        <InputText id="Description" @bind-Value="@organization.Description" type="text" />
+                <label for="Name">Name</label>
+                <ValidationMessage For="@(() => organization.Name)" />
+                <InputText id="Name" @bind-Value="@organization.Name" type="text" />
 
-        <label for="Charity Number">Charity Number (Leave as zero if this doesn't apply to your organisation)</label>
-        <InputNumber id="CharityNumber" @bind-Value="@organization.CharityNumber" />
+                <label for="Description">Description</label>
+                <ValidationMessage For="@(() => organization.Description)" />
+                <InputText id="Description" @bind-Value="@organization.Description" type="text" />
+                <div>
+                    <label for="isCharity">Is your organisation a charity?</label>
+                    <InputCheckbox @bind-Value="@isCharity" id="isCharity" />
+                </div>
 
-        <label for="Url">URL</label>
-        <ValidationMessage For="@(() => organization.Url)" />
-        <InputText id="Url" @bind-Value="@organization.Url" type="text" />
+                @if (isCharity)
+                {
+                    <label for="Charity Number">Charity Number</label>
+                    <ValidationMessage For="@(() => organization.CharityNumber)" />
 
-        @if (@httpError != null)
-        {
-            <warn>There was an error submiting the form</warn>
-            <br />
-            <warn>@httpError.StatusCode</warn>
-        }
-        @if (validationError != null)
-        {
-            <ErrorValidationMessage Error=@validationError />
-        }
-        <button type="submit">Submit</button>
-    </EditForm>
+                    <InputNumber id="CharityNumber" @bind-Value="@organization.CharityNumber" />
+                }
+
+                <label for="Url">URL</label>
+                <ValidationMessage For="@(() => organization.Url)" />
+                <InputText id="Url" @bind-Value="@organization.Url" type="text" />
+
+                @if (@httpError != null)
+                {
+                    <warn>There was an error submiting the form</warn>
+                    <br />
+                    <warn>@httpError.StatusCode</warn>
+                }
+                @if (validationError != null)
+                {
+                    <ErrorValidationMessage Error=@validationError />
+                }
+                <button type="submit">Submit</button>
+            </EditForm>
+
         }
     </div>
 </div>
@@ -62,12 +74,17 @@
     ValidationError validationError { get; set; }
     public Organization organization { get; set; } = new Organization();
     public bool orgCreated { get; set; } = false;
+    public bool isCharity { get; set; } = false;
 
     private async Task HandleValidSubmit()
     {
         try
         {
             httpError = null;
+            validationError = null;
+
+            if (!isCharity) { organization.CharityNumber = 0; }
+
             organization = await ReferralService.AddOrganization(organization);
             orgCreated = true;
         }

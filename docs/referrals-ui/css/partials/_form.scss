@@ -1,0 +1,62 @@
+﻿/* Form Controls */
+label {
+    color: $darkblue;
+    font-weight: 500;
+    line-height: 2rem;
+}
+
+label::after {
+    content: " : "
+}
+
+input, button[type=submit], select {
+    margin-bottom: $mid
+}
+
+input, select, input[type=text], input[type=number], button[type=submit], input[type=button], button {
+    border: $border-1 $darkblue solid;
+    font-size: $mid;
+    padding: 0.3rem;
+    width: 100%;
+}
+
+button[type=submit], input[type=button], button {
+    background: $darkblue;
+    border: none;
+    color: $white;
+    padding: 0.3rem 2.5rem;
+    width: 100%;
+    border-bottom: $border-2 solid $darkblue;
+    margin-top: $mid;
+
+    &[disabled] {
+        opacity: 0.6;
+    }
+
+    &:hover:not([disabled]) {
+        background: $minty;
+        color: $darkblue;
+        cursor: pointer;
+    }
+}
+
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+    @extend %fa-icon;
+    @extend .far;
+    width: 0px;
+}
+
+input[type=checkbox]::before {
+    content: fa-content($fa-var-square);
+}
+
+input[type=checkbox]:checked::before {
+    @extend .fas;
+    content: fa-content($fa-var-check-square);
+}
+
+
+.btn-sml {
+    font-size: $sml !important
+}

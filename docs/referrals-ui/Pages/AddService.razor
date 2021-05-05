@@ -1,5 +1,5 @@
 ﻿@page "/add-service/{OrgId}"
-
+@attribute [Authorize]
 @using OpenReferralPOV.Data
 @using OpenReferralPOV.Services
 @using OpenReferralPOV.Data.Enums;
@@ -14,16 +14,25 @@
     <div class="gridder">
         @if (serviceCreated)
         {
-            <h2>Service Created</h2>
+            <StatusMessage messageType="success" message="Service created" />
             NavManager.NavigateTo($"manage-organisation/{service.OrganizationId}", true);
         }
         else if (creatingService)
         {
-            <h3>Creating Service...</h3>
+            <StatusMessage messageType="info" message="Creating Service" />
         }
         else
         {
             <h3>Add Service</h3>
+
+            @if (@httpError != null)
+            {
+                <HTTPErrorMessage message=@httpError.StatusCode.ToString() />
+            }
+            @if (validationError != null)
+            {
+                <ErrorValidationMessage Error=@validationError />
+            }
             <EditForm Model="@service" OnValidSubmit="@HandleValidSubmit">
                 <DataAnnotationsValidator />
                 <div class="two-cols">
@@ -44,39 +53,26 @@
                         <label for="Url">URL</label>
                         <ValidationMessage For="@(() => service.Url)" />
                         <InputText id="Url" @bind-Value="@service.Url" type="text" />
-
+                        <div>
+                            <label for="IsVulnerable">Is Vulnerable (Tick if location should be hidden)</label>
+                            <ValidationMessage For="@(() => location.IsVulnerable)" />
+                            <InputCheckbox id="IsVulnerable" @bind-Value="@location.IsVulnerable" />
+                        </div>
                         <label for="Address">Address</label>
                         <ValidationMessage For="@(() => service.Address)" />
                         <InputText id="Address" @bind-Value="@service.Address" type="text" />
 
                         <label for="City">City</label>
-                        <ValidationMessage For="@(() => address.City)" />
-                        <InputText id="City" @bind-Value="@address.City" type="text" />
+                        <ValidationMessage For="@(() => location.Physical_Addresses.First().City)" />
+                        <InputText id="City" @bind-Value="@location.Physical_Addresses.First().City" type="text" />
 
                         <label for="County">County</label>
-                        <ValidationMessage For="@(() => address.State_Province)" />
-                        <InputText id="County" @bind-Value="@address.State_Province" type="text" />
+                        <ValidationMessage For="@(() => location.Physical_Addresses.First().State_Province)" />
+                        <InputText id="County" @bind-Value="@location.Physical_Addresses.First().State_Province" type="text" />
 
                         <label for="PostCode">Post Code</label>
                         <ValidationMessage For="@(() => service._Postcode)" />
                         <InputText id="PostCode" @bind-Value="@service._Postcode" type="text" />
-
-                        <label for="Org">Organisation</label>
-                        <InputSelect @bind-Value="@service.OrganizationId" class="form-control">
-                            @foreach (var org in organisations)
-                                {
-                                    if (org.Id == OrgId)
-                                    {
-                                        service.OrganizationId = org.Id;
-                                    <option value="@org.Id" selected>@org.Name</option>
-                                    }
-                                    else
-                                    {
-                                    <option value="@org.Id">@org.Name</option>
-                                    }
-                                }
-                            }
-                        </InputSelect>
 
                         <label for="Cat">Category</label>
                         <InputSelect @bind-Value="@service.Category" class="form-control">
@@ -105,16 +101,6 @@
                 </div>
 
 
-                @if (@httpError != null)
-                {
-                    <warn>There was an error submiting the form</warn>
-                    <br />
-                    <warn>@httpError.StatusCode</warn>
-                }
-                @if (validationError != null)
-                {
-                    <ErrorValidationMessage Error=@validationError />
-                }
                 <button type="submit">Submit</button>
             </EditForm>
         }
@@ -130,7 +116,7 @@
     public string OrgId { get; set; }
     public IEnumerable<Organization> organisations { get; set; } = new List<Organization>();
     public Service service { get; set; } = new Service();
-    public PhysicalAddress address { get; set; } = new PhysicalAddress();
+    public Location location { get; set; } = new Location();
     public bool serviceCreated { get; set; } = false;
     public bool creatingService { get; set; } = false;
     public int[] Category = (int[])Enum.GetValues(typeof(CategoryEnum));
@@ -142,8 +128,10 @@
         try
         {
             creatingService = true;
+            httpError = null;
+            validationError = null;
 
-            var location = ServiceHelperFunctions.BuildLocation(service, address);
+            location = ServiceHelperFunctions.BuildLocation(service, location);
             location = await ReferralService.AddLocation(location);
 
             var serviceAtLocation = ServiceHelperFunctions.BuildServiceAtLocation(location, service);
@@ -185,6 +173,10 @@
     {
         try
         {
+            service.OrganizationId = OrgId;
+
+            location.Physical_Addresses = new List<PhysicalAddress> { new PhysicalAddress() };
+
             organisations = await OrgService.GetAllOrganisations();
             foreach (var c in Category)
             {

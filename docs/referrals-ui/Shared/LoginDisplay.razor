@@ -15,15 +15,20 @@
         <li class="dropdown">
   <div class='lock-container'>
     <span class='lock'><i class="fas fa-lock"></i></span>
-        <ul class="dropdown-content">
-            <OrgSelectView />
-            <li>
-                <NavLink href="add-organization">
-                    Add an organisation
-                </NavLink>
-            </li>
-            <li><NavLink href="MicrosoftIdentity/Account/SignOut">Logout</NavLink></li>
-        </ul>
+    <ul class="dropdown-content">
+        <OrgSelectView />
+        <li>
+            <NavLink href="add-organization">
+                Add an organisation
+            </NavLink>
+        </li>
+        <li>
+            <NavLink href="search-organisation">
+                Search an organisation
+            </NavLink>
+        </li>
+        <li><NavLink href="MicrosoftIdentity/Account/SignOut">Logout</NavLink></li>
+    </ul>
             </div>
   </li>
     </Authorized>

@@ -1,0 +1,23 @@
+﻿// Alpha warning
+#alpha {
+    margin-top: $mid;
+    margin-bottom: $mid;
+
+    a {
+        color: $darkblue
+    }
+
+    span {
+        border-radius: 100px;
+        background: $red;
+        color: $dark-red;
+        padding: 0.2rem 1rem;
+        margin-right: 0.5rem;
+    }
+
+    @media only screen and (max-width: $width-sml) {
+        line-height: 2.0rem;
+        margin-top: $sml;
+        margin-bottom: $sml;
+    }
+}

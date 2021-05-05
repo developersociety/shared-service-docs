@@ -2,6 +2,7 @@
   - [setup-clients-to-work-with-catalyst-notify](notifications/setup-clients-to-work-with-catalyst-notify)
   - [setup-notifications-api](notifications/setup-notifications-api)
   - [setup-python-dev-environment](notifications/setup-python-dev-environment)
+  - [setup-production](notifications/setup-production)
 - search
   - [specification](search/specification)
   - [api](search/api)
@@ -28,6 +29,7 @@
   - [development-workflow](resource-hub-wiki/development-workflow)
   - [alpha-phase-discovery-outputs](resource-hub-wiki/alpha-phase-discovery-outputs)
 - referrals-api
+  - [docs/apiusecases](referrals-api/docs/apiusecases)
   - [readme](referrals-api/readme)
 - referrals-ui
   - [readme](referrals-ui/readme)

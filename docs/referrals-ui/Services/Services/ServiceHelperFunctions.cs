@@ -8,13 +8,11 @@ namespace OpenReferralPOV.Services
 {
     public static class ServiceHelperFunctions
     {
-        public static Location BuildLocation(Service service, PhysicalAddress address)
+        public static Location BuildLocation(Service service, Location location)
         {
-            var location = new Location();
-            address.LocationId = location.Id;
-            address.Postal_Code = service._Postcode;
-            address.Address_1 = service.Address;
-            location.Physical_Addresses = new List<PhysicalAddress> { address };
+            location.Physical_Addresses.First().LocationId = location.Id;
+            location.Physical_Addresses.First().Postal_Code = service._Postcode;
+            location.Physical_Addresses.First().Address_1 = service.Address;
             location.Name = service.Name;
             return location;
         }

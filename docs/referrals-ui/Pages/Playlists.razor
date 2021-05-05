@@ -1,7 +1,10 @@
 ﻿@page "/playlists"
+@attribute [Authorize]
+
 @using OpenReferralPOV.Data.Enums
 @using OpenReferralPOV.Data
 @using OpenReferralPOV.Services
+
 
 @inject IOpenReferralPlaylistService PlaylistService
 @inject IOpenReferralServiceFilterService ServiceFilterService
@@ -16,10 +19,11 @@
                 <p class="space-sml">Search by location</p>
                 <EditForm Model="@SearchService" OnValidSubmit="@HandleSearchService">
                     <label for="Postcode">Enter Postcode</label><InputText id="Postcode" @bind-Value="@SearchService.Postcode" />
-                    <label for="Distance">Distance (miles)</label><InputNumber id="Distance" @bind-Value="@SearchService.Proximity" />
+                    <label for="Distance">Distance (miles)</label>
+                    <DistanceSelector UpdateProximity="@UpdateProximity" CurrentProximity="@SearchService.Proximity" IsDisabled="@(SearchService.Postcode == String.Empty)"/>
                     <DataAnnotationsValidator />
                     <ValidationSummary />
-                    <button type="submit">Search</button>
+                    <button type="submit" disabled="@(SearchService.Postcode == String.Empty)">Search</button>
                 </EditForm>
                 <hr />
                 <p class="space-sml"><span>OR</span> Search by Keyword/Category</p>
@@ -46,9 +50,7 @@
 
                 @if (@httpError != null)
                 {
-                    <warn>There was an error.</warn>
-                    <br />
-                    <warn>@httpError.StatusCode</warn>
+                    <HTTPErrorMessage message=@httpError.StatusCode.ToString() />
                 }
                 @if (validationError != null)
                 {
@@ -77,10 +79,10 @@
                             </div>
                             <div class="remove">
                                 <span>Add to playlist</span>
-                                <button name="Add to playlist" class="btnRemove"  @onclick="@(e => AddToPlaylist(service.Id))"><i class="fas fa-plus"></i></button>
+                                <button name="Add to playlist" class="btnRemove" @onclick="@(e => AddToPlaylist(service.Id))"><i class="fas fa-plus"></i></button>
                             </div>
                         </div>
-        
+
                     }
 
                 }
@@ -156,6 +158,8 @@
     {
         try
         {
+            httpError = null;
+            validationError = null;
             Playlist.Services.Add(id);
             Playlist = await PlaylistService.Update(Playlist);
         }
@@ -173,7 +177,8 @@
     {
         try
         {
-
+            httpError = null;
+            validationError = null;
             Playlist.Services.Remove(id);
             Playlist = await PlaylistService.Update(Playlist);
         }
@@ -191,6 +196,7 @@
     {
         try
         {
+            httpError = null;
             validationError = null;
             var postcodeResults = await ServiceService.GetServicesAsync(SearchService.Postcode, SearchService.Proximity);
             searchServices = RemovePlaylistServices(postcodeResults);
@@ -213,6 +219,7 @@
     {
         try
         {
+            httpError = null;
             validationError = null;
             services = await ServiceService.GetServicesAsync();
 
@@ -237,7 +244,7 @@
             }
             else
             {
-                searchServices = services;
+                searchServices = RemovePlaylistServices(services);
             }
         }
         catch (ValidationError e)
@@ -256,6 +263,11 @@
     private IEnumerable<Service> RemovePlaylistServices(IEnumerable<Service> services)
     {
         return services.Where(x => !Playlist.Services.Contains(x.Id));
+    }
+
+    private void UpdateProximity(double proximity)
+    {
+        SearchService.Proximity = proximity;
     }
 
 }

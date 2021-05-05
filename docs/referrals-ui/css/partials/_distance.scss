@@ -1,0 +1,40 @@
+﻿/* Distance Selector */
+#distanceselector {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    grid-gap: .3rem;
+
+    button {
+        background: $light-grey;
+        color: $darkblue;
+        width: 20%;
+        text-align: center;
+        cursor: pointer;
+        display: block;
+        border-radius: 0.3rem;
+        border: none;
+        padding: 0;
+        font-size: inherit;
+        height: 2rem;
+    }
+
+    .IsDisabled {
+        opacity: 0.6;
+        cursor: default;
+    }
+
+    .IsActive {
+        opacity: 1;
+
+        &:hover {
+            background: $darkblue;
+            color: $white;
+        }
+    }
+
+    .isSelected {
+        background: $darkblue;
+        color: $white;
+    }
+}

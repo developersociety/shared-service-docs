@@ -15,21 +15,32 @@
         {
             <p><em>Updating...</em></p>
         }
+        else if (fatalHttpError != null)
+        {
+            <StatusMessage messageType="error" message="Sorry, there was an error loading the page." />
+        }
         else
         {
-
             <h2>Manage Service</h2>
 
             @if (serviceUpdated)
             {
-                <h3>Service Updated</h3>
+                <StatusMessage messageType="success" message="Service Updated" />
+            }
+            @if (@httpError != null)
+            {
+                <HTTPErrorMessage message=@httpError.StatusCode.ToString() />
+            }
+            @if (validationError != null)
+            {
+                <ErrorValidationMessage Error=@validationError />
             }
             <EditForm Model="@service" OnValidSubmit="@HandleValidSubmit">
                 <DataAnnotationsValidator />
                 <div class="two-cols">
                     <div class="col col-sizer col-left">
                         <label for="Name">Name</label>
-                        <ValidationMessage For="@(() => service.Name)" />
+
                         <InputText id="Name" @bind-Value="@service.Name" type="text" />
 
                         <label for="Description">Description</label>
@@ -44,17 +55,21 @@
                         <ValidationMessage For="@(() => service.Url)" />
                         <InputText id="Url" @bind-Value="@service.Url" type="text" />
 
+                        <label for="IsVulnerable">Is Vulnerable (Tick if location should be hidden)</label>
+                        <ValidationMessage For="@(() => location.IsVulnerable)" />
+                        <InputCheckbox id="IsVulnerable" @bind-Value="@location.IsVulnerable" />
+
                         <label for="Address">Address</label>
                         <ValidationMessage For="@(() => service.Address)" />
                         <InputText id="Address" @bind-Value="@service.Address" type="text" />
 
                         <label for="City">City</label>
-                        <ValidationMessage For="@(() => address.City)" />
-                        <InputText id="City" @bind-Value="@address.City" type="text" />
+                        <ValidationMessage For="@(() => location.Physical_Addresses.First().City)" />
+                        <InputText id="City" @bind-Value="@location.Physical_Addresses.First().City" type="text" />
 
                         <label for="County">County</label>
-                        <ValidationMessage For="@(() => address.State_Province)" />
-                        <InputText id="County" @bind-Value="@address.State_Province" type="text" />
+                        <ValidationMessage For="@(() => location.Physical_Addresses.First().State_Province)" />
+                        <InputText id="County" @bind-Value="@location.Physical_Addresses.First().City" type="text" />
 
                         <label for="PostCode">Post Code</label>
                         <ValidationMessage For="@(() => service._Postcode)" />
@@ -84,23 +99,14 @@
                     <div class="col col-sizer col-right">
                         <ServiceAvailability regularSchedules="@service.Regular_Schedules.ToList()" updateServiceAvailibility="UpdateServiceAvailibility" />
                         <div class="service-tags">
-                            <ServiceTagManager ServiceTagList="@service.Tags.ToList()" updateServiceTagList="UpdateServiceTagList"/>
+                            <ServiceTagManager ServiceTagList="@service.Tags.ToList()" updateServiceTagList="UpdateServiceTagList" />
 
                         </div>
                     </div>
                 </div>
 
 
-                @if (@httpError != null)
-                {
-                    <warn>There was an error submiting the form</warn>
-                    <br />
-                    <warn>@httpError.StatusCode</warn>
-                }
-                @if (validationError != null)
-                {
-                    <ErrorValidationMessage Error=@validationError />
-                }
+
                 <button type="submit">Submit</button>
 
             </EditForm>
@@ -112,6 +118,7 @@
     [CascadingParameter]
     Error Error { get; set; }
     HttpRequestException httpError { get; set; }
+    HttpRequestException fatalHttpError { get; set; }
     ValidationError validationError { get; set; }
     [Parameter]
     public string Id { get; set; }
@@ -121,29 +128,39 @@
     public bool loading { get; set; } = true;
 
     public Service service { get; set; }
-    public PhysicalAddress address;
-    public PhysicalAddress originalAddress;
+    public Location location { get; set; }
 
     public int[] Category = (int[])Enum.GetValues(typeof(CategoryEnum));
     public List<CategoryEnum> CategoryList { get; set; } = new List<CategoryEnum>();
 
     protected override async Task OnInitializedAsync()
     {
-        service = await ServiceService.GetServiceById(Id);
-        var location = await ServiceService.GetLocationById(service.Service_At_Locations.First().Location_Id);
-        address = location.Physical_Addresses.First();
-        service._Postcode = address.Postal_Code;
-        service.Address = address.Address_1;
-
-        //Doing this to check if the postcode has changed.
-        originalAddress = new PhysicalAddress { Postal_Code = address.Postal_Code };
-        loading = false;
-
-
-
-        foreach (var c in Category)
+        try
         {
-            CategoryList.Add((CategoryEnum)c);
+            service = await ServiceService.GetServiceById(Id);
+            location = await ServiceService.GetLocationById(service.Service_At_Locations.First().Location_Id);
+
+            service._Postcode = location.Physical_Addresses.First().Postal_Code;
+            service.Address = location.Physical_Addresses.First().Address_1;
+
+            loading = false;
+
+            foreach (var c in Category)
+            {
+                CategoryList.Add((CategoryEnum)c);
+            }
+        }
+        catch (HttpRequestException e)
+        {
+            loading = false;
+            updatingService = false;
+            fatalHttpError = e;
+        }
+        catch (Exception e)
+        {
+            loading = false;
+            updatingService = false;
+            Error.ProcessError(e);
         }
     }
 
@@ -152,13 +169,15 @@
         try
         {
             updatingService = true;
-            var location = ServiceHelperFunctions.BuildLocation(service, address);
-            if (originalAddress.Postal_Code != service._Postcode)
-            {
-                var serviceAtLocation = ServiceHelperFunctions.BuildServiceAtLocation(location, service);
-                location = await ServiceService.AddLocation(location);
-                service.Service_At_Locations = new List<ServiceAtLocation> { serviceAtLocation };
-            }
+            httpError = null;
+            validationError = null;
+
+
+            location = ServiceHelperFunctions.BuildLocation(service, location);
+            var serviceAtLocation = ServiceHelperFunctions.BuildServiceAtLocation(location, service);
+            location = await ServiceService.UpdateLocation(location);
+
+            service.Service_At_Locations = new List<ServiceAtLocation> { serviceAtLocation };
             service = await ServiceService.UpdateService(service);
 
             //Add address details back onto the service model

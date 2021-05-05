@@ -1,4 +1,6 @@
 ﻿@page "/view-service/{Id}"
+@attribute [Authorize]
+
 @using OpenReferralPOV.Data
 @using OpenReferralPOV.Services
 
@@ -21,8 +23,17 @@
                 <div class="serviceprovider col-sizer-lge">
                     <h2>@service.Name</h2>
                     <h3>Provided by: <NavLink href=@($"view-organisation/{serviceOrg.Id}")> @serviceOrg.Name</NavLink> </h3>
+
                     <div class="address">
-                        <i class="fas fa-map-marker-alt"></i> <span>@address.Address_1, @address.City @address.Country, @address.Postal_Code</span>
+
+                        @if (hiddenLocation == false)
+                        {
+                            <i class="fas fa-map-marker-alt"></i> <span>@address.Address_1, @address.City @address.Country, @address.Postal_Code</span>
+                        }
+                        else
+                        {
+                            <p>Address not shown for security purposes</p>
+                        }
                     </div>
                     <div class="contactinfo"><i class="fas fa-envelope-open-text"></i> <a href="mailto:@service.Email" title="Email @serviceOrg.Name">Email</a> <i class="fas fa-desktop"></i> <a href="@service.Url" target="_blank" title="Go to @serviceOrg.Name website">Visit the website</a></div>
                     <div class="descn">
@@ -31,39 +42,48 @@
                     </div>
                     @if (services.Count() > 1)
                     {
-                    <div class="otherorgs">
-                        <h3>Other services for this organisation</h3>
-                        <ul>
-                            @foreach (var service in services)
-                            {
-                                @if (service.Id != Id)
+                        <div class="otherorgs">
+                            <h3>Other services for this organisation</h3>
+                            <ul>
+                                @foreach (var service in services)
                                 {
-                                    <li @onclick="@(() => NavManager.NavigateTo($"view-service/{service.Id}", true))">
-                                        @service.Name
-                                    </li>
+                                    @if (service.Id != Id)
+                                    {
+                                        <li @onclick="@(() => NavManager.NavigateTo($"view-service/{service.Id}", true))">
+                                            @service.Name
+                                        </li>
+                                    }
                                 }
-                            }
-                        </ul>
-                    </div>
+                            </ul>
+                        </div>
                     }
                     @if (@httpError != null)
                     {
-                        <warn>There was an error.</warn>
-                        <br />
-                        <warn>@httpError.StatusCode</warn>
+                        <HTTPErrorMessage message=@httpError.StatusCode.ToString() />
                     }
                 </div>
                 <div class="mapouter">
                     <div class="gmap_canvas">
-                        <iframe width="300" height="300" loading="lazy" allowfullscreen src="https://maps.google.com/maps?q=@address.Postal_Code&z=15&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
-                        </iframe>
+                        @if (hiddenLocation == false)
+                        {
+                            <iframe width="300" height="300" loading="lazy" allowfullscreen src="https://maps.google.com/maps?q=@address.Postal_Code&z=15&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+                            </iframe>
+
+                        }
+                        else
+                        {
+                            <div class="overlay">Map not shown for security purposes</div>
+                            <iframe width="300" height="300" class="blurMap" allowfullscreen="false" src="https://maps.google.com/maps?q=@address.Postal_Code&z=15&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+                            </iframe>
+
+                        }
 
                     </div>
                     <div class="serviceinfo">
                         <ServiceAvailability regularSchedules="@service.Regular_Schedules.ToList()" readOnly="true" />
                     </div>
                 </div>
-            </div>         
+            </div>
         }
     </div>
 </div>
@@ -76,7 +96,7 @@
     public string Id { get; set; }
 
     public bool loading { get; set; } = true;
-
+    public bool hiddenLocation { get; set; } = false;
     public Service service { get; set; }
     public IEnumerable<Service> services { get; set; } = new List<Service>();
     public PhysicalAddress address;
@@ -86,16 +106,35 @@
 
     protected override async Task OnInitializedAsync()
     {
-        service = await ServiceService.GetServiceById(Id);
-        var location = await ServiceService.GetLocationById(service.Service_At_Locations.First().Location_Id);
-        address = location.Physical_Addresses.First();
+        try
+        {
+            service = await ServiceService.GetServiceById(Id);
+            var location = await ServiceService.GetLocationById(service.Service_At_Locations.First().Location_Id);
+            address = location.Physical_Addresses.First();
 
 
-        serviceOrg = await OrgService.GetOrganisation(service.OrganizationId);
+            serviceOrg = await OrgService.GetOrganisation(service.OrganizationId);
 
-        services = (await ServiceService.GetServicesAsync()).Where(x => x.OrganizationId == service.OrganizationId);
-
-        //Doing this to check if the postcode has changed.
-        loading = false;
+            services = (await ServiceService.GetServicesAsync()).Where(x => x.OrganizationId == service.OrganizationId);
+            loading = false;
+        }
+        catch (HttpRequestException e)
+        {
+            if (e.StatusCode == System.Net.HttpStatusCode.Forbidden)
+            {
+                // We want to allow the person to view the service even if they are forbidden from seeing the location
+                address = new PhysicalAddress();
+                serviceOrg = await OrgService.GetOrganisation(service.OrganizationId);
+                services = (await ServiceService.GetServicesAsync()).Where(x => x.OrganizationId == service.OrganizationId);
+                hiddenLocation = true;
+                loading = false;
+                return;
+            }
+            httpError = e;
+        }
+        catch (Exception e)
+        {
+            Error.ProcessError(e);
+        }
     }
 }

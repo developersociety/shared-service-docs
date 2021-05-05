@@ -1,0 +1,432 @@
+﻿body {
+    background: $white;
+    color: $darkblue;
+    min-height: 100vh;
+    margin: 0;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    font-family: Poppins,sans-serif;
+    font-size: 16px;
+    font-weight: 500
+}
+
+header {
+    border-bottom: 1px solid $light-grey;
+
+    #navswitch {
+        display: none;
+    }
+
+    .lock {
+        display: none;
+    }
+
+    img {
+        max-width: 100%;
+        display: inline-block;
+    }
+
+    @media only screen and (max-width: $width-mid) {
+        padding: 0;
+
+        li {
+            padding: 20px 10px;
+        }
+
+
+
+        .main-nav {
+            display: none;
+
+            .dropdown {
+                padding: 0;
+            }
+        }
+
+        .nav-login {
+            color: $darkblue;
+            text-decoration: none;
+        }
+
+        .head-content {
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        input[type=checkbox]:checked + .main-nav {
+            display: block;
+        }
+
+        #navswitch:checked > .mobile-menu > #menulink {
+            color: red;
+        }
+
+
+        .mobile-menu {
+            label::after {
+                content: ""
+            }
+
+            input[type=checkbox] {
+                //display: none;
+            }
+        }
+
+        .dropdown {
+            border: none;
+
+            span {
+                display: none;
+            }
+        }
+
+
+        ul {
+            padding: 0;
+            border: none;
+
+            li {
+                border-bottom: 1px solid $darkblue;
+
+                a {
+                    text-decoration: none;
+                    color: $darkblue;
+                    position: relative;
+                }
+            }
+        }
+    }
+
+    @media only screen and (min-width: $width-mid) {
+        padding-top: 0.5rem;
+
+        .mobile-menu {
+            display: none;
+        }
+
+        .nav-login {
+            display: none;
+        }
+
+        align-self: start;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+
+        img {
+            position: absolute;
+            margin-top: 5px;
+        }
+
+        nav {
+
+            ul {
+                display: flex;
+                justify-content: flex-end;
+            }
+
+
+
+            li {
+                margin: 0.5rem 0 0 3rem;
+
+                a {
+                    padding: .7rem 1.5rem;
+                    text-decoration: none;
+                    color: $darkblue;
+                    border-radius: 100px;
+
+
+                    &:hover {
+                        background-color: $light-grey
+                    }
+
+                    &:focus {
+                        background-color: $darkblue;
+                        color: $white;
+                    }
+                }
+            }
+        }
+
+        button {
+            margin-left: 1rem;
+            padding: 0.3rem 1rem;
+        }
+
+        .lock {
+            display: inline-block;
+        }
+
+        .dropdown {
+            position: relative;
+            align-items: baseline;
+            z-index: 1000;
+        }
+
+        .dropdown-content {
+            display: none;
+            opacity: 1;
+            position: absolute;
+            right: 0px;
+            background-color: #0a0039;
+            width: 20rem;
+            color: #fff;
+            z-index: 1;
+            text-align: right;
+            top: 50px;
+
+            ul {
+                list-style-type: none;
+            }
+
+            li {
+                width: 90%;
+                border-bottom: 1px solid rgba(255, 255, 255, .5);
+                margin: auto;
+                padding: 0.5rem 0;
+            }
+
+            li:last-child {
+                border: none;
+            }
+
+            .orglist {
+                display: block;
+
+                li {
+                    border-bottom: 1px solid rgba(255, 255, 255, .5);
+                }
+            }
+        }
+        /* Links inside the dropdown */
+        .dropdown-content a {
+            color: $white;
+            text-decoration: none;
+            display: block;
+            padding: 0px;
+
+            &:hover {
+                background: none !important;
+                color: rgba(255, 255, 255, .5);
+            }
+        }
+        /* Show the dropdown menu on hover */
+        .lock-container {
+            padding: 13px;
+            border-radius: 100px;
+            font-size: 1rem;
+            color: $darkblue;
+            margin-left: 1rem;
+            display: inline;
+        }
+
+        .lock-container:hover {
+            background-color: $darkblue;
+            color: $white;
+            border-bottom: 40px solid $darkblue;
+
+
+
+            .dropdown-content {
+                display: block;
+                opacity: 1;
+                transition: opacity 0.6s ease;
+            }
+        }
+    }
+}
+
+
+footer {
+    background: $darkblue;
+    color: $white;
+    padding-top: 40px;
+    padding-bottom: 25px;
+
+    ul {
+        padding: 0;
+        margin-top: 2rem;
+
+        li {
+            display: inline;
+            margin-right: 1.5rem;
+
+            a {
+                color: $white;
+                font-weight: 400;
+            }
+
+            @media only screen and (max-width: $width-sml) {
+                display: block
+            }
+        }
+    }
+}
+
+.content-container {
+    width: $width-main;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    @media only screen and (max-width: $width-lge) {
+        width: $width-full;
+        padding: 1.5rem;
+    }
+
+    margin: auto;
+}
+// Headings
+h3 {
+    line-height: $lh-desktop
+}
+
+h4 {
+    margin-top: $h4-spacing;
+    margin-bottom: $h4-spacing
+}
+
+/* Grid Layout */
+main .gridder {
+
+
+    @media only screen and (min-width: $width-lge) {
+        .two-cols {
+            display: grid;
+            grid-template-columns: 50% 50%;
+        }
+
+        .two-cols-70-30 {
+            display: grid;
+            grid-template-columns: 70% auto;
+        }
+
+        .two-cols-60-40 {
+            display: grid;
+            grid-template-columns: 60% auto;
+        }
+
+        .two-cols-30-70 {
+            display: grid;
+            grid-template-columns: 30% auto;
+            grid-gap: 2rem;
+        }
+
+        .col {
+            justify-self: start;
+            width: 100%;
+        }
+
+
+
+        .col-left {
+            justify-self: start
+        }
+
+        .col-mid {
+            justify-self: center
+        }
+
+        .col-right {
+            justify-self: end
+        }
+    }
+
+    @media only screen and (min-width: $width-lge) {
+        .col-sizer, col-sizer-lge {
+            width: 90%;
+        }
+
+        .headspace {
+            margin-top: 5rem;
+        }
+    }
+
+    @media only screen and (min-width: $width-xl) {
+        .col-sizer {
+            width: 90%;
+        }
+
+        .col-sizer-lge {
+            width: 90%
+        }
+    }
+}
+
+h1, h2, h4, p {
+    margin-bottom: 2rem;
+
+    @media only screen and (max-width: $width-sml) {
+        margin-bottom: $sml;
+    }
+}
+
+.space-sml {
+    margin-bottom: $sml
+}
+
+.signed-out {
+
+
+    .yellowbg {
+        background: $yellow;
+        padding: 3rem;
+        margin-bottom: 2rem;
+
+        a {
+            color: $darkblue;
+        }
+
+        h2 {
+            width: 60%
+        }
+
+        @media only screen and (max-width: $width-lge) {
+            padding: 0;
+
+            h2 {
+                width: 100%
+            }
+        }
+
+        @media only screen and (max-width: $width-sml) {
+            padding: 0;
+
+            h2 {
+                width: 100%;
+            }
+        }
+    }
+
+    .flexer {
+        display: flex;
+        align-items: baseline;
+        margin-bottom: 0;
+
+
+        div {
+            margin-bottom: 0;
+        }
+
+        .buttondiv {
+            width: 30%;
+            margin-right: 1rem;
+
+            @media only screen and (max-width: $width-lge) {
+                width: 50%;
+            }
+        }
+
+        @media only screen and (max-width: $width-sml) {
+            display: block;
+
+            .buttondiv {
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+        }
+    }
+}

@@ -1,0 +1,163 @@
+﻿/* Service Availablity*/
+#service-availability {
+    margin-top: 1rem;
+
+    .service {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 1rem;
+    }
+
+    .dayofweek {
+        display: grid;
+        grid-template-columns: 8rem 6rem auto;
+        grid-template-rows: auto;
+        grid-row-gap: 0.6rem;
+        align-items: center;
+
+        .day {
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: .8rem;
+        }
+
+        .hours {
+            justify-self: end;
+
+            span {
+                border: 1px solid $darkblue;
+                width: 1.8rem;
+
+                input {
+                    border: none;
+                    text-align: center;
+                    font-size: 0.8em;
+                    padding: 0;
+                    width: inherit;
+                    outline: none;
+                    margin-bottom: 0;
+                }
+            }
+
+            .txt-sml {
+                border: none;
+                font-size: 0.7rem;
+            }
+        }
+
+        label:after {
+            content: ''
+        }
+
+        .time {
+            border: 1px solid #000
+        }
+
+        .hours .to {
+            margin: 10px;
+        }
+
+        .time input {
+            border: none;
+            height: 0.8rem;
+            text-align: center;
+            outline: none
+        }
+
+        .onoffswitch {
+            position: relative;
+            width: 81px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        .onoffswitch-checkbox {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .onoffswitch-label {
+            display: block;
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid #FFFFFF;
+            border-radius: 20px;
+            margin-bottom: 0px;
+        }
+
+        .onoffswitch-inner {
+            display: block;
+            width: 200%;
+            margin-left: -100%;
+            transition: margin 0.3s ease-in 0s;
+        }
+
+        .onoffswitch-checkbox:checked > .hours {
+            visibility: hidden;
+        }
+
+        .onoffswitch-inner:before, .onoffswitch-inner:after {
+            display: block;
+            float: left;
+            width: 50%;
+            height: 27px;
+            padding: 0;
+            line-height: 27px;
+            font-size: 10px;
+            color: white;
+            font-family: Trebuchet, Arial, sans-serif;
+            font-weight: bold;
+            box-sizing: border-box;
+        }
+
+        .onoffswitch-inner:before {
+            content: "OPEN";
+            padding-left: 7px;
+            background-color: $darkblue;
+            color: $white;
+        }
+
+        .onoffswitch-inner:after {
+            content: "CLOSED";
+            padding-right: 7px;
+            background-color: $light-grey;
+            color: $black;
+            text-align: right;
+        }
+
+        .onoffswitch-switch {
+            display: block;
+            width: 22px;
+            margin: 4.5px;
+            background: $white;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 50px;
+            border: 2px solid #FFFFFF;
+            border-radius: 20px;
+            transition: all 0.3s ease-in 0s;
+        }
+
+        .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+            margin-left: 0;
+        }
+
+        .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+            right: 0px;
+        }
+    }
+
+    .readonly {
+        font-weight: 700;
+        height: 2rem;
+        grid-template-columns: 8rem auto;
+        font-size: 1rem;
+
+        .hours {
+            justify-self: end
+        }
+    }
+}

@@ -1,0 +1,108 @@
+﻿
+@using OpenReferralPOV.Data
+@using OpenReferralPOV.Data.Requests
+@using OpenReferralPOV.Services
+@using Blazored.Typeahead
+
+@inject IOpenReferralOrganisationService OrgService
+
+<div class="two-cols headspace">
+    <div class="col col-sizer col-left">
+        <EditForm Model="@request" OnValidSubmit="@HandleValidSubmit">
+
+            <label for="search">Search for an organisation</label>
+            <BlazoredTypeahead SearchMethod="SearchOrgs"
+                               placeholder="Search by Org Name"
+                               TItem="Organization"
+                               TValue="Organization"
+                               @bind-Value="request.Org"
+                               id="search">
+                <SelectedTemplate Context="org">
+                    <text>@org.Name</text>
+                </SelectedTemplate>
+                <ResultTemplate Context="org">
+                    @org.Name
+                </ResultTemplate>
+            </BlazoredTypeahead>
+            <h4>Make me an admin</h4>
+            <p>An admin has the ability to add/remove services and update all oragnisation information</p>
+            <div>
+                <label for="admin">Request admin rights</label>
+                <InputCheckbox @bind-Value="@request.IsAdmin" id="admin" />
+            </div>
+            <button type="submit">Request Association</button>
+        </EditForm>
+    </div>
+    <div class="col col-sizer col-right">
+        <h3>Who can add an organisation?</h3>
+        <p>Anyone can create a organisation. You will need the organisations details and once created you will be made the key contact.</p>
+        <NavLink href="add-organization">
+            Add Organisation
+        </NavLink>
+    </div>
+</div>
+
+@code {
+
+    [Parameter]
+    public bool IsAPotentialMemberOfAtLeastOneOrg { get; set; } = false;
+
+    [Parameter]
+    public EventCallback<bool> RequestSent { get; set; }
+
+    public OrgRequestToJoin request { get; set; } = new OrgRequestToJoin() { Org = new Organization() { Name = "Please start typing " } };
+    private IEnumerable<Organization> organizations;
+    private bool NewOrgRequest;
+    HttpRequestException httpError { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            organizations = await OrgService.GetAllOrganisations();
+        }
+        catch (Exception)
+        {
+            organizations = new List<Organization>();
+        }
+
+    }
+
+    private async Task<IEnumerable<Organization>> SearchOrgs(string searchText)
+    {
+        organizations = await OrgService.GetAllOrganisations();
+        NewOrgRequest = true;
+        return await Task.FromResult(organizations.Where(x => x.Name.ToLower().Contains(searchText.ToLower())).ToList());
+    }
+
+
+    private async Task HandleValidSubmit()
+    {
+        try
+        {
+            if (request.Org == null || request.Org.Id == null)
+            {
+                return;
+            }
+            if (request.IsAdmin)
+            {
+                await OrgService.RequestToJoinOrganisationAsAdmin(request.Org.Id);
+                NewOrgRequest = true;
+                RequestSent.InvokeAsync(NewOrgRequest);
+            }
+            else
+            {
+                await OrgService.RequestToJoinOrganisationAsMember(request.Org.Id);
+                NewOrgRequest = true;
+                RequestSent.InvokeAsync(NewOrgRequest);
+            }
+
+        }
+        catch (HttpRequestException e)
+        {
+            httpError = e;
+        }
+
+    }
+
+}

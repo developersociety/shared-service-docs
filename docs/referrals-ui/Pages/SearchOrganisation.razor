@@ -1,0 +1,58 @@
+﻿@page "/search-organisation/"
+@attribute [Authorize]
+
+@using OpenReferralPOV.Data
+@using OpenReferralPOV.Services
+
+@inject IOpenReferralOrganisationService OrgService
+
+<div class="content-container">
+    <div class="gridder">
+
+        @if (isLoading)
+        {
+            <h3><em>Loading.</em></h3>
+        }
+        else
+        {
+            <SearchOrg RequestSent="@UpdateNewRequest" />
+
+            if (NewOrgRequestCreated)
+            {
+                <h3><em>Request Sent.</em></h3>
+            }
+        }
+        @if (@httpError != null)
+        {
+            <HTTPErrorMessage message=@httpError.StatusCode.ToString() />
+        }
+    </div>
+</div>
+
+@code {
+
+    private bool isLoading = true;
+    private IEnumerable<Organization> organizations;
+    HttpRequestException httpError { get; set; }
+    private bool NewOrgRequestCreated = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            organizations = await OrgService.GetAllOrganisations();
+            isLoading = false;
+        }
+        catch (Exception)
+        {
+            organizations = new List<Organization>();
+            isLoading = false;
+        }
+
+    }
+
+    private void UpdateNewRequest(bool NewRequest)
+    {
+        NewOrgRequestCreated = NewRequest;
+    }
+}

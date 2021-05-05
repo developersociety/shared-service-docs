@@ -1,0 +1,116 @@
+﻿/* Playlist */
+
+
+.playist-item {
+    display: flex;
+    justify-content: space-between;
+    background: $light-grey;
+    color: $darkblue;
+    padding: 0;
+    margin-bottom: 1rem;
+    align-items: center;
+
+
+    &.item-padding div {
+        padding: 1rem;
+    }
+
+    &.whitebg {
+        background: $white;
+
+        @media only screen and (max-width: $width-lge) {
+            display: block;
+        }
+    }
+
+    .servicename {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 20rem;
+        margin: 0;
+        font-weight: 700
+    }
+
+    .link {
+        padding: 0 1rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 20rem;
+
+        &:hover {
+            opacity: 0.3;
+        }
+    }
+
+    a {
+        color: $darkblue;
+
+        &:hover {
+            opacity: 0.3;
+        }
+    }
+
+    .buttons {
+        display: flex;
+        grid-gap: 2rem;
+    }
+
+    .remove {
+        text-transform: uppercase;
+
+        @media only screen and (max-width: $width-sml) {
+
+            span {
+                display: none
+            }
+        }
+
+        .btnRemove {
+            padding: 0;
+            margin: 0;
+            background: $darkblue;
+            width: 3rem;
+            height: 3rem;
+            color: $white;
+            border: none;
+
+            &:hover {
+                background-color: $darkblue;
+                opacity: 0.3;
+                color: $white;
+            }
+        }
+    }
+}
+
+
+
+/* Service tags*/
+.service-tags {
+    span {
+        padding: 0;
+        margin: 0;
+
+        .tag {
+            width: auto;
+            font-size: 0.7rem;
+            padding: 0.3rem 1rem;
+            margin: 0.2rem;
+            border-radius: 0.8rem;
+            border: none;
+            background: $light-grey;
+            color: $darkblue;
+
+            &:hover {
+                background: $minty;
+                color: $white;
+            }
+        }
+    }
+}
+
+.validation-message {
+    color: $error-red;
+}

@@ -20,6 +20,10 @@
         }
         <div class="content-container">
             <div class="gridder">
+                @if (@httpError != null)
+                {
+                    <HTTPErrorMessage message=@httpError.StatusCode.ToString() />
+                }
 
                 @if (isLoading)
                 {
@@ -27,52 +31,13 @@
                 }
                 else if (!NewOrgRequest)
                 {
-                    <div class="two-cols headspace">
-                        <div class="col col-sizer col-left">
-                            <EditForm Model="@request" OnValidSubmit="@HandleValidSubmit">
-
-                                <label for="search">Search for an organisation</label>
-                                <BlazoredTypeahead SearchMethod="SearchOrgs"
-                                                   placeholder="Search by Org Name"
-                                                   TItem="Organization"
-                                                   TValue="Organization"
-                                                   @bind-Value="request.Org"
-                                                   id="search">
-                                    <SelectedTemplate Context="org">
-                                        <text>@org.Name</text>
-                                    </SelectedTemplate>
-                                    <ResultTemplate Context="org">
-                                        @org.Name
-                                    </ResultTemplate>
-                                </BlazoredTypeahead>
-                                <h4>Make me an admin</h4>
-                                <p>An admin has the ability to add/remove services and update all oragnisation information</p>
-                                <div>
-                                    <label for="admin">Request admin rights</label>
-                                    <InputCheckbox @bind-Value="@request.IsAdmin" id="admin" />
-                                </div>
-                                <button type="submit">Verify Association</button>
-                            </EditForm>
-                        </div>
-                        <div class="col col-sizer col-right">
-                            <h3>Who can add an organisation?</h3>
-                            <p>Info regarding who can add an organisation.</p>
-                            <NavLink href="add-organization">
-                                Add Organization
-                            </NavLink>
-                        </div>
-                    </div>
+                    <SearchOrg IsAPotentialMemberOfAtLeastOneOrg="@IsAPotentialMemberOfAtLeastOneOrg" RequestSent="@UpdateNewRequest" />
                 }
                 else
                 {
-                    <h3><em>Request Sent.</em></h3>
+                    <StatusMessage messageType="info" message="Request Sent" />
                 }
-                @if (@httpError != null)
-                {
-                    <warn>There was an error submiting the form</warn>
-                    <br />
-                    <warn>@httpError.StatusCode</warn>
-                }
+
             </div>
         </div>
     </Authorized>
@@ -88,9 +53,7 @@
     private bool isLoading = true;
     private IEnumerable<Organization> organizations;
     private bool IsAPotentialMemberOfAtLeastOneOrg = false;
-    private IEnumerable<MembershipRequests> MembershipRequests;
     HttpRequestException httpError { get; set; }
-    public OrgRequestToJoin request { get; set; } = new OrgRequestToJoin() { Org = new Organization() { Name = "Please start typing " } };
     private bool NewOrgRequest;
 
 
@@ -114,43 +77,11 @@
 
     }
 
-
-    private async Task<IEnumerable<Organization>> SearchOrgs(string searchText)
+    private void UpdateNewRequest(bool NewRequest)
     {
-        organizations = await OrgService.GetAllOrganisations();
-        return await Task.FromResult(organizations.Where(x => x.Name.ToLower().Contains(searchText.ToLower())).ToList());
+        NewOrgRequest = NewRequest;
     }
 
-
-    private async Task HandleValidSubmit()
-    {
-        try
-        {
-            if (request.Org == null || request.Org.Id == null)
-            {
-                return;
-            }
-            if (request.IsAdmin)
-            {
-                await OrgService.RequestToJoinOrganisationAsAdmin(request.Org.Id);
-                NewOrgRequest = true;
-            }
-            else
-            {
-                await OrgService.RequestToJoinOrganisationAsMember(request.Org.Id);
-                NewOrgRequest = true;
-            }
-
-        }
-        catch (HttpRequestException e)
-        {
-            httpError = e;
-        }
-        catch (Exception e)
-        {
-            Error.ProcessError(e);
-        }
-    }
 }
 
 

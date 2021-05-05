@@ -1,0 +1,51 @@
+﻿<div id="distanceselector">
+    @foreach (string distance in distances)
+    {
+        if (IsDisabled)
+        {
+            <button type="button" name="distance" disabled class="IsDisabled">@distance</button>
+        }
+        else if (CurrentProximity == MaxProximity && distance == "Any")
+        {
+            <button type="button" name="distance" class="isSelected" @onclick="@(e => HandleDistanceClick(distance))">@distance</button>
+        }
+        else if (distance == "Any")
+        {
+            <button type="button" name="distance" @onclick="@(e => HandleDistanceClick(distance))">@distance</button>
+        }
+
+        else if (CurrentProximity == double.Parse(distance))
+        {
+            <button type="button" name="distance" class="isSelected" @onclick="@(e => HandleDistanceClick(distance))">@distance</button>
+        }
+        else
+        {
+            <button type="button" name="distance" class="IsActive" @onclick="@(e => HandleDistanceClick(distance))">@distance</button>
+        }
+    }
+</div>
+@code {
+    private List<string> distances = new List<string>() { "5", "10", "20", "50", "Any" };
+    private double MaxProximity = 2000;
+
+    [Parameter]
+    public EventCallback<double> UpdateProximity { get; set; }
+
+    [Parameter]
+    public double CurrentProximity { get; set; }
+
+    [Parameter]
+    public bool IsDisabled { get; set; }
+
+
+    private void HandleDistanceClick(string distance)
+    {
+        if (distance == "Any")
+        {
+            UpdateProximity.InvokeAsync(MaxProximity);
+            return;
+        }
+        UpdateProximity.InvokeAsync(double.Parse(distance));
+
+    }
+}

@@ -1,0 +1,52 @@
+﻿.feedback {
+    display: flex;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    animation: fadeIn 0.5s 1;
+    -webkit-animation: fadeIn 0.5s 1;
+    animation-fill-mode: backwards;
+    animation-delay: 0.5s;
+    -webkit-animation-delay: 0.5s; /* Safari and Chrome */
+    align-items: center;
+
+    span {
+        margin-left: 0.5rem;
+    }
+
+    &.success {
+        background: $minty;
+        color: $white;
+    }
+
+    &.error {
+        background: $error-red;
+        color: $white;
+    }
+
+    &.info {
+        background: $light-grey;
+        color: $darkblue;
+    }
+
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    @-webkit-keyframes fadeOut {
+        from {
+            opacity: 1;
+        }
+
+        to {
+            opacity: 0;
+            display: none;
+        }
+    }
+}

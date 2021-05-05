@@ -69,6 +69,13 @@ namespace OpenReferralPOV.Services
             return addedLocation;
         }
 
+        public async Task<Location> UpdateLocation(Location location)
+        {
+            var responseString = await _httpClientAdapter.PutAsync(new Uri($"{ _ApiBaseAddress}/Locations/{location.Id}"), location);
+            var addedLocation = JsonConvert.DeserializeObject<Location>(responseString);
+            return addedLocation;
+        }
+
 
         public async Task<Service> AddService(Service service)
         {

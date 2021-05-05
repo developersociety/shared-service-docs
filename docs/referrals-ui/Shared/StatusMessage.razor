@@ -1,0 +1,23 @@
+﻿<div class="feedback @messageType">
+    @{ 
+        if(messageType == "success" || messageType == "info")
+        {
+            Icon = "info-circle";
+        } else if(messageType == "error")
+        {
+            Icon = "exclamation-triangle";
+        } 
+    }
+   <i class="fas fa-@Icon fa-2x"></i> <span>@message</span>
+</div>
+
+@code {
+    [Parameter]
+    public string message { get; set; }
+
+    [Parameter]
+    public string messageType { get; set; }
+
+    [Parameter]
+    public string Icon { get; set; }
+}
