@@ -4584,8 +4584,11 @@ a {
   width: 100%;
 }
 .breadcrumb li:before {
-  content: url(/profiles/contrib/resourcehub-distribution/themes/resourcehub_theme/dist/images/arrow.svg?c147e5ac5b500f181eda4b9b958204c3);
-  padding: 0 0.25rem;
+  content: "";
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  background: url(/profiles/contrib/resourcehub-distribution/themes/resourcehub_theme/dist/images/arrow.svg?c147e5ac5b500f181eda4b9b958204c3) center 100% no-repeat;
 }
 
 .breadcrumb {
@@ -5928,7 +5931,7 @@ main {
 .region-breadcrumb,
 footer .region,
 main {
-    max-width: 984px;
+    width: 984px;
   }
 }
 

@@ -2,8 +2,12 @@
   width: 100%;
   @extend .small;
   &:before {
-    content: url('../../dist/images/arrow.svg');
-    padding: 0 $spacing/4;
+    content: '';
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    background:url('../../assets/arrow.svg') center 100% no-repeat;
+
   }
 }
 

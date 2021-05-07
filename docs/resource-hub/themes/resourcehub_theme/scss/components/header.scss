@@ -3,7 +3,7 @@
     text-decoration: none;
     @extend .small;
     &:after {
-      content: url('../../dist/images/arrow.svg');
+      content: url('../../assets/arrow.svg');
       padding: 0 $spacing/2;
     }
   }
