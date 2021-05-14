@@ -2,7 +2,7 @@ Assumption: the site has been installed without the default content module. You 
 
 ## Step one: name your site and set up the branding and site wide elements.
 
-[Configuring the site](https://gitlab.com/openresources/resourcehub_distribution/-/wikis/Guide-for-content-editors-&-site-admins#site-configuration)
+[Configuring the site](https://gitlab.com/openresources/resourcehub_distribution/-/wikis/Guide-for-content-editors-&-site-admins#customisation)
 
 ## Step two: define your taxonomies.
 
