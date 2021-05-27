@@ -27,6 +27,12 @@ This project uses BlazorServer and is written in C#
 - Create a client secret and copy it down
 - Add the _user_impersonation permission from the OpenReferralAPI app registration (See [OpenReferralAPI](https://github.com/siccar/referrals-api))
 
+## GoolgeMapsEmbedApi
+ - Setup a google developer account
+ - Create an api access key for a new project
+ - Find the list of APIs and enable the embed api
+ - Copy the api key into the appsettings
+
 ## Getting started Locally
 
 ### Local machine setup

@@ -60,13 +60,13 @@
             <div class="col">
 
                 <h2>Search Results</h2>
-                @if (services == null)
+                @if (searchServices == null)
                 {
                     <p><em>Loading...</em></p>
                 }
                 else if (searchServices.Count() == 0)
                 {
-                    <p>Use either of the search forms to find an organisation</p>
+                    <p>Use either of the search forms to find an organisation. If there are no results please widen your search.</p>
                 }
                 else
                 {
@@ -196,6 +196,7 @@
     {
         try
         {
+            searchServices = null;
             httpError = null;
             validationError = null;
             var postcodeResults = await ServiceService.GetServicesAsync(SearchService.Postcode, SearchService.Proximity);
@@ -219,6 +220,7 @@
     {
         try
         {
+            searchServices = null;
             httpError = null;
             validationError = null;
             services = await ServiceService.GetServicesAsync();

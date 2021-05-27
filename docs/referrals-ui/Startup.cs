@@ -11,6 +11,7 @@ using Microsoft.Identity.Web;
 using Microsoft.Identity.Web.UI;
 using OpenReferralPOV.Services;
 using OpenReferralPOV.Services.HttpClientAdapter;
+using OpenReferralPOV.Services.PendingOrgs;
 using System;
 
 namespace OpenReferralPOV
@@ -54,6 +55,7 @@ namespace OpenReferralPOV
                 configureClient.BaseAddress = new Uri(Configuration.GetSection("ORApi:BaseUrl").Value);
             });
             services.AddTransient<IOpenReferralOrganisationService, OpenReferralOrganisationService>();
+            services.AddTransient<IPendingOrgsService, PendingOrgsService>();
             services.AddTransient<IOpenReferralKeyContactService, OpenReferralKeyContactService>();
             services.AddTransient<IOpenReferralMembershipRequestsService, OpenReferralMembershipRequestsService>();
             services.AddTransient<IOpenReferralPlaylistService, OpenReferralPlaylistService>();

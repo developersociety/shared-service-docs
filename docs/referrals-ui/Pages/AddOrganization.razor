@@ -1,21 +1,19 @@
 ﻿@page "/add-organization"
 @attribute [Authorize]
 @using OpenReferralPOV.Data
-@using OpenReferralPOV.Services
+@using OpenReferralPOV.Services.PendingOrgs
 @using System.Net.Http
 @using OpenReferralPOV.Shared
 
-@inject IOpenReferralOrganisationService ReferralService
+@inject IPendingOrgsService PendingOrgService
 @inject NavigationManager NavManager
 
 
 <div class="content-container">
     <div class="gridder">
-        @if (orgCreated)
+        @if (orgCreated || userIsAwaitingOrgApproval)
         {
-            <StatusMessage messageType="success" message="Organisation created" />
-            NavManager.NavigateTo($"manage-organisation/{organization.Id}", true);
-
+            <StatusMessage messageType="success" message="Organisation Pending Approval" />
         }
         else
         {
@@ -75,6 +73,13 @@
     public Organization organization { get; set; } = new Organization();
     public bool orgCreated { get; set; } = false;
     public bool isCharity { get; set; } = false;
+    public bool userIsAwaitingOrgApproval { get; set; } = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        userIsAwaitingOrgApproval = await PendingOrgService.UserHasPendingOrg();
+    }
+
 
     private async Task HandleValidSubmit()
     {
@@ -85,7 +90,7 @@
 
             if (!isCharity) { organization.CharityNumber = 0; }
 
-            organization = await ReferralService.AddOrganization(organization);
+            organization = await PendingOrgService.CreatePendingOrg(organization);
             orgCreated = true;
         }
         catch (ValidationError e)

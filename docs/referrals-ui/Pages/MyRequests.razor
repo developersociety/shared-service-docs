@@ -3,10 +3,12 @@
 
 @using OpenReferralPOV.Data
 @using OpenReferralPOV.Services
+@using OpenReferralPOV.Services.PendingOrgs
 
 @inject IOpenReferralOrganisationService OrgService
 @inject IOpenReferralMembershipRequestsService MembershipRequests
 @inject IOpenReferralKeyContactService KeyContactRequests
+@inject IPendingOrgsService PendingOrgService
 @inject NavigationManager NavManager
 
 <div class="content-container">
@@ -30,6 +32,22 @@
         }
         else
         {
+            if (pendingOrgs.Any())
+            {
+                <h3>Organisations Pending Approval</h3>
+
+                @foreach (var organization in pendingOrgs)
+                {
+                    <div class="playist-item whitebg">
+                        <div>@organization.Name</div>
+                        <div>@organization.Description</div>
+                        <div class="buttons">
+                            <input type="button" name="Approve" class="button1" value="Approve" @onclick="@(e => HandleAdminApproveOrg(organization))" />
+                            <input type="button" name="Reject" class="button1" value="Reject" @onclick="@(e => HandleAdminRejectOrganisation(organization))" />
+                        </div>
+                    </div>
+                }
+            }
             if (myrequeststojoin.Any())
             {
                 <h3>Your Organisation Requests</h3>
@@ -123,6 +141,8 @@
 
     private IEnumerable<KeyContact> adminRequestsICanAuthorise;
     private IEnumerable<KeyContact> myrequeststojoinAsAdmin;
+    private IEnumerable<Organization> pendingOrgs = new List<Organization>();
+
     private bool ActionTaken;
 
 
@@ -135,11 +155,17 @@
             myrequeststojoinAsAdmin = await KeyContactRequests.GetOrgsIHaveRequestedToJoin();
             joinRequestsICanAuthorise = (await MembershipRequests.GetOrgJoinRequests());
             adminRequestsICanAuthorise = await KeyContactRequests.GetPendingAdminRequests();
+            pendingOrgs = await PendingOrgService.GetPendingOrgs();
+
 
             ActionTaken = false;
         }
         catch (HttpRequestException e)
         {
+            if (e.StatusCode == System.Net.HttpStatusCode.Forbidden)
+            {
+                return;
+            }
             httpError = e;
         }
         catch (Exception e)
@@ -219,7 +245,48 @@
         {
             httpError = null;
             kc.DisabledButton = true;
-            await KeyContactRequests.HandleAdminDenyRequest(kc.OrgId, kc.UserId);
+            await KeyContactRequests.HandleAdminGrantRequest(kc.OrgId, kc.UserId);
+            ActionTaken = true;
+            NavManager.NavigateTo($"myrequests", true);
+
+        }
+        catch (HttpRequestException e)
+        {
+            httpError = e;
+        }
+        catch (Exception e)
+        {
+            Error.ProcessError(e);
+        }
+    }
+
+    protected async Task HandleAdminApproveOrg(Organization organization)
+    {
+        try
+        {
+            httpError = null;
+            await PendingOrgService.VerifyPendingOrganisation(organization.Id);
+            ActionTaken = true;
+            NavManager.NavigateTo($"myrequests", true);
+
+        }
+        catch (HttpRequestException e)
+        {
+            httpError = e;
+        }
+        catch (Exception e)
+        {
+            Error.ProcessError(e);
+        }
+
+    }
+
+    protected async Task HandleAdminRejectOrganisation(Organization org)
+    {
+        try
+        {
+            httpError = null;
+            await PendingOrgService.DeletePendingOrganisation(org.Id);
             ActionTaken = true;
             NavManager.NavigateTo($"myrequests", true);
 
@@ -236,6 +303,10 @@
 
     private bool NoRequestData()
     {
-        return !(myrequeststojoin.Any() || myrequeststojoinAsAdmin.Any() || joinRequestsICanAuthorise.Any() || adminRequestsICanAuthorise.Any());
+        return !(myrequeststojoin.Any()
+            || myrequeststojoinAsAdmin.Any()
+            || joinRequestsICanAuthorise.Any()
+            || adminRequestsICanAuthorise.Any()
+            || pendingOrgs.Any());
     }
 }

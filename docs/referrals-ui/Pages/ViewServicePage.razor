@@ -1,10 +1,11 @@
 ﻿@page "/view-service/{Id}"
 @attribute [Authorize]
-
+@using Microsoft.Extensions.Configuration;
 @using OpenReferralPOV.Data
 @using OpenReferralPOV.Services
 
 @inject IOpenReferralService ServiceService
+@inject IConfiguration Configuration
 @inject IOpenReferralOrganisationService OrgService
 @inject NavigationManager NavManager
 
@@ -37,7 +38,7 @@
                     </div>
                     <div class="contactinfo"><i class="fas fa-envelope-open-text"></i> <a href="mailto:@service.Email" title="Email @serviceOrg.Name">Email</a> <i class="fas fa-desktop"></i> <a href="@service.Url" target="_blank" title="Go to @serviceOrg.Name website">Visit the website</a></div>
                     <div class="descn">
-                        <h3>About @serviceOrg.Name</h3>
+                        <h3>About @service.Name</h3>
                         <p>@service.Description</p>
                     </div>
                     @if (services.Count() > 1)
@@ -66,14 +67,14 @@
                     <div class="gmap_canvas">
                         @if (hiddenLocation == false)
                         {
-                            <iframe width="300" height="300" loading="lazy" allowfullscreen src="https://maps.google.com/maps?q=@address.Postal_Code&z=15&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+                            <iframe width="300" height="300" loading="lazy" allowfullscreen src="https://maps.google.com/maps/embed/v1/place?key=@Configuration["MapsApiKey"]&q=@address.Postal_Code&zoom=15" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
                             </iframe>
 
                         }
                         else
                         {
                             <div class="overlay">Map not shown for security purposes</div>
-                            <iframe width="300" height="300" class="blurMap" allowfullscreen="false" src="https://maps.google.com/maps?q=@address.Postal_Code&z=15&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+                            <iframe width="300" height="300" class="blurMap" allowfullscreen="false" src="https://maps.google.com/maps/embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
                             </iframe>
 
                         }
