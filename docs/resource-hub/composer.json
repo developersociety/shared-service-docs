@@ -59,10 +59,6 @@
     "patchLevel": {
       "drupal/core": "-p2"
     },
-    "patches": {
-      "drupal/gin_toolbar": {
-        "Patch Gin for toolbar error: https://www.drupal.org/project/gin_toolbar/issues/3209437": "https://git.drupalcode.org/project/gin_toolbar/-/merge_requests/7.patch"
-      }
-    }
+    "patches": { }
   }
 }
