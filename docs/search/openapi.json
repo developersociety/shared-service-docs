@@ -18,122 +18,73 @@
             }
         }
     ],
+    "security": [
+        {
+            "bearerAuth": []
+        }
+    ],
+    "tags": [
+        {
+            "name": "locations",
+            "description": "Routes for working with locations stored in the service."
+        },
+        {
+            "name": "articles",
+            "description": "Routes for working with articles stored in the service."
+        }
+    ],
     "paths": {
         "/locations": {
             "post": {
                 "operationId": "addLocationToSearchIndex",
-                "summary": "Add a new location to the search index.",
+                "summary": "Add a new location to the data store and search index.",
+                "description": "An API token must have the `write` permission to be able to perform actions against this route.",
+                "tags": ["locations"],
                 "parameters": [
                     {
-                        "in": "query",
-                        "name": "sensitive",
-                        "description": "Defaults to 0 (false). Flag the entity as sensitive.",
-                        "schema": {
-                            "type": "integer"
-                        },
-                        "required": false,
-                        "example": 1
+                        "$ref": "#/components/parameters/sensitive"
                     },
                     {
-                        "in": "query",
-                        "name": "streetAddress",
-                        "schema": {
-                            "type": "string"
-                        },
-                        "required": true,
-                        "example": "8-10 Oldham Street"
+                        "$ref":"#/components/parameters/streetAddress"
                     },
                     {
-                        "in": "query",
-                        "name": "addressRegion",
-                        "description": "Typically a city, e.g. Salford.",
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "Manchester"
+                        "$ref": "#/components/parameters/addressRegion"
                     },
                     {
-                        "in": "query",
-                        "name": "addressLocality",
-                        "description": "Typically a county, e.g. Greater Manchester.",
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "Greater Manchester"
+                        "$ref": "#/components/parameters/addressLocality"
                     },
                     {
-                        "in": "query",
-                        "name": "addressCountry",
-                        "schema": {
-                            "type": "string"
-                        },
-                        "required":  true,
-                        "example": "United Kingdom"
+                        "$ref": "#/components/parameters/addressCountry"
                     },
                     {
-                        "in": "query",
-                        "name": "postalCode",
-                        "schema": {
-                            "type": "string"
-                        },
-                        "required":  true,
-                        "example": "M1 1JQ"
+                        "$ref": "#/components/parameters/postalCode"
                     },
                     {
-                        "in": "query",
-                        "name": "latitude",
-                        "schema": {
-                            "type": "number",
-                            "format": "float"
-                        },
-                        "required":  true,
-                        "example": 53.481940
+                        "$ref": "#/components/parameters/latitude"
                     },
                     {
-                        "in": "query",
-                        "name": "longitude",
-                        "schema": {
-                            "type": "number",
-                            "format": "float"
-                        },
-                        "required":  true,
-                        "example": -2.235999
+                        "$ref": "#/components/parameters/longitude"
                     },
                     {
-                        "in": "query",
-                        "name": "description",
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "An Oxfam charity shop"
+                        "$ref": "#/components/parameters/locationDescription"
                     },
                     {
-                        "in": "query",
-                        "name": "photoUrl",
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "https://via.placeholder.com/300x400.png"
+                        "$ref": "#/components/parameters/photoUrl"
                     },
                     {
-                        "in": "query",
-                        "name": "photoDescription",
-                        "schema": {
-                            "type": "string"
-                        },
-                        "example": "A placeholder image."
+                        "$ref": "#/components/parameters/photoDescription"
                     }
                 ],
                 "responses": {
                     "201": {
-                        "description": "Created. Location added to search index.",
+                        "description": "Created. Location added to data store and search index.",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "type": "object",
                                     "properties": {
                                         "data": {
-                                            "$ref": "#/components/schemas/LocationData"
+                                            "$ref": "#/components/schemas/LocationObject"
                                         },
                                         "meta": {
                                             "$ref": "#/components/schemas/responseMetaCreated"
@@ -170,6 +121,9 @@
                     "403": {
                         "$ref": "#/components/responses/403"
                     },
+                    "405": {
+                        "$ref": "#/components/responses/405"
+                    },
                     "500": {
                         "$ref": "#/components/responses/500"
                     }
@@ -179,7 +133,9 @@
         "/locations/search": {
             "get": {
                 "operationId": "searchLocations",
-                "summary": "Run a search against the locations index.",
+                "summary": "Run a search against the locations search index.",
+                "description": "All results are ordered by distance from the location given in the `query` parameter, going from nearest to furthest.",
+                "tags": ["locations"],
                 "parameters": [
                     {
                         "in": "query",
@@ -240,7 +196,7 @@
                     {
                         "in": "query",
                         "name": "page",
-                        "description": "The page of results to send in the response. The default is set in the service's configuration.",
+                        "description": "The page of results to send in the response.",
                         "schema": {
                             "type": "integer"
                         },
@@ -256,7 +212,96 @@
                                     "type": "object",
                                     "properties": {
                                         "data": {
-                                            "$ref": "#/components/schemas/LocationData"
+                                            "type": "array",
+                                            "description": "An array of location objects, in order of nearest to furthest to the query location. An empty array if the search returns no results.",
+                                            "items": {
+                                                "type": "object"
+                                            },
+                                            "example": [
+                                                {
+                                                    "@context": "https://schema.org",
+                                                    "@type": "Place",
+                                                    "description": "An Oxfam charity shop",
+                                                    "sensitive": true,
+                                                    "updated_at": "2021-06-04T11:25:43.000000Z",
+                                                    "created_at": "2021-06-04T11:25:43.000000Z",
+                                                    "id": 17,
+                                                    "address": {
+                                                        "@context": "https://schema.org",
+                                                        "@type": "PostalAddress",
+                                                        "streetAddress": "8-10 Oldham Street",
+                                                        "addressRegion": "Manchester",
+                                                        "addressLocality": "Greater Manchester",
+                                                        "addressCountry": "United Kingdom",
+                                                        "postalCode": "M1 1JQ"
+                                                    },
+                                                    "geo": {
+                                                        "@context": "https://schema.org",
+                                                        "@type": "GeoCoordinates",
+                                                        "coordinates": {
+                                                            "lat": 53.481940,
+                                                            "lon": -2.235999
+                                                        }
+                                                    },
+                                                    "photo": {
+                                                        "@context": "https://schema.org",
+                                                        "@type": "ImageObject",
+                                                        "contentUrl": "https://via.placeholder.com/300x400.png",
+                                                        "description": "A placeholder image."
+                                                    }
+                                                },
+                                                {
+                                                    "@context": "https://schema.org",
+                                                    "@type": "Place",
+                                                    "...": "..."
+                                                },
+                                                {
+                                                    "@context": "https://schema.org",
+                                                    "@type": "Place",
+                                                    "...": "..."
+                                                }
+                                            ]
+                                        },
+                                        "meta": {
+                                            "$ref": "#/components/schemas/responseMetaWithPagination"
+                                        },
+                                        "links": {
+                                            "$ref": "#/components/schemas/responseEmptyObject"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/401"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    }
+                }
+            }
+        },
+        "/locations/{id}": {
+            "get": {
+                "operationId": "getLocationById",
+                "summary": "Retrieve a location from the data store.",
+                "tags": ["locations"],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/idAsPath"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/LocationObject"
                                         },
                                         "meta": {
                                             "$ref": "#/components/schemas/responseMetaOk"
@@ -276,35 +321,120 @@
                         "$ref": "#/components/responses/500"
                     }
                 }
-            }
-        },
-        "/locations/{id}": {
-            "get": {
-                "operationId": "getLocationById",
-                "summary": "Retrieve a location from the data store.",
+            },
+            "put": {
+                "operationId": "updateLocationById",
+                "summary": "Update the details of a location in the data store.",
+                "description": "An API token must have the `write` permission to be able to perform actions against this route.",
+                "tags": ["locations"],
                 "parameters": [
                     {
-                        "in": "path",
-                        "name": "id",
-                        "schema": {
-                            "type": "integer",
-                            "minimum": 1
-                        },
-                        "required":  true,
-                        "example": 17
-
+                        "$ref": "#/components/parameters/idAsPath"
+                    },
+                    {
+                        "$ref": "#/components/parameters/sensitive"
+                    },
+                    {
+                        "$ref":"#/components/parameters/streetAddress"
+                    },
+                    {
+                        "$ref": "#/components/parameters/addressRegion"
+                    },
+                    {
+                        "$ref": "#/components/parameters/addressLocality"
+                    },
+                    {
+                        "$ref": "#/components/parameters/addressCountry"
+                    },
+                    {
+                        "$ref": "#/components/parameters/postalCode"
+                    },
+                    {
+                        "$ref": "#/components/parameters/latitude"
+                    },
+                    {
+                        "$ref": "#/components/parameters/longitude"
+                    },
+                    {
+                        "$ref": "#/components/parameters/locationDescription"
+                    },
+                    {
+                        "$ref": "#/components/parameters/photoUrl"
+                    },
+                    {
+                        "$ref": "#/components/parameters/photoDescription"
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK",
+                        "description": "Ok. The data of the location with the given ID has been updated.",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "type": "object",
                                     "properties": {
                                         "data": {
-                                            "$ref": "#/components/schemas/LocationData"
+                                            "$ref": "#/components/schemas/LocationObject"
+                                        },
+                                        "meta": {
+                                            "$ref": "#/components/schemas/responseMetaOk"
+                                        },
+                                        "links": {
+                                            "type": "object",
+                                            "description": "Links to other operations that can be performed with the created entity.",
+                                            "example": {
+                                                "get_location": {
+                                                    "type": "GET",
+                                                    "href": "https://catalyst-search.herokuapp.com/v1/locations/17"
+                                                },
+                                                "delete_location": {
+                                                    "type": "DELETE",
+                                                    "href": "https://catalyst-search.herokuapp.com/v1/locations/17"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/400"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/401"
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/403"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/404"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    }
+                }
+            },
+            "delete": {
+                "operationId": "deleteLocationById",
+                "summary": "Delete a location from the data store and the search index.",
+                "description": "An API token must have the `write` permission to be able to perform actions against this route.",
+                "tags": ["locations"],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/idAsPath"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok. The location with the given ID has been deleted.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/responseEmptyObject"
                                         },
                                         "meta": {
                                             "$ref": "#/components/schemas/responseMetaOk"
@@ -316,6 +446,264 @@
                                 }
                             }
                         }
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/403"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/404"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    }
+                }
+            }
+        },
+        "/articles": {
+            "post": {
+                "operationId": "addArticleToSearchIndex",
+                "summary": "Add a new article to the data store and search index.",
+                "description": "An API token must have the `write` permission to be able to perform actions against this route.",
+                "tags": ["articles"],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/sensitive"
+                    },
+                    {
+                        "$ref": "#/components/parameters/articleBody"
+                    },
+                    {
+                        "$ref":"#/components/parameters/abstract"
+                    },
+                    {
+                        "$ref": "#/components/parameters/author"
+                    },
+                    {
+                        "$ref": "#/components/parameters/publisher"
+                    },
+                    {
+                        "$ref": "#/components/parameters/datePublished"
+                    },
+                    {
+                        "$ref": "#/components/parameters/thumbnailUrl"
+                    },
+                    {
+                        "$ref": "#/components/parameters/keywords"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created. Article added to data store and search index.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/ArticleObject"
+                                        },
+                                        "meta": {
+                                            "$ref": "#/components/schemas/responseMetaCreated"
+                                        },
+                                        "links": {
+                                            "type": "object",
+                                            "description": "Links to other operations that can be performed with the created entity.",
+                                            "example": {
+                                                "get_location": {
+                                                    "type": "GET",
+                                                    "href": "https://catalyst-search.herokuapp.com/v1/articles/17"
+                                                },
+                                                "update_location": {
+                                                    "type": "PUT",
+                                                    "href": "https://catalyst-search.herokuapp.com/v1/articles/17"
+                                                },
+                                                "delete_location": {
+                                                    "type": "DELETE",
+                                                    "href": "https://catalyst-search.herokuapp.com/v1/articles/17"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/400"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/401"
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/403"
+                    },
+                    "405": {
+                        "$ref": "#/components/responses/405"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    }
+                }
+            }
+        },
+        "/articles/{id}": {
+            "get": {
+                "operationId": "getArticleById",
+                "summary": "Retrieve an article from the data store.",
+                "tags": ["articles"],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/idAsPath"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/ArticleObject"
+                                        },
+                                        "meta": {
+                                            "$ref": "#/components/schemas/responseMetaOk"
+                                        },
+                                        "links": {
+                                            "$ref": "#/components/schemas/responseEmptyObject"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/404"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    }
+                }
+            },
+            "put": {
+                "operationId": "updateArticleById",
+                "summary": "Update the details of an article in the data store.",
+                "description": "An API token must have the `write` permission to be able to perform actions against this route.",
+                "tags": ["articles"],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/idAsPath"
+                    },
+                    {
+                        "$ref": "#/components/parameters/sensitive"
+                    },
+                    {
+                        "$ref": "#/components/parameters/articleBody"
+                    },
+                    {
+                        "$ref":"#/components/parameters/abstract"
+                    },
+                    {
+                        "$ref": "#/components/parameters/author"
+                    },
+                    {
+                        "$ref": "#/components/parameters/publisher"
+                    },
+                    {
+                        "$ref": "#/components/parameters/datePublished"
+                    },
+                    {
+                        "$ref": "#/components/parameters/thumbnailUrl"
+                    },
+                    {
+                        "$ref": "#/components/parameters/keywords"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok. The data of the article with the given ID has been updated.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/ArticleObject"
+                                        },
+                                        "meta": {
+                                            "$ref": "#/components/schemas/responseMetaOk"
+                                        },
+                                        "links": {
+                                            "type": "object",
+                                            "description": "Links to other operations that can be performed with the created entity.",
+                                            "example": {
+                                                "get_location": {
+                                                    "type": "GET",
+                                                    "href": "https://catalyst-search.herokuapp.com/v1/articles/17"
+                                                },
+                                                "delete_location": {
+                                                    "type": "DELETE",
+                                                    "href": "https://catalyst-search.herokuapp.com/v1/articles/17"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/400"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/401"
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/403"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/404"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    }
+                }
+            },
+            "delete": {
+                "operationId": "deleteArticleById",
+                "summary": "Delete an article from the data store and the search index.",
+                "description": "An API token must have the `write` permission to be able to perform actions against this route.",
+                "tags": ["articles"],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/idAsPath"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok. The article with the given ID has been deleted.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/responseEmptyObject"
+                                        },
+                                        "meta": {
+                                            "$ref": "#/components/schemas/responseMetaOk"
+                                        },
+                                        "links": {
+                                            "$ref": "#/components/schemas/responseEmptyObject"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/403"
                     },
                     "404": {
                         "$ref": "#/components/responses/404"
@@ -328,6 +716,180 @@
         }
     },
     "components": {
+        "securitySchemes" : {
+            "bearerAuth" : {
+                "type" : "http",
+                "scheme" : "bearer",
+                "description" : "Authorization: Bearer <token>"
+            }
+        },
+        "parameters": {
+            "idAsPath": {
+                "in": "path",
+                "name": "id",
+                "schema": {
+                    "type": "integer",
+                    "minimum": 1
+                },
+                "required":  true,
+                "example": 17
+            },
+            "sensitive": {
+                "in": "query",
+                "name": "sensitive",
+                "description": "Flag the object as sensitive.",
+                "schema": {
+                    "$ref": "#/components/schemas/objectSensitive"
+                },
+                "required": false
+            },
+            "streetAddress": {
+                "in": "query",
+                "name": "streetAddress",
+                "schema": {
+                    "type": "string"
+                },
+                "required": true,
+                "example": "8-10 Oldham Street"
+            },
+            "addressRegion": {
+                "in": "query",
+                "name": "addressRegion",
+                "description": "Typically a city, e.g. Salford.",
+                "schema": {
+                    "type": "string"
+                },
+                "example": "Manchester"
+            },
+            "addressLocality": {
+                "in": "query",
+                "name": "addressLocality",
+                "description": "Typically a county, e.g. Greater Manchester.",
+                "schema": {
+                    "type": "string"
+                },
+                "example": "Greater Manchester"
+            },
+            "addressCountry": {
+                "in": "query",
+                "name": "addressCountry",
+                "schema": {
+                    "type": "string"
+                },
+                "required":  true,
+                "example": "United Kingdom"
+            },
+            "postalCode": {
+                "in": "query",
+                "name": "postalCode",
+                "schema": {
+                    "type": "string"
+                },
+                "required":  true,
+                "example": "M1 1JQ"
+            },
+            "latitude": {
+                "in": "query",
+                "name": "latitude",
+                "schema": {
+                    "type": "number",
+                    "format": "float"
+                },
+                "required":  true,
+                "example": 53.481940
+            },
+            "longitude": {
+                "in": "query",
+                "name": "longitude",
+                "schema": {
+                    "type": "number",
+                    "format": "float"
+                },
+                "required":  true,
+                "example": -2.235999
+            },
+            "locationDescription": {
+                "in": "query",
+                "name": "description",
+                "schema": {
+                    "type": "string"
+                },
+                "example": "An Oxfam charity shop"
+            },
+            "photoUrl": {
+                "in": "query",
+                "name": "photoUrl",
+                "schema": {
+                    "type": "string"
+                },
+                "example": "https://via.placeholder.com/300x400.png"
+            },
+            "photoDescription": {
+                "in": "query",
+                "name": "photoDescription",
+                "schema": {
+                    "type": "string"
+                },
+                "example": "A placeholder image."
+            },
+            "articleBody": {
+                "in": "query",
+                "name": "articleBody",
+                "schema": {
+                    "$ref": "#/components/schemas/objectArticleBody"
+                },
+                "required": true
+            },
+            "abstract": {
+                "in":  "query",
+                "name": "abstract",
+                "schema": {
+                    "$ref": "#/components/schemas/objectAbstract"
+                },
+                "required": true
+            },
+            "author": {
+                "in":  "query",
+                "name": "author",
+                "schema": {
+                    "$ref": "#/components/schemas/objectAuthor"
+                },
+                "required": true
+            },
+            "publisher": {
+                "in":  "query",
+                "name": "publisher",
+                "schema": {
+                    "$ref": "#/components/schemas/objectPublisher"
+                },
+                "required": true
+            },
+            "datePublished": {
+                "in":  "query",
+                "name": "datePublished",
+                "schema": {
+                    "$ref": "#/components/schemas/objectDatePublished"
+                },
+                "required": true
+            },
+            "thumbnailUrl": {
+                "in":  "query",
+                "name": "thumbnailUrl",
+                "schema": {
+                    "type": "string",
+                    "description": "A URL to a featured image for the article.",
+                    "example": "https://via.placeholder.com/300x400.png",
+                    "nullable": true
+                }
+            },
+            "keywords": {
+                "in":  "query",
+                "name": "keywords",
+                "schema": {
+                    "$ref": "#/components/schemas/objectKeywords"
+                }
+            }
+        },
         "responses": {
             "400": {
                 "description": "Bad Request. Typically a validation error with the parameters provided.",
@@ -341,7 +903,7 @@
                                 },
                                 "meta": {
                                     "type": "object",
-                                    "description": "Information about the response itself. This will always include a 'status_code' item. Error information will be provided in either/both the 'error' and 'field_errors' objects.",
+                                    "description": "Information about the response itself. Error information will be provided in either/both the 'error' and 'field_errors' objects.",
                                     "example": {
                                         "status_code": 400,
                                         "error": {
@@ -402,7 +964,7 @@
                                 },
                                 "meta": {
                                     "type": "object",
-                                    "description": "Information about the response itself. This will always include a 'status_code' item.",
+                                    "description": "Information about the response itself.",
                                     "example": {
                                         "status_code": 403,
                                         "error": {
@@ -431,12 +993,41 @@
                                 },
                                 "meta": {
                                     "type": "object",
-                                    "description": "Information about the response itself. This will always include a 'status_code' item.",
+                                    "description": "Information about the response itself.",
                                     "example": {
                                         "status_code": 404,
                                         "error": {
                                             "error_type": "not_found",
                                             "error_message": "No record was found with the given ID"
+                                        }
+                                    }
+                                },
+                                "links": {
+                                    "$ref": "#/components/schemas/responseEmptyObject"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "405": {
+                "description": "Method Not Allowed. The request method used is not allowed against this request's route.",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "$ref": "#/components/schemas/responseEmptyObject"
+                                },
+                                "meta": {
+                                    "type": "object",
+                                    "description": "Information about the response itself.",
+                                    "example": {
+                                        "status_code": 405,
+                                        "error": {
+                                            "error_type": "method_not_allowed",
+                                            "error_message": "The [request method] method is not supported for this route. Supported methods: [list of allowed methods]."
                                         }
                                     }
                                 },
@@ -460,7 +1051,7 @@
                                 },
                                 "meta": {
                                     "type": "object",
-                                    "description": "Information about the response itself. This will always include a 'status_code' item.",
+                                    "description": "Information about the response itself.",
                                     "example": {
                                         "status_code": 500,
                                         "error": {
@@ -481,14 +1072,14 @@
         "schemas": {
             "responseMetaOk": {
                 "type": "object",
-                "description": "Information about the response itself. This will always include a 'status_code' item.",
+                "description": "Information about the response itself.",
                 "example": {
                     "status_code": 200
                 }
             },
             "responseMetaCreated": {
                 "type": "object",
-                "description": "Information about the response itself. This will always include a 'status_code' item.",
+                "description": "Information about the response itself.",
                 "example": {
                     "status_code": 201
                 }
@@ -497,7 +1088,77 @@
                 "type": "object",
                 "description": "Empty object"
             },
-            "LocationData": {
+            "responseMetaWithPagination": {
+                "type": "object",
+                "description": "Information about the response itself.",
+                "example": {
+                    "status_code": 200,
+                    "pagination": {
+                        "current_page": 1,
+                        "per_page": 10,
+                        "total_pages": 3,
+                        "total_entries": 21,
+                        "first_page": "https://catalyst-search.herokuapp.com/v1/original/request/route?query=original%20query&page=1",
+                        "last_page": "https://catalyst-search.herokuapp.com/v1/original/request/route?query=original%20query&page=3",
+                        "next_page": "https://catalyst-search.herokuapp.com/v1/original/request/route?query=original%20query&page=2",
+                        "prev_page": ""
+                    }
+                }
+            },
+            "objectSensitive": {
+                "type": "integer",
+                "default": 0,
+                "example": 1
+            },
+            "objectCreatedAt": {
+                "type": "string",
+                "format": "date-time",
+                "description": "The date that the object was introduced into the data store.",
+                "example": "2021-04-27T11:15:00.062Z"
+            },
+            "objectAuthor": {
+                "type": "string",
+                "description": "The name of the content's author(s).",
+                "example": "Alex Tani"
+            },
+            "objectArticleBody": {
+                "type": "string",
+                "description": "The full content of the article.",
+                "example": "[The full content of the article]"
+            },
+            "objectAbstract": {
+                "type": "string",
+                "description": "An excerpt from or short summary of the content.",
+                "example": "[An excerpt from or short summary of the content]"
+            },
+            "objectPublisher": {
+                "type": "string",
+                "description": "The publishing body or the organisation/individual that owns the content.",
+                "example": "Charity Org"
+            },
+            "objectDatePublished": {
+                "type": "string",
+                "description": "Must be in the format 'Y-m-d H:i:s'.",
+                "example": "2021-04-27 11:08:00"
+            },
+            "objectKeywords": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                },
+                "example": [
+                    "volunteering",
+                    "trustees",
+                    "board"
+                ]
+            },
+            "objectUpdatedAt": {
+                "type": "string",
+                "format": "date-time",
+                "description": "The date that the object was last updated in the data store.",
+                "example": "2021-04-27T16:31:00.062Z"
+            },
+            "LocationObject": {
                 "type": "object",
                 "description": "Populated with the processed location data.",
                 "example": {
@@ -530,6 +1191,64 @@
                         "@type": "ImageObject",
                         "contentUrl": "https://via.placeholder.com/300x400.png",
                         "description": "A placeholder image."
+                    }
+                }
+            },
+            "ArticleObject": {
+                "type": "object",
+                "description": "Populated with the processed article data.",
+                "properties": {
+                    "@context": {
+                        "type": "string",
+                        "description": "Schema context; always the same value.",
+                        "default": "https://schema.org",
+                        "example": "https://schema.org"
+                    },
+                    "@type": {
+                        "type": "string",
+                        "description": "Schema type that represents this object; always the same value.",
+                        "default": "Article",
+                        "example": "Article"
+                    },
+                    "id": {
+                        "type": "integer",
+                        "description": "The ID of the article in the data store.",
+                        "example": 17
+                    },
+                    "author": {
+                        "$ref": "#/components/schemas/objectAuthor"
+                    },
+                    "articleBody": {
+                        "$ref": "#/components/schemas/objectArticleBody"
+                    },
+                    "abstract": {
+                        "$ref": "#/components/schemas/objectAbstract"
+                    },
+                    "publisher": {
+                        "$ref": "#/components/schemas/objectPublisher"
+                    },
+                    "datePublished": {
+                        "$ref": "#/components/schemas/objectDatePublished"
+                    },
+                    "thumbnailUrl": {
+                        "type": "string",
+                        "description": "A URL to a featured image for the article.",
+                        "example": "https://via.placeholder.com/300x400.png",
+                        "nullable": true
+                    },
+                    "keywords": {
+                        "$ref": "#/components/schemas/objectKeywords"
+                    },
+                    "sensitive": {
+                        "type": "boolean",
+                        "description": "Whether or not this article has been flagged as sensitive.",
+                        "example": false
+                    },
+                    "created_at": {
+                        "$ref": "#/components/schemas/objectCreatedAt"
+                    },
+                    "updated_at": {
+                        "$ref": "#/components/schemas/objectUpdatedAt"
                     }
                 }
             }
