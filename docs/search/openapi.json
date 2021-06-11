@@ -25,12 +25,16 @@
     ],
     "tags": [
         {
-            "name": "locations",
+            "name": "Locations",
             "description": "Routes for working with locations stored in the service."
         },
         {
-            "name": "articles",
+            "name": "Articles",
             "description": "Routes for working with articles stored in the service."
+        },
+        {
+            "name": "Shapes",
+            "description": "Routes for working with geo-shapes stored in the service."
         }
     ],
     "paths": {
@@ -39,7 +43,7 @@
                 "operationId": "addLocationToSearchIndex",
                 "summary": "Add a new location to the data store and search index.",
                 "description": "An API token must have the `write` permission to be able to perform actions against this route.",
-                "tags": ["locations"],
+                "tags": ["Locations"],
                 "parameters": [
                     {
                         "$ref": "#/components/parameters/sensitive"
@@ -135,7 +139,7 @@
                 "operationId": "searchLocations",
                 "summary": "Run a search against the locations search index.",
                 "description": "All results are ordered by distance from the location given in the `query` parameter, going from nearest to furthest.",
-                "tags": ["locations"],
+                "tags": ["Locations"],
                 "parameters": [
                     {
                         "in": "query",
@@ -185,22 +189,10 @@
                         "example": "20"
                     },
                     {
-                        "in": "query",
-                        "name": "results",
-                        "description": "The number of results to return per page. The default is set in the service's configuration.",
-                        "schema": {
-                            "type": "integer"
-                        },
-                        "example": "10"
+                        "$ref": "#/components/parameters/results"
                     },
                     {
-                        "in": "query",
-                        "name": "page",
-                        "description": "The page of results to send in the response.",
-                        "schema": {
-                            "type": "integer"
-                        },
-                        "example": "2"
+                        "$ref": "#/components/parameters/page"
                     }
                 ],
                 "responses": {
@@ -286,7 +278,7 @@
             "get": {
                 "operationId": "getLocationById",
                 "summary": "Retrieve a location from the data store.",
-                "tags": ["locations"],
+                "tags": ["Locations"],
                 "parameters": [
                     {
                         "$ref": "#/components/parameters/idAsPath"
@@ -326,7 +318,7 @@
                 "operationId": "updateLocationById",
                 "summary": "Update the details of a location in the data store.",
                 "description": "An API token must have the `write` permission to be able to perform actions against this route.",
-                "tags": ["locations"],
+                "tags": ["Locations"],
                 "parameters": [
                     {
                         "$ref": "#/components/parameters/idAsPath"
@@ -419,7 +411,7 @@
                 "operationId": "deleteLocationById",
                 "summary": "Delete a location from the data store and the search index.",
                 "description": "An API token must have the `write` permission to be able to perform actions against this route.",
-                "tags": ["locations"],
+                "tags": ["Locations"],
                 "parameters": [
                     {
                         "$ref": "#/components/parameters/idAsPath"
@@ -447,6 +439,9 @@
                             }
                         }
                     },
+                    "401": {
+                        "$ref": "#/components/responses/401"
+                    },
                     "403": {
                         "$ref": "#/components/responses/403"
                     },
@@ -464,7 +459,7 @@
                 "operationId": "addArticleToSearchIndex",
                 "summary": "Add a new article to the data store and search index.",
                 "description": "An API token must have the `write` permission to be able to perform actions against this route.",
-                "tags": ["articles"],
+                "tags": ["Articles"],
                 "parameters": [
                     {
                         "$ref": "#/components/parameters/sensitive"
@@ -509,15 +504,15 @@
                                             "type": "object",
                                             "description": "Links to other operations that can be performed with the created entity.",
                                             "example": {
-                                                "get_location": {
+                                                "get_article": {
                                                     "type": "GET",
                                                     "href": "https://catalyst-search.herokuapp.com/v1/articles/17"
                                                 },
-                                                "update_location": {
+                                                "update_article": {
                                                     "type": "PUT",
                                                     "href": "https://catalyst-search.herokuapp.com/v1/articles/17"
                                                 },
-                                                "delete_location": {
+                                                "delete_article": {
                                                     "type": "DELETE",
                                                     "href": "https://catalyst-search.herokuapp.com/v1/articles/17"
                                                 }
@@ -546,11 +541,100 @@
                 }
             }
         },
+        "/articles/search": {
+            "get": {
+                "operationId": "searchArticles",
+                "summary": "Run a search against the articles search index.",
+                "description": "Searches use OR logic. This means that the query \"inquisitive rabbit\" will return any results that contain _either_ \"inquisitive\" OR \"rabbit\".",
+                "tags": ["Articles"],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "A term or phrase to query the search index with.",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required":  true
+                    },
+                    {
+                        "$ref": "#/components/parameters/results"
+                    },
+                    {
+                        "$ref": "#/components/parameters/page"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "description": "An array of article objects, or an empty array if the search returns no results.",
+                                            "items": {
+                                                "type": "object"
+                                            },
+                                            "example": [
+                                                {
+                                                    "@context": "https://schema.org",
+                                                    "@type": "Article",
+                                                    "id": 17,
+                                                    "author": "Alex Tani",
+                                                    "articleBody": "[The full content of the article]",
+                                                    "abstract": "[An excerpt from or short summary of the content]",
+                                                    "publisher": "Charity Org",
+                                                    "datePublished": "2021-04-27 11:08:00",
+                                                    "thumbnailUrl": "https://via.placeholder.com/300x400.png",
+                                                    "keywords": [
+                                                        "volunteering",
+                                                        "trustees",
+                                                        "board"
+                                                    ],
+                                                    "sensitive": true,
+                                                    "created_at": "2021-04-27T11:15:00.000000Z",
+                                                    "updated_at": "2021-04-27T16:31:00.000000Z"
+                                                },
+                                                {
+                                                    "@context": "https://schema.org",
+                                                    "@type": "Article",
+                                                    "...": "..."
+                                                },
+                                                {
+                                                    "@context": "https://schema.org",
+                                                    "@type": "Article",
+                                                    "...": "..."
+                                                }
+                                            ]
+                                        },
+                                        "meta": {
+                                            "$ref": "#/components/schemas/responseMetaWithPagination"
+                                        },
+                                        "links": {
+                                            "$ref": "#/components/schemas/responseEmptyObject"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/401"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    }
+                }
+            }
+        },
         "/articles/{id}": {
             "get": {
                 "operationId": "getArticleById",
                 "summary": "Retrieve an article from the data store.",
-                "tags": ["articles"],
+                "tags": ["Articles"],
                 "parameters": [
                     {
                         "$ref": "#/components/parameters/idAsPath"
@@ -590,7 +674,7 @@
                 "operationId": "updateArticleById",
                 "summary": "Update the details of an article in the data store.",
                 "description": "An API token must have the `write` permission to be able to perform actions against this route.",
-                "tags": ["articles"],
+                "tags": ["Articles"],
                 "parameters": [
                     {
                         "$ref": "#/components/parameters/idAsPath"
@@ -638,11 +722,11 @@
                                             "type": "object",
                                             "description": "Links to other operations that can be performed with the created entity.",
                                             "example": {
-                                                "get_location": {
+                                                "get_article": {
                                                     "type": "GET",
                                                     "href": "https://catalyst-search.herokuapp.com/v1/articles/17"
                                                 },
-                                                "delete_location": {
+                                                "delete_article": {
                                                     "type": "DELETE",
                                                     "href": "https://catalyst-search.herokuapp.com/v1/articles/17"
                                                 }
@@ -674,7 +758,7 @@
                 "operationId": "deleteArticleById",
                 "summary": "Delete an article from the data store and the search index.",
                 "description": "An API token must have the `write` permission to be able to perform actions against this route.",
-                "tags": ["articles"],
+                "tags": ["Articles"],
                 "parameters": [
                     {
                         "$ref": "#/components/parameters/idAsPath"
@@ -701,6 +785,372 @@
                                 }
                             }
                         }
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/401"
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/403"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/404"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    }
+                }
+            }
+        },
+        "/shapes": {
+           "post": {
+               "operationId": "addShapeToDataStore",
+               "summary": "Add a new geo-shape to the data store.",
+               "description": "An API token must have the `write` permission to be able to perform actions against this route.\n\nThis route accepts either a JSON body or a query string on the request URL.",
+               "tags": ["Shapes"],
+               "parameters": [
+                   {
+                       "$ref": "#/components/parameters/shapeName"
+                   },
+                   {
+                       "$ref": "#/components/parameters/shapeDescription"
+                   },
+                   {
+                       "$ref": "#/components/parameters/shapePolyline"
+                   },
+                   {
+                       "$ref": "#/components/parameters/shapeCoordinates"
+                   }
+               ],
+               "requestBody": {
+                   "description": "Choose this over URL query parameters if you're sending the `coordinates` param along with the request.",
+                   "content": {
+                       "application/json": {
+                           "schema": {
+                               "type": "object",
+                               "properties": {
+                                   "name": {
+                                       "$ref": "#/components/schemas/shapeName"
+                                   },
+                                   "description": {
+                                       "$ref": "#/components/schemas/shapeDescription"
+                                   },
+                                   "coordinates": {
+                                       "$ref": "#/components/schemas/objectCoordinates"
+                                   }
+                               }
+                           }
+                       }
+                   }
+               },
+               "responses": {
+                   "201": {
+                       "description": "Created. Shape added to data store.",
+                       "content": {
+                           "application/json": {
+                               "schema": {
+                                   "type": "object",
+                                   "properties": {
+                                       "data": {
+                                           "$ref": "#/components/schemas/ShapeObject"
+                                       },
+                                       "meta": {
+                                           "$ref": "#/components/schemas/responseMetaCreated"
+                                       },
+                                       "links": {
+                                           "type": "object",
+                                           "description": "Links to other operations that can be performed with the created entity.",
+                                           "example": {
+                                               "get_shape": {
+                                                   "type": "GET",
+                                                   "href": "https://catalyst-search.herokuapp.com/v1/shapes/17"
+                                               },
+                                               "update_shape": {
+                                                   "type": "PUT",
+                                                   "href": "https://catalyst-search.herokuapp.com/v1/shapes/17"
+                                               },
+                                               "delete_shape": {
+                                                   "type": "DELETE",
+                                                   "href": "https://catalyst-search.herokuapp.com/v1/shapes/17"
+                                               }
+                                           }
+                                       }
+                                   }
+                               }
+                           }
+                       }
+                   },
+                   "400": {
+                       "$ref": "#/components/responses/400"
+                   },
+                   "401": {
+                       "$ref": "#/components/responses/401"
+                   },
+                   "403": {
+                       "$ref": "#/components/responses/403"
+                   },
+                   "405": {
+                       "$ref": "#/components/responses/405"
+                   },
+                   "500": {
+                       "$ref": "#/components/responses/500"
+                   }
+               }
+           }
+        },
+        "/shapes/list": {
+            "get": {
+                "operationId": "listShapes",
+                "summary": "Retrieve a list of shapes from the data store.",
+                "tags": ["Shapes"],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "description": "An array of shape objects, or an empty array if there are no shapes to retrieve.",
+                                            "items": {
+                                                "type": "object"
+                                            },
+                                            "example": [
+                                                {
+                                                    "@context": "https://schema.org",
+                                                    "@type": "GeoShape",
+                                                    "name": "Manchester area",
+                                                    "description": "Covers the city of Manchester and surrounding boroughs.",
+                                                    "coordinates": [
+                                                        {
+                                                            "lat": 52.4088,
+                                                            "lon": -1.886
+                                                        },
+                                                        {
+                                                            "lat": 52.4088,
+                                                            "lon": -0.886
+                                                        },
+                                                        {
+                                                            "lat": 52.0088,
+                                                            "lon": -0.886
+                                                        },
+                                                        {
+                                                            "lat": 52.0088,
+                                                            "lon": -1.886
+                                                        },
+                                                        {
+                                                            "lat": 52.4088,
+                                                            "lon": -1.886
+                                                        }
+                                                    ],
+                                                    "created_at": "2021-04-27T11:15:00.000000Z",
+                                                    "updated_at": "2021-04-27T16:31:00.000000Z",
+                                                    "id": 17,
+                                                    "polygon": "52.4088,-1.886 52.4088,-0.886 52.0088,-0.886 52.0088,-1.886 52.4088,-1.886"
+                                                },
+                                                {
+                                                    "@context": "https://schema.org",
+                                                    "@type": "GeoShape",
+                                                    "...": "..."
+                                                },
+                                                {
+                                                    "@context": "https://schema.org",
+                                                    "@type": "GeoShape",
+                                                    "...": "..."
+                                                }
+                                            ]
+                                        },
+                                        "meta": {
+                                            "$ref": "#/components/schemas/responseMetaWithPagination"
+                                        },
+                                        "links": {
+                                            "$ref": "#/components/schemas/responseEmptyObject"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/401"
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/403"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    }
+                }
+            }
+        },
+        "/shapes/{id}": {
+            "get": {
+                "operationId": "getShapeById",
+                "summary": "Retrieve a shape from the data store.",
+                "tags": ["Shapes"],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/idAsPath"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/ShapeObject"
+                                        },
+                                        "meta": {
+                                            "$ref": "#/components/schemas/responseMetaOk"
+                                        },
+                                        "links": {
+                                            "$ref": "#/components/schemas/responseEmptyObject"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/404"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    }
+                }
+            },
+            "put": {
+                "operationId": "updateShapeById",
+                "summary": "Update the details of a shape in the data store.",
+                "description": "An API token must have the `write` permission to be able to perform actions against this route.",
+                "tags": ["Shapes"],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/idAsPath"
+                    },
+                    {
+                        "$ref": "#/components/parameters/shapeName"
+                    },
+                    {
+                        "$ref": "#/components/parameters/shapeDescription"
+                    },
+                    {
+                        "$ref": "#/components/parameters/shapePolyline"
+                    },
+                    {
+                        "$ref": "#/components/parameters/shapeCoordinates"
+                    }
+                ],
+                "requestBody": {
+                    "description": "Choose this over URL query parameters if you're sending the `coordinates` param along with the request.",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "$ref": "#/components/schemas/shapeName"
+                                    },
+                                    "description": {
+                                        "$ref": "#/components/schemas/shapeDescription"
+                                    },
+                                    "coordinates": {
+                                        "$ref": "#/components/schemas/objectCoordinates"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Ok. The data of the shape with the given ID has been updated.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/ShapeObject"
+                                        },
+                                        "meta": {
+                                            "$ref": "#/components/schemas/responseMetaOk"
+                                        },
+                                        "links": {
+                                            "type": "object",
+                                            "description": "Links to other operations that can be performed with the created entity.",
+                                            "example": {
+                                                "get_shape": {
+                                                    "type": "GET",
+                                                    "href": "https://catalyst-search.herokuapp.com/v1/shapes/17"
+                                                },
+                                                "delete_shape": {
+                                                    "type": "DELETE",
+                                                    "href": "https://catalyst-search.herokuapp.com/v1/shapes/17"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/400"
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/401"
+                    },
+                    "403": {
+                        "$ref": "#/components/responses/403"
+                    },
+                    "404": {
+                        "$ref": "#/components/responses/404"
+                    },
+                    "500": {
+                        "$ref": "#/components/responses/500"
+                    }
+                }
+            },
+            "delete": {
+                "operationId": "deleteShapeById",
+                "summary": "Delete a shape from the data store.",
+                "description": "An API token must have the `write` permission to be able to perform actions against this route.",
+                "tags": ["Shapes"],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/idAsPath"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok. The shape with the given ID has been deleted.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/responseEmptyObject"
+                                        },
+                                        "meta": {
+                                            "$ref": "#/components/schemas/responseMetaOk"
+                                        },
+                                        "links": {
+                                            "$ref": "#/components/schemas/responseEmptyObject"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#/components/responses/401"
                     },
                     "403": {
                         "$ref": "#/components/responses/403"
@@ -742,6 +1192,24 @@
                     "$ref": "#/components/schemas/objectSensitive"
                 },
                 "required": false
+            },
+            "results": {
+                "in": "query",
+                "name": "results",
+                "description": "The number of results to return per page. The default is set in the service's configuration.",
+                "schema": {
+                    "type": "integer"
+                },
+                "example": "10"
+            },
+            "page": {
+                "in": "query",
+                "name": "page",
+                "description": "The page of results to send in the response.",
+                "schema": {
+                    "type": "integer"
+                },
+                "example": "2"
             },
             "streetAddress": {
                 "in": "query",
@@ -888,6 +1356,44 @@
                 "schema": {
                     "$ref": "#/components/schemas/objectKeywords"
                 }
+            },
+            "shapeName": {
+                "in": "query",
+                "name": "name",
+                "description": "The name of the geo-shape",
+                "schema": {
+                    "$ref": "#/components/schemas/shapeName"
+                },
+                "required":  true
+            },
+            "shapeDescription": {
+                "in": "query",
+                "name": "description",
+                "description": "A description of the geo-shape",
+                "schema": {
+                    "$ref": "#/components/schemas/shapeDescription"
+                },
+                "required":  false
+            },
+            "shapePolyline": {
+                "in": "query",
+                "name": "polyline",
+                "description": "Cannot be included if `coordinates` has also been sent with the request, otherwise it is required.\n\nEncode the actual coordinates using the [Polyline algorithm](https://developers.google.com/maps/documentation/utilities/polylinealgorithm) and send the encoded string as this parameter's value.",
+                "schema": {
+                    "type": "string"
+                },
+                "required":  false,
+                "example": "_b{~HnjoJ?_ibE~bmA??~hbE_cmA?"
+            },
+            "shapeCoordinates": {
+                "in": "query",
+                "name": "coordinates",
+                "description": "Cannot be included if `polyline` has also been sent with the request, otherwise it is required.\n\nExpects an array of arrays. Each inner array must have both the \"lat\" and \"lon\" keys.\n\nNOTE: URLs have length limits so it's recommended that the request is instead sent with JSON body if this parameter will be a part of it.",
+                "schema": {
+                    "type": "string"
+                },
+                "required":  false,
+                "example": "coordinates[0][lat]=52.54761&coordinates[0][lon]=-0.73428&coordinates[1][lat]=52.54761&coordinates[1][lon]=0.26571"
             }
         },
         "responses": {
@@ -1085,7 +1591,8 @@
                 }
             },
             "responseEmptyObject": {
-                "type": "object",
+                "type": "array",
+                "items": {},
                 "description": "Empty object"
             },
             "responseMetaWithPagination": {
@@ -1109,12 +1616,6 @@
                 "type": "integer",
                 "default": 0,
                 "example": 1
-            },
-            "objectCreatedAt": {
-                "type": "string",
-                "format": "date-time",
-                "description": "The date that the object was introduced into the data store.",
-                "example": "2021-04-27T11:15:00.062Z"
             },
             "objectAuthor": {
                 "type": "string",
@@ -1152,11 +1653,70 @@
                     "board"
                 ]
             },
+            "objectCoordinates": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "lat": {
+                            "type": "number",
+                            "format": "float"
+                        },
+                        "lon": {
+                            "type": "number",
+                            "format": "float"
+                        }
+                    }
+                },
+                "example": [
+                    {
+                        "lat": 52.4088,
+                        "lon": -1.886
+                    },
+                    {
+                        "lat": 52.4088,
+                        "lon": -0.886
+                    },
+                    {
+                        "lat": 52.0088,
+                        "lon": -0.886
+                    },
+                    {
+                        "lat": 52.0088,
+                        "lon": -1.886
+                    },
+                    {
+                        "lat": 52.4088,
+                        "lon": -1.886
+                    }
+                ]
+            },
+            "objectCreatedAt": {
+                "type": "string",
+                "format": "date-time",
+                "description": "The date that the object was introduced into the data store.",
+                "example": "2021-04-27T11:15:00.000000Z"
+            },
             "objectUpdatedAt": {
                 "type": "string",
                 "format": "date-time",
                 "description": "The date that the object was last updated in the data store.",
-                "example": "2021-04-27T16:31:00.062Z"
+                "example": "2021-04-27T16:31:00.000000Z"
+            },
+            "shapeName": {
+                "type": "string",
+                "description": "The name of the geo-shape",
+                "example": "Manchester area"
+            },
+            "shapeDescription": {
+                "type": "string",
+                "description": "A description of the geo-shape",
+                "example": "Covers the city of Manchester and surrounding boroughs."
+            },
+            "shapePolygon": {
+                "type": "string",
+                "description": "Space-separated list of the coordinates points, as defined by Schema.org.",
+                "example": "52.4088,-1.886 52.4088,-0.886 52.0088,-0.886 52.0088,-1.886 52.4088,-1.886"
             },
             "LocationObject": {
                 "type": "object",
@@ -1249,6 +1809,47 @@
                     },
                     "updated_at": {
                         "$ref": "#/components/schemas/objectUpdatedAt"
+                    }
+                }
+            },
+            "ShapeObject": {
+                "type": "object",
+                "description": "Populated with the processed geo-shape data.",
+                "properties": {
+                    "@context": {
+                        "type": "string",
+                        "description": "Schema context; always the same value.",
+                        "default": "https://schema.org",
+                        "example": "https://schema.org"
+                    },
+                    "@type": {
+                        "type": "string",
+                        "description": "Schema type that represents this object; always the same value.",
+                        "default": "GeoShape",
+                        "example": "GeoShape"
+                    },
+                    "name": {
+                        "$ref": "#/components/schemas/shapeName"
+                    },
+                    "description": {
+                        "$ref": "#/components/schemas/shapeDescription"
+                    },
+                    "coordinates": {
+                        "$ref": "#/components/schemas/objectCoordinates"
+                    },
+                    "created_at": {
+                        "$ref": "#/components/schemas/objectCreatedAt"
+                    },
+                    "updated_at": {
+                        "$ref": "#/components/schemas/objectUpdatedAt"
+                    },
+                    "id": {
+                        "type": "integer",
+                        "description": "The ID of the shape in the data store.",
+                        "example": 17
+                    },
+                    "polygon": {
+                        "$ref": "#/components/schemas/shapePolygon"
                     }
                 }
             }
