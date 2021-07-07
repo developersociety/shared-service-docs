@@ -33,6 +33,7 @@
     "drupal/paragraphs": "^1.12",
     "drupal/pathauto": "^1.6",
     "drupal/redirect": "^1.5",
+    "drupal/responsive_menu": "^4.0",
     "drupal/role_delegation": "^1.1",
     "drupal/shariff": "^1.7",
     "drupal/search_api": "^1.19",

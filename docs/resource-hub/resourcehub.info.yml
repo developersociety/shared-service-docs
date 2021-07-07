@@ -53,6 +53,7 @@ install:
   - paragraphs:paragraphs
   - pathauto:pathauto
   - redirect:redirect
+  - responsive_menu:responsive_menu
   - role_delegation:role_delegation
   - simple_sitemap:simple_sitemap
   - shariff:shariff
