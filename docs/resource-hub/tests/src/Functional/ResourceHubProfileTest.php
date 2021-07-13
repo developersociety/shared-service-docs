@@ -240,7 +240,7 @@ class ResourceHubProfileTest extends BrowserTestBase {
   }
 
   /**
-   * Test Resource search page is accecssible.
+   * Test Resource search page is accessible.
    */
   public function testResourceSearchPage() {
     // Test front page loads after site install.
@@ -262,7 +262,7 @@ class ResourceHubProfileTest extends BrowserTestBase {
     $this->assertSession()->statusCodeEquals(Response::HTTP_OK);
     $this->assertSession()->fieldExists('Title');
     $this->assertSession()->fieldExists('Introduction');
-    $this->assertSession()->pageTextContains('Add media');
+    $this->assertSession()->responseContains('Add media');
     $this->assertSession()->pageTextContains('Link block');
     $page = $this->getSession()->getPage();
     $page->fillField('title[0][value]', 'Landing pagey title');

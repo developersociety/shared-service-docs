@@ -11,6 +11,8 @@
     }
   ],
   "require": {
+    "ckeditor/balloonpanel": "^4.0",
+    "ckeditor/a11ychecker": "^1.0",
     "drupal/admin_toolbar": "^3.0",
     "drupal/allowed_formats": "^1.3",
     "drupal/core": "^9.1",
@@ -42,9 +44,13 @@
     "drupal/styleguide": "^2.0@beta",
     "drupal/view_unpublished": "1.0",
     "drupal/entity_reference_facet_link": "^1.0@beta",
-    "ckeditor/balloonpanel": "^4.0",
-    "ckeditor/a11ychecker": "^1.0",
-    "heiseonline/shariff": "^3.0"
+    "bower-asset/mmenu": "^8.5.24",
+    "npm-asset/shariff": "^3.2.1",
+    "npm-asset/superfish": "^1.7.10"
+  },
+  "replace": {
+    "npm-asset/fortawesome--fontawesome-free": "*",
+    "npm-asset/jquery": "*"
   },
   "require-dev": {
     "drupal/core-dev": "^9.1"
