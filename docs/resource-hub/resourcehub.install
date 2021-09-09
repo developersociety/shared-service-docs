@@ -7,6 +7,8 @@
 
 use Drupal\block\Entity\Block;
 use Drupal\user\Entity\User;
+use Drupal\Core\Config\FileStorage;
+use Drupal\user\Entity\Role;
 
 /**
  * Implements hook_install().
@@ -53,4 +55,43 @@ function resourcehub_install() {
   \Drupal::configFactory()->getEditable('resourcehub.settings')
     ->set('main_site_link.text', 'Visit our main site')
     ->save();
+}
+
+/**
+ * Add config for main menu block.
+ */
+function resourcehub_update_9001() {
+
+  // Enable the responsive menu module.
+  $modules = [
+    'responsive_menu',
+  ];
+  \Drupal::service('module_installer')->install($modules);
+
+  $config_path = drupal_get_path('profile', 'resourcehub') . '/config/install';
+  $config_source = new FileStorage($config_path);
+  $config_storage = \Drupal::service('config.storage');
+  $responsivemenumobileicon = $config_source->read('block.block.responsivemenumobileicon');
+  $config_storage->write('block.block.responsivemenumobileicon', $responsivemenumobileicon);
+  $config_storage->write('responsive_menu.settings', $config_source->read('responsive_menu.settings'));
+
+  $block = Block::load('responsivemenumobileicon');
+  $block->setRegion('header');
+  $block->enable();
+  $block->setWeight(10);
+  $block->save();
+
+  // Give the content_editor role permisison to administer main menu items.
+  $content_editor = Role::load('content_editor');
+  if ($content_editor) {
+    $content_editor->grantPermission('administer main menu items');
+    $content_editor->save();
+  }
+
+  // Give the site_administrator role permisison to administer main menu items.
+  $site_administrator = Role::load('site_administrator');
+  if ($site_administrator) {
+    $site_administrator->grantPermission('administer main menu items');
+    $site_administrator->save();
+  }
 }

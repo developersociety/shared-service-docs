@@ -16,6 +16,11 @@ class ResourceHubProfileTest extends BrowserTestBase {
   protected $profile = 'resourcehub';
 
   /**
+   * {@inheritdoc}
+   */
+  protected $defaultTheme = 'resourcehub_theme';
+
+  /**
    * The content editor user to test with.
    *
    * @var \Drupal\user\Entity\User
@@ -112,6 +117,7 @@ class ResourceHubProfileTest extends BrowserTestBase {
     $this->drupalGet('/admin/resourcehub-settings/blocks');
     $this->assertSession()->statusCodeEquals(Response::HTTP_OK);
     $this->assertSession()->fieldExists('Legal copy');
+    $this->assertSession()->fieldExists('Main menu display');
     $page = $this->getSession()->getPage();
     $page->fillField('Legal copy', 'Testing legal copy');
     $page->fillField('main_site_link[url]', 'http://www.backtosite.com');
@@ -127,6 +133,36 @@ class ResourceHubProfileTest extends BrowserTestBase {
     $this->assertSession()->statusCodeEquals(Response::HTTP_OK);
     $this->assertSession()->fieldExists('Color set');
     $this->assertSession()->fieldExists('Accent');
+  }
+
+  /**
+   * Test that the main menu display can be configured.
+   */
+  public function testMainMenu() {
+    $this->drupalGet('<front>');
+    $page = $this->getSession()->getPage();
+    $this->assertEmpty($page->findById('toggle-icon'));
+    $this->drupalLogin($this->siteAdminUser);
+    $this->drupalGet('/admin/structure/menu/manage/main/add');
+    $this->assertSession()->statusCodeEquals(Response::HTTP_OK);
+    $page = $this->getSession()->getPage();
+    $page->fillField('title[0][value]', 'Home');
+    $page->fillField('link[0][uri]', '<front>');
+    $this->click('#edit-submit');
+    $this->assertSession()->statusCodeEquals(Response::HTTP_OK);
+    $this->drupalGet('<front>');
+    $page = $this->getSession()->getPage();
+    $this->assertEmpty($page->findById('toggle-icon'));
+    $this->drupalGet('/admin/resourcehub-settings/blocks');
+    $page->checkField('main_menu_display');
+    $this->click('#edit-submit');
+    $this->assertSession()->statusCodeEquals(Response::HTTP_OK);
+    $this->drupalGet('<front>');
+    $page = $this->getSession()->getPage();
+    $this->assertNotEmpty($page->findById('toggle-icon'));
+    $menuLink = $page->find('css', '#off-canvas > ul > li > a[href="/"]');
+    $this->assertNotEmpty($menuLink);
+    $this->assertEquals('Home', $menuLink->getText());
   }
 
   /**

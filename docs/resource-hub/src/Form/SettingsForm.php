@@ -28,10 +28,16 @@ class SettingsForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
+    $form['main_menu_display'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Main menu display'),
+      '#description' => $this->t("Check this box if you would like to display the main menu in the header."),
+      '#default_value' => $this->config('resourcehub.settings')->get('main_menu_display'),
+    ];
     $form['legal'] = [
       '#type' => 'textarea',
       '#title' => $this->t('Legal copy'),
-      '#description' => $this->t("Edit the 'legal' text that appears in the footer of every page."),
+      '#description' => $this->t("Edit the sdf 'legal' text that appears in the footer of every page."),
       '#default_value' => $this->config('resourcehub.settings')->get('legal'),
     ];
     $form['main_site_link'] = [
@@ -65,6 +71,7 @@ class SettingsForm extends ConfigFormBase {
     $this->config('resourcehub.settings')
       ->set('legal', $form_state->getValue('legal'))
       ->set('main_site_link', $form_state->getValue('main_site_link'))
+      ->set('main_menu_display', $form_state->getValue('main_menu_display'))
       ->save();
     parent::submitForm($form, $form_state);
   }

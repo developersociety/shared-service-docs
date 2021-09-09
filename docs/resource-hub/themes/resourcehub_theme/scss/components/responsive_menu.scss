@@ -1,0 +1,22 @@
+.responsive-menu-toggle-wrapper {
+  #toggle-icon {
+    width: 6rem;
+  }
+  a .label{
+    color: $c-body;
+    width: 5.5rem;
+    line-height: 1.7rem;
+    text-transform: unset;
+  }
+}
+.responsive-menu-toggle-icon:before,
+.responsive-menu-toggle-icon:after,
+.responsive-menu-toggle-icon span.icon {
+  background-color: $c-body;
+  text-transform: none;
+}
+
+.mm-menu_offcanvas {
+  z-index: 2;
+
+}

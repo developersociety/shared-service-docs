@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - responsive_menu
+  theme:
+    - resourcehub_theme
+id: responsivemenumobileicon
+theme: resourcehub_theme
+region: header
+weight: 3
+provider: null
+plugin: responsive_menu_toggle
+settings:
+  id: responsive_menu_toggle
+  label: 'Responsive menu mobile icon'
+  provider: responsive_menu
+  label_display: '0'
+visibility: {  }

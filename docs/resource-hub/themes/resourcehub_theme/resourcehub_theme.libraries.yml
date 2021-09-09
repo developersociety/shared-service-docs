@@ -6,3 +6,8 @@ global:
     theme:
       dist/css/styles.css: {}
       dist/css/colors.css: { }
+
+resourcehub_theme.toolbar:
+  version: VERSION
+  js:
+    js/views/ToolbarVisualView.js: {}

@@ -14,3 +14,6 @@ resourcehub.settings:
         text:
           type: string
           label: "The text for the link to our organisation's website"
+    main_menu_display:
+      type: boolean
+      label: "Main menu display"
