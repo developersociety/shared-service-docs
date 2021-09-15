@@ -29,6 +29,7 @@
   - [high-level-technical-overview](resource-hub-wiki/high-level-technical-overview)
   - [alpha-phase-discovery-outputs](resource-hub-wiki/alpha-phase-discovery-outputs)
   - [frontend-theme](resource-hub-wiki/frontend-theme)
+  - [deploying-to-a-digitalocean-droplet-(draft)-lamp-stack](resource-hub-wiki/deploying-to-a-digitalocean-droplet-(draft)-lamp-stack)
   - [home](resource-hub-wiki/home)
   - [hosting-and-technical-requirements](resource-hub-wiki/hosting-and-technical-requirements)
 - referrals-api
