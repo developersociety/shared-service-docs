@@ -19,6 +19,7 @@
   - [modules/resourcehub_demo/readme](resource-hub/modules/resourcehub_demo/readme)
   - [readme](resource-hub/readme)
 - resource-hub-wiki
+  - [(draft)-technical:-applying-updates-and-security-releases-to-your-resourcehub](resource-hub-wiki/(draft)-technical:-applying-updates-and-security-releases-to-your-resourcehub)
   - [deployment-workflow-(recommended)](resource-hub-wiki/deployment-workflow-(recommended))
   - [deploying-to-a-digitalocean-droplet-(draft)-lamp-stack](resource-hub-wiki/deploying-to-a-digitalocean-droplet-(draft)-lamp-stack)
   - [hosting-and-technical-requirements](resource-hub-wiki/hosting-and-technical-requirements)
