@@ -110,3 +110,20 @@ function resourcehub_preprocess_menu(&$variables) {
     $url->mergeOptions(['attributes' => ['class' => ['toolbar-icon-system-admin-config']]]);
   }
 }
+
+/**
+ * Implements hook_preprocess_block().
+ *
+ * Adds the same classes to our custom toggle block as the one
+ * provided by responsive menu.
+ *
+ * @see responsive_menu_preprocess_block
+ */
+function resourcehub_preprocess_block(&$variables) {
+  if ($variables['plugin_id'] == 'rh_responsive_menu_toggle') {
+    $variables['attributes']['class'][] = 'responsive-menu-toggle-wrapper';
+    $variables['attributes']['class'][] = 'responsive-menu-toggle';
+    // Remove the contextual links from this block.
+    unset($variables['title_suffix']['contextual_links']);
+  }
+}

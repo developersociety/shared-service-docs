@@ -10,10 +10,10 @@ theme: resourcehub_theme
 region: header
 weight: 3
 provider: null
-plugin: responsive_menu_toggle
+plugin: rh_responsive_menu_toggle
 settings:
-  id: responsive_menu_toggle
-  label: 'Responsive menu mobile icon'
-  provider: responsive_menu
+  id: rh_responsive_menu_toggle
+  label: 'RH: Responsive menu mobile icon'
+  provider: resourcehub
   label_display: '0'
 visibility: {  }

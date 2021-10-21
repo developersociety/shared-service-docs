@@ -11,8 +11,8 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * Provides a menu block.
  *
  * @Block(
- *   id = "responsive_menu_toggle",
- *   admin_label = @Translation("Responsive menu mobile icon")
+ *   id = "rh_responsive_menu_toggle",
+ *   admin_label = @Translation("RH: Responsive menu mobile icon")
  * )
  */
 class MainMenuBlock extends BlockBase implements ContainerFactoryPluginInterface {
