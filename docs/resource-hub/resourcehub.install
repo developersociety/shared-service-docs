@@ -9,6 +9,7 @@ use Drupal\block\Entity\Block;
 use Drupal\user\Entity\User;
 use Drupal\Core\Config\FileStorage;
 use Drupal\user\Entity\Role;
+use Drupal\Core\Config\Config;
 
 /**
  * Implements hook_install().
@@ -93,5 +94,22 @@ function resourcehub_update_9001() {
   if ($site_administrator) {
     $site_administrator->grantPermission('administer main menu items');
     $site_administrator->save();
+  }
+}
+
+/**
+ * Add missing Simple sitemap config for resource nodes.
+ */
+function resourcehub_update_9002() {
+  $simple_sitemap = \Drupal::service('config.factory')->getEditable('simple_sitemap.bundle_settings.default.node.resource');
+  assert($simple_sitemap instanceof Config);
+  if ($simple_sitemap->isNew()) {
+    $simple_sitemap->setData([
+      'index' => TRUE,
+      'priority' => '0.5',
+      'changefreq' => '',
+      'include_images' => FALSE,
+    ]);
+    $simple_sitemap->save();
   }
 }
