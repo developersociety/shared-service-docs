@@ -3,11 +3,8 @@ nav.tabs {
   width: 100%;
   display: block;
 }
-nav.tabs h2 {
-  @extend .govuk-tabs__title;
-}
+
 nav.tabs ul.tabs{
-  @extend .govuk-tabs__list;
   border-bottom: 1px solid $c-mid-grey-text;
 }
 

@@ -63,12 +63,3 @@ article.node--view-mode-search-result {
 .front.node .paragraph--type--resourcehub-link-block .field--name-resourcehub-links > .field__item:before {
   color: #333332;
 }
-
-.responsive-menu-toggle-wrapper a .label{
-  color: #0b132c;
-}
-.responsive-menu-toggle-icon:before,
-.responsive-menu-toggle-icon:after,
-.responsive-menu-toggle-icon span.icon {
-  background-color: #0b132c;
-}
