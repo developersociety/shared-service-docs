@@ -69,6 +69,8 @@ install:
   - metatag:metatag
   - metatag_open_graph:metatag_open_graph
   - metatag_twitter_cards:metatag_twitter_cards
+  - rabbit_hole:rabbit_hole
+  - rabbit_hole:rh_taxonomy
 
 themes:
   - gin

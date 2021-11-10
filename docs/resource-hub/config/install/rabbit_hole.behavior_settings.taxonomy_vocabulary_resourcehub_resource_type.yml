@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.resourcehub_resource_type
+id: taxonomy_vocabulary_resourcehub_resource_type
+entity_type_id: taxonomy_vocabulary
+entity_id: resourcehub_resource_type
+action: page_not_found
+allow_override: 0
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied
