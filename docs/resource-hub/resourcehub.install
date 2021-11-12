@@ -113,3 +113,34 @@ function resourcehub_update_9002() {
     $simple_sitemap->save();
   }
 }
+
+/**
+ * Prevent access to taxonomy term pages with Rabbit Hole Taxonomy.
+ */
+function resourcehub_update_9003() {
+
+  // Don't do anything if Rabbit Hole Taxonomy is already enabled.
+  $module_handler = \Drupal::service('module_handler');
+  if ($module_handler->moduleExists('rh_taxonomy')) {
+    return;
+  }
+
+  // Enable Rabbit Hole Taxonomy module.
+  $modules = [
+    'rabbit_hole',
+    'rh_taxonomy',
+  ];
+  \Drupal::service('module_installer')->install($modules);
+
+  // Install Rabbit Hole Taxonomy config.
+  $config_files = [
+    'rabbit_hole.behavior_settings.taxonomy_vocabulary_resourcehub_audience',
+    'rabbit_hole.behavior_settings.taxonomy_vocabulary_resourcehub_resource_type',
+    'rabbit_hole.behavior_settings.taxonomy_vocabulary_resourcehub_topics',
+  ];
+  $config_source = new FileStorage(drupal_get_path('profile', 'resourcehub') . '/config/install');
+  $config_storage = \Drupal::service('entity_type.manager')->getStorage('behavior_settings');
+  foreach ($config_files as $config_file) {
+    $config_storage->create($config_source->read($config_file))->save();
+  }
+}
