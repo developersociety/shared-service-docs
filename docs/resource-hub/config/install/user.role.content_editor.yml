@@ -16,6 +16,7 @@ permissions:
   - 'access user profiles'
   - 'administer footer menu items'
   - 'administer main menu items'
+  - 'administer nodes'
   - 'administer redirects'
   - 'cancel account'
   - 'change own username'
