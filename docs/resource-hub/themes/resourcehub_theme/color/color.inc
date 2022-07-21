@@ -13,6 +13,8 @@ $info = [
     'accent2' => t('Accent 2'),
     'header' => t('Header/Footer background'),
     'headertext' => t('Header/footer text'),
+    'mobile_nav_bg' => t('Mobile navigation background'),
+    'mobile_nav_link' => t('Mobile navigation link'),
   ],
   // Pre-defined color schemes.
   'schemes' => [
@@ -23,6 +25,8 @@ $info = [
         'accent2' => '#f35c49',
         'header' => '#ebeae9',
         'headertext' => '#0b132c',
+        'mobile_nav_bg' => '#333333',
+        'mobile_nav_link' => '#ffffd9',
       ],
     ],
     'red' => [
@@ -31,7 +35,9 @@ $info = [
         'accent' => '#f44336',
         'accent2' => '#ffcdd2',
         'header' => '#000000',
-        'headertext' => '#ffffff'
+        'headertext' => '#ffffff',
+        'mobile_nav_bg' => '#333333',
+        'mobile_nav_link' => '#ffffd9',
       ],
     ],
     'ac' => [
@@ -40,7 +46,9 @@ $info = [
         'accent' => '#f44336',
         'accent2' => '#23334b',
         'header' => '#ffffff',
-        'headertext' => '#23334b'
+        'headertext' => '#23334b',
+        'mobile_nav_bg' => '#333333',
+        'mobile_nav_link' => '#ffffd9',
       ],
     ],
   ],

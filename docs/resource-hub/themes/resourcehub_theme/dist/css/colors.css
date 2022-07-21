@@ -63,3 +63,8 @@ article.node--view-mode-search-result {
 .front.node .paragraph--type--resourcehub-link-block .field--name-resourcehub-links > .field__item:before {
   color: #333332;
 }
+
+.mm-menu {
+  --mm-color-text: #FFFFD9!important;
+  --mm-color-background: #333333!important;
+}

@@ -144,3 +144,21 @@ function resourcehub_update_9003() {
     $config_storage->create($config_source->read($config_file))->save();
   }
 }
+
+/**
+ * Grant content site admins and editors the administer content permissions so nodes can be unpublished
+ */
+function resourcehub_update_9004() {
+  $content_editor = Role::load('content_editor');
+  if ($content_editor) {
+    $content_editor->grantPermission('administer nodes');
+    $content_editor->grantPermission('view own unpublished content');
+    $content_editor->save();
+  }
+  $site_administrator = Role::load('site_administrator');
+  if ($site_administrator) {
+    $site_administrator->grantPermission('administer nodes');
+    $content_editor->grantPermission('view own unpublished content');
+    $site_administrator->save();
+  }
+}
