@@ -42,6 +42,7 @@ install:
   - ckeditor_a11ychecker:ckeditor_a11ychecker
   - ckeditor_balloonpanel:ckeditor_balloonpanel
   - crop:crop
+  - ctools:ctools
   - entity_reference_revisions:entity_reference_revisions
   - extlink:extlink
   - field_group:field_group
