@@ -2,7 +2,7 @@ The basic strategy for a Drupal 9 to 10 upgrade is to prepare your Drupal 9 site
 
 If you have customised your Resource Hub site by adding extra modules or code changes then you will also need to check the changes are compatible with Drupal 10. The [Upgrade Status](https://www.drupal.org/project/upgrade_status) module will help determine what needs to be done before you can upgrade to Drupal 10.
 
-## 1. Ensure you're using the latest version of Drupal 9 and Resource Hub.
+## 1. Ensure you're using the latest version of Drupal 9.
 
 The first step is to update Drupal and any contrib modules to the latest versions.
 
@@ -21,6 +21,12 @@ Commit all changes if the site code and config is managed through git.
 ### 2. Ensure you're using PHP 8.1
 
 Drupal 10 requires PHP 8.1. Having updated Drupal and contrib modules the site should now support this so upgrade the environment you're using to upgrade the site to PHP 8.1.
+
+You may need to upgrade some packages with:
+
+```sh
+composer require --dev drush/drush:^11.0 brianium/paratest:^6.0 mglaman/phpstan-drupal:^1.0 phpstan/phpstan-deprecation-rules:^1.0 squizlabs/php_codesniffer:^3.6 -W
+```
 
 ## 3. Preparing your Drupal 9 site.
 
@@ -48,11 +54,16 @@ drush cr
 drush cex
 ```
 
-## 4. Upgrade to the latest Resource Hub version.
-
-The last step in getting your site ready for the Drupal 10 upgrade is to update all the Resource Hub components.
+## 4. Upgrade to Drupal 10
 
 ```sh
-composer update openresources/resourcehub* -W
+# This line should be updated once there's a D10 compatible release.
+composer require openresources/resourcehub-distribution:dev-feature/drupal-10 --no-update
+composer require 'drupal/core-recommended:^10.1@stable' 'drupal/core-composer-scaffold:^10.1@stable' 'drupal/core-project-message:^10.1@stable' --update-with-dependencies --no-update
+composer require 'drupal/core-dev:^10.1@stable' --dev --update-with-dependencies --no-update
+composer require --dev 'drush/drush:^12' --no-update
+composer remove --dev drupal/config_inspector --no-update
+composer update
 drush cr
+drush updb
 ```
