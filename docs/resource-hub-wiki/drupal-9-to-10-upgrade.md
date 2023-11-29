@@ -9,7 +9,7 @@ The first step is to update Drupal and any contrib modules to the latest version
 To this with Composer and Drush by running:
 
 ```sh
-composer update drupal/* -W
+composer update "drupal/*" -W
 drush cr
 drush updb
 drush cr
