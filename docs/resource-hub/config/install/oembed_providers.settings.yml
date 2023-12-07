@@ -1,6 +1,1 @@
-allowed_providers:
-  - SoundCloud
-  - Spotify
-  - Vimeo
-  - YouTube
 external_fetch: true

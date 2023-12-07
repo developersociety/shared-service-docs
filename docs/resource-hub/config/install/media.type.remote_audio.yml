@@ -1,6 +1,10 @@
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - oembed_providers.bucket.video
+  module:
+    - oembed_providers
 id: remote_audio
 label: 'Remote audio'
 description: ''
@@ -8,9 +12,9 @@ source: 'oembed:video'
 queue_thumbnail_downloads: false
 new_revision: false
 source_configuration:
+  source_field: field_media_oembed_audio
   thumbnails_directory: 'public://oembed_thumbnails'
   providers:
     - SoundCloud
     - Spotify
-  source_field: field_media_oembed_audio
 field_map: {  }

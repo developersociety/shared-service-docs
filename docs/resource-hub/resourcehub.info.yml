@@ -1,7 +1,7 @@
 name: 'Resource Hub'
 type: profile
 description: 'Resource Hub installation profile'
-core_version_requirement: ^8.8 || ^9
+core_version_requirement: ^8.8 || ^9 || ^10
 
 install:
   # Core
@@ -9,7 +9,7 @@ install:
   - drupal:breakpoint
   - drupal:block
   - drupal:block_content
-  - drupal:ckeditor
+  - drupal:ckeditor5
   - drupal:config
   - drupal:contextual
   - drupal:datetime
@@ -30,17 +30,15 @@ install:
   - drupal:page_cache
   - drupal:path
   - drupal:responsive_image
-  - drupal:quickedit
   - drupal:taxonomy
   - drupal:text
   - drupal:toolbar
   - drupal:views
   - drupal:views_ui
-  - drupal:color
   # Contrib
+  - admin_toolbar:admin_toolbar
   - allowed_formats:allowed_formats
-  - ckeditor_a11ychecker:ckeditor_a11ychecker
-  - ckeditor_balloonpanel:ckeditor_balloonpanel
+  - color:color
   - crop:crop
   - ctools:ctools
   - entity_reference_revisions:entity_reference_revisions

@@ -1,8 +1,11 @@
+uuid: d8e84d09-ea17-48fd-a81d-d4642a638639
 langcode: en
 status: false
 dependencies:
   module:
     - linkit
+_core:
+  default_config_hash: RDZxkiI_uQckpaXm4u-sCogmzN9GlSKyUhyyRQhfeuc
 name: Stripped
 format: stripped
 weight: 0

@@ -6,10 +6,10 @@
  */
 
 use Drupal\block\Entity\Block;
-use Drupal\user\Entity\User;
+use Drupal\Core\Config\Config;
 use Drupal\Core\Config\FileStorage;
 use Drupal\user\Entity\Role;
-use Drupal\Core\Config\Config;
+use Drupal\user\Entity\User;
 
 /**
  * Implements hook_install().
@@ -22,7 +22,7 @@ function resourcehub_install() {
 
   // Assign user 1 the "administrator" role.
   $user = User::load(1);
-  $user->roles[] = 'administrator';
+  $user->addRole('administrator');
   $user->save();
 
   try {
@@ -69,7 +69,7 @@ function resourcehub_update_9001() {
   ];
   \Drupal::service('module_installer')->install($modules);
 
-  $config_path = drupal_get_path('profile', 'resourcehub') . '/config/install';
+  $config_path = \Drupal::service('extension.path.resolver')->getPath('profile', 'resourcehub') . '/config/install';
   $config_source = new FileStorage($config_path);
   $config_storage = \Drupal::service('config.storage');
   $responsivemenumobileicon = $config_source->read('block.block.responsivemenumobileicon');
@@ -138,7 +138,7 @@ function resourcehub_update_9003() {
     'rabbit_hole.behavior_settings.taxonomy_vocabulary_resourcehub_resource_type',
     'rabbit_hole.behavior_settings.taxonomy_vocabulary_resourcehub_topics',
   ];
-  $config_source = new FileStorage(drupal_get_path('profile', 'resourcehub') . '/config/install');
+  $config_source = new FileStorage(\Drupal::service('extension.path.resolver')->getPath('profile', 'resourcehub') . '/config/install');
   $config_storage = \Drupal::service('entity_type.manager')->getStorage('behavior_settings');
   foreach ($config_files as $config_file) {
     $config_storage->create($config_source->read($config_file))->save();
@@ -146,7 +146,7 @@ function resourcehub_update_9003() {
 }
 
 /**
- * Grant content site admins and editors the administer content permissions so nodes can be unpublished
+ * Grant content site admins and editors the administer content permissions.
  */
 function resourcehub_update_9004() {
   $content_editor = Role::load('content_editor');

@@ -3,7 +3,6 @@ status: true
 dependencies:
   module:
     - linkit
-    - media
 name: Simple
 format: resourcehub_simple
 weight: 0
@@ -27,7 +26,7 @@ filters:
     status: true
     weight: -10
     settings:
-      allowed_html: '<em> <strong> <cite> <blockquote cite> <code> <ul type> <ol start type> <li> <dl> <dt> <dd> <h2 id> <h3 id> <h4 id> <h5 id> <h6 id> <a href hreflang data-entity-substitution data-entity-type data-entity-uuid title>'
+      allowed_html: '<br> <p> <h2 id> <h3 id> <h4 id> <h5 id> <h6 id> <cite> <dl> <dt> <dd> <blockquote cite> <ul type> <ol type start> <a hreflang title href data-entity-type data-entity-uuid data-entity-substitution> <strong> <em> <code> <li>'
       filter_html_help: true
       filter_html_nofollow: false
   linkit:
@@ -43,12 +42,3 @@ filters:
     status: true
     weight: 0
     settings: {  }
-  media_embed:
-    id: media_embed
-    provider: media
-    status: false
-    weight: 100
-    settings:
-      default_view_mode: default
-      allowed_media_types: {  }
-      allowed_view_modes: {  }

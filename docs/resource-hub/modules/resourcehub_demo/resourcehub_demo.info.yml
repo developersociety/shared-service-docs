@@ -1,6 +1,6 @@
 name: ResourceHub Demo Content
 description: Example content for demonstrating the ResourceHub Drupal distribution and to help with development.
-core_version_requirement: ^8.9 || ^9
+core_version_requirement: ^8.9 || ^9 || ^10
 type: module
 package: OpenResources ResourceHub
 
