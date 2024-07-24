@@ -11,11 +11,11 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup PHP Action
         uses: shivammathur/setup-php@2.10.0
 
@@ -34,11 +34,5 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git commit -m "Sync" -a
-
-      - name: Push changes
-        if: steps.git-check.outputs.modified == 'true'
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
+          git commit -m "Sync" -a || exit 0
+          git push
